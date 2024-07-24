@@ -1,0 +1,149 @@
+.Lb_Window {
+    width: 100%;
+    height: 90%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    top: 0;
+    color: white;
+    background: #000000;
+    z-index: 1003;
+    overflow: scroll;
+    animation: fade-in 0.3s forwards;
+    overflow: scroll;
+}
+@media (orientation: landscape) {
+    .Lb_Window {
+      height: 80%;
+    }
+
+    .Lb_Text p{
+        font-size: 2vh;
+    }
+  }
+
+.Lb_Window.fade-out {
+    animation: fade-out 0.3s forwards;
+}
+
+
+.lb_Info{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4.5vh;
+}
+
+.Lb_Menu{
+    width: 88%;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.Lb_inside{
+    background: rgba(208, 108, 36, 55% );
+    width: 100%;
+    height: 9vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3vh;
+    border-radius: 2vh ;
+}
+
+.LbPhoto{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.LbPhoto p{
+    font-size: 1.8vh;
+    margin-right: 2vh;
+}
+
+#number{margin: 2vh;}
+
+#LbColor{
+    color: rgba(255, 255, 255, 65% );
+    margin-top: 1vh;
+    display: inline-block;
+    font-size: 1.9vh;
+}
+
+.LbBorder{
+    background: #1A1A1A;
+    border-radius: 2vh;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+}
+
+.Lb_Logo{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1.5vh;
+}
+.Lb_Logo img{
+    height:  70%;
+}
+
+.Lb_Text{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 2.6vw;
+}
+
+.Lb_Liders{
+    width: 100%;
+    height: 8%;
+    display: flex;
+    align-items: end;
+    justify-content: start;
+    font-size: 2.2vh;
+    margin-bottom: 0.5vh;
+}
+
+.Lb_list{
+    width: 100%;
+    height: 56%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Lb_Lider{
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#medal img {
+    height: 35%;
+}
+
+.NameLb{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1;
+}

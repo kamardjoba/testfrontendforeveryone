@@ -1,0 +1,362 @@
+*{
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+	margin: 0;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  overflow: hidden; 
+  isolation: isolate;
+}
+
+.App {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  background: #000000;
+  color: white;
+  font-family: Muller;
+  font-size: 2.2vh ;
+}
+
+.App p{
+ margin: 0;
+}
+
+.info {
+  width: 100%;
+  height: 7%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info img{
+  width: 100%;
+  height: 100%;
+}
+
+.Txt{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 2.2vh;
+}
+.Txt p{
+  margin-top: 0.6vh;
+}
+
+.Txt img {
+  height: 40%;
+  width: auto;
+  margin-right: 1vh;
+}
+
+.main {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+.main img{height: 70%;}
+
+.MainCoin{
+  height: 8%;
+  width: 100%;
+  font-size: 4vh;
+}
+
+.Menu {
+  height: 55%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Reward {
+  height: 12%;
+  width: 90%;
+  display: flex;
+  align-items: end;
+  justify-content: start;
+  font-size: 2.1vh;
+  font-weight: bold;
+  position: relative; 
+}
+
+.EllipsSkroll {
+  position: absolute;
+  top: 0.5vh; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+.EllipsSkroll img{
+  height: 1vh;
+  margin-right: 0.3vh;
+  margin-left: 0.3vh;
+}
+
+.MenuBorder{
+  height: 100%;
+  width: 100%;
+  scroll-snap-align: start;
+  display: inline-block;
+  margin-right: 1.7vh;
+}
+
+.flex_menu_border{
+  background: #1A1A1A;
+  border-radius: 2vh;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.rightFlex{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.leftFlex{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: end;
+}
+
+.leftFlex img{
+  height: 65%;
+  padding-right: 1.7vh;
+  padding-top: 1.8vh;
+}
+
+#Cryptospace{
+  background: rgba(208, 108, 36, 0.5);
+}
+
+.Skroll_Menu_Border{
+  width: 90%;
+  height: 25%;
+  overflow-y: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.MenuBorder p{margin-left: 1.7vh;}
+#up{margin-top: 1.8vh; font-size: 2.1vh; position: relative; }
+#dp{margin-bottom: 0.8vh; font-size: 1.8vh;}
+#dpp {margin-bottom: 0.5vh; font-size: 1.5vh; margin-left: 0;}
+#upp{margin-top: 2vh; font-size: 2.1vh; }
+
+.emoji {
+  position: absolute;
+  bottom: 0;
+}
+
+.emojii {
+  margin-left: 1vh;
+}
+
+.MenuBorder button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2vh;
+  height: 3.3vh;
+  width: 5vh;
+}
+.MenuBtn{
+  display: flex;
+  flex-direction: row;
+  height: 30%;
+  align-items: center;
+  margin-bottom: 1.2vh;
+  color: #9F9F9F;
+  font-size: 1.8vh;
+}
+.MenuBtn img {height:100%;margin-left: 1.7vh;}
+.MenuBtn p {margin-top: 0.8vh;}
+
+
+.Tasks{
+  height: 63%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8vh;
+  overflow-y: auto;
+}
+
+.TS{
+  width: 100%;
+  height: 8.4vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tsPhoto img{
+  height: 60%;
+}
+
+.tsPhoto{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tsPhoto p{
+  font-size: 1.8vh;
+}
+#txt{
+  margin-left: 1.2vh;
+}
+
+.LowerBTN{
+  width: 92%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.LowerBTN img{
+  height: 50%;
+}
+
+.BTN {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.BTNLow{
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  background: #0F0F0F;
+  z-index: 1001;
+  
+}
+
+@font-face {
+  font-family: Muller;
+  src: url(/src/fonts/MullerRegular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: MullerLight;
+  src: url(/src/fonts/MullerLight.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: MullerMedium;
+  src: url(/src/fonts/MullerMedium.ttf) format('truetype');
+}
+
+@keyframes fade-out  {
+  from {opacity: 1;}
+  to   {opacity: 0;}
+}
+
+@keyframes fade-in {
+  from {opacity: 0;}
+  to   {opacity: 1;}
+}
+
+button{
+  border: none;
+  color: #000000;
+}
+
+.blk{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: #000000;
+  z-index: 1000;
+}
+
+#galo4ka{
+  height: 2.5vh;
+  margin-left: 1vh;
+}
+
+#plus{
+  margin: 0;
+  display: inline;
+}
+
+@media (orientation: landscape) {
+  .BTNLow {
+    height: 20%;
+  }
+
+  .info {
+    height: 6%;
+  }
+
+  .Menu{
+    overflow: scroll;
+  }
+
+  .Tasks{
+    height: 20vh;
+    font-size: 3vh;
+  }
+  
+  .Skroll_Menu_Border{
+    height: 25vh;
+    font-size: 4vh;
+  }
+
+  #up{ font-size: 4.5vh;}
+  #dp{ font-size: 3vh;}
+  #upp{ margin-top: 2.8vh;}
+  #dpp{font-size: 3vh;}
+
+  .Txt{
+    font-size: 2.5vh;
+  }
+
+  .Fr_Window {
+    height: 80%;
+  }
+
+  .emoji {
+    top: -2vh;  
+  }
+}
+
+.img-dark {
+  filter: brightness(40%);
+}

@@ -1,0 +1,62 @@
+.First_Window {
+    z-index: 100000;
+    background: #000000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .First_octis {
+    height: 50%;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
+    overflow: hidden; 
+  }
+  
+  .Hey {
+    width: 100%;
+    height: 5%;
+  }
+  
+  .Hey p {
+    font-size: 3vh;
+  }
+  
+  .First_info {
+    width: 100%;
+    height: 20%;
+  }
+  
+  .OrangeBtn {
+    height: 13%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .BtnO {
+    height: 50%;
+    width: 85%;
+    background: #D06C24;
+    border-radius: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2vh;
+  }
+  
+  .Zoiberg {
+    border: none;
+    margin: 0;
+    position: absolute;
+    object-fit: cover;
+    height:  70%;
+  }
+  
