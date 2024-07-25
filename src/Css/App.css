@@ -170,8 +170,8 @@ body {
 .MenuBorder p{margin-left: 1.7vh;}
 #up{margin-top: 1.8vh; font-size: 2.1vh; position: relative; }
 #dp{margin-bottom: 0.8vh; font-size: 1.8vh;}
-#dpp {margin-bottom: 0.5vh; font-size: 1.5vh; margin-left: 0;}
-#upp{margin-top: 2vh; font-size: 2.1vh; }
+#dpp {margin-bottom: 0vh;  font-size: 1.5vh; margin-left: 0;}
+#upp{ font-size: 2.1vh; margin-top: 1.9vh;}
 
 .emoji {
   position: absolute;
