@@ -8,6 +8,7 @@ import First from './Firstpage';
 import Check from './Checking';
 import Years from './Years';
 import Oct from './Oct';
+import NFTs from './NFTs';
 
 import TS1 from '../IMG/TaskIcon/TS1.png';
 import TS2 from '../IMG/TaskIcon/TS2.png';
@@ -82,6 +83,7 @@ function App() {
   const [YearsOpen, setYearsOpen] = useState(false);
   const [OctOpen, setOctOpen] = useState(false);
   const [Yearr, setYearr] = useState(0);
+  const [NFTsOpen, setNFTsOpen] = useState(false);
 
   const [FriendsAnim, setFriendsAnim] = useState(false);
   const [LeaderboardAnim, setLeaderboardAnim] = useState(false);
@@ -154,6 +156,18 @@ function App() {
   function handleOpenStoryWithVibration() {
     setYearsOpen(true);
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+  }
+
+  function OpenNFT() {
+    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+    setNFTsOpen(true);
+  }
+
+  function CloseNFT() {
+    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+    setTimeout(() => {
+      setNFTsOpen(false);
+    }, 190);
   }
 
   const checkSubscription = useCallback(async () => {
@@ -508,7 +522,7 @@ function App() {
       <div className="main" onClick={(event) => {  localStorage.clear(); }}>
         <img src={Octo} alt='Octo' />
       </div>
-      <div className='MainCoin'>
+      <div className='MainCoin' onClick={OpenNFT}>
         <p>{coins} $OCTIES</p>
       </div>
       <div className='Menu'>
@@ -644,7 +658,6 @@ function App() {
             </div>
           </div>}
 
-
           {Galo4kaX && <div className='TS'>
           <div className='tsPhoto'>
             <img src={TSX} alt='TSX' /> <p id='txt'>Octies X</p>
@@ -678,6 +691,8 @@ function App() {
           </div>
         </div>
       </div>
+
+      {NFTsOpen && (<NFTs CloseNFT={CloseNFT}/>)}
 
       {FPage && (<First onClose={handleFirstPageClose} setCheckOpen={setCheckOpen} />)}
 
