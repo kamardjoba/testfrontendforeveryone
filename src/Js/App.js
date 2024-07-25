@@ -60,6 +60,9 @@ function App() {
   if (!localStorage.getItem('KnopkaBlock3')) {localStorage.setItem('KnopkaBlock3', 'true');}
   const KnopkaBlock3 = localStorage.getItem('KnopkaBlock3') === 'true';
 
+  if (!localStorage.getItem('Sub')) {localStorage.setItem('Sub', 'false');}
+  const Sub = localStorage.getItem('Sub') === 'true';
+
   const [coinOnlyYears, setcoinOnlyYears] = useState(0);
   const [VisibleInvite, setVisibleInvite] = useState(false);
   const [VisibleTelegramPremium, setVisibleTelegramPremium] = useState(false);
@@ -87,8 +90,11 @@ function App() {
   const TG_CHANNEL_LINK2 = "https://t.me/test_sub_check2";
   const TG_CHANNEL_LINK3 = "https://t.me/test_sub_check";
   const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
-
   const X_LINK = "https://x.com/Octies_GameFI";
+
+  if(subscriptionCoins > 0){
+    localStorage.setItem('Sub', 'true');
+  }
 
   const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
   const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false]);
@@ -622,14 +628,14 @@ function App() {
 
           {Galo4ka && <div className='TS'>
             <div className='tsPhoto'>
-              <img src={TS3} alt='TS3' /> <p id='txt'>Channel Subscriptions</p>
+              <img src={TS3} alt='TS3' /> <p id='txt'>Channel Subscription</p>
             </div>
             <div className='tsPhoto'>
               <p>+1000 $OCTIES</p>
             </div>
           </div>}
 
-          {Galo4ka && <div className='TS'>
+          {Sub && <div className='TS'>
             <div className='tsPhoto'>
               <img src={TS3} alt='TS3' /> <p id='txt'>Channel Subscriptions</p>
             </div>
