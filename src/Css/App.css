@@ -341,8 +341,8 @@ button{
 
   #up{ font-size: 4.5vh;}
   #dp{ font-size: 3vh;}
-  #upp{ margin-top: 2.8vh;}
-  #dpp{font-size: 3vh;}
+  #upp{ margin-top: 1.7vh; font-size: 5vh;}
+  #dpp{font-size: 2vh;}
 
   .Txt{
     font-size: 2.5vh;
