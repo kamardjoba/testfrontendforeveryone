@@ -96,6 +96,8 @@ function App() {
 
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
+  } else {
+    localStorage.setItem('Sub', 'false');
   }
 
   const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
