@@ -106,7 +106,7 @@ const NFTs = ({CloseNFT}) => {
                     </div>
                 </div>
                 <div className='NFTBTN'>
-                    <button id='NFTNEXT'><img src={nextBtn} alt='nxt'/></button>
+                    <button id='NFTtg'>Connect Wallet</button>
                 </div>
                 <div id='StrNFT' onClick={Goblock2From3}>
                     <img src={NFTStr} alt='NFTStr'/>

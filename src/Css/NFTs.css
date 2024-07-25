@@ -105,6 +105,18 @@
     justify-content: center;
 }
 
+#NFTtg{
+    width: 90%;
+    height: 70%;
+    border-radius: 2vh;
+    background: #067CFB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.2vh;
+}
+
 #NFTNEXT img{
     height: 35%;
 }
