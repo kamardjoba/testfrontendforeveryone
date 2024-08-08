@@ -146,10 +146,11 @@ function App() {
     };
   }, );
 
+
   useEffect(() => {
     if (window.TON_CONNECT_UI) {
       const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: '`https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json', // убедитесь, что это правильный путь
+        manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json', // убедитесь, что это правильный путь
         buttonRootId: 'wallet-button'
       });
 
@@ -531,7 +532,7 @@ function App() {
   }, []);
 
   return (
-    <TonConnectUIProvider manifestUrl="`https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json">
+    <TonConnectUIProvider manifestUrl="https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json">
     <div className="App">
     <TonConnectButton />
       {app && <div className='blk'></div>}
