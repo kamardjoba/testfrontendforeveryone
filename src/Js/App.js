@@ -35,7 +35,7 @@ import Octo from '../IMG/All_Logo/Octo.png';
 import invite from '../IMG/All_Logo/Invite_png.png';
 import Join from '../IMG/All_Logo/Join.png';
 import Nft from '../IMG/Nft_ref/Nft_ref.png'
-import Checknft from '../IMG/Nft_ref_check/chech.png'
+//import Checknft from '../IMG/Nft_ref_check/chech.png'
 
 const REACT_APP_BACKEND_URL = 'https://testforeveryoneback-production.up.railway.app';
 const userId = new URLSearchParams(window.location.search).get('userId');
@@ -79,7 +79,7 @@ function App() {
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [telegramLink, setTelegramLink] = useState('');
-  const [showNotCompleted, setShowNotCompleted] = useState(false);
+  //const [showNotCompleted, setShowNotCompleted] = useState(false);
 
   const coinmain = coins - referralCoins;
 
@@ -99,7 +99,8 @@ function App() {
   const TG_CHANNEL_LINK3 = "https://t.me/test_sub_check";
   const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
-
+  const [ setReferralCount] = useState(0);
+  const [message, setMessage] = useState('');
 
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
@@ -163,6 +164,8 @@ function App() {
       });
     }
   }, []);
+
+  
 
   function handleHomeWithVibration() {
     handleHome();
@@ -332,12 +335,8 @@ function App() {
   }, [hasTelegramPremium, referralCoins]);
   
   const handleCheckReferrals = () => {
-    setShowNotCompleted(true);
-    setTimeout(() => {
-      setShowNotCompleted(false);
-    }, 5000);
+    fetchReferralCount();
   };
-  
 
   const checkSubscriptionAndUpdate = async (userId) => {
     try {
@@ -423,7 +422,23 @@ function App() {
     }
   }, [fetchUserData, checkSubscription]);
 
-
+  const fetchReferralCount = async () => {
+    try {
+      const response = await axios.post(`${REACT_APP_BACKEND_URL}/get-referral-count`, { userId });
+      if (response.data.success) {
+        setReferralCount(response.data.referralCount);
+        if (response.data.referralCount > 0) {
+          setMessage('Спасибо');
+        } else {
+          setMessage('У вас нет рефералов');
+        }
+      } else {
+        console.error('Error fetching referral count:', response.data.message);
+      }
+    } catch (error) {
+      console.error('Error fetching referral count:', error);
+    }
+  };
   
   const Tg_Channel_Open_X = async () => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
@@ -534,7 +549,6 @@ function App() {
   return (
     <TonConnectUIProvider manifestUrl="https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json">
     <div className="App">
-    <TonConnectButton />
       {app && <div className='blk'></div>}
       <div className="info">
         <img src={Logo} alt='Logo' />
@@ -557,13 +571,11 @@ function App() {
             <p>Invite 15 friends, Connect Wallet <br/>and receive unique OCTIES NFT</p>
             <div className='nft-buttons'>
              
-              <button className='referral-button' onClick={handleCheckReferrals}>Check referrals</button>
-              {showNotCompleted && (<span className="not-completed">
-                <img src={Checknft} alt="Not completed" />Not completed
-              </span>
-              )}
-             
-              <button className='wallet-button'>Connect Wallet</button>
+            <button className='referral-button' onClick={handleCheckReferrals}>Check referrals</button>
+{message && <p>{message}</p>}
+
+              
+              <TonConnectButton className="custom-tonconnect-button" />
              
             </div>
           </div>

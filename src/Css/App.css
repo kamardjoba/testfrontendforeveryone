@@ -381,7 +381,7 @@ button{
   margin-left: 1.7vh;
 }
 
-.referral-button, .wallet-button {
+.referral-button {
   width: 90%; 
   height: 40%;
   border: none;
@@ -396,11 +396,6 @@ button{
   align-self: flex-start;
 }
 
-.wallet-button {
-  background-color:#067CFB;
-  color: white;
-  margin-bottom: 1vh;
-}
 
 
 .nft-image img {
@@ -502,4 +497,32 @@ button{
   .nft-text h2 {
     font-size: 2vh;
   }
+}
+
+:root {
+  --ton-button-background: #1A1A1A;
+  --ton-button-color: white;
+  --ton-button-font-size: 18px;
+  --ton-button-border-radius: 10px;
+  --ton-button-width: 200px;
+  --ton-button-height: 50px;
+}
+
+.custom-tonconnect-button {
+  width: 100%;
+  height: var(--ton-button-height);
+  background-color: var(--ton-button-background);
+  color: var(--ton-button-color);
+  font-size: var(--ton-button-font-size);
+  border-radius: var(--ton-button-border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.custom-tonconnect-button:hover {
+  background-color: darken(var(--ton-button-background), 10%);
 }
