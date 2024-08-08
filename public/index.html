@@ -11,32 +11,14 @@
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>React App</title>
   </head>
   <body>
-    
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-
-  
-    <script>   
-     window.onload = function() {
-      console.log("Window loaded, initializing TonConnectUI");
-      tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-          manifestUrl: 'https://testforeveryoneback-production.up.railway.app/tonconnect-manifest.json', // Update this to your actual manifest URL
-          buttonRootId: 'wallet-button'
-      });
-
-      tonConnectUI.onStatusChange((walletInfo) => {
-          if (walletInfo) {
-              console.log('Кошелек подключен!', walletInfo);
-          } else {
-              console.log('Кошелек отключен!');
-          }
-      });
-      }
-  </script>
+    
     <script>document.addEventListener("DOMContentLoaded",(function(){window.Telegram.WebApp&&(window.Telegram.WebApp.ready(),window.Telegram.WebApp.setHeaderColor("#000000"),  window.Telegram.WebApp.disableVerticalSwipes())}))</script>
   </body>
 </html>

@@ -1,6 +1,9 @@
+// eslint-disable-next-line
+
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import '../Css/App.css';
 import axios from 'axios';
+import { TonConnectUIProvider, TonConnectButton } from '@tonconnect/ui-react';
 
 import Friends from './Friends';
 import Leaderboard from './Leaderboard';
@@ -8,7 +11,6 @@ import First from './Firstpage';
 import Check from './Checking';
 import Years from './Years';
 import Oct from './Oct';
-import NFTs from './NFTs';
 
 import TS1 from '../IMG/TaskIcon/TS1.png';
 import TS2 from '../IMG/TaskIcon/TS2.png';
@@ -35,9 +37,9 @@ import Join from '../IMG/All_Logo/Join.png';
 import Nft from '../IMG/Nft_ref/Nft_ref.png'
 import Checknft from '../IMG/Nft_ref_check/chech.png'
 
-
 const REACT_APP_BACKEND_URL = 'https://testforeveryoneback-production.up.railway.app';
 const userId = new URLSearchParams(window.location.search).get('userId');
+
 
 function App() {
   if (!localStorage.getItem('Galka')) {localStorage.setItem('Galka', 'false');}
@@ -88,7 +90,6 @@ function App() {
   const [YearsOpen, setYearsOpen] = useState(false);
   const [OctOpen, setOctOpen] = useState(false);
   const [Yearr, setYearr] = useState(0);
-  const [NFTsOpen, setNFTsOpen] = useState(false);
 
   const [FriendsAnim, setFriendsAnim] = useState(false);
   const [LeaderboardAnim, setLeaderboardAnim] = useState(false);
@@ -99,10 +100,9 @@ function App() {
   const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
 
+
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
-  } else {
-    localStorage.setItem('Sub', 'false');
   }
 
   const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
@@ -128,6 +128,7 @@ function App() {
       });
     };
 
+    
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
     blockRefs.forEach(ref => {
@@ -144,6 +145,23 @@ function App() {
       });
     };
   }, );
+
+  useEffect(() => {
+    if (window.TON_CONNECT_UI) {
+      const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: '`https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json', // убедитесь, что это правильный путь
+        buttonRootId: 'wallet-button'
+      });
+
+      tonConnectUI.onStatusChange((walletInfo) => {
+        if (walletInfo) {
+          console.log('Кошелек подключен!', walletInfo);
+        } else {
+          console.log('Кошелек отключен!');
+        }
+      });
+    }
+  }, []);
 
   function handleHomeWithVibration() {
     handleHome();
@@ -163,18 +181,6 @@ function App() {
   function handleOpenStoryWithVibration() {
     setYearsOpen(true);
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-  }
-
-  function OpenNFT() {
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    setNFTsOpen(true);
-  }
-
-  function CloseNFT() {
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    setTimeout(() => {
-      setNFTsOpen(false);
-    }, 190);
   }
 
   const checkSubscription = useCallback(async () => {
@@ -523,9 +529,11 @@ function App() {
     }
     return color;
   }, []);
-  
+
   return (
+    <TonConnectUIProvider manifestUrl="`https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json">
     <div className="App">
+    <TonConnectButton />
       {app && <div className='blk'></div>}
       <div className="info">
         <img src={Logo} alt='Logo' />
@@ -537,7 +545,7 @@ function App() {
       <div className="main" onClick={(event) => {  localStorage.clear(); }}>
         <img src={Octo} alt='Octo' />
       </div>
-      <div className='MainCoin' onClick={OpenNFT}>
+      <div className='MainCoin'>
         <p>{coins} $OCTIES</p>
       </div>
       <div className='Menu'>
@@ -555,6 +563,7 @@ function App() {
               )}
              
               <button className='wallet-button'>Connect Wallet</button>
+             
             </div>
           </div>
           <div className='nft-image'>
@@ -693,6 +702,7 @@ function App() {
             </div>
           </div>}
 
+
           {Galo4kaX && <div className='TS'>
           <div className='tsPhoto'>
             <img src={TSX} alt='TSX' /> <p id='txt'>Octies X</p>
@@ -727,8 +737,6 @@ function App() {
         </div>
       </div>
 
-      {NFTsOpen && (<NFTs CloseNFT={CloseNFT}/>)}
-
       {FPage && (<First onClose={handleFirstPageClose} setCheckOpen={setCheckOpen} />)}
 
       {CheckOpen && (<Check setCheckOpen={setCheckOpen} setYearsOpen={setYearsOpen} />)}
@@ -742,6 +750,7 @@ function App() {
       {isFrendsOpen && (<Friends FriendsAnim={FriendsAnim} invite={invite} referralCode={referralCode} telegramLink={telegramLink} getRandomColor={getRandomColor} />)}
 
     </div>
+     </TonConnectUIProvider>
   );
 }
 
