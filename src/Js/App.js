@@ -31,6 +31,9 @@ import Play from '../IMG/All_Logo/Play.png';
 import Octo from '../IMG/All_Logo/Octo.png';
 import invite from '../IMG/All_Logo/Invite_png.png';
 import Join from '../IMG/All_Logo/Join.png';
+import Nft from '../IMG/Nft_ref/Nft_ref.png'
+import Checknft from '../IMG/Nft_ref_check/chech.png'
+
 
 const REACT_APP_BACKEND_URL = 'https://testforeveryoneback-production.up.railway.app';
 const userId = new URLSearchParams(window.location.search).get('userId');
@@ -73,6 +76,8 @@ function App() {
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [telegramLink, setTelegramLink] = useState('');
+  const [showNotCompleted, setShowNotCompleted] = useState(false);
+
   const coinmain = coins - referralCoins;
 
   const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
@@ -88,7 +93,7 @@ function App() {
   const [app, setApp] = useState(false);
   const TG_CHANNEL_LINK = "https://t.me/octies_channel";
   const TG_CHANNEL_LINK2 = "https://t.me/test_sub_check2";
-  const TG_CHANNEL_LINK3 = "https://t.me/TapSwap_Uz_Hamster_Kombat_Dogs";
+  const TG_CHANNEL_LINK3 = "https://t.me/test_sub_check";
   const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
 
@@ -303,6 +308,14 @@ function App() {
     }
   }, [hasTelegramPremium, referralCoins]);
   
+  const handleCheckReferrals = () => {
+    setShowNotCompleted(true);
+    setTimeout(() => {
+      setShowNotCompleted(false);
+    }, 5000);
+  };
+  
+
   const checkSubscriptionAndUpdate = async (userId) => {
     try {
       const response = await axios.post(`${REACT_APP_BACKEND_URL}/check-subscription-and-update`, { userId });
@@ -512,8 +525,28 @@ function App() {
         <p>{coins} $OCTIES</p>
       </div>
       <div className='Menu'>
-        <div className='Skroll_Menu_Border'>
+      
+        <div className='nft-promo'>
+          <div className='nft-text'>
+            <h2>GET YOUR <span className='highlight'>FREE</span> NFT!</h2>
+            <p>Invite 15 friends, Connect Wallet <br/>and receive unique OCTIES NFT</p>
+            <div className='nft-buttons'>
+             
+              <button className='referral-button' onClick={handleCheckReferrals}>Check referrals</button>
+              {showNotCompleted && (<span className="not-completed">
+                <img src={Checknft} alt="Not completed" />Not completed
+              </span>
+              )}
+             
+              <button className='wallet-button'>Connect Wallet</button>
+            </div>
+          </div>
+          <div className='nft-image'>
+            <img src={Nft} alt='OCTIES NFT' />
+          </div>
+        </div>
 
+        <div className='Skroll_Menu_Border'>
           <div className='MenuBorder' ref={blockRefs[0]}>
             <div className='flex_menu_border'>
               <div className='rightFlex'>
@@ -652,7 +685,7 @@ function App() {
           <div className='tsPhoto'>
             <p>+ 500 $OCTIES</p>
           </div>
-        </div>}
+        </div>}       
 
           {VisibleInvite && <div className='TS'>
             <div className='tsPhoto'>

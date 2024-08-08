@@ -15,6 +15,9 @@ body {
   isolation: isolate;
 }
 
+button{
+  font-family: Muller;
+}
 .App {
   margin: 0;
   width: 100%;
@@ -77,21 +80,23 @@ body {
 .main img{height: 70%;}
 
 .MainCoin{
-  height: 8%;
+  height: 3%;
   width: 100%;
   font-size: 4vh;
 }
 
 .Menu {
-  height: 55%;
+  height: 60%;
   width: 100%;
+  margin-top: 2vh;
   display: flex;
   align-items: center;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .Reward {
-  height: 12%;
+  height: 10%;
   width: 90%;
   display: flex;
   align-items: end;
@@ -159,7 +164,7 @@ body {
 
 .Skroll_Menu_Border{
   width: 90%;
-  height: 25%;
+  height: 30%;
   overflow-y: hidden;
   white-space: nowrap;
   overflow-x: scroll;
@@ -204,12 +209,11 @@ body {
 
 
 .Tasks{
-  height: 63%;
+  height: 35%;
   width: 90%;
   display: flex;
   flex-direction: column;
   font-size: 1.8vh;
-  overflow-y: auto;
 }
 
 .TS{
@@ -316,7 +320,138 @@ button{
   display: inline;
 }
 
+
+
+.img-dark {
+  filter: brightness(40%);
+}
+
+.nft-promo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1A1A1A;
+  border-radius: 2vh;
+  width: 90%;
+  height: 35%;
+  margin-bottom: 1vh;
+}
+
+.nft-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  height: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+  
+}
+
+.nft-text h2 {
+  font-size: 2.2vh;
+  margin: 0;
+  font-weight: bold;
+  color: #ffffff;
+  margin-left: 1.7vh;
+  margin-top: 1vh;
+  white-space: nowrap;
+}
+
+.nft-text .highlight {
+  color: #ff7f00; 
+}
+
+.nft-text p {
+  white-space: normal; 
+  text-align: left; 
+  font-size: 1.8vh;
+  margin-left: 1.7vh;
+  white-space: nowrap;
+}
+
+
+.nft-buttons {
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+  height: 50%;
+  margin-left: 1.7vh;
+}
+
+.referral-button, .wallet-button {
+  width: 90%; 
+  height: 40%;
+  border: none;
+  font-size: 1.5vh;
+  border-radius: 1vh;
+}
+
+.referral-button {
+  background-color:  #E46E19;
+  color: white;
+  width: 50%; 
+  align-self: flex-start;
+}
+
+.wallet-button {
+  background-color:#067CFB;
+  color: white;
+  margin-bottom: 1vh;
+}
+
+
+.nft-image img {
+  height: 100%;
+  border-radius: 2vh;
+  
+}
+
+.nft-image{
+  height: 100%;
+}
+
+.referral-button-container {
+  position: relative;
+  display: inline-block;
+}
+
+.not-completed {
+  color: red;
+  align-items: center; 
+  vertical-align: middle; 
+  font-size: 0.95em;
+  position: absolute;
+  left: 100%; /* Расположено справа от кнопки */
+  top: 50%;
+  transform: translate(10%, -50%); /* Слегка смещаем вправо и выравниваем по вертикали */
+  white-space: nowrap;
+  animation: fade-out 5s forwards;
+}
+
+
+.not-completed img {
+  width: 15px; 
+  height: 15px;
+  align-items: center; 
+  vertical-align: middle;
+}
+
 @media (orientation: landscape) {
+
+  .leftFlex{
+    align-items: center;
+    justify-content: end;
+  }
+  
+  .leftFlex img{
+    height: 55%;
+    padding-right: 1vh;
+    padding-top: 0;
+  }
+
   .BTNLow {
     height: 20%;
   }
@@ -325,19 +460,6 @@ button{
     height: 6%;
   }
 
-  .Menu{
-    overflow: scroll;
-  }
-
-  .Tasks{
-    height: 20vh;
-    font-size: 3vh;
-  }
-  
-  .Skroll_Menu_Border{
-    height: 25vh;
-    font-size: 4vh;
-  }
 
   #up{ font-size: 4.5vh;}
   #dp{ font-size: 3vh;}
@@ -351,12 +473,43 @@ button{
   .Fr_Window {
     height: 80%;
   }
+  
+  .Tasks{
+    height: 0;
+  }
 
-  .emoji {
-    top: -2vh;  
+  .Reward{
+    height: 3vh;
+  }
+
+  .Skroll_Menu_Border{
+    height: 24vh;
+  }
+
+  .nft-promo{
+    height: 24vh;
+  }
+
+  .Menu{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .nft-buttons {
+    width: 100%;
+    height: 50%;
   }
 }
 
-.img-dark {
-  filter: brightness(40%);
+@media screen and (max-width: 350px) {
+  .nft-text p {
+ 
+    font-size: 1.4vh;
+
+  }
+
+  .nft-text h2 {
+    font-size: 2vh;
+  }
 }
