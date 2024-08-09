@@ -526,3 +526,17 @@ button{
 .custom-tonconnect-button:hover {
   background-color: darken(var(--ton-button-background), 10%);
 }
+
+[data-tc-connect-button="true"] {
+  background-color: #007BFF; /* Синий цвет */
+  color: white;
+  font-size: 160px;
+  border-radius: 12px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
