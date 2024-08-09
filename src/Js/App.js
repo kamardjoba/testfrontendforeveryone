@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import '../Css/App.css';
 import axios from 'axios';
-import { TonConnectUIProvider, TonConnectButton } from '@tonconnect/ui-react';
+import { TonConnectUIProvider, useTonConnectUI } from '@tonconnect/ui-react';
 
 import Friends from './Friends';
 import Leaderboard from './Leaderboard';
@@ -99,7 +99,7 @@ function App() {
   const TG_CHANNEL_LINK3 = "https://t.me/test_sub_check";
   const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
-
+  const { connect } = useTonConnectUI();
 
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
@@ -107,6 +107,10 @@ function App() {
 
   const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
   const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false]);
+
+  const handleConnectWallet = useCallback(() => {
+    connect();
+  }, [connect]);
 
   useEffect(() => {
     const observerOptions = {
@@ -151,7 +155,7 @@ function App() {
     if (window.TON_CONNECT_UI) {
       const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
         manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json', // убедитесь, что это правильный путь
-        buttonRootId: 'custom-tonconnect-button'
+        buttonRootId: 'wallet-button'
       });
 
       tonConnectUI.onStatusChange((walletInfo) => {
@@ -536,6 +540,7 @@ function App() {
   return (
     <TonConnectUIProvider manifestUrl="https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json">
     <div className="App">
+
       {app && <div className='blk'></div>}
       <div className="info">
         <img src={Logo} alt='Logo' />
@@ -564,8 +569,12 @@ function App() {
               </span>
               )}
               
-              <TonConnectButton  className='custom-tonconnect-button'/>
+              <button className="wallet-button" onClick={handleConnectWallet}>
+          Connect Wallet
+        </button>
 
+
+             
             </div>
           </div>
           <div className='nft-image'>

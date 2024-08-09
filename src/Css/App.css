@@ -381,6 +381,14 @@ button{
   margin-left: 1.7vh;
 }
 
+.referral-button, .wallet-button {
+  width: 90%; 
+  height: 40%;
+  border: none;
+  font-size: 1.5vh;
+  border-radius: 1vh;
+}
+
 .referral-button {
   width: 90%; 
   height: 40%;
@@ -396,6 +404,11 @@ button{
   align-self: flex-start;
 }
 
+.wallet-button {
+  background-color:#067CFB;
+  color: white;
+  margin-bottom: 1vh;
+}
 
 
 .nft-image img {
@@ -524,19 +537,34 @@ button{
 }
 
 .custom-tonconnect-button:hover {
-  background-color: darken(var(--ton-button-background), 10%);
+  background-color: #333333; /* замените на нужный цвет */
 }
 
 [data-tc-connect-button="true"] {
-  background-color: #007BFF; /* Синий цвет */
+    background-color: #007BFF; /* Синий цвет */
+    color: white;
+    font-size: 16px;
+    border-radius: 12px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-custom-button {
+  background-color: #1A1A1A;
   color: white;
-  font-size: 160px;
-  border-radius: 12px;
+  font-size: 18px;
+  border-radius: 10px;
   padding: 10px 20px;
-  border: none;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.my-custom-button:hover {
+  background-color: #333333;
 }
 
