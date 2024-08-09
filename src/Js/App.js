@@ -3,7 +3,9 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import '../Css/App.css';
 import axios from 'axios';
-import { TonConnectUIProvider, useTonConnectUI } from '@tonconnect/ui-react';
+import { TonConnectUIProvider } from '@tonconnect/ui-react';
+
+
 
 import Friends from './Friends';
 import Leaderboard from './Leaderboard';
@@ -42,6 +44,29 @@ const userId = new URLSearchParams(window.location.search).get('userId');
 
 
 function App() {
+  useEffect(() => {
+    if (window.TON_CONNECT_UI) {
+      const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json',
+      });
+  
+      const customButton = document.getElementById('custom-wallet-button');
+      if (customButton) {
+        customButton.addEventListener('click', () => {
+          tonConnectUI.connect();
+        });
+      }
+  
+      tonConnectUI.onStatusChange((walletInfo) => {
+        if (walletInfo) {
+          console.log('Кошелек подключен!', walletInfo);
+        } else {
+          console.log('Кошелек отключен!');
+        }
+      });
+    }
+  }, []);
+  
   if (!localStorage.getItem('Galka')) {localStorage.setItem('Galka', 'false');}
   const Galo4ka = localStorage.getItem('Galka') === 'true';
   if (!localStorage.getItem('Knopka')) {localStorage.setItem('Knopka', 'true');}
@@ -99,7 +124,7 @@ function App() {
   const TG_CHANNEL_LINK3 = "https://t.me/test_sub_check";
   const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
-  const { connect } = useTonConnectUI();
+
 
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
@@ -107,10 +132,6 @@ function App() {
 
   const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
   const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false]);
-
-  const handleConnectWallet = useCallback(() => {
-    connect();
-  }, [connect]);
 
   useEffect(() => {
     const observerOptions = {
@@ -155,7 +176,7 @@ function App() {
     if (window.TON_CONNECT_UI) {
       const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
         manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json', // убедитесь, что это правильный путь
-        buttonRootId: 'wallet-button'
+        buttonRootId: 'custom-tonconnect-button'
       });
 
       tonConnectUI.onStatusChange((walletInfo) => {
@@ -336,6 +357,34 @@ function App() {
       console.error('Ошибка при получении данных пользователя:', error);
     }
   }, [hasTelegramPremium, referralCoins]);
+  
+  const handleConnectWallet = useCallback(() => {
+    if (window.TON_CONNECT_UI) {
+      const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json',
+      });
+      tonConnectUI.connect();
+    } else {
+      console.error('TON_CONNECT_UI не загружен!');
+    }
+  }, []);
+  
+  useEffect(() => {
+    if (window.TON_CONNECT_UI) {
+      console.log('TON_CONNECT_UI загружен успешно');
+    } else {
+      console.error('TON_CONNECT_UI не загружен!');
+      console.log('Содержимое window:', window);
+    }
+  }, []);
+  
+
+  useEffect(() => {
+    const customButton = document.getElementById('custom-wallet-button');
+    if (customButton) {
+      customButton.addEventListener('click', handleConnectWallet);
+    }
+  }, [handleConnectWallet]);
   
   const handleCheckReferrals = () => {
     setShowNotCompleted(true);
@@ -569,12 +618,9 @@ function App() {
               </span>
               )}
               
-              <button className="wallet-button" onClick={handleConnectWallet}>
-          Connect Wallet
-        </button>
-
-
-             
+              <button id="custom-wallet-button" className="custom-button">
+          Подключить кошелек
+        </button>             
             </div>
           </div>
           <div className='nft-image'>

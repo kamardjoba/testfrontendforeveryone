@@ -553,18 +553,21 @@ button{
     align-items: center;
 }
 
-.my-custom-button {
-  background-color: #1A1A1A;
+.custom-button {
+  width: 200px;
+  height: 50px;
+  background-color: #007BFF;
   color: white;
   font-size: 18px;
   border-radius: 10px;
-  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   border: none;
   transition: background-color 0.3s;
 }
 
-.my-custom-button:hover {
-  background-color: #333333;
+.custom-button:hover {
+  background-color: #0056b3;
 }
-
