@@ -37,6 +37,7 @@ import invite from '../IMG/All_Logo/Invite_png.png';
 import Join from '../IMG/All_Logo/Join.png';
 import Nft from '../IMG/Nft_ref/Nft_ref.png'
 import Checknft from '../IMG/Nft_ref_check/chech.png'
+import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png'
 
 const REACT_APP_BACKEND_URL = 'https://testforeveryoneback-production.up.railway.app';
 const userId = new URLSearchParams(window.location.search).get('userId');
@@ -581,7 +582,7 @@ const handleCheckReferrals = () => {
         </button>
       ) : (
         <div className="mint-section">
-          <p className="friends-count">15 friends <img src="/path/to/checkmark-icon.png" alt="Checkmark" /></p>
+          <p className="friends-count">15 friends <img src={ChecknftDone} alt="Checkmark" /></p>
           <button className="mint-button">
             Mint
           </button>
