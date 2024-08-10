@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import '../Css/App.css';
 import axios from 'axios';
-import { TonConnectUIProvider, TonConnectButton } from '@tonconnect/ui-react';
-import { useTonConnectUI} from '@tonconnect/ui-react';
+import { TonConnectButton, useTonConnectUI } from '@tonconnect/ui-react';
+
 
 
 import Friends from './Friends';
@@ -130,6 +130,7 @@ function App() {
         console.error('Transaction failed:', error);
     }
 }
+
 
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
@@ -576,7 +577,6 @@ const handleCheckReferrals = () => {
   }, []);
 
   return (
-    <TonConnectUIProvider manifestUrl="https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json">
     <div className="App">
 
       {app && <div className='blk'></div>}
@@ -807,7 +807,7 @@ const handleCheckReferrals = () => {
       {isFrendsOpen && (<Friends FriendsAnim={FriendsAnim} invite={invite} referralCode={referralCode} telegramLink={telegramLink} getRandomColor={getRandomColor} />)}
 
     </div>
-     </TonConnectUIProvider>
+
   );
 }
 
