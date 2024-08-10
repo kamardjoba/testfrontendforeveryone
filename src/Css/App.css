@@ -539,3 +539,33 @@ button[data-tc-dropdown-button="true"] {
   display: block; /* Делаем элемент блочным */
   box-sizing: border-box; /* Учитываем отступы и границы в ширине */
 }
+
+
+.mint-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.friends-count {
+  font-size: 1.8vh;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.friends-count img {
+  margin-left: 0.5vh;
+  height: 2vh;
+}
+
+.mint-button {
+  background-color: #E46E19;
+  color: white;
+  width: 50%; 
+  height: 4vh;
+  border: none;
+  border-radius: 1vh;
+  font-size: 1.8vh;
+}

@@ -576,21 +576,23 @@ const handleCheckReferrals = () => {
             <div className='nft-buttons'>
              
             {buttonVisible ? (
-          <button className="referral-button" onClick={handleCheckReferrals}>
-            Check referrals
+        <button className="referral-button" onClick={handleCheckReferrals}>
+          Check referrals
+        </button>
+      ) : (
+        <div className="mint-section">
+          <p className="friends-count">15 friends <img src="/path/to/checkmark-icon.png" alt="Checkmark" /></p>
+          <button className="mint-button">
+            Mint
           </button>
-        ) : (
-          <button className="referral-button">
-            Mint NFT
-          </button>
-        )}
-        {showNotCompleted && (
-          <span className="not-completed">
-            <img src={Checknft} alt="Not completed" />
-            Not completed
-          </span>
-        )}
-              
+        </div>
+      )}
+      {showNotCompleted && (
+        <span className="not-completed">
+          <img src={Checknft} alt="Not completed" />
+          Not completed
+        </span>
+      )}
               <TonConnectButton  />
              
             </div>
