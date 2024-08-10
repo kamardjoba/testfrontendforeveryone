@@ -108,28 +108,28 @@ function App() {
   const { tonConnectUI } = useTonConnectUI();
 
   async function transaction() {
-      if (!tonConnectUI.connected) {
-          alert('Please connect wallet to send the transaction!');
-          return;
-      }
+    if (!tonConnectUI || !tonConnectUI.connected) {
+        alert('Please connect wallet to send the transaction!');
+        return;
+    }
 
-      const transactionData = {
-          validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
-          messages: [
-              {
-                  address: "EQAF12tUTqUYcJnATTPyyzNJByN-YXpAeVK7pBhtqEx9caxr",
-                  amount: "10000000",
-              }
-          ]
-      };
+    const transactionData = {
+        validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+        messages: [
+            {
+                address: "EQAF12tUTqUYcJnATTPyyzNJByN-YXpAeVK7pBhtqEx9caxr",
+                amount: "10000000",
+            }
+        ]
+    };
 
-      try {
-          const result = await tonConnectUI.sendTransaction(transactionData);
-          console.log('Transaction successful:', result);
-      } catch (error) {
-          console.error('Transaction failed:', error);
-      }
-  }
+    try {
+        const result = await tonConnectUI.sendTransaction(transactionData);
+        console.log('Transaction successful:', result);
+    } catch (error) {
+        console.error('Transaction failed:', error);
+    }
+}
 
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
