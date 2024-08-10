@@ -5,8 +5,6 @@ import '../Css/App.css';
 import axios from 'axios';
 import { TonConnectButton, useTonConnectUI } from '@tonconnect/ui-react';
 
-
-
 import Friends from './Friends';
 import Leaderboard from './Leaderboard';
 import First from './Firstpage';
@@ -107,9 +105,28 @@ function App() {
   
   const { tonConnectUI } = useTonConnectUI();
    
-  useEffect(() => {
-    console.log('tonConnectUI:', tonConnectUI);
-}, [tonConnectUI]);
+//   useEffect(() => {
+//     console.log('tonConnectUI:', tonConnectUI);
+// }, [tonConnectUI]);
+
+useEffect(() => {
+  if (window.TON_CONNECT_UI) {
+    const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
+      manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json', // убедитесь, что это правильный путь
+      buttonRootId: 'custom-tonconnect-button'
+    });
+    
+    tonConnectUI.onStatusChange((walletInfo) => {
+      if (walletInfo) {
+        console.log('Кошелек подключен!', walletInfo);
+      } else {
+        console.log('Кошелек отключен!');
+      }
+    });
+  }
+}, []);
+
+
 
   async function transaction() {
     if (!tonConnectUI.connected) {
