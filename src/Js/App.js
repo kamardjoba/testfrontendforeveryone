@@ -137,11 +137,12 @@ const sendTransaction = async () => {
     messages: [
       {
         address: "UQC-ZK_dPpZ15VaL-kwyXT1jTCYDTQricz8RxvXT0VmdbRYG",
-        amount: "100000000",
+        amount: "10000",
       },
     ],
   };
 
+  
   try {
     await tonConnectUI.sendTransaction(transaction);
     alert("Transaction sent successfully!");
