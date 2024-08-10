@@ -3,7 +3,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import '../Css/App.css';
 import axios from 'axios';
-import { TonConnectButton, useTonConnectUI } from '@tonconnect/ui-react';
+import { TonConnectUIProvider, TonConnectButton } from '@tonconnect/ui-react';
+
 
 import Friends from './Friends';
 import Leaderboard from './Leaderboard';
@@ -103,54 +104,6 @@ function App() {
 
   const [buttonVisible, setButtonVisible] = useState(true);
   
-  const { tonConnectUI } = useTonConnectUI();
-   
-//   useEffect(() => {
-//     console.log('tonConnectUI:', tonConnectUI);
-// }, [tonConnectUI]);
-
-useEffect(() => {
-  if (window.TON_CONNECT_UI) {
-    const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
-      manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json', // убедитесь, что это правильный путь
-      buttonRootId: 'custom-tonconnect-button'
-    });
-    
-    tonConnectUI.onStatusChange((walletInfo) => {
-      if (walletInfo) {
-        console.log('Кошелек подключен!', walletInfo);
-      } else {
-        console.log('Кошелек отключен!');
-      }
-    });
-  }
-}, []);
-
-
-
-  async function transaction() {
-    if (!tonConnectUI.connected) {
-        alert('Please connect wallet to send the transaction!');
-        return;
-    }
-
-    const transactionData = {
-        validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
-        messages: [
-            {
-                address: "UQBzqdPzyumNeEwRRljkz5FlYmxV6EvH-WxdraEony6o3aUu",
-                amount: "10000000",
-            }
-        ]
-    };
-
-    try {
-        const result = await tonConnectUI.sendTransaction(transactionData);
-        console.log('Transaction successful:', result);
-    } catch (error) {
-        console.error('Transaction failed:', error);
-    }
-}
 
 
   if(subscriptionCoins > 0){
@@ -199,7 +152,24 @@ useEffect(() => {
   }, );
 
 
+  useEffect(() => {
+    if (window.TON_CONNECT_UI) {
+      const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json', // убедитесь, что это правильный путь
+        buttonRootId: 'custom-tonconnect-button'
+      });
+      
+      tonConnectUI.onStatusChange((walletInfo) => {
+        if (walletInfo) {
+          console.log('Кошелек подключен!', walletInfo);
+        } else {
+          console.log('Кошелек отключен!');
+        }
+      });
+    }
+  }, []);
 
+  
 
   function handleHomeWithVibration() {
     handleHome();
@@ -472,7 +442,7 @@ const handleCheckReferrals = () => {
     }
   }, [fetchUserData, checkSubscription]);
 
-  
+
   
   const Tg_Channel_Open_X = async () => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
@@ -581,6 +551,7 @@ const handleCheckReferrals = () => {
   }, []);
 
   return (
+    <TonConnectUIProvider manifestUrl="https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json">
     <div className="App">
 
       {app && <div className='blk'></div>}
@@ -612,7 +583,7 @@ const handleCheckReferrals = () => {
       ) : (
         <div className="mint-section">
           <p className="friends-count">15 friends <img src={ChecknftDone} alt="Checkmark" /></p>
-          <button className="mint-button" onClick={transaction}>
+          <button className="mint-button">
             Mint
           </button>
         </div>
@@ -623,7 +594,7 @@ const handleCheckReferrals = () => {
           Not completed
         </span>
       )}
-              <TonConnectButton  className='custom-tonconnect-button'/>
+              <TonConnectButton  />
              
             </div>
           </div>
@@ -811,7 +782,7 @@ const handleCheckReferrals = () => {
       {isFrendsOpen && (<Friends FriendsAnim={FriendsAnim} invite={invite} referralCode={referralCode} telegramLink={telegramLink} getRandomColor={getRandomColor} />)}
 
     </div>
-
+     </TonConnectUIProvider>
   );
 }
 
