@@ -3,8 +3,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import '../Css/App.css';
 import axios from 'axios';
-import { TonConnectUIProvider, TonConnectButton } from '@tonconnect/ui-react';
-
+import { TonConnectUIProvider, TonConnectButton, useTonConnectUI } from '@tonconnect/ui-react';
 
 import Friends from './Friends';
 import Leaderboard from './Leaderboard';
@@ -103,6 +102,7 @@ function App() {
   const X_LINK = "https://x.com/Octies_GameFI";
 
   const [buttonVisible, setButtonVisible] = useState(true);
+  const tonConnectUI = useTonConnectUI();
   
 
 
@@ -442,8 +442,35 @@ const handleCheckReferrals = () => {
     }
   }, [fetchUserData, checkSubscription]);
 
+  async function transaction() {
+    if (!tonConnectUI.connected) {
+        alert('Please connect wallet to send the transaction!');
+        return;
+    }
 
-  
+    const transaction = {
+        validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+        messages: [
+            {
+                address: "EQAF12tUTqUYcJnATTPyyzNJByN-YXpAeVK7pBhtqEx9caxr",
+                amount: "10000000", // сумма в нанотонах (1 TON = 1e9 нанотонов)
+            }
+        ]
+    };
+
+    try {
+      await tonConnectUI.sendTransaction(transaction);
+      alert('Transaction sent successfully!');
+      // Дополнительно можно обработать результат транзакции
+  } catch (error) {
+      console.error('Error sending transaction:', error);
+      if (error.code === 'USER_REJECTED') {
+          alert('You rejected the transaction. Please confirm it to send to the blockchain');
+      } else {
+          alert('An error occurred while sending the transaction: ' + error.message);
+      }
+  }  
+  }
   const Tg_Channel_Open_X = async () => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
     window.open(X_LINK, '_blank');
@@ -583,7 +610,7 @@ const handleCheckReferrals = () => {
       ) : (
         <div className="mint-section">
           <p className="friends-count">15 friends <img src={ChecknftDone} alt="Checkmark" /></p>
-          <button className="mint-button">
+          <button className="mint-button" onClick={transaction}>
             Mint
           </button>
         </div>
