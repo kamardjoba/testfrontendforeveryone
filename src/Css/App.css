@@ -512,62 +512,27 @@ button{
   }
 }
 
-:root {
-  --ton-button-background: #1A1A1A;
-  --ton-button-color: white;
-  --ton-button-font-size: 18px;
-  --ton-button-border-radius: 10px;
-  --ton-button-width: 200px;
-  --ton-button-height: 50px;
-}
 
-.custom-tonconnect-button {
-  width: 100%;
-  height: var(--ton-button-height);
-  background-color: var(--ton-button-background);
-  color: var(--ton-button-color);
-  font-size: var(--ton-button-font-size);
-  border-radius: var(--ton-button-border-radius);
+button[data-tc-connect-button="true"] {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: none;
-  transition: background-color 0.3s;
+  justify-content: center; /* Центрирование по горизонтали */
+  align-items: center;     /* Центрирование по вертикали */
+  text-align: center;      /* Центрирование текста */
+  width: 230%;             /* Задаем ширину 100% от родительского блока */
+  padding: 10px 20px;      /* Добавляем отступы для лучшего отображения */
+  border-radius: 8px;      /* Закругленные углы */
+  max-width: none;         /* Убираем ограничение по ширине */
 }
 
-.custom-tonconnect-button:hover {
-  background-color: #333333; /* замените на нужный цвет */
-}
 
-[data-tc-connect-button="true"] {
-    background-color: #007BFF; /* Синий цвет */
-    color: white;
-    font-size: 16px;
-    border-radius: 12px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.custom-button {
-  width: 200px;
-  height: 50px;
-  background-color: #007BFF;
-  color: white;
-  font-size: 18px;
-  border-radius: 10px;
+button[data-tc-dropdown-button="true"] {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: none;
-  transition: background-color 0.3s;
+  justify-content: center; /* Центрирование по горизонтали */
+  align-items: center;     /* Центрирование по вертикали */
+  text-align: center;      /* Центрирование текста */
+  width: 120%;             /* Задаем ширину 100% от родительского блока */
+  padding: 10px 20px;      /* Добавляем отступы для лучшего отображения */
+  border-radius: 8px;      /* Закругленные углы */
+  max-width: none;         /* Кнопка отображается как блочный элемент */
 }
 
-.custom-button:hover {
-  background-color: #0056b3;
-}
