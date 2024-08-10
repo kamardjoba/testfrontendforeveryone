@@ -178,24 +178,7 @@ function App() {
   }, );
 
 
-  useEffect(() => {
-    if (window.TON_CONNECT_UI) {
-      const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json', // убедитесь, что это правильный путь
-        buttonRootId: 'custom-tonconnect-button'
-      });
-      
-      tonConnectUI.onStatusChange((walletInfo) => {
-        if (walletInfo) {
-          console.log('Кошелек подключен!', walletInfo);
-        } else {
-          console.log('Кошелек отключен!');
-        }
-      });
-    }
-  }, []);
 
-  
 
   function handleHomeWithVibration() {
     handleHome();
