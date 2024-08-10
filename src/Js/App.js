@@ -121,7 +121,7 @@ function App() {
         validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
         messages: [
             {
-                address: "EQAF12tUTqUYcJnATTPyyzNJByN-YXpAeVK7pBhtqEx9caxr",
+                address: "UQBzqdPzyumNeEwRRljkz5FlYmxV6EvH-WxdraEony6o3aUu",
                 amount: "10000000",
             }
         ]
