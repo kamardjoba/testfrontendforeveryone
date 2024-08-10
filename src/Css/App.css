@@ -515,24 +515,25 @@ button{
 
 button[data-tc-connect-button="true"] {
   display: flex;
-  justify-content: center; /* Центрирование по горизонтали */
-  align-items: center;     /* Центрирование по вертикали */
-  text-align: center;      /* Центрирование текста */
-  width: 230%;             /* Задаем ширину 100% от родительского блока */
-  padding: 10px 20px;      /* Добавляем отступы для лучшего отображения */
-  border-radius: 8px;      /* Закругленные углы */
-  max-width: none;         /* Убираем ограничение по ширине */
+  justify-content: center;
+  align-items: center;     
+  text-align: center;      
+  width: 140%;            
+  padding: 20px 20px;      
+  border-radius: 8px;     
+  max-width: none;  
 }
-
 
 button[data-tc-dropdown-button="true"] {
-  display: flex;
-  justify-content: center; /* Центрирование по горизонтали */
-  align-items: center;     /* Центрирование по вертикали */
-  text-align: center;      /* Центрирование текста */
-  width: 120%;             /* Задаем ширину 100% от родительского блока */
-  padding: 10px 20px;      /* Добавляем отступы для лучшего отображения */
-  border-radius: 8px;      /* Закругленные углы */
-  max-width: none;         /* Кнопка отображается как блочный элемент */
+  background-color: #000000; /* Изменение цвета фона */
+  border: 2px solid #E46E19;
+  color: blue; /* Изменение цвета текста */
+  padding: 10px 20px; /* Изменение отступов */
+  border-radius: 12px; /* Изменение радиуса углов */
+  font-size: 16px; /* Изменение размера шрифта */
+  width: 160%; /* Устанавливаем ширину больше 100% */
+  max-width: none; /* Убираем ограничение по максимальной ширине */
+  margin: 0 auto; /* Центрируем кнопку */
+  display: block; /* Делаем элемент блочным */
+  box-sizing: border-box; /* Учитываем отступы и границы в ширине */
 }
-
