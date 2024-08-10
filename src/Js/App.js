@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import '../Css/App.css';
 import axios from 'axios';
-import { TonConnectButton } from '@tonconnect/ui-react';
+import { TonConnectButton, useTonConnectUI } from '@tonconnect/ui-react';
 
 import Friends from './Friends';
 import Leaderboard from './Leaderboard';
@@ -103,7 +103,7 @@ function App() {
 
   const [buttonVisible, setButtonVisible] = useState(true);
   
-  
+  const { tonConnectUI } = useTonConnectUI();
    
 //   useEffect(() => {
 //     console.log('tonConnectUI:', tonConnectUI);
@@ -129,7 +129,7 @@ useEffect(() => {
 
 
   async function transaction() {
-    if (!window.TON_CONNECT_UI.connected) {
+    if (!tonConnectUI.connected) {
         alert('Please connect wallet to send the transaction!');
         return;
     }
@@ -145,7 +145,7 @@ useEffect(() => {
     };
 
     try {
-        const result = await window.TON_CONNECT_UI.sendTransaction(transactionData);
+        const result = await tonConnectUI.sendTransaction(transactionData);
         console.log('Transaction successful:', result);
     } catch (error) {
         console.error('Transaction failed:', error);
@@ -623,7 +623,7 @@ const handleCheckReferrals = () => {
           Not completed
         </span>
       )}
-              <TonConnectButton  />
+              <TonConnectButton  className='custom-tonconnect-button'/>
              
             </div>
           </div>

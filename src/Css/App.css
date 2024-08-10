@@ -514,6 +514,13 @@ button{
   }
 }
 
+.custom-tonconnect-button{
+  background-color:#067CFB;
+  color: white;
+  margin-bottom: 1vh;
+}
+
+
 
 button[data-tc-connect-button="true"] {
   display: flex;
