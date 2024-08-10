@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import '../Css/App.css';
 import axios from 'axios';
-import { TonConnectUIProvider, TonConnectButton, useTonWallet, useTonConnectUI } from '@tonconnect/ui-react';
-
+import { TonConnectUIProvider, TonConnectButton} from '@tonconnect/ui-react';
+import { useTonConnectUI } from '@tonconnect/ui-react';
 
 
 
@@ -38,7 +38,7 @@ import Octo from '../IMG/All_Logo/Octo.png';
 import invite from '../IMG/All_Logo/Invite_png.png';
 import Join from '../IMG/All_Logo/Join.png';
 import Nft from '../IMG/Nft_ref/Nft_ref.png'
-import Checknft from '../IMG/Nft_ref_check/chech.png'
+//import Checknft from '../IMG/Nft_ref_check/chech.png'
 import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png'
 
 const REACT_APP_BACKEND_URL = 'https://testforeveryoneback-production.up.railway.app';
@@ -83,7 +83,7 @@ function App() {
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [telegramLink, setTelegramLink] = useState('');
-  const [showNotCompleted, setShowNotCompleted] = useState(false);
+  //const [ setShowNotCompleted] = useState(false);
 
   const coinmain = coins - referralCoins;
 
@@ -104,36 +104,52 @@ function App() {
   const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
 
-  const [buttonVisible, setButtonVisible] = useState(true);
+  //const [ setButtonVisible] = useState(true);
   
-  const tonConnectUI = useTonConnectUI();
-  const wallet = useTonWallet();
 
-  const sendTransaction = async () => {
-    if (!wallet) {
-      alert('Кошелек не подключен');
-      return;
+ 
+  
+
+
+  useEffect(() => {
+    if (window.TON_CONNECT_UI) {
+        const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
+            manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json',
+            buttonRootId: 'custom-tonconnect-button'
+        });
+
+        tonConnectUI.onStatusChange((walletInfo) => {
+            if (walletInfo) {
+                console.log('Кошелек подключен!', walletInfo);
+            } else {
+                console.log('Кошелек отключен!');
+            }
+        });
     }
+}, []);
 
-    try {
-      const transaction = {
-        validUntil: Math.floor(Date.now() / 1000) + 60,
-        messages: [
-          {
-            address: 'UQC-ZK_dPpZ15VaL-kwyXT1jTCYDTQricz8RxvXT0VmdbRYG', // Замените на ваш адрес кошелька
-            amount: '100000000', // 0.1 TON в нанотонах
-          },
-        ],
-      };
 
-      await tonConnectUI.sendTransaction(transaction);
-      alert('Транзакция успешно отправлена!');
-    } catch (error) {
-      console.error('Ошибка при отправке транзакции:', error);
-      alert('Ошибка при отправке транзакции. Попробуйте снова.');
-    }
+
+const [tonConnectUI] = useTonConnectUI();
+
+const sendTransaction = async () => {
+  const transaction = {
+    messages: [
+      {
+        address: "UQC-ZK_dPpZ15VaL-kwyXT1jTCYDTQricz8RxvXT0VmdbRYG",
+        amount: "100000000",
+      },
+    ],
   };
 
+  try {
+    await tonConnectUI.sendTransaction(transaction);
+    alert("Transaction sent successfully!");
+  } catch (error) {
+    console.error("Error sending transaction:", error);
+    alert("Failed to send transaction.");
+  }
+};
 
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
@@ -181,24 +197,7 @@ function App() {
   }, );
 
 
-  useEffect(() => {
-    if (window.TON_CONNECT_UI) {
-      const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json', // убедитесь, что это правильный путь
-        buttonRootId: 'custom-tonconnect-button'
-      });
-      
-      tonConnectUI.onStatusChange((walletInfo) => {
-        if (walletInfo) {
-          console.log('Кошелек подключен!', walletInfo);
-        } else {
-          console.log('Кошелек отключен!');
-        }
-      });
-    }
-  }, []);
 
-  
 
   function handleHomeWithVibration() {
     handleHome();
@@ -368,24 +367,24 @@ function App() {
     }
   }, [hasTelegramPremium, referralCoins]);
   
-const handleCheckReferrals = () => {
-    axios.post(`${REACT_APP_BACKEND_URL}/get-referral-count`, { userId })
-      .then(response => {
-        const referralCount = response.data.referralCount;
+// const handleCheckReferrals = () => {
+//     axios.post(`${REACT_APP_BACKEND_URL}/get-referral-count`, { userId })
+//       .then(response => {
+//         const referralCount = response.data.referralCount;
 
-        if (referralCount >= 1) {
-          setButtonVisible(false); // Меняем кнопку на "Mint NFT"
-        } else {
-          setShowNotCompleted(true);
-          setTimeout(() => {
-            setShowNotCompleted(false);
-          }, 5000);
-        }
-      })
-      .catch(error => {
-        console.error('Ошибка при проверке рефералов:', error);
-      });
-  };
+//         if (referralCount >= 1) {
+//           setButtonVisible(false); // Меняем кнопку на "Mint NFT"
+//         } else {
+//           setShowNotCompleted(true);
+//           setTimeout(() => {
+//             setShowNotCompleted(false);
+//           }, 5000);
+//         }
+//       })
+//       .catch(error => {
+//         console.error('Ошибка при проверке рефералов:', error);
+//       });
+//   };
 
   const checkSubscriptionAndUpdate = async (userId) => {
     try {
@@ -605,24 +604,15 @@ const handleCheckReferrals = () => {
             <p>Invite 15 friends, Connect Wallet <br/>and receive unique OCTIES NFT</p>
             <div className='nft-buttons'>
              
-            {buttonVisible ? (
-        <button className="referral-button" onClick={handleCheckReferrals}>
-          Check referrals
-        </button>
-      ) : (
+           
+     
         <div className="mint-section">
           <p className="friends-count">15 friends <img src={ChecknftDone} alt="Checkmark" /></p>
           <button className="mint-button" onClick={sendTransaction}>
             Mint
           </button>
         </div>
-      )}
-      {showNotCompleted && (
-        <span className="not-completed">
-          <img src={Checknft} alt="Not completed" />
-          Not completed
-        </span>
-      )}
+     
               <TonConnectButton  />
              
             </div>
