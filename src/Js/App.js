@@ -112,7 +112,7 @@ function App() {
 }, [tonConnectUI]);
 
   async function transaction() {
-    if (!tonConnectUI || !tonConnectUI.connected) {
+    if (!tonConnectUI.connected) {
         alert('Please connect wallet to send the transaction!');
         return;
     }
