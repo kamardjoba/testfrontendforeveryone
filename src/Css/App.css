@@ -387,6 +387,7 @@ button{
   border: none;
   font-size: 1.5vh;
   border-radius: 1vh;
+  
 }
 
 .referral-button {
@@ -395,6 +396,7 @@ button{
   border: none;
   font-size: 1.5vh;
   border-radius: 1vh;
+  
 }
 
 .referral-button {
@@ -527,8 +529,8 @@ button[data-tc-connect-button="true"] {
 button[data-tc-dropdown-button="true"] {
   background-color: #000000; /* Изменение цвета фона */
   border: 2px solid #E46E19;
-  color: blue; /* Изменение цвета текста */
-  padding: 10px 20px; /* Изменение отступов */
+  color: rgba(0, 0, 0, 0.688); /* Изменение цвета текста */
+  padding: 1px 20px; /* Изменение отступов */
   border-radius: 12px; /* Изменение радиуса углов */
   font-size: 16px; /* Изменение размера шрифта */
   width: 160%; /* Устанавливаем ширину больше 100% */

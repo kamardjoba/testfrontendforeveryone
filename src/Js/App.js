@@ -101,6 +101,9 @@ function App() {
   const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
 
+  const [buttonVisible, setButtonVisible] = useState(true);
+  
+
 
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
@@ -268,6 +271,7 @@ function App() {
         setCoins(data.coins);
         setReferralCoins(data.referralCoins);
         setHasTelegramPremium(data.hasTelegramPremium);
+
   
         const accountCreationDate = new Date(data.accountCreationDate);
         const currentYear = new Date().getFullYear();
@@ -334,13 +338,24 @@ function App() {
     }
   }, [hasTelegramPremium, referralCoins]);
   
-  const handleCheckReferrals = () => {
-    setShowNotCompleted(true);
-    setTimeout(() => {
-      setShowNotCompleted(false);
-    }, 5000);
+const handleCheckReferrals = () => {
+    axios.post(`${REACT_APP_BACKEND_URL}/get-referral-count`, { userId })
+      .then(response => {
+        const referralCount = response.data.referralCount;
+
+        if (referralCount >= 1) {
+          setButtonVisible(false); // Меняем кнопку на "Mint NFT"
+        } else {
+          setShowNotCompleted(true);
+          setTimeout(() => {
+            setShowNotCompleted(false);
+          }, 5000);
+        }
+      })
+      .catch(error => {
+        console.error('Ошибка при проверке рефералов:', error);
+      });
   };
-  
 
   const checkSubscriptionAndUpdate = async (userId) => {
     try {
@@ -560,11 +575,21 @@ function App() {
             <p>Invite 15 friends, Connect Wallet <br/>and receive unique OCTIES NFT</p>
             <div className='nft-buttons'>
              
-              <button className='referral-button' onClick={handleCheckReferrals}>Check referrals</button>
-              {showNotCompleted && (<span className="not-completed">
-                <img src={Checknft} alt="Not completed" />Not completed
-              </span>
-              )}
+            {buttonVisible ? (
+          <button className="referral-button" onClick={handleCheckReferrals}>
+            Check referrals
+          </button>
+        ) : (
+          <button className="referral-button">
+            Mint NFT
+          </button>
+        )}
+        {showNotCompleted && (
+          <span className="not-completed">
+            <img src={Checknft} alt="Not completed" />
+            Not completed
+          </span>
+        )}
               
               <TonConnectButton  />
              
