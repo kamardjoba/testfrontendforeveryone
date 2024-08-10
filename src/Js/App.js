@@ -129,7 +129,7 @@ useEffect(() => {
 
 
   async function transaction() {
-    if (!tonConnectUI.connected) {
+    if (!window.TON_CONNECT_UI.connected) {
         alert('Please connect wallet to send the transaction!');
         return;
     }
@@ -145,7 +145,7 @@ useEffect(() => {
     };
 
     try {
-        const result = await tonConnectUI.sendTransaction(transactionData);
+        const result = await window.TON_CONNECT_UI.sendTransaction(transactionData);
         console.log('Transaction successful:', result);
     } catch (error) {
         console.error('Transaction failed:', error);
