@@ -103,7 +103,7 @@ function App() {
 
   const [buttonVisible, setButtonVisible] = useState(true);
   
-  const { tonConnectUI } = useTonConnectUI();
+  
    
 //   useEffect(() => {
 //     console.log('tonConnectUI:', tonConnectUI);
