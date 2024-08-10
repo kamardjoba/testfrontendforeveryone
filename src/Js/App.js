@@ -3,7 +3,9 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import '../Css/App.css';
 import axios from 'axios';
-import { TonConnectUIProvider, TonConnectButton } from '@tonconnect/ui-react';
+import { TonConnectUIProvider, TonConnectButton, useTonWallet, useTonConnectUI } from '@tonconnect/ui-react';
+
+
 
 
 import Friends from './Friends';
@@ -104,6 +106,33 @@ function App() {
 
   const [buttonVisible, setButtonVisible] = useState(true);
   
+  const tonConnectUI = useTonConnectUI();
+  const wallet = useTonWallet();
+
+  const sendTransaction = async () => {
+    if (!wallet) {
+      alert('Кошелек не подключен');
+      return;
+    }
+
+    try {
+      const transaction = {
+        validUntil: Math.floor(Date.now() / 1000) + 60,
+        messages: [
+          {
+            address: 'UQC-ZK_dPpZ15VaL-kwyXT1jTCYDTQricz8RxvXT0VmdbRYG', // Замените на ваш адрес кошелька
+            amount: '100000000', // 0.1 TON в нанотонах
+          },
+        ],
+      };
+
+      await tonConnectUI.sendTransaction(transaction);
+      alert('Транзакция успешно отправлена!');
+    } catch (error) {
+      console.error('Ошибка при отправке транзакции:', error);
+      alert('Ошибка при отправке транзакции. Попробуйте снова.');
+    }
+  };
 
 
   if(subscriptionCoins > 0){
@@ -583,7 +612,7 @@ const handleCheckReferrals = () => {
       ) : (
         <div className="mint-section">
           <p className="friends-count">15 friends <img src={ChecknftDone} alt="Checkmark" /></p>
-          <button className="mint-button">
+          <button className="mint-button" onClick={sendTransaction}>
             Mint
           </button>
         </div>

@@ -521,8 +521,7 @@ button{
 }
 
 
-
-button[data-tc-connect-button="true"] {
+.button-wc {
   display: flex;
   justify-content: center;
   align-items: center;     
@@ -546,7 +545,6 @@ button[data-tc-dropdown-button="true"] {
   display: block; /* Делаем элемент блочным */
   box-sizing: border-box; /* Учитываем отступы и границы в ширине */
 }
-
 
 .mint-section {
   display: flex;
