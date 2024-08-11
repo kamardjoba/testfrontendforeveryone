@@ -105,12 +105,7 @@ function App() {
   const X_LINK = "https://x.com/Octies_GameFI";
 
   //const [ setButtonVisible] = useState(true);
-  
-
  
-  
-
-
   useEffect(() => {
     if (window.TON_CONNECT_UI) {
         const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
@@ -128,8 +123,6 @@ function App() {
     }
 }, []);
 
-
-
 const [tonConnectUI] = useTonConnectUI();
 
 const sendTransaction = async () => {
@@ -142,7 +135,6 @@ const sendTransaction = async () => {
     ],
   };
 
-  
   try {
     await tonConnectUI.sendTransaction(transaction);
     alert("Transaction sent successfully!");
@@ -152,7 +144,7 @@ const sendTransaction = async () => {
   }
 };
 
-  if(subscriptionCoins > 0){
+if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
   }
 
