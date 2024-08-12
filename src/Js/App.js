@@ -6,8 +6,6 @@ import axios from 'axios';
 import { TonConnectUIProvider, TonConnectButton} from '@tonconnect/ui-react';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 
-
-
 import Friends from './Friends';
 import Leaderboard from './Leaderboard';
 import First from './Firstpage';
@@ -20,6 +18,7 @@ import TS2 from '../IMG/TaskIcon/TS2.png';
 import TS3 from '../IMG/TaskIcon/TS3.png';
 import TS4 from '../IMG/TaskIcon/TS4.png';
 import TSX from '../IMG/TaskIcon/TSX.png';
+import TSNFT from '../IMG/TaskIcon/TS_NFT.png';
 import galo4ka from '../IMG/All_Logo/galol4ka.png';
 import Ellipse from '../IMG/All_Logo/Ellipse.png';
 
@@ -127,10 +126,11 @@ const [tonConnectUI] = useTonConnectUI();
 
 const sendTransaction = async () => {
   const transaction = {
+    validUntil: Math.floor(Date.now() / 1000) + 600, // Время действия транзакции (например, 10 минут)
     messages: [
       {
-        address: "UQC-ZK_dPpZ15VaL-kwyXT1jTCYDTQricz8RxvXT0VmdbRYG",
-        amount: "10000",
+        address: "EQAF12tUTqUYcJnATTPyyzNJByN-YXpAeVK7pBhtqEx9caxr", // Проверь правильность адреса
+        amount: "10000000", // Пример в наносекундах (1 TON)
       },
     ],
   };
@@ -591,29 +591,28 @@ if(subscriptionCoins > 0){
       </div>
       <div className='Menu'>
       
-        <div className='nft-promo'>
+      <div className='nft-promo'>
           <div className='nft-text'>
-            <h2>GET YOUR <span className='highlight'>FREE</span> NFT!</h2>
+            <h2>GET YOUR <span id='highlight'>FREE</span> NFT!</h2>
             <p>Invite 15 friends, Connect Wallet <br/>and receive unique OCTIES NFT</p>
             <div className='nft-buttons'>
-             
-           
-     
-        <div className="mint-section">
-          <p className="friends-count">15 friends <img src={ChecknftDone} alt="Checkmark" /></p>
-          <button className="mint-button" onClick={sendTransaction}>
-            Mint
-          </button>
-        </div>
-     
-              <TonConnectButton  />
-             
+              <div className="mint-section">
+                  <p id="friends-count">15 friends <img src={ChecknftDone} alt="Checkmark" /></p>  
+                  <button className="mint-button" onClick={sendTransaction}>Mint</button>
+              </div>
+              <div className="ton-con">
+                <div className='feikton'>
+                  <TonConnectButton/>
+                </div>
+              
+              </div>
             </div>
           </div>
           <div className='nft-image'>
             <img src={Nft} alt='OCTIES NFT' />
           </div>
         </div>
+
 
         <div className='Skroll_Menu_Border'>
           <div className='MenuBorder' ref={blockRefs[0]}>
@@ -710,6 +709,16 @@ if(subscriptionCoins > 0){
           <p>Your Rewards</p>
         </div>
         <div className='Tasks'>
+
+        <div className='TS'>
+            <div className='tsPhoto'>
+              <img src={TSNFT} alt='TSNFT' /> <p id='txt'>OCTIES NFT</p>
+            </div>
+            <div className='tsPhoto'>
+              <p id='highlight' >+1 NFT</p>
+            </div>
+          </div>
+
           <div className='TS'>
             <div className='tsPhoto'>
               <img src={TS1} alt='TS1' /> <p id='txt'>Account age</p>

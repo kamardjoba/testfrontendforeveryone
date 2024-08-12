@@ -18,6 +18,7 @@ body {
 button{
   font-family: Muller;
 }
+
 .App {
   margin: 0;
   width: 100%;
@@ -320,8 +321,6 @@ button{
   display: inline;
 }
 
-
-
 .img-dark {
   filter: brightness(40%);
 }
@@ -358,8 +357,8 @@ button{
   white-space: nowrap;
 }
 
-.nft-text .highlight {
-  color: #ff7f00; 
+#highlight {
+  color: #ff7f00 !important; 
 }
 
 .nft-text p {
@@ -370,7 +369,6 @@ button{
   white-space: nowrap;
 }
 
-
 .nft-buttons {
   display: flex;
   flex-direction: column; 
@@ -378,7 +376,6 @@ button{
   align-items: start;
   width: 100%;
   height: 50%;
-  margin-left: 1.7vh;
 }
 
 .referral-button, .wallet-button {
@@ -387,7 +384,6 @@ button{
   border: none;
   font-size: 1.5vh;
   border-radius: 1vh;
-  
 }
 
 .referral-button {
@@ -396,7 +392,6 @@ button{
   border: none;
   font-size: 1.5vh;
   border-radius: 1vh;
-  
 }
 
 .referral-button {
@@ -412,11 +407,9 @@ button{
   margin-bottom: 1vh;
 }
 
-
 .nft-image img {
   height: 100%;
   border-radius: 2vh;
-  
 }
 
 .nft-image{
@@ -431,12 +424,89 @@ button{
   animation: fadeOut 5s forwards;
 }
 
-
 .not-completed img {
   width: 15px; 
   height: 15px;
   align-items: center; 
   vertical-align: middle;
+}
+
+.button-wc {
+  display: flex;
+  justify-content: center;
+  align-items: center;     
+  text-align: center;      
+  width: 140%;            
+  padding: 20px 20px;      
+  border-radius: 8px;     
+  max-width: none;  
+}
+
+#friends-count {
+  font-size: 1.8vh;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  margin-left: 2.8vh;
+}
+
+#friends-count img {
+  margin-left: 0.5vh;
+  height: 2.5vh;
+}
+
+.mint-button {
+  background-color: #E46E19;
+  color: white;
+  width: 100%; 
+  height: 2.9vh;
+  border-radius: 4vh;
+  font-size: 1.8vh;
+  margin-right: 2.8vh;
+  margin-left: 2.8vh;
+}
+
+.mint-section {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.ton-con{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feikton{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  margin-left: 2.4vh;
+  margin-right: 2.6vh;
+  overflow: hidden;
+  border-radius: 1.2vh; 
+}
+
+button[data-tc-dropdown-button="true"] {
+  background-color: #000000; 
+  height: 4vh;
+}
+
+Modalwindow[data-tc-dropdown-container="true"]{
+  width: 30vw;
+}
+
+:root {
+  --ton-connect-button-bg-color: #4caf50;
+  --ton-connect-button-color: white;
+  --ton-connect-button-border-radius: 8px;
 }
 
 @media (orientation: landscape) {
@@ -459,7 +529,6 @@ button{
   .info {
     height: 6%;
   }
-
 
   #up{ font-size: 4.5vh;}
   #dp{ font-size: 3vh;}
@@ -504,73 +573,10 @@ button{
 
 @media screen and (max-width: 350px) {
   .nft-text p {
- 
     font-size: 1.4vh;
-
   }
 
   .nft-text h2 {
     font-size: 2vh;
   }
-}
-
-.custom-tonconnect-button{
-  background-color:#067CFB;
-  color: white;
-  margin-bottom: 1vh;
-}
-
-
-.button-wc {
-  display: flex;
-  justify-content: center;
-  align-items: center;     
-  text-align: center;      
-  width: 140%;            
-  padding: 20px 20px;      
-  border-radius: 8px;     
-  max-width: none;  
-}
-
-button[data-tc-dropdown-button="true"] {
-  background-color: #000000; /* Изменение цвета фона */
-  border: 2px solid #E46E19;
-  color: rgba(0, 0, 0, 0.688); /* Изменение цвета текста */
-  padding: 1px 20px; /* Изменение отступов */
-  border-radius: 12px; /* Изменение радиуса углов */
-  font-size: 16px; /* Изменение размера шрифта */
-  width: 160%; /* Устанавливаем ширину больше 100% */
-  max-width: none; /* Убираем ограничение по максимальной ширине */
-  margin: 0 auto; /* Центрируем кнопку */
-  display: block; /* Делаем элемент блочным */
-  box-sizing: border-box; /* Учитываем отступы и границы в ширине */
-}
-
-.mint-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.friends-count {
-  font-size: 1.8vh;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-}
-
-.friends-count img {
-  margin-left: 0.5vh;
-  height: 2vh;
-}
-
-.mint-button {
-  background-color: #E46E19;
-  color: white;
-  width: 50%; 
-  height: 4vh;
-  border: none;
-  border-radius: 1vh;
-  font-size: 1.8vh;
 }
