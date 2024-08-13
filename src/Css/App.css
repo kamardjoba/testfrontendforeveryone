@@ -413,19 +413,13 @@ button{
 }
 
 .referral-button {
-  width: 90%; 
-  height: 40%;
-  border: none;
-  font-size: 1.6vh;
-  border-radius: 1.2vh;
-}
-
-.referral-button {
   background-color:  #E46E19;
   color: white; 
   height: 80%;
   width: calc(50% - 1.7vh);
   margin-left: 1.7vh;
+  font-size: 1.6vh;
+  border-radius: 1.2vh;
 }
 
 #not-completed {
@@ -512,13 +506,9 @@ button[data-tc-connect-button="true"]{
   width: 100000px;
   height: 100000px;
 }
+
 button[data-tc-dropdown-button="true"] {
   background-color: #000000; 
-  height: 4vh;
-}
-
-[data-tc-dropdown-container="true"]{
-  position: fixed;
 }
 
 @media (orientation: landscape) {
