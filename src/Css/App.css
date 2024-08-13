@@ -396,15 +396,25 @@ button{
 
 .referral-button {
   background-color:  #E46E19;
-  color: white;
-  width: 50%; 
-  align-self: flex-start;
+  color: white; 
+  height: 80%;
+  width: 50%;
+  margin-left: 1.7vh;
 }
 
-.wallet-button {
-  background-color:#067CFB;
-  color: white;
-  margin-bottom: 1vh;
+#not-completed {
+  color: red;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  font-size: 1.4vh;
+  animation: fadeOut 5s forwards;
+  margin-left: 1.7vh;
+}
+
+#not-completed img {
+  height: 1.5vh;
+  margin-right: 0.5vh; 
 }
 
 .nft-image img {
@@ -416,31 +426,7 @@ button{
   height: 100%;
 }
 
-.not-completed {
-  color: red;
-  align-items: center; 
-  vertical-align: middle; 
-  font-size: 0.95em;
-  animation: fadeOut 5s forwards;
-}
 
-.not-completed img {
-  width: 15px; 
-  height: 15px;
-  align-items: center; 
-  vertical-align: middle;
-}
-
-.button-wc {
-  display: flex;
-  justify-content: center;
-  align-items: center;     
-  text-align: center;      
-  width: 140%;            
-  padding: 20px 20px;      
-  border-radius: 8px;     
-  max-width: none;  
-}
 
 #friends-count {
   font-size: 1.8vh;
@@ -488,8 +474,8 @@ button{
   align-items: center;
   justify-content: center;
   background: #000000;
-  margin-left: 2.4vh;
-  margin-right: 2.6vh;
+  margin-left: 1.7vh;
+  margin-right: 1.7vh;
   overflow: hidden;
   border-radius: 1.2vh; 
 }
@@ -497,16 +483,6 @@ button{
 button[data-tc-dropdown-button="true"] {
   background-color: #000000; 
   height: 4vh;
-}
-
-Modalwindow[data-tc-dropdown-container="true"]{
-  width: 30vw;
-}
-
-:root {
-  --ton-connect-button-bg-color: #4caf50;
-  --ton-connect-button-color: white;
-  --ton-connect-button-border-radius: 8px;
 }
 
 @media (orientation: landscape) {

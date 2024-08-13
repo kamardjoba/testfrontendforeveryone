@@ -37,7 +37,7 @@ import Octo from '../IMG/All_Logo/Octo.png';
 import invite from '../IMG/All_Logo/Invite_png.png';
 import Join from '../IMG/All_Logo/Join.png';
 import Nft from '../IMG/Nft_ref/Nft_ref.png'
-//import Checknft from '../IMG/Nft_ref_check/chech.png'
+import Checknft from '../IMG/Nft_ref_check/chech.png'
 import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png'
 
 const REACT_APP_BACKEND_URL = 'https://testforeveryoneback-production.up.railway.app';
@@ -82,7 +82,7 @@ function App() {
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [telegramLink, setTelegramLink] = useState('');
-  //const [ setShowNotCompleted] = useState(false);
+  
 
   const coinmain = coins - referralCoins;
 
@@ -103,13 +103,13 @@ function App() {
   const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
 
-  //const [ setButtonVisible] = useState(true);
+  const [buttonVisible, setButtonVisible] = useState(true);
+  const [showNotCompleted, setShowNotCompleted] = useState(true);
  
   useEffect(() => {
     if (window.TON_CONNECT_UI) {
         const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json',
-            buttonRootId: 'custom-tonconnect-button'
         });
 
         tonConnectUI.onStatusChange((walletInfo) => {
@@ -119,6 +119,8 @@ function App() {
                 console.log('Кошелек отключен!');
             }
         });
+
+       
     }
 }, []);
 
@@ -360,24 +362,24 @@ if(subscriptionCoins > 0){
     }
   }, [hasTelegramPremium, referralCoins]);
   
-// const handleCheckReferrals = () => {
-//     axios.post(`${REACT_APP_BACKEND_URL}/get-referral-count`, { userId })
-//       .then(response => {
-//         const referralCount = response.data.referralCount;
+const handleCheckReferrals = () => {
+    axios.post(`${REACT_APP_BACKEND_URL}/get-referral-count`, { userId })
+      .then(response => {
+        const referralCount = response.data.referralCount;
 
-//         if (referralCount >= 1) {
-//           setButtonVisible(false); // Меняем кнопку на "Mint NFT"
-//         } else {
-//           setShowNotCompleted(true);
-//           setTimeout(() => {
-//             setShowNotCompleted(false);
-//           }, 5000);
-//         }
-//       })
-//       .catch(error => {
-//         console.error('Ошибка при проверке рефералов:', error);
-//       });
-//   };
+        if (referralCount >= 1) {
+          setButtonVisible(false); // Меняем кнопку на "Mint NFT"
+        } else {
+          setShowNotCompleted(true);
+          setTimeout(() => {
+            setShowNotCompleted(false);
+          }, 5000);
+        }
+      })
+      .catch(error => {
+        console.error('Ошибка при проверке рефералов:', error);
+      });
+  };
 
   const checkSubscriptionAndUpdate = async (userId) => {
     try {
@@ -596,15 +598,23 @@ if(subscriptionCoins > 0){
             <h2>GET YOUR <span id='highlight'>FREE</span> NFT!</h2>
             <p>Invite 15 friends, Connect Wallet <br/>and receive unique OCTIES NFT</p>
             <div className='nft-buttons'>
-              <div className="mint-section">
+              {buttonVisible ? (
+                <div className="mint-section">
+                  <button className="referral-button" onClick={handleCheckReferrals}> Check referrals</button>
+                  {showNotCompleted && (
+                  <p id="not-completed">
+                    <img src={Checknft} alt="Not completed" />Not completed
+                  </p>)}
+                </div>
+              ) : (
+                <div className="mint-section">
                   <p id="friends-count">15 friends <img src={ChecknftDone} alt="Checkmark" /></p>  
                   <button className="mint-button" onClick={sendTransaction}>Mint</button>
-              </div>
+                </div>)}
               <div className="ton-con">
                 <div className='feikton'>
                   <TonConnectButton/>
                 </div>
-              
               </div>
             </div>
           </div>
