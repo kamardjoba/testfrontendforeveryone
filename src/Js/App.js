@@ -6,8 +6,6 @@ import axios from 'axios';
 import { TonConnectUIProvider, TonConnectButton} from '@tonconnect/ui-react';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 
-
-
 import Friends from './Friends';
 import Leaderboard from './Leaderboard';
 import First from './Firstpage';
@@ -20,6 +18,7 @@ import TS2 from '../IMG/TaskIcon/TS2.png';
 import TS3 from '../IMG/TaskIcon/TS3.png';
 import TS4 from '../IMG/TaskIcon/TS4.png';
 import TSX from '../IMG/TaskIcon/TSX.png';
+import TSNFT from '../IMG/TaskIcon/TS_NFT.png';
 import galo4ka from '../IMG/All_Logo/galol4ka.png';
 import Ellipse from '../IMG/All_Logo/Ellipse.png';
 
@@ -37,9 +36,10 @@ import Play from '../IMG/All_Logo/Play.png';
 import Octo from '../IMG/All_Logo/Octo.png';
 import invite from '../IMG/All_Logo/Invite_png.png';
 import Join from '../IMG/All_Logo/Join.png';
-import Nft from '../IMG/Nft_ref/Nft_ref.png'
-//import Checknft from '../IMG/Nft_ref_check/chech.png'
-import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png'
+import Nft from '../IMG/Nft_ref/Nft_ref.png';
+import Checknft from '../IMG/Nft_ref_check/chech.png';
+import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png';
+import NFTm from '../IMG/All_Logo/NFTmint.png';
 
 const REACT_APP_BACKEND_URL = 'https://testforeveryoneback-production.up.railway.app';
 const userId = new URLSearchParams(window.location.search).get('userId');
@@ -83,7 +83,7 @@ function App() {
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [telegramLink, setTelegramLink] = useState('');
-  //const [ setShowNotCompleted] = useState(false);
+  
 
   const coinmain = coins - referralCoins;
 
@@ -104,13 +104,15 @@ function App() {
   const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
 
-  //const [ setButtonVisible] = useState(true);
+  const [buttonVisible, setButtonVisible] = useState(true);
+  const [showNotCompleted, setShowNotCompleted] = useState(false);
+  const [isMint, setisMint] = useState(false);
  
   useEffect(() => {
     if (window.TON_CONNECT_UI) {
         const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json',
-            buttonRootId: 'custom-tonconnect-button'
+            buttonRootId: 'TonMainConBtn'
         });
 
         tonConnectUI.onStatusChange((walletInfo) => {
@@ -120,17 +122,21 @@ function App() {
                 console.log('Кошелек отключен!');
             }
         });
+
+       
     }
 }, []);
 
 const [tonConnectUI] = useTonConnectUI();
 
 const sendTransaction = async () => {
+  setisMint(true);
   const transaction = {
+    validUntil: Math.floor(Date.now() / 1000) + 600, // Время действия транзакции (например, 10 минут)
     messages: [
       {
-        address: "UQC-ZK_dPpZ15VaL-kwyXT1jTCYDTQricz8RxvXT0VmdbRYG",
-        amount: "10000",
+        address: "EQAF12tUTqUYcJnATTPyyzNJByN-YXpAeVK7pBhtqEx9caxr", // Проверь правильность адреса
+        amount: "10000000", // Пример в наносекундах (1 TON)
       },
     ],
   };
@@ -360,24 +366,24 @@ if(subscriptionCoins > 0){
     }
   }, [hasTelegramPremium, referralCoins]);
   
-// const handleCheckReferrals = () => {
-//     axios.post(`${REACT_APP_BACKEND_URL}/get-referral-count`, { userId })
-//       .then(response => {
-//         const referralCount = response.data.referralCount;
+const handleCheckReferrals = () => {
+    axios.post(`${REACT_APP_BACKEND_URL}/get-referral-count`, { userId })
+      .then(response => {
+        const referralCount = response.data.referralCount;
 
-//         if (referralCount >= 1) {
-//           setButtonVisible(false); // Меняем кнопку на "Mint NFT"
-//         } else {
-//           setShowNotCompleted(true);
-//           setTimeout(() => {
-//             setShowNotCompleted(false);
-//           }, 5000);
-//         }
-//       })
-//       .catch(error => {
-//         console.error('Ошибка при проверке рефералов:', error);
-//       });
-//   };
+        if (referralCount >= 1) {
+          setButtonVisible(false); // Меняем кнопку на "Mint NFT"
+        } else {
+          setShowNotCompleted(true);
+          setTimeout(() => {
+            setShowNotCompleted(false);
+          }, 5000);
+        }
+      })
+      .catch(error => {
+        console.error('Ошибка при проверке рефералов:', error);
+      });
+  };
 
   const checkSubscriptionAndUpdate = async (userId) => {
     try {
@@ -387,8 +393,6 @@ if(subscriptionCoins > 0){
         setCoins(data.coins);
         setSubscriptionCoins(data.coinsSub);
         
-       
-
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
           localStorage.setItem('Knopka', 'false');
@@ -515,8 +519,6 @@ if(subscriptionCoins > 0){
     }, 3000);
   };
 
-
-
   const Tg_Channel_Open_chek = () => {
     const userId = new URLSearchParams(window.location.search).get('userId');
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
@@ -583,37 +585,49 @@ if(subscriptionCoins > 0){
           <p>Your Score</p>
         </div>
       </div>
-      <div className="main" onClick={(event) => {  localStorage.clear(); }}>
+      {!isMint && <div className="main" onClick={(event) => {  localStorage.clear(); }}>
         <img src={Octo} alt='Octo' />
-      </div>
-      <div className='MainCoin'>
+      </div>}
+      {!isMint &&<div className='MainCoin'>
         <p>{coins} $OCTIES</p>
-      </div>
+      </div>}
+      {isMint &&<div className='MintCoin'>
+        <img src={NFTm} alt='NFTm'/>
+        <p id='endtxt'> {coins} <span id='highlight'>1999 </span> $OCTIES </p>
+      </div>}
+
       <div className='Menu'>
       
-        <div className='nft-promo'>
+      {!isMint && <div className='nft-promo'>
           <div className='nft-text'>
-            <h2>GET YOUR <span className='highlight'>FREE</span> NFT!</h2>
+            <h2>GET YOUR <span id='highlight'>FREE</span> NFT!</h2>
             <p>Invite 15 friends, Connect Wallet <br/>and receive unique OCTIES NFT</p>
             <div className='nft-buttons'>
-             
-           
-     
-        <div className="mint-section">
-          <p className="friends-count">15 friends <img src={ChecknftDone} alt="Checkmark" /></p>
-          <button className="mint-button" onClick={sendTransaction}>
-            Mint
-          </button>
-        </div>
-     
-              <TonConnectButton  />
-             
+              {buttonVisible ? (
+                <div className="mint-section">
+                  <button className="referral-button" onClick={handleCheckReferrals}> Check referrals</button>
+                  {showNotCompleted && (
+                  <p id="not-completed">
+                    <img src={Checknft} alt="Not completed" />Not completed
+                  </p>)}
+                </div>
+              ) : (
+                <div className="mint-section">
+                  <p id="friends-count">15 friends <img src={ChecknftDone} alt="Checkmark" /></p>  
+                  <button className="mint-button" onClick={sendTransaction}>Mint</button>
+                </div>)}
+              <div className="ton-con">
+                <div className='feikton'>
+                  <TonConnectButton/>
+                </div>
+              </div>
             </div>
           </div>
           <div className='nft-image'>
             <img src={Nft} alt='OCTIES NFT' />
           </div>
-        </div>
+        </div>}
+
 
         <div className='Skroll_Menu_Border'>
           <div className='MenuBorder' ref={blockRefs[0]}>
@@ -709,7 +723,17 @@ if(subscriptionCoins > 0){
           </div>
           <p>Your Rewards</p>
         </div>
-        <div className='Tasks'>
+        <div className='Tasks' id={isMint ? 'TaskswithoutNft' : undefined}>
+
+        {isMint && <div className='TS'>
+            <div className='tsPhoto'>
+              <img src={TSNFT} alt='TSNFT' /> <p id='txt'>OCTIES NFT</p>
+            </div>
+            <div className='tsPhoto'>
+              <p id='highlight' >+1 NFT</p>
+            </div>
+          </div>}
+
           <div className='TS'>
             <div className='tsPhoto'>
               <img src={TS1} alt='TS1' /> <p id='txt'>Account age</p>

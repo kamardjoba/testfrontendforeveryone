@@ -18,6 +18,7 @@ body {
 button{
   font-family: Muller;
 }
+
 .App {
   margin: 0;
   width: 100%;
@@ -38,7 +39,7 @@ button{
 
 .info {
   width: 100%;
-  height: 7%;
+  height: 6%;
   position: relative;
   display: flex;
   align-items: center;
@@ -72,23 +73,51 @@ button{
 
 .main {
   width: 100%;
-  height: 20%;
+  height: calc(20% - 2vh);
   display: flex;
   align-items: center;
   justify-content: center;  
 }
 .main img{height: 70%;}
 
+.MintCoin{
+  height: 24%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+#halfMinttx{
+  justify-content: center;
+}
+
+.MintCoin img{
+  height: 70%;
+}
+
+.MintCoin p{
+  font-size: 5vh;
+}
+
+#endtxt{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+}
+
 .MainCoin{
-  height: 3%;
+  height: 4%;
+  margin-bottom: 2vh;
   width: 100%;
   font-size: 4vh;
 }
 
 .Menu {
-  height: 60%;
+  height:60% ;
   width: 100%;
-  margin-top: 2vh;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -96,14 +125,14 @@ button{
 }
 
 .Reward {
-  height: 10%;
+  height: 8%;
   width: 90%;
   display: flex;
   align-items: end;
   justify-content: start;
   font-size: 2.1vh;
   font-weight: bold;
-  position: relative; 
+  position: relative;
 }
 
 .EllipsSkroll {
@@ -117,6 +146,16 @@ button{
   height: 1vh;
   margin-right: 0.3vh;
   margin-left: 0.3vh;
+}
+
+.Skroll_Menu_Border{
+  width: 90%;
+  height: 24%;
+  overflow-y: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 
 .MenuBorder{
@@ -162,15 +201,7 @@ button{
   background: rgba(208, 108, 36, 0.5);
 }
 
-.Skroll_Menu_Border{
-  width: 90%;
-  height: 30%;
-  overflow-y: hidden;
-  white-space: nowrap;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-}
+
 
 .MenuBorder p{margin-left: 1.7vh;}
 #up{margin-top: 1.8vh; font-size: 2.1vh; position: relative; }
@@ -209,11 +240,15 @@ button{
 
 
 .Tasks{
-  height: 35%;
+  height: 33%;
   width: 90%;
   display: flex;
   flex-direction: column;
   font-size: 1.8vh;
+}
+
+#TaskswithoutNft{
+  height: 68%;
 }
 
 .TS{
@@ -320,8 +355,6 @@ button{
   display: inline;
 }
 
-
-
 .img-dark {
   filter: brightness(40%);
 }
@@ -333,7 +366,7 @@ button{
   background-color: #1A1A1A;
   border-radius: 2vh;
   width: 90%;
-  height: 35%;
+  height: calc(35% - 1vh);
   margin-bottom: 1vh;
 }
 
@@ -358,8 +391,8 @@ button{
   white-space: nowrap;
 }
 
-.nft-text .highlight {
-  color: #ff7f00; 
+#highlight {
+  color: #ff7f00 !important; 
 }
 
 .nft-text p {
@@ -370,7 +403,6 @@ button{
   white-space: nowrap;
 }
 
-
 .nft-buttons {
   display: flex;
   flex-direction: column; 
@@ -378,65 +410,118 @@ button{
   align-items: start;
   width: 100%;
   height: 50%;
-  margin-left: 1.7vh;
-}
-
-.referral-button, .wallet-button {
-  width: 90%; 
-  height: 40%;
-  border: none;
-  font-size: 1.5vh;
-  border-radius: 1vh;
-  
 }
 
 .referral-button {
   width: 90%; 
   height: 40%;
   border: none;
-  font-size: 1.5vh;
-  border-radius: 1vh;
-  
+  font-size: 1.6vh;
+  border-radius: 1.2vh;
 }
 
 .referral-button {
   background-color:  #E46E19;
-  color: white;
-  width: 50%; 
-  align-self: flex-start;
+  color: white; 
+  height: 80%;
+  width: calc(50% - 1.7vh);
+  margin-left: 1.7vh;
 }
 
-.wallet-button {
-  background-color:#067CFB;
-  color: white;
-  margin-bottom: 1vh;
+#not-completed {
+  color: red;
+  width: calc(50% - 1.7vh - 0.5vh);
+  display: flex;
+  align-items: center;
+  font-size: 1.4vh;
+  animation: fadeOut 5s forwards;
+  margin-left: 1.7vh;
 }
 
+#not-completed img {
+  height: 1.5vh;
+  margin-right: 0.5vh; 
+}
 
 .nft-image img {
   height: 100%;
   border-radius: 2vh;
-  
 }
 
 .nft-image{
   height: 100%;
 }
 
-.not-completed {
-  color: red;
-  align-items: center; 
-  vertical-align: middle; 
-  font-size: 0.95em;
-  animation: fadeOut 5s forwards;
+#friends-count {
+  font-size: 1.8vh;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  margin-left: 2.8vh;
+}
+
+#friends-count img {
+  margin-left: 0.5vh;
+  height: 2.5vh;
+}
+
+.mint-button {
+  background-color: #E46E19;
+  color: white;
+  width: 100%; 
+  height: 2.9vh;
+  border-radius: 4vh;
+  font-size: 1.8vh;
+  margin-right: 2.8vh;
+  margin-left: 2.8vh;
+}
+
+.mint-section {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.ton-con{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feikton{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  margin-left: 1.7vh;
+  margin-right: 1.7vh;
+  overflow: hidden;
+  border-radius: 1.2vh; 
+}
+
+.Ton_Main_con_btn [data-tc-connect-button="true"]{
+  font-size: 1vh;
+  background: #E46E19;
+}
+
+.Ton_Main_con_btn button [data-tc-connect-button="true"]{
+  font-size: 1vh;
+  background: #E46E19;
 }
 
 
-.not-completed img {
-  width: 15px; 
-  height: 15px;
-  align-items: center; 
-  vertical-align: middle;
+button[data-tc-dropdown-button="true"] {
+  background-color: #000000; 
+  height: 4vh;
+}
+
+[data-tc-dropdown-container="true"]{
+  position: fixed;
 }
 
 @media (orientation: landscape) {
@@ -459,7 +544,6 @@ button{
   .info {
     height: 6%;
   }
-
 
   #up{ font-size: 4.5vh;}
   #dp{ font-size: 3vh;}
@@ -504,73 +588,10 @@ button{
 
 @media screen and (max-width: 350px) {
   .nft-text p {
- 
     font-size: 1.4vh;
-
   }
 
   .nft-text h2 {
     font-size: 2vh;
   }
-}
-
-.custom-tonconnect-button{
-  background-color:#067CFB;
-  color: white;
-  margin-bottom: 1vh;
-}
-
-
-.button-wc {
-  display: flex;
-  justify-content: center;
-  align-items: center;     
-  text-align: center;      
-  width: 140%;            
-  padding: 20px 20px;      
-  border-radius: 8px;     
-  max-width: none;  
-}
-
-button[data-tc-dropdown-button="true"] {
-  background-color: #000000; /* Изменение цвета фона */
-  border: 2px solid #E46E19;
-  color: rgba(0, 0, 0, 0.688); /* Изменение цвета текста */
-  padding: 1px 20px; /* Изменение отступов */
-  border-radius: 12px; /* Изменение радиуса углов */
-  font-size: 16px; /* Изменение размера шрифта */
-  width: 160%; /* Устанавливаем ширину больше 100% */
-  max-width: none; /* Убираем ограничение по максимальной ширине */
-  margin: 0 auto; /* Центрируем кнопку */
-  display: block; /* Делаем элемент блочным */
-  box-sizing: border-box; /* Учитываем отступы и границы в ширине */
-}
-
-.mint-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.friends-count {
-  font-size: 1.8vh;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-}
-
-.friends-count img {
-  margin-left: 0.5vh;
-  height: 2vh;
-}
-
-.mint-button {
-  background-color: #E46E19;
-  color: white;
-  width: 50%; 
-  height: 4vh;
-  border: none;
-  border-radius: 1vh;
-  font-size: 1.8vh;
 }
