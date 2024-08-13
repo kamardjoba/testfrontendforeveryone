@@ -106,7 +106,7 @@ function App() {
 
   const [buttonVisible, setButtonVisible] = useState(true);
   const [showNotCompleted, setShowNotCompleted] = useState(false);
-  const [isMint, setisMint] = useState(true);
+  const [isMint, setisMint] = useState(false);
  
   useEffect(() => {
     if (window.TON_CONNECT_UI) {
