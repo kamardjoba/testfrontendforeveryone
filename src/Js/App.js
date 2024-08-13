@@ -104,7 +104,7 @@ function App() {
   const X_LINK = "https://x.com/Octies_GameFI";
 
   const [buttonVisible, setButtonVisible] = useState(true);
-  const [showNotCompleted, setShowNotCompleted] = useState(true);
+  const [showNotCompleted, setShowNotCompleted] = useState(false);
  
   useEffect(() => {
     if (window.TON_CONNECT_UI) {
