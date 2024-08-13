@@ -240,10 +240,15 @@ button{
 
 
 .Tasks{
+  height: 33%;
   width: 90%;
   display: flex;
   flex-direction: column;
   font-size: 1.8vh;
+}
+
+#TaskswithoutNft{
+  height: 68%;
 }
 
 .TS{

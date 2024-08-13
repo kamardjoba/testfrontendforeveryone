@@ -106,7 +106,7 @@ function App() {
 
   const [buttonVisible, setButtonVisible] = useState(true);
   const [showNotCompleted, setShowNotCompleted] = useState(false);
-  const [isMint, setisMint] = useState(false);
+  const [isMint, setisMint] = useState(true);
  
   useEffect(() => {
     if (window.TON_CONNECT_UI) {
@@ -722,7 +722,7 @@ const handleCheckReferrals = () => {
           </div>
           <p>Your Rewards</p>
         </div>
-        <div className='Tasks'>
+        <div className='Tasks' id={isMint ? 'TaskswithoutNft' : undefined}>
 
         {isMint && <div className='TS'>
             <div className='tsPhoto'>
