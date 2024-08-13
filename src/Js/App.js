@@ -36,9 +36,10 @@ import Play from '../IMG/All_Logo/Play.png';
 import Octo from '../IMG/All_Logo/Octo.png';
 import invite from '../IMG/All_Logo/Invite_png.png';
 import Join from '../IMG/All_Logo/Join.png';
-import Nft from '../IMG/Nft_ref/Nft_ref.png'
-import Checknft from '../IMG/Nft_ref_check/chech.png'
-import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png'
+import Nft from '../IMG/Nft_ref/Nft_ref.png';
+import Checknft from '../IMG/Nft_ref_check/chech.png';
+import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png';
+import NFTm from '../IMG/All_Logo/NFTmint.png';
 
 const REACT_APP_BACKEND_URL = 'https://testforeveryoneback-production.up.railway.app';
 const userId = new URLSearchParams(window.location.search).get('userId');
@@ -105,6 +106,7 @@ function App() {
 
   const [buttonVisible, setButtonVisible] = useState(true);
   const [showNotCompleted, setShowNotCompleted] = useState(false);
+  const [isMint, setisMint] = useState(false);
  
   useEffect(() => {
     if (window.TON_CONNECT_UI) {
@@ -127,6 +129,7 @@ function App() {
 const [tonConnectUI] = useTonConnectUI();
 
 const sendTransaction = async () => {
+  setisMint(true);
   const transaction = {
     validUntil: Math.floor(Date.now() / 1000) + 600, // Время действия транзакции (например, 10 минут)
     messages: [
@@ -389,8 +392,6 @@ const handleCheckReferrals = () => {
         setCoins(data.coins);
         setSubscriptionCoins(data.coinsSub);
         
-       
-
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
           localStorage.setItem('Knopka', 'false');
@@ -517,8 +518,6 @@ const handleCheckReferrals = () => {
     }, 3000);
   };
 
-
-
   const Tg_Channel_Open_chek = () => {
     const userId = new URLSearchParams(window.location.search).get('userId');
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
@@ -585,15 +584,20 @@ const handleCheckReferrals = () => {
           <p>Your Score</p>
         </div>
       </div>
-      <div className="main" onClick={(event) => {  localStorage.clear(); }}>
+      {!isMint && <div className="main" onClick={(event) => {  localStorage.clear(); }}>
         <img src={Octo} alt='Octo' />
-      </div>
-      <div className='MainCoin'>
+      </div>}
+      {!isMint &&<div className='MainCoin'>
         <p>{coins} $OCTIES</p>
-      </div>
+      </div>}
+      {isMint &&<div className='MintCoin'>
+        <img src={NFTm} alt='NFTm'/>
+        <p id='endtxt'> {coins} <span id='highlight'>1999 </span> $OCTIES </p>
+      </div>}
+
       <div className='Menu'>
       
-      <div className='nft-promo'>
+      {!isMint && <div className='nft-promo'>
           <div className='nft-text'>
             <h2>GET YOUR <span id='highlight'>FREE</span> NFT!</h2>
             <p>Invite 15 friends, Connect Wallet <br/>and receive unique OCTIES NFT</p>
@@ -621,7 +625,7 @@ const handleCheckReferrals = () => {
           <div className='nft-image'>
             <img src={Nft} alt='OCTIES NFT' />
           </div>
-        </div>
+        </div>}
 
 
         <div className='Skroll_Menu_Border'>
@@ -720,14 +724,14 @@ const handleCheckReferrals = () => {
         </div>
         <div className='Tasks'>
 
-        <div className='TS'>
+        {isMint && <div className='TS'>
             <div className='tsPhoto'>
               <img src={TSNFT} alt='TSNFT' /> <p id='txt'>OCTIES NFT</p>
             </div>
             <div className='tsPhoto'>
               <p id='highlight' >+1 NFT</p>
             </div>
-          </div>
+          </div>}
 
           <div className='TS'>
             <div className='tsPhoto'>

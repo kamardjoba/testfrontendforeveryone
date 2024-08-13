@@ -39,7 +39,7 @@ button{
 
 .info {
   width: 100%;
-  height: 7%;
+  height: 6%;
   position: relative;
   display: flex;
   align-items: center;
@@ -73,23 +73,51 @@ button{
 
 .main {
   width: 100%;
-  height: 20%;
+  height: calc(20% - 2vh);
   display: flex;
   align-items: center;
   justify-content: center;  
 }
 .main img{height: 70%;}
 
+.MintCoin{
+  height: 24%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+#halfMinttx{
+  justify-content: center;
+}
+
+.MintCoin img{
+  height: 70%;
+}
+
+.MintCoin p{
+  font-size: 5vh;
+}
+
+#endtxt{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+}
+
 .MainCoin{
-  height: 3%;
+  height: 4%;
+  margin-bottom: 2vh;
   width: 100%;
   font-size: 4vh;
 }
 
 .Menu {
-  height: 60%;
+  height:60% ;
   width: 100%;
-  margin-top: 2vh;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -97,14 +125,14 @@ button{
 }
 
 .Reward {
-  height: 10%;
+  height: 8%;
   width: 90%;
   display: flex;
   align-items: end;
   justify-content: start;
   font-size: 2.1vh;
   font-weight: bold;
-  position: relative; 
+  position: relative;
 }
 
 .EllipsSkroll {
@@ -118,6 +146,16 @@ button{
   height: 1vh;
   margin-right: 0.3vh;
   margin-left: 0.3vh;
+}
+
+.Skroll_Menu_Border{
+  width: 90%;
+  height: 24%;
+  overflow-y: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 
 .MenuBorder{
@@ -163,15 +201,7 @@ button{
   background: rgba(208, 108, 36, 0.5);
 }
 
-.Skroll_Menu_Border{
-  width: 90%;
-  height: 30%;
-  overflow-y: hidden;
-  white-space: nowrap;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-}
+
 
 .MenuBorder p{margin-left: 1.7vh;}
 #up{margin-top: 1.8vh; font-size: 2.1vh; position: relative; }
@@ -210,7 +240,6 @@ button{
 
 
 .Tasks{
-  height: 35%;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -332,7 +361,7 @@ button{
   background-color: #1A1A1A;
   border-radius: 2vh;
   width: 90%;
-  height: 35%;
+  height: calc(35% - 1vh);
   margin-bottom: 1vh;
 }
 
