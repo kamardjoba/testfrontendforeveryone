@@ -311,6 +311,7 @@ const handleCheckReferrals = () => {
           localStorage.setItem('buttonVisibleNFT', 'false'); // Меняем кнопку на "Mint NFT"
         } else {
           setShowNotCompleted(true);
+          window.Telegram.WebApp.HapticFeedback.notificationOccurred('error');
           setTimeout(() => {
             setShowNotCompleted(false);
           }, 5000);
