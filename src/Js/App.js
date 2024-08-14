@@ -477,14 +477,14 @@ const handleCheckReferrals = () => {
           <p>Your Score</p>
         </div>
       </div>
-      {!isMint && <div className="main" onClick={(event) => {  localStorage.clear(); }}>
-        <img src={Octo} alt='Octo' />
+      {!isMint && <div className="main">
+        <img src={Octo} alt='Octo' onClick={(event) => {localStorage.clear(); }} />
       </div>}
       {!isMint &&<div className='MainCoin'>
         <p>{coins} $OCTIES</p>
       </div>}
       {isMint &&<div className='MintCoin'>
-        <img src={NFTm} alt='NFTm'/>
+        <img src={NFTm} alt='NFTm'  onClick={(event) => {localStorage.clear(); }} />
         <p id='endtxt'> {coins} <span id='highlight'>1999 </span> $OCTIES </p>
       </div>}
 
