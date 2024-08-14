@@ -24,7 +24,7 @@ import Ellipse from '../IMG/All_Logo/Ellipse.png';
 
 import tgLogo from '../IMG/All_Logo/TgComunity.png';
 import XLogo from '../IMG/All_Logo/XCominity.png';
-import Block1 from '../IMG/All_Logo/Block1.png';
+import NickLogo from '../IMG/All_Logo/nick.png';
 
 import IconHome from '../IMG/LowerIcon/Home.png';
 import IconLeaderboard from '../IMG/LowerIcon/Leaderboard.png';
@@ -122,8 +122,8 @@ const sendTransaction = async () => {
     validUntil: Math.floor(Date.now() / 1000) + 600, // Время действия транзакции (например, 10 минут)
     messages: [
       {
-        address: "EQAF12tUTqUYcJnATTPyyzNJByN-YXpAeVK7pBhtqEx9caxr", // Проверь правильность адреса
-        amount: "10000000", // Пример в наносекундах (1 TON)
+        address: "EQAjpl8NO7JhgY_AIuRxv7G82hIfgZRNFYCwq3lw4jDPjhLS", // Проверь правильность адреса
+        amount: "50000000", // Пример в наносекундах (1 TON)
       },
     ],
   };
@@ -556,18 +556,19 @@ const handleCheckReferrals = () => {
           </div>
 
           <div className='MenuBorder' ref={blockRefs[2]}>
-            <div className='flex_menu_border'  id='Cryptospace'>
+            <div className='flex_menu_border'>
               <div className='rightFlex'>
-                <p id='up'>Тапаем <span class="emoji">🐹</span></p>
-                <p id='dp'>Потыкать и стать миллионером!</p>
+                <p id='up'>OCTIES NICKNAME</p>
+                <p id='dp'>Add the word “Octies” to <br/>your nickname.</p>
+                
                 <div className='MenuBtn'>
                   {KnopkaBlock1 && <img onClick={Tg_Channel_Open_chek2} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock1 && <p id="plus">+</p>}750 $OCTIES</p>
+                  <p> {KnopkaBlock1 && <p id="plus">+</p>}1000 $OCTIES</p>
                   {Galo4kaBlock1 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
-              <div className='leftFlex'>
-                <img src={Block1} alt='Block1'/>
+              <div className='leftFlex' id='nick'>
+                <img src={NickLogo} alt='NickLogo'/>
               </div>
              </div> 
           </div>

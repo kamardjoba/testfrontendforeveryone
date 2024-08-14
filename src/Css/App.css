@@ -150,7 +150,7 @@ button{
 
 .Skroll_Menu_Border{
   width: 90%;
-  height: 24%;
+  height: 23%;
   overflow-y: hidden;
   white-space: nowrap;
   overflow-x: scroll;
@@ -192,31 +192,30 @@ button{
 }
 
 .leftFlex img{
-  height: 65%;
+  height: 60%;
   padding-right: 1.7vh;
   padding-top: 1.8vh;
 }
 
-#Cryptospace{
-  background: rgba(208, 108, 36, 0.5);
+#nick img {
+  height: 100%;
+  padding: 0;
+  border-radius: 2vh;
 }
-
-
 
 .MenuBorder p{margin-left: 1.7vh;}
-#up{margin-top: 1.8vh; font-size: 2.1vh; position: relative; }
-#dp{margin-bottom: 0.8vh; font-size: 1.8vh;}
-#dpp {margin-bottom: 0.5vh; font-size: 1.5vh; margin-left: 0;}
-#upp{margin-top: 2vh; font-size: 2.1vh; }
-
-.emoji {
-  position: absolute;
-  bottom: 0;
+#up{margin-top: 1.8vh; font-size: 2vh; position: relative; }
+#dp {
+  margin-bottom: 0.8vh;
+  font-size: 1.6vh;
+  text-align: left;
+  height: 2.5vh; /* фиксированная высота блока */
+  display: flex;
+  align-items: center;
 }
 
-.emojii {
-  margin-left: 1vh;
-}
+
+
 
 .MenuBorder button {
   display: flex;
@@ -240,7 +239,7 @@ button{
 
 
 .Tasks{
-  height: 33%;
+  height: 34%;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -541,8 +540,6 @@ button[data-tc-dropdown-button="true"] {
 
   #up{ font-size: 4.5vh;}
   #dp{ font-size: 3vh;}
-  #upp{ margin-top: 1.7vh; font-size: 5vh;}
-  #dpp{font-size: 2vh;}
 
   .Txt{
     font-size: 2.5vh;
