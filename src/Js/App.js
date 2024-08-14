@@ -182,9 +182,6 @@ if(subscriptionCoins > 0){
     };
   }, );
 
-
-
-
   function handleHomeWithVibration() {
     handleHome();
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
