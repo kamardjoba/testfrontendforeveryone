@@ -517,9 +517,13 @@ const handleCheckReferrals = () => {
           </div>
           <div className='nft-image'>
             {/* <img src={GNft} alt='OCTIES NFT' /> */}
-            <video id='NftVd' autoplay loop muted>
-              <source src={Nft} type="video/mp4"/>
-            </video> 
+            {/* <embed src={Nft}  height="100%" type="video/mp4" loop/> */}
+            {/* <iframe height="100%" src={Nft} ></iframe> */}
+            {/* <object width="640" height="360"  data={Nft}></object> */}
+            <video id='NftVd' autoplay muted loop>
+              <source src={Nft} type="video/mp4" />
+              Ваш браузер не поддерживает видео.
+            </video>
           </div>
         </div>}
 
