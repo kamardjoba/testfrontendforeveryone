@@ -90,7 +90,9 @@ function App() {
   const TG_CHANNEL_LINK2 = "https://t.me/test_sub_check2";
   const X_LINK = "https://x.com/Octies_GameFI";
 
-  const [buttonVisible, setButtonVisible] = useState(true);
+  
+  if (!localStorage.getItem('buttonVisibleNFT')) {localStorage.setItem('buttonVisibleNFT', 'true');}
+  const buttonVisible = localStorage.getItem('buttonVisibleNFT') === 'true';
   const [showNotCompleted, setShowNotCompleted] = useState(false);
   const [isMint, setisMint] = useState(false);
  
@@ -306,7 +308,7 @@ const handleCheckReferrals = () => {
         const referralCount = response.data.referralCount;
 
         if (referralCount >= 1) {
-          setButtonVisible(false); // Меняем кнопку на "Mint NFT"
+          localStorage.setItem('buttonVisibleNFT', 'false'); // Меняем кнопку на "Mint NFT"
         } else {
           setShowNotCompleted(true);
           setTimeout(() => {
