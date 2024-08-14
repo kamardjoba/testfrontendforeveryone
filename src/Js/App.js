@@ -25,7 +25,6 @@ import Ellipse from '../IMG/All_Logo/Ellipse.png';
 import tgLogo from '../IMG/All_Logo/TgComunity.png';
 import XLogo from '../IMG/All_Logo/XCominity.png';
 import Block1 from '../IMG/All_Logo/Block1.png';
-import Block2 from '../IMG/All_Logo/Block2.png';
 
 import IconHome from '../IMG/LowerIcon/Home.png';
 import IconLeaderboard from '../IMG/LowerIcon/Leaderboard.png';
@@ -59,16 +58,6 @@ function App() {
   const Galo4kaBlock1 = localStorage.getItem('GalkaBlock1') === 'true';
   if (!localStorage.getItem('KnopkaBlock1')) {localStorage.setItem('KnopkaBlock1', 'true');}
   const KnopkaBlock1 = localStorage.getItem('KnopkaBlock1') === 'true';
-  
-  if (!localStorage.getItem('GalkaBlock2')) {localStorage.setItem('GalkaBlock2', 'false');}
-  const Galo4kaBlock2 = localStorage.getItem('GalkaBlock2') === 'true';
-  if (!localStorage.getItem('KnopkaBlock2')) {localStorage.setItem('KnopkaBlock2', 'true');}
-  const KnopkaBlock2 = localStorage.getItem('KnopkaBlock2') === 'true';
-
-  if (!localStorage.getItem('GalkaBlock3')) {localStorage.setItem('GalkaBlock3', 'false');}
-  const Galo4kaBlock3 = localStorage.getItem('GalkaBlock3') === 'true';
-  if (!localStorage.getItem('KnopkaBlock3')) {localStorage.setItem('KnopkaBlock3', 'true');}
-  const KnopkaBlock3 = localStorage.getItem('KnopkaBlock3') === 'true';
 
   if (!localStorage.getItem('Sub')) {localStorage.setItem('Sub', 'false');}
   const Sub = localStorage.getItem('Sub') === 'true';
@@ -83,7 +72,6 @@ function App() {
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [telegramLink, setTelegramLink] = useState('');
-  
 
   const coinmain = coins - referralCoins;
 
@@ -100,8 +88,6 @@ function App() {
   const [app, setApp] = useState(false);
   const TG_CHANNEL_LINK = "https://t.me/octies_channel";
   const TG_CHANNEL_LINK2 = "https://t.me/test_sub_check2";
-  const TG_CHANNEL_LINK3 = "https://t.me/test_sub_check";
-  const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
 
   const [buttonVisible, setButtonVisible] = useState(true);
@@ -122,8 +108,6 @@ function App() {
                 console.log('Кошелек отключен!');
             }
         });
-
-       
     }
 }, []);
 
@@ -154,8 +138,8 @@ if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
   }
 
-  const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
-  const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false]);
+  const blockRefs = [useRef(null), useRef(null), useRef(null)];
+  const [blockVisibility, setBlockVisibility] = useState([false, false, false]);
 
   useEffect(() => {
     const observerOptions = {
@@ -226,39 +210,13 @@ if(subscriptionCoins > 0){
         const data = response.data;
         setCoins(data.coins);
         setSubscriptionCoins(data.coinsSub);
+
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
           localStorage.setItem('Knopka', 'false');
-
         } else {
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
-
-        }
-
-        if (data.hasCheckedSubscription2) {
-          localStorage.setItem('GalkaBlock1', 'true');
-          localStorage.setItem('KnopkaBlock1', 'false');        
-        } else {
-          localStorage.setItem('GalkaBlock1', 'false');
-          localStorage.setItem('KnopkaBlock1', 'true');      
-        }
-
-        if (data.hasCheckedSubscription3) {
-          localStorage.setItem('GalkaBlock2', 'true');
-          localStorage.setItem('KnopkaBlock2', 'false');          
-
-        } else {
-          localStorage.setItem('GalkaBlock2', 'false');
-          localStorage.setItem('KnopkaBlock2', 'true');     
-        }
-
-        if (data.hasCheckedSubscription4) {
-          localStorage.setItem('GalkaBlock3', 'true');
-          localStorage.setItem('KnopkaBlock3', 'false');          
-        } else {
-          localStorage.setItem('GalkaBlock3', 'false');
-          localStorage.setItem('KnopkaBlock3', 'true');     
         }
         
       } else {
@@ -322,30 +280,6 @@ if(subscriptionCoins > 0){
         } else {
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
-
-        }
-        if (data.hasCheckedSubscription2) {
-          localStorage.setItem('GalkaBlock1', 'true');
-          localStorage.setItem('KnopkaBlock1', 'false');        
-        } else {
-          localStorage.setItem('GalkaBlock1', 'false');
-          localStorage.setItem('KnopkaBlock1', 'true');       
-        }
-
-        if (data.hasCheckedSubscription3) {
-          localStorage.setItem('GalkaBlock2', 'true');
-          localStorage.setItem('KnopkaBlock2', 'false');          
-        } else {
-          localStorage.setItem('GalkaBlock2', 'false');
-          localStorage.setItem('KnopkaBlock2', 'true');    
-        }
-
-        if (data.hasCheckedSubscription4) {
-          localStorage.setItem('GalkaBlock3', 'true');
-          localStorage.setItem('KnopkaBlock3', 'false');         
-        } else {
-          localStorage.setItem('GalkaBlock3', 'false');
-          localStorage.setItem('KnopkaBlock3', 'true');    
         }
   
         setAccountAgeCoins(accountAgeCoins);
@@ -400,31 +334,6 @@ const handleCheckReferrals = () => {
         } else {
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
-
-        }
-
-        if (data.hasCheckedSubscription2) {
-          localStorage.setItem('GalkaBlock1', 'true');
-          localStorage.setItem('KnopkaBlock1', 'false');       
-        } else {
-          localStorage.setItem('GalkaBlock1', 'false');
-          localStorage.setItem('KnopkaBlock1', 'true');      
-        }
-
-        if (data.hasCheckedSubscription3) {
-          localStorage.setItem('GalkaBlock2', 'true');
-          localStorage.setItem('KnopkaBlock2', 'false');           
-        } else {
-          localStorage.setItem('GalkaBlock2', 'false');
-          localStorage.setItem('KnopkaBlock2', 'true');   
-        }
-
-        if (data.hasCheckedSubscription4) {
-          localStorage.setItem('GalkaBlock3', 'true');
-          localStorage.setItem('KnopkaBlock3', 'false');         
-        } else {
-          localStorage.setItem('GalkaBlock3', 'false');
-          localStorage.setItem('KnopkaBlock3', 'true');    
         }
         
       } else {
@@ -495,25 +404,6 @@ const handleCheckReferrals = () => {
     const userId = new URLSearchParams(window.location.search).get('userId');
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
     window.open(TG_CHANNEL_LINK2, '_blank');
-    setTimeout(() => {
-      checkSubscriptionAndUpdate(userId);
-    }, 3000);
-  };
-
-  const Tg_Channel_Open_chek3 = () => {
-    const userId = new URLSearchParams(window.location.search).get('userId');
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    window.open(TG_CHANNEL_LINK3, '_blank');
-    setTimeout(() => {
-      checkSubscriptionAndUpdate(userId);
-    }, 3000);
-  };
-
-
-  const Tg_Channel_Open_chek4 = () => {
-    const userId = new URLSearchParams(window.location.search).get('userId');
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    window.open(TG_CHANNEL_LINK4, '_blank');
     setTimeout(() => {
       checkSubscriptionAndUpdate(userId);
     }, 3000);
@@ -681,45 +571,12 @@ const handleCheckReferrals = () => {
              </div> 
           </div>
 
-          <div className='MenuBorder' ref={blockRefs[3]}>
-            <div className='flex_menu_border'  id='Cryptospace'>
-              <div className='rightFlex'>
-                <p id='upp'>Hamster TapSwap Uzbekistan</p>
-                <p id='dpp'>Bu kanalda siz TapSwap va Hamster <p> Kombat Tezkor Yangiliklarni bilib olasiz</p></p>
-                <div className='MenuBtn'>
-                  {KnopkaBlock2 && <img onClick={Tg_Channel_Open_chek3} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock2 && <p id="plus">+</p>}750 $OCTIES</p>
-                  {Galo4kaBlock2 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
-                </div>
-              </div>
-              <div className='leftFlex'>
-                <img src={Block2} alt='Block2'/>
-              </div>
-            </div>  
-          </div>
-
-          <div className='MenuBorder' ref={blockRefs[4]} >
-            <div className='flex_menu_border' id='Cryptospace'>
-              <div className='rightFlex'>
-                <p id='up'>Block3</p>
-                <p id='dp'>Description Block3</p>
-                <div className='MenuBtn'>
-                  {KnopkaBlock3 && <img onClick={Tg_Channel_Open_chek4} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock3 && <p id="plus">+</p>}50 $OCTIES</p>
-                  {Galo4kaBlock3 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
-                </div>
-              </div>
-            </div>  
-          </div>
-
         </div>
         <div className='Reward'>
           <div className='EllipsSkroll'>
             <img src={Ellipse} alt='Ellips' className={blockVisibility[0] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[1] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[2] ? '' : 'img-dark'} />
-            <img src={Ellipse} alt='Ellips' className={blockVisibility[3] ? '' : 'img-dark'} />
-            <img src={Ellipse} alt='Ellips' className={blockVisibility[4] ? '' : 'img-dark'} />
           </div>
           <p>Your Rewards</p>
         </div>
