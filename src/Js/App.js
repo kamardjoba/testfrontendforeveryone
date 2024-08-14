@@ -35,8 +35,7 @@ import Play from '../IMG/All_Logo/Play.png';
 import Octo from '../IMG/All_Logo/Octo.png';
 import invite from '../IMG/All_Logo/Invite_png.png';
 import Join from '../IMG/All_Logo/Join.png';
-// import GNft from '../IMG/Nft_ref/GNFT.gif';
-import Nft from '../IMG/Nft_ref/NFT.MP4';
+import Nft from '../IMG/Nft_ref/NFT.webp';
 import Checknft from '../IMG/Nft_ref_check/chech.png';
 import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png';
 import NFTm from '../IMG/All_Logo/NFTmint.png';
@@ -516,14 +515,7 @@ const handleCheckReferrals = () => {
             </div>
           </div>
           <div className='nft-image'>
-            {/* <img src={GNft} alt='OCTIES NFT' /> */}
-            {/* <embed src={Nft}  height="100%" type="video/mp4" loop/> */}
-            {/* <iframe height="100%" src={Nft} ></iframe> */}
-            {/* <object width="640" height="360"  data={Nft}></object> */}
-            <video id='NftVd' autoplay muted loop>
-              <source src={Nft} type="video/mp4" />
-              Ваш браузер не поддерживает видео.
-            </video>
+            <img src={Nft} alt='OCTIES NFT' /> 
           </div>
         </div>}
 
