@@ -507,11 +507,6 @@ button{
   border-radius: 1.2vh; 
 }
 
-#NftVd{
-  border-radius: 2vh;
-  height: 100%;
-}
-
 button[data-tc-connect-button="true"]{
   display: flex;
   align-items: center;
