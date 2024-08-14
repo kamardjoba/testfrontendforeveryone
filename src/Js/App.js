@@ -59,9 +59,6 @@ function App() {
   if (!localStorage.getItem('KnopkaBlock1')) {localStorage.setItem('KnopkaBlock1', 'true');}
   const KnopkaBlock1 = localStorage.getItem('KnopkaBlock1') === 'true';
 
-  if (!localStorage.getItem('Sub')) {localStorage.setItem('Sub', 'false');}
-  const Sub = localStorage.getItem('Sub') === 'true';
-
   const [coinOnlyYears, setcoinOnlyYears] = useState(0);
   const [VisibleInvite, setVisibleInvite] = useState(false);
   const [VisibleTelegramPremium, setVisibleTelegramPremium] = useState(false);
