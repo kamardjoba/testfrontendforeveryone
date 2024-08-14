@@ -36,7 +36,7 @@ import Octo from '../IMG/All_Logo/Octo.png';
 import invite from '../IMG/All_Logo/Invite_png.png';
 import Join from '../IMG/All_Logo/Join.png';
 import VNft from '../IMG/Nft_ref/NFT.MP4';
-import Nft from '../IMG/Nft_ref/GNFT.gif';
+// import Nft from '../IMG/Nft_ref/GNFT.gif';
 import Checknft from '../IMG/Nft_ref_check/chech.png';
 import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png';
 import NFTm from '../IMG/All_Logo/NFTmint.png';
