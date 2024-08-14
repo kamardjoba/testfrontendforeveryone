@@ -165,7 +165,6 @@ if(subscriptionCoins > 0){
       });
     };
 
-    
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
     blockRefs.forEach(ref => {
