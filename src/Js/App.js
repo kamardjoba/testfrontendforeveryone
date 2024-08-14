@@ -43,7 +43,6 @@ import NFTm from '../IMG/All_Logo/NFTmint.png';
 const REACT_APP_BACKEND_URL = 'https://testforeveryoneback-production.up.railway.app';
 const userId = new URLSearchParams(window.location.search).get('userId');
 
-
 function App() {
   if (!localStorage.getItem('Galka')) {localStorage.setItem('Galka', 'false');}
   const Galo4ka = localStorage.getItem('Galka') === 'true';
@@ -94,7 +93,8 @@ function App() {
   if (!localStorage.getItem('buttonVisibleNFT')) {localStorage.setItem('buttonVisibleNFT', 'true');}
   const buttonVisible = localStorage.getItem('buttonVisibleNFT') === 'true';
   const [showNotCompleted, setShowNotCompleted] = useState(false);
-  const [isMint, setisMint] = useState(false);
+  if (!localStorage.getItem('isMintNFT')) {localStorage.setItem('isMintNFT', 'false');}
+  const isMint = localStorage.getItem('isMintNFT') === 'true';
  
   useEffect(() => {
     if (window.TON_CONNECT_UI) {
@@ -116,7 +116,7 @@ function App() {
 const [tonConnectUI] = useTonConnectUI();
 
 const sendTransaction = async () => {
-  setisMint(true);
+  localStorage.setItem('isMintNFT', 'true');
   const transaction = {
     validUntil: Math.floor(Date.now() / 1000) + 600, // Время действия транзакции (например, 10 минут)
     messages: [
