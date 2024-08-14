@@ -116,6 +116,7 @@ function App() {
 const [tonConnectUI] = useTonConnectUI();
 
 const sendTransaction = async () => {
+  window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
   localStorage.setItem('isMintNFT', 'true');
   const transaction = {
     validUntil: Math.floor(Date.now() / 1000) + 600, // Время действия транзакции (например, 10 минут)
