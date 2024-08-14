@@ -19,6 +19,7 @@ import TS3 from '../IMG/TaskIcon/TS3.png';
 import TS4 from '../IMG/TaskIcon/TS4.png';
 import TSX from '../IMG/TaskIcon/TSX.png';
 import TSNFT from '../IMG/TaskIcon/TS_NFT.png';
+import TSnick from '../IMG/TaskIcon/TS_nick.png';
 import galo4ka from '../IMG/All_Logo/galol4ka.png';
 import Ellipse from '../IMG/All_Logo/Ellipse.png';
 
@@ -122,7 +123,7 @@ const sendTransaction = async () => {
     validUntil: Math.floor(Date.now() / 1000) + 600, // Время действия транзакции (например, 10 минут)
     messages: [
       {
-        address: "EQAjpl8NO7JhgY_AIuRxv7G82hIfgZRNFYCwq3lw4jDPjhLS", // Проверь правильность адреса
+        address: "EQB9W5Rpd4Cg4cAUV9YBZTrYiT5Kua8Ik1xfT5nMP-EOIG_w", // Проверь правильность адреса
         amount: "50000000", // Пример в наносекундах (1 TON)
       },
     ],
@@ -558,8 +559,8 @@ const handleCheckReferrals = () => {
           <div className='MenuBorder' ref={blockRefs[2]}>
             <div className='flex_menu_border'>
               <div className='rightFlex'>
-                <p id='up'>OCTIES NICKNAME</p>
-                <p id='dp'>Add the word “Octies” to <br/>your nickname.</p>
+                <p id='upp'>OCTIES NICKNAME</p>
+                <p id='dpp'>Add the word “Octies” to <br/>your nickname.</p>
                 
                 <div className='MenuBtn'>
                   {KnopkaBlock1 && <img onClick={Tg_Channel_Open_chek2} src={Join} alt='Join' />}
@@ -620,15 +621,14 @@ const handleCheckReferrals = () => {
             </div>
           </div>}
 
-          {Sub && <div className='TS'>
+          <div className='TS'>
             <div className='tsPhoto'>
-              <img src={TS3} alt='TS3' /> <p id='txt'>Channel Subscriptions</p>
+              <img src={TSnick} alt='TS3' /> <p id='txt'>Add "Octies" to nickname</p>
             </div>
             <div className='tsPhoto'>
-              <p>+{subscriptionCoins} $OCTIES</p>
+              <p>+ 1000 $OCTIES</p>
             </div>
-          </div>}
-
+          </div>
 
           {Galo4kaX && <div className='TS'>
           <div className='tsPhoto'>

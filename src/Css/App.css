@@ -214,6 +214,17 @@ button{
   align-items: center;
 }
 
+#upp{margin-top: 2vh; font-size: 2vh; position: relative; }
+#dpp {
+  margin-bottom: 0.6vh;
+  margin-top: 0.6vh;
+  font-size: 1.6vh;
+  text-align: left;
+  height: 2.5vh; /* фиксированная высота блока */
+  display: flex;
+  align-items: center;
+}
+
 
 
 
@@ -537,9 +548,6 @@ button[data-tc-dropdown-button="true"] {
   .info {
     height: 6%;
   }
-
-  #up{ font-size: 4.5vh;}
-  #dp{ font-size: 3vh;}
 
   .Txt{
     font-size: 2.5vh;
