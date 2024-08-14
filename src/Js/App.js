@@ -35,7 +35,7 @@ import Play from '../IMG/All_Logo/Play.png';
 import Octo from '../IMG/All_Logo/Octo.png';
 import invite from '../IMG/All_Logo/Invite_png.png';
 import Join from '../IMG/All_Logo/Join.png';
-import VNft from '../IMG/Nft_ref/NFT.MP4';
+import GNft from '../IMG/Nft_ref/GNFT.gif';
 // import Nft from '../IMG/Nft_ref/GNFT.gif';
 import Checknft from '../IMG/Nft_ref_check/chech.png';
 import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png';
@@ -516,10 +516,10 @@ const handleCheckReferrals = () => {
             </div>
           </div>
           <div className='nft-image'>
-            {/* <img src={Nft} alt='OCTIES NFT' /> */}
-            <video id='NftVd' autoplay loop muted>
+            <img src={GNft} alt='OCTIES NFT' />
+            {/* <video id='NftVd' autoplay loop muted>
               <source src={VNft} type="video/mp4"/>
-            </video>
+            </video> */}
           </div>
         </div>}
 
