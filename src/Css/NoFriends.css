@@ -1,0 +1,68 @@
+.startpageWrapper {
+    background: rgba(196, 205, 214, 0.6);
+    border: 0.2vh solid #C9C9C9;
+    border-radius: 3vh;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.startpageContainer {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+#noFriendsWrapper {
+    padding:  3vh 2vh 3vh 2vh;  
+}
+
+.diamondImgWrapper {
+    height: 16vh;
+    margin-bottom: 3vh;
+}
+
+.diamondImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.inviteFriendsWrapper {
+    margin-bottom: 2.2vh;
+}
+
+.inviteFriendsItem {
+    padding: 1vh;
+    background-color: rgba(238, 238, 238, 1);
+    border-radius: 1vh;
+    display: flex;
+    gap: 1vh;
+    align-items: center;
+    margin-bottom: 0.8vh;
+}
+
+.inviteFriendsText {
+    color: rgba(0, 0, 0, 1);
+    font-size: 1.4vh;
+    font-weight: 700;
+}
+
+.connectBtn {
+    text-align: center;
+    padding: 1.2vh 8vh;
+    background-color: rgba(26, 173, 250, 1);
+    border-radius: 1vh;
+    font-weight: 700;
+    font-size: 2vh;
+    border: none;
+    color: white;
+}
+
+.connectBtn:hover {
+    cursor: pointer;
+}

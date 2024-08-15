@@ -1,0 +1,96 @@
+.questsPage{
+    height: 100%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.basedtask{
+    border-radius: 1.5vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#complatedtask{
+    background: rgba(164, 210, 255, 1);
+}
+
+
+
+
+
+
+.txtNf p{
+    align-self: start;
+    text-align: start;
+    margin-bottom: 0.5vh;
+    margin-top: 1.5vh;
+}
+
+.txtNf{
+    width: calc(86% + 1.5vh + 1.5vh);
+    font-weight: 700;
+}
+ 
+
+.questItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(239, 238, 244, 1);
+    border-radius: 0.5vh;
+    margin-bottom: 1.5vh;
+    padding: 1.4vh;
+    width: 86%;
+}
+
+.questIcon {
+    display: flex;
+}
+
+.questItemLeft {
+    display: flex;
+    gap: 1vh;
+    align-items: center;
+}
+
+.questItemLeft img {
+    height: 2.5vh;
+}
+.questTitle {
+    font-weight: 700;
+    font-size: 1.45vh;
+    color: rgba(0, 0, 0, 1);
+    text-align: start;
+    padding: 0;
+    margin: 0;
+}
+
+.questSubtitle {
+    color: rgba(79, 79, 79, 1);
+    font-size: 1.2vh;
+    font-weight: 400;
+    text-align: start;
+    padding: 0;
+    margin: 0;
+}
+
+.questBtn {
+    border: none;
+    background-color: rgba(88, 88, 88, 1);
+    border-radius: 2vh;
+    padding: 0.6vh 1.3vh;
+    font-size: 1.4vh;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 1);
+}
+
+.questItemRight{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

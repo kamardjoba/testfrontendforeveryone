@@ -1,0 +1,48 @@
+.homepageContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.homepageWrapper {
+    border: 1px solid rgba(201, 201, 201, 1);
+    background-color: rgba(231, 231, 231, 0.47);
+    padding: 4vh;
+    border-radius: 3vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.amountWrapper {
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+    padding: 6vh 0 6vh 0;
+}
+
+.amount {
+    font-weight: 700;
+    font-size: 3.5vh;
+    padding: 0;
+    margin: 0;
+}
+
+.diamondImgHomepage {
+    height: 6vh ;
+}
+
+.homepageDescr {
+    font-weight: 400;
+    font-size: 1.8vh;
+    margin: 0;
+}
+
+.welcomeText {
+    font-weight: 700;
+    font-size: 3vh;
+    margin: 0;
+}

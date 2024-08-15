@@ -13,13 +13,14 @@ body {
   position: fixed;
   overflow: hidden; 
   isolation: isolate;
+  background: url("../IMG/backg.png") no-repeat center center fixed;
+  background-size: cover;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
-button{
-  font-family: Muller;
-}
-
-.App {
+.appWrapper {
   margin: 0;
   width: 100%;
   height: 100vh;
@@ -27,562 +28,118 @@ button{
   display: flex;
   text-align: center;
   flex-direction: column;
-  background: #000000;
-  color: white;
-  font-family: Muller;
   font-size: 2.2vh ;
 }
 
-.App p{
- margin: 0;
+.headerWrapper {
+  height: 9%;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.info {
+.userName {
+  font-size: 3vh;
+  font-weight: 500;
+  margin-left: 3vh;
+}
+.userAvatarWrapper {
+  height: 7vh;
+  margin-right: 3vh;
+}
+.userAvatarImg {
   width: 100%;
-  height: 6%;
-  position: relative;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.centeredBlock{
+  height: 82%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.info img{
-  width: 100%;
-  height: 100%;
-}
-
-.Txt{
-  height: 100%;
-  width: 100%;
-  position: absolute;
+.footer {
+  height: 9%;
+  background-color: white;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  font-size: 2.2vh;
-}
-.Txt p{
-  margin-top: 0.6vh;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
-.Txt img {
-  height: 40%;
-  width: auto;
-  margin-right: 1vh;
-}
-
-.main {
-  width: 100%;
-  height: calc(20% - 2vh);
+.footerItems {
   display: flex;
-  align-items: center;
-  justify-content: center;  
-}
-.main img{height: 70%;}
-
-.MintCoin{
-  height: 24%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-}
-
-#halfMinttx{
-  justify-content: center;
-}
-
-.MintCoin img{
-  height: 70%;
-}
-
-.MintCoin p{
-  font-size: 5vh;
-}
-
-#endtxt{
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  justify-content: center;
-}
-
-.MainCoin{
-  height: 4%;
-  margin-bottom: 2vh;
-  width: 100%;
-  font-size: 4vh;
-}
-
-.Menu {
-  height:60% ;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  overflow-y: auto;
-}
-
-.Reward {
-  height: 8%;
-  width: 90%;
-  display: flex;
-  align-items: end;
-  justify-content: start;
-  font-size: 2.1vh;
-  font-weight: bold;
-  position: relative;
-}
-
-.EllipsSkroll {
-  position: absolute;
-  top: 0.5vh; 
-  left: 50%; 
-  transform: translateX(-50%); 
-}
-
-.EllipsSkroll img{
-  height: 1vh;
-  margin-right: 0.3vh;
-  margin-left: 0.3vh;
-}
-
-.Skroll_Menu_Border{
-  width: 90%;
-  height: 23%;
-  overflow-y: hidden;
-  white-space: nowrap;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-}
-
-.MenuBorder{
-  height: 100%;
-  width: 100%;
-  scroll-snap-align: start;
-  display: inline-block;
-  margin-right: 1.7vh;
-}
-
-.flex_menu_border{
-  background: #1A1A1A;
-  border-radius: 2vh;
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-
-.rightFlex{
-  width: 50%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
-  align-items: flex-start;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
 }
 
-.leftFlex{
-  width: 50%;
-  height: 100%;
+.footerItemImgWrapper {
+  height: 3vh;
+}
+
+.footerItem {
   display: flex;
-  align-items: start;
+  flex-direction: column;
+  align-items: center;
   justify-content: end;
 }
 
-.leftFlex img{
-  height: 60%;
-  padding-right: 1.7vh;
-  padding-top: 1.8vh;
+.footerItemImg {
+  height: 100%;
+  object-fit: cover;
 }
 
-#nick img {
-  height: 100%;
+.footerItemLabel {
+  font-size: 2vh;
+  font-weight: 400;
   padding: 0;
-  border-radius: 2vh;
-}
-
-.MenuBorder p{margin-left: 1.7vh;}
-#up{margin-top: 1.8vh; font-size: 2vh; position: relative; }
-#dp {
-  margin-bottom: 0.8vh;
-  font-size: 1.6vh;
-  text-align: left;
-  height: 2.5vh; /* фиксированная высота блока */
-  display: flex;
-  align-items: center;
-}
-
-#upp{margin-top: 2vh; font-size: 2vh; position: relative; }
-#dpp {
-  margin-bottom: 0.6vh;
-  margin-top: 0.6vh;
-  font-size: 1.6vh;
-  text-align: left;
-  height: 2.5vh; /* фиксированная высота блока */
-  display: flex;
-  align-items: center;
-}
-
-.MenuBorder button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 2vh;
-  height: 3.3vh;
-  width: 5vh;
-}
-.MenuBtn{
-  display: flex;
-  flex-direction: row;
-  height: 30%;
-  align-items: center;
-  margin-bottom: 1.2vh;
-  color: #9F9F9F;
-  font-size: 1.8vh;
-}
-.MenuBtn img {height:100%;margin-left: 1.7vh;}
-.MenuBtn p {margin-top: 0.8vh;}
-
-
-.Tasks{
-  height: 34%;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  font-size: 1.8vh;
-}
-
-#TaskswithoutNft{
-  height: 68%;
-}
-
-.TS{
-  width: 100%;
-  height: 8.4vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.tsPhoto img{
-  height: 60%;
-}
-
-.tsPhoto{
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tsPhoto p{
-  font-size: 1.8vh;
-}
-#txt{
-  margin-left: 1.2vh;
-}
-
-.LowerBTN{
-  width: 92%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.LowerBTN img{
-  height: 50%;
-}
-
-.BTN {
-  height: 100%;
-  width: 25%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.BTNLow{
-  width: 100%;
-  height: 10%;
-  display: flex;
-  justify-content: center;
-  background: #0F0F0F;
-  z-index: 1001;
-  
-}
-
-@font-face {
-  font-family: Muller;
-  src: url(/src/fonts/MullerRegular.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: MullerLight;
-  src: url(/src/fonts/MullerLight.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: MullerMedium;
-  src: url(/src/fonts/MullerMedium.ttf) format('truetype');
-}
-
-@keyframes fade-out  {
-  from {opacity: 1;}
-  to   {opacity: 0;}
-}
-
-@keyframes fade-in {
-  from {opacity: 0;}
-  to   {opacity: 1;}
-}
-
-button{
-  border: none;
-  color: #000000;
-}
-
-.blk{
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  background: #000000;
-  z-index: 1000;
-}
-
-#galo4ka{
-  height: 2.5vh;
-  margin-left: 1vh;
-}
-
-#plus{
   margin: 0;
-  display: inline;
-}
-
-.img-dark {
-  filter: brightness(40%);
-}
-
-.nft-promo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #1A1A1A;
-  border-radius: 2vh;
-  width: 90%;
-  height: calc(35% - 1vh);
-  margin-bottom: 1vh;
-}
-
-.nft-text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-evenly;
-  height: 100%;
-  flex-grow: 1;
-  overflow: hidden;
-  
-}
-
-.nft-text h2 {
-  font-size: 2.2vh;
-  margin: 0;
-  font-weight: bold;
-  color: #ffffff;
-  margin-left: 1.7vh;
-  margin-top: 1vh;
-  white-space: nowrap;
-}
-
-#highlight {
-  color: #ff7f00 !important; 
-}
-
-.nft-text p {
-  white-space: normal; 
-  text-align: left; 
-  font-size: 1.8vh;
-  margin-left: 1.7vh;
-  white-space: nowrap;
-}
-
-.nft-buttons {
-  display: flex;
-  flex-direction: column; 
-  justify-content: space-between;
-  align-items: start;
-  width: 100%;
-  height: 50%;
-}
-
-.referral-button {
-  background-color:  #E46E19;
-  color: white; 
-  height: 80%;
-  width: calc(50% - 1.7vh);
-  margin-left: 1.7vh;
-  font-size: 1.7vh;
-  font-family: MullerMedium;
-  border-radius: 1.2vh;
-}
-
-#not-completed {
-  color: red;
-  width: calc(50% - 1.7vh - 0.5vh);
-  display: flex;
-  align-items: center;
-  font-size: 1.4vh;
-  animation: fadeOut 5s forwards;
-  margin-left: 1.7vh;
-}
-
-#not-completed img {
-  height: 1.5vh;
-  margin-right: 0.5vh; 
-}
-
-.nft-image img {
-  height: 100%;
-  border-radius: 2vh;
-}
-
-.nft-image{
-  height: 100%;
-}
-
-#friends-count {
-  font-size: 1.8vh;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  margin-left: 2.8vh;
-}
-
-#friends-count img {
-  margin-left: 0.5vh;
-  height: 2.5vh;
-}
-
-.mint-button {
-  background-color: #E46E19;
-  color: white;
-  width: 100%; 
-  height: 2.9vh;
-  border-radius: 4vh;
-  font-size: 1.8vh;
-  font-family: MullerMedium;
-  margin-right: 2.8vh;
-  margin-left: 2.8vh;
-}
-
-.mint-section {
-  width: 100%;
-  height: 50%;
-  display: flex;
-  align-items: center;
-}
-
-.ton-con{
-  width: 100%;
-  height: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.feikton{
-  width: 100%;
-  height: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #000000;
-  margin-left: 1.7vh;
-  margin-right: 1.7vh;
-  overflow: hidden;
-  border-radius: 1.2vh; 
-}
-
-button[data-tc-connect-button="true"]{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #067CFB;
-  width: 100000px;
-  height: 100000px;
-}
-
-button[data-tc-dropdown-button="true"] {
-  background-color: #000000; 
 }
 
 @media (orientation: landscape) {
 
-  .leftFlex{
-    align-items: center;
-    justify-content: end;
-  }
-  
-  .leftFlex img{
-    height: 55%;
-    padding-right: 1vh;
-    padding-top: 0;
-  }
-
-  .BTNLow {
+  .footer{
     height: 20%;
   }
 
-  .info {
-    height: 6%;
+  .headerWrapper {
+    height: 15%;
   }
 
-  .Txt{
-    font-size: 2.5vh;
+  .centeredBlock{
+    height: 65%;
+    overflow: scroll;
   }
 
-  .Fr_Window {
-    height: 80%;
+  .footerItemImgWrapper {
+    height: 10vh;
+  }
+
+  .footerItems {
+    justify-content: space-around;
+  }
+
+  .footerItemLabel {
+    font-size: 4vh;
+  }
+
+  .userName {
+    font-size: 5vh;
+    margin-left: 10vh;
+  }
+  .userAvatarWrapper {
+    height: 10vh;
+    margin-right: 10vh;
   }
   
-  .Tasks{
-    height: 0;
-  }
-
-  .Reward{
-    height: 3vh;
-  }
-
-  .Skroll_Menu_Border{
-    height: 24vh;
-  }
-
-  .nft-promo{
-    height: 24vh;
-  }
-
-  .Menu{
-    display: flex;
-    align-items: center;
-    justify-content: start;
-  }
-
-  .nft-buttons {
-    width: 100%;
-    height: 50%;
-  }
-}
-
-@media screen and (max-width: 350px) {
-  .nft-text p {
-    font-size: 1.4vh;
-  }
-
-  .nft-text h2 {
-    font-size: 2vh;
-  }
+  
 }

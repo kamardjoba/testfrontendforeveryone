@@ -1,149 +1,108 @@
-.Lb_Window {
-    width: 100%;
-    height: 90%;
-    position: fixed;
+.leaderboardContainer {
+    width: 90%;
+    height: calc(100% - 5vh);
     display: flex;
-    align-items: center;
     flex-direction: column;
-    top: 0;
-    color: white;
-    background: #000000;
-    z-index: 1003;
-    overflow: scroll;
-    animation: fade-in 0.3s forwards;
-    overflow: scroll;
-}
-@media (orientation: landscape) {
-    .Lb_Window {
-      height: 80%;
-    }
-
-    .Lb_Text p{
-        font-size: 2vh;
-    }
-  }
-
-.Lb_Window.fade-out {
-    animation: fade-out 0.3s forwards;
+    margin: 5vh auto 0 auto;
 }
 
-
-.lb_Info{
-    height: 15%;
-    width: 100%;
+.blueContainer {
+    background-color: rgba(164, 210, 255, 1);
+    padding: 1.2vh 1.2vh 1.2vh 1.2vh;
+    border-radius: 1.5vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4.5vh;
+    gap: 1.5vh;
+    position: relative;
 }
 
-.Lb_Menu{
-    width: 88%;
-    height: 85%;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    flex-direction: column;
+.blueContainerItem {
+    padding: 1vh;
+    background-color: rgba(239, 238, 244, 1);
+    border-radius: 1.5vh;
+    width: 50%;
+}
+  
+.blueContainerItemTitle {
+    color: rgba(0, 86, 131, 1);
+    font-size: 2.5vh;
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
 }
 
-.Lb_inside{
-    background: rgba(208, 108, 36, 55% );
-    width: 100%;
-    height: 9vh;
+.blueContainerItemSubtitle {
+    font-size: 2vh;
+    font-weight: 400;
+    color: rgba(0, 61, 93, 1);
+    padding: 0;
+    margin: 0;
+}
+
+.leaderboardScroll {
+    overflow-y: scroll;
+}
+
+.whiteContainerLeaderboard {
+    padding: 2vh 1vh 2vh 1vh;
+    border-radius: 3vh;
+    background-color: rgba(255, 255, 255, 1);
+    margin-top: 2vh;
+    max-height: 75%;
+}
+
+.whiteContainerContent {
+    list-style-type: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.leaderboardItem {
     display: flex;
     justify-content: space-between;
+    padding: 1vh 2vh 1vh 2vh;
     align-items: center;
-    margin-top: 3vh;
-    border-radius: 2vh ;
 }
 
-.LbPhoto{
-    height: 100%;
+.leaderboardItemLeft {
     display: flex;
-    align-items: center;
-    justify-content: start;
-}
-
-.LbPhoto p{
-    font-size: 1.8vh;
-    margin-right: 2vh;
-}
-
-#number{margin: 2vh;}
-
-#LbColor{
-    color: rgba(255, 255, 255, 65% );
-    margin-top: 1vh;
-    display: inline-block;
-    font-size: 1.9vh;
-}
-
-.LbBorder{
-    background: #1A1A1A;
-    border-radius: 2vh;
-    width: 100%;
-    height: 20%;
-    display: flex;
+    gap: 1vh;
     flex-direction: row;
-    align-items: start;
+    align-items: center;
 }
 
-.Lb_Logo{
-    height: 100%;
-    width: 30%;
+.leaderboardAvatarImg{
+    height: 4vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 1.5vh;
-}
-.Lb_Logo img{
-    height:  70%;
 }
 
-.Lb_Text{
-    width: 70%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    font-size: 2.6vw;
+.leaderboardTitle {
+    font-size: 2vh;
+    text-align: start;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
 }
 
-.Lb_Liders{
-    width: 100%;
-    height: 8%;
-    display: flex;
-    align-items: end;
-    justify-content: start;
-    font-size: 2.2vh;
-    margin-bottom: 0.5vh;
-}
-
-.Lb_list{
-    width: 100%;
-    height: 56%;
+.leaderboardSubtitle {
+    font-weight: 400;
+    font-size: 1.2vh;
+    padding: 0;
+    margin: 0;
     display: flex;
     align-items: center;
-    flex-direction: column;
+}
+.leaderboardSubtitle img{
+    height: 1.5vh;
 }
 
-.Lb_Lider{
-    width: 100%;
-    height: 8vh;
+.leaderboardItemRight {
+    margin: 0;
+    padding: 0;
+    font-size: 2vh;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
-
-#medal img {
-    height: 35%;
-}
-
-.NameLb{
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    flex-direction: column;
-    flex: 1;
-}
+  
