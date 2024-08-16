@@ -387,16 +387,6 @@ button{
   border: none;
   font-size: 1.5vh;
   border-radius: 1vh;
-  
-}
-
-.referral-button {
-  width: 90%; 
-  height: 40%;
-  border: none;
-  font-size: 1.5vh;
-  border-radius: 1vh;
-  
 }
 
 .referral-button {
@@ -512,65 +502,4 @@ button{
   .nft-text h2 {
     font-size: 2vh;
   }
-}
-
-.custom-tonconnect-button{
-  background-color:#067CFB;
-  color: white;
-  margin-bottom: 1vh;
-}
-
-
-button[data-tc-connect-button="true"] {
-  display: flex;
-  justify-content: center;
-  align-items: center;     
-  text-align: center;      
-  width: 140%;            
-  padding: 20px 20px;      
-  border-radius: 8px;     
-  max-width: none;  
-}
-
-button[data-tc-dropdown-button="true"] {
-  background-color: #000000; /* Изменение цвета фона */
-  border: 2px solid #E46E19;
-  color: rgba(0, 0, 0, 0.688); /* Изменение цвета текста */
-  padding: 1px 20px; /* Изменение отступов */
-  border-radius: 12px; /* Изменение радиуса углов */
-  font-size: 16px; /* Изменение размера шрифта */
-  width: 140%; /* Устанавливаем ширину больше 100% */
-  max-width: none; /* Убираем ограничение по максимальной ширине */
-  margin: 0 auto; /* Центрируем кнопку */
-  display: block; /* Делаем элемент блочным */
-  box-sizing: border-box; /* Учитываем отступы и границы в ширине */
-}
-
-.mint-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.friends-count {
-  font-size: 1.8vh;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-}
-
-.friends-count img {
-  margin-left: 0.5vh;
-  height: 2vh;
-}
-
-.mint-button {
-  background-color: #E46E19;
-  color: white;
-  width: 50%; 
-  height: 4vh;
-  border: none;
-  border-radius: 1vh;
-  font-size: 1.8vh;
 }

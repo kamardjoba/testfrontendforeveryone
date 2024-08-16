@@ -1,10 +1,6 @@
-// eslint-disable-next-line
-
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import '../Css/App.css';
 import axios from 'axios';
-import { TonConnectUIProvider, TonConnectButton} from '@tonconnect/ui-react';
-import { useTonConnectUI } from '@tonconnect/ui-react';
 
 import Friends from './Friends';
 import Leaderboard from './Leaderboard';
@@ -36,12 +32,11 @@ import Octo from '../IMG/All_Logo/Octo.png';
 import invite from '../IMG/All_Logo/Invite_png.png';
 import Join from '../IMG/All_Logo/Join.png';
 import Nft from '../IMG/Nft_ref/Nft_ref.png'
-//import Checknft from '../IMG/Nft_ref_check/chech.png'
-import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png'
+import Checknft from '../IMG/Nft_ref_check/chech.png'
+
 
 const REACT_APP_BACKEND_URL = 'https://testforeveryoneback-production.up.railway.app';
 const userId = new URLSearchParams(window.location.search).get('userId');
-
 
 function App() {
   if (!localStorage.getItem('Galka')) {localStorage.setItem('Galka', 'false');}
@@ -81,7 +76,7 @@ function App() {
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [telegramLink, setTelegramLink] = useState('');
-  //const [ setShowNotCompleted] = useState(false);
+  const [showNotCompleted, setShowNotCompleted] = useState(false);
 
   const coinmain = coins - referralCoins;
 
@@ -102,48 +97,7 @@ function App() {
   const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
 
-  //const [ setButtonVisible] = useState(true);
- 
-  useEffect(() => {
-    if (window.TON_CONNECT_UI) {
-        const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
-            manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json',
-            buttonRootId: 'custom-tonconnect-button'
-        });
-
-        tonConnectUI.onStatusChange((walletInfo) => {
-            if (walletInfo) {
-                console.log('Кошелек подключен!', walletInfo);
-            } else {
-                console.log('Кошелек отключен!');
-            }
-        });
-    }
-}, []);
-
-const [tonConnectUI] = useTonConnectUI();
-
-const sendTransaction = async () => {
-  const transaction = {
-    validUntil: Math.floor(Date.now() / 1000) + 600, // Время действия транзакции (например, 10 минут)
-    messages: [
-      {
-        address: "UQC-ZK_dPpZ15VaL-kwyXT1jTCYDTQricz8RxvXT0VmdbRYG", // Проверь правильность адреса
-        amount: "100000000", // Пример в наносекундах (1 TON)
-      },
-    ],
-  };
-
-  try {
-    await tonConnectUI.sendTransaction(transaction);
-    alert("Transaction sent successfully!");
-  } catch (error) {
-    console.error("Error sending transaction:", error);
-    alert("Failed to send transaction.");
-  }
-};
-
-if(subscriptionCoins > 0){
+  if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
   }
 
@@ -170,7 +124,6 @@ if(subscriptionCoins > 0){
       });
     };
 
-    
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
     blockRefs.forEach(ref => {
@@ -187,9 +140,6 @@ if(subscriptionCoins > 0){
       });
     };
   }, );
-
-
-
 
   function handleHomeWithVibration() {
     handleHome();
@@ -292,7 +242,6 @@ if(subscriptionCoins > 0){
         setCoins(data.coins);
         setReferralCoins(data.referralCoins);
         setHasTelegramPremium(data.hasTelegramPremium);
-
   
         const accountCreationDate = new Date(data.accountCreationDate);
         const currentYear = new Date().getFullYear();
@@ -359,24 +308,13 @@ if(subscriptionCoins > 0){
     }
   }, [hasTelegramPremium, referralCoins]);
   
-// const handleCheckReferrals = () => {
-//     axios.post(`${REACT_APP_BACKEND_URL}/get-referral-count`, { userId })
-//       .then(response => {
-//         const referralCount = response.data.referralCount;
-
-//         if (referralCount >= 1) {
-//           setButtonVisible(false); // Меняем кнопку на "Mint NFT"
-//         } else {
-//           setShowNotCompleted(true);
-//           setTimeout(() => {
-//             setShowNotCompleted(false);
-//           }, 5000);
-//         }
-//       })
-//       .catch(error => {
-//         console.error('Ошибка при проверке рефералов:', error);
-//       });
-//   };
+  const handleCheckReferrals = () => {
+    setShowNotCompleted(true);
+    setTimeout(() => {
+      setShowNotCompleted(false);
+    }, 5000);
+  };
+  
 
   const checkSubscriptionAndUpdate = async (userId) => {
     try {
@@ -524,7 +462,6 @@ if(subscriptionCoins > 0){
       checkSubscriptionAndUpdate(userId);
     }, 3000);
   };
-  
 
   useEffect(() => {
     if (window.Telegram.WebApp) {
@@ -570,11 +507,9 @@ if(subscriptionCoins > 0){
     }
     return color;
   }, []);
-
+  
   return (
-    <TonConnectUIProvider manifestUrl="https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json">
     <div className="App">
-
       {app && <div className='blk'></div>}
       <div className="info">
         <img src={Logo} alt='Logo' />
@@ -597,17 +532,13 @@ if(subscriptionCoins > 0){
             <p>Invite 15 friends, Connect Wallet <br/>and receive unique OCTIES NFT</p>
             <div className='nft-buttons'>
              
-           
-     
-        <div className="mint-section">
-          <p className="friends-count">15 friends <img src={ChecknftDone} alt="Checkmark" /></p>
-          <button className="mint-button" onClick={sendTransaction}>
-            Mint
-          </button>
-        </div>
-     
-              <TonConnectButton  />
+              <button className='referral-button' onClick={handleCheckReferrals}>Check referrals</button>
+              {showNotCompleted && (<span className="not-completed">
+                <img src={Checknft} alt="Not completed" />Not completed
+              </span>
+              )}
              
+              <button className='wallet-button'>Connect Wallet</button>
             </div>
           </div>
           <div className='nft-image'>
@@ -794,7 +725,6 @@ if(subscriptionCoins > 0){
       {isFrendsOpen && (<Friends FriendsAnim={FriendsAnim} invite={invite} referralCode={referralCode} telegramLink={telegramLink} getRandomColor={getRandomColor} />)}
 
     </div>
-     </TonConnectUIProvider>
   );
 }
 
