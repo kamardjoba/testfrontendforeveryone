@@ -1,0 +1,146 @@
+.Task_Border{
+    width: 100%;
+    height: 70%;
+    position: fixed;
+    border-radius: 2vh 2vh 0 0;
+    box-shadow: 0 -2px 0 #C0987C;
+    background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(26,26,26,0.8) 65%, rgba(106,55,18,0.8) 100%);
+    backdrop-filter: blur(2px);
+    bottom: 0;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    text-align: center;
+}
+
+.NFtBlock1{
+    width: 100%;
+    height: 100%;
+}
+
+.NFTzg{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    font-size: 3vh;
+}
+
+.NFTdescr{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.NFTcards{
+    width: 100%;
+    height: 60%;
+    border-radius: 3vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.NFTcard{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: end;
+}
+
+.NFTcard img{
+    max-width: 20vh;
+}
+
+#Nftinfo{
+    justify-content: center;
+}
+
+#Nftinfo img{
+    max-width: 18vh;
+}
+
+.card1{
+    height: 33%;
+}
+
+.NFTBTN{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.NFTBTN img {
+    height: 80%;
+}
+
+#BAckNFT{
+    position: absolute;
+    top: 2vh;
+    right: 2vh;
+}
+#BAckNFT img{height: 3vh;}
+
+#StrNFT{
+    position: absolute;
+    top: 2vh;
+    left: 2vh;
+}
+#StrNFT img{height: 3vh;}
+
+#NFTNEXT{
+    width: 90%;
+    height: 70%;
+    border-radius: 2vh;
+    background: #D06C24;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#NFTtg{
+    width: 90%;
+    height: 70%;
+    border-radius: 2vh;
+    background: #067CFB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.2vh;
+}
+
+#NFTNEXT img{
+    height: 35%;
+}
+
+.Task_Border {
+    animation: slide-up 0.2s ease-out;
+}
+  
+.Task_Border.closing {
+    animation: slide-down 0.2s ease-in;
+}
+
+@keyframes slide-down {
+    from {transform: translateY(0);}
+    to   {transform: translateY(100%);}
+}
+@keyframes slide-up {
+    from {transform: translateY(100%);}
+    to   {transform: translateY(0);}
+}
+
+@media (orientation: landscape) {
+    #Nftinfo{
+      justify-content: start;
+      margin-left: 3vh;
+    }
+}

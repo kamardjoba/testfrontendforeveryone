@@ -1,6 +1,10 @@
+// eslint-disable-next-line
+
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import '../Css/App.css';
 import axios from 'axios';
+import { TonConnectUIProvider, TonConnectButton} from '@tonconnect/ui-react';
+import { useTonConnectUI } from '@tonconnect/ui-react';
 
 import Friends from './Friends';
 import Leaderboard from './Leaderboard';
@@ -14,13 +18,14 @@ import TS2 from '../IMG/TaskIcon/TS2.png';
 import TS3 from '../IMG/TaskIcon/TS3.png';
 import TS4 from '../IMG/TaskIcon/TS4.png';
 import TSX from '../IMG/TaskIcon/TSX.png';
+import TSNFT from '../IMG/TaskIcon/TS_NFT.png';
+import TSnick from '../IMG/TaskIcon/TS_nick.png';
 import galo4ka from '../IMG/All_Logo/galol4ka.png';
 import Ellipse from '../IMG/All_Logo/Ellipse.png';
 
 import tgLogo from '../IMG/All_Logo/TgComunity.png';
 import XLogo from '../IMG/All_Logo/XCominity.png';
-import Block1 from '../IMG/All_Logo/Block1.png';
-import Block2 from '../IMG/All_Logo/Block2.png';
+import NickLogo from '../IMG/All_Logo/nick.png';
 
 import IconHome from '../IMG/LowerIcon/Home.png';
 import IconLeaderboard from '../IMG/LowerIcon/Leaderboard.png';
@@ -31,9 +36,10 @@ import Play from '../IMG/All_Logo/Play.png';
 import Octo from '../IMG/All_Logo/Octo.png';
 import invite from '../IMG/All_Logo/Invite_png.png';
 import Join from '../IMG/All_Logo/Join.png';
-import Nft from '../IMG/Nft_ref/Nft_ref.png'
-import Checknft from '../IMG/Nft_ref_check/chech.png'
-
+import Nft from '../IMG/Nft_ref/Nft_ref.png';
+import Checknft from '../IMG/Nft_ref_check/chech.png';
+import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png';
+import NFTm from '../IMG/All_Logo/NFTmint.png';
 
 const REACT_APP_BACKEND_URL = 'https://testforeveryoneback-production.up.railway.app';
 const userId = new URLSearchParams(window.location.search).get('userId');
@@ -52,19 +58,6 @@ function App() {
   const Galo4kaBlock1 = localStorage.getItem('GalkaBlock1') === 'true';
   if (!localStorage.getItem('KnopkaBlock1')) {localStorage.setItem('KnopkaBlock1', 'true');}
   const KnopkaBlock1 = localStorage.getItem('KnopkaBlock1') === 'true';
-  
-  if (!localStorage.getItem('GalkaBlock2')) {localStorage.setItem('GalkaBlock2', 'false');}
-  const Galo4kaBlock2 = localStorage.getItem('GalkaBlock2') === 'true';
-  if (!localStorage.getItem('KnopkaBlock2')) {localStorage.setItem('KnopkaBlock2', 'true');}
-  const KnopkaBlock2 = localStorage.getItem('KnopkaBlock2') === 'true';
-
-  if (!localStorage.getItem('GalkaBlock3')) {localStorage.setItem('GalkaBlock3', 'false');}
-  const Galo4kaBlock3 = localStorage.getItem('GalkaBlock3') === 'true';
-  if (!localStorage.getItem('KnopkaBlock3')) {localStorage.setItem('KnopkaBlock3', 'true');}
-  const KnopkaBlock3 = localStorage.getItem('KnopkaBlock3') === 'true';
-
-  if (!localStorage.getItem('Sub')) {localStorage.setItem('Sub', 'false');}
-  const Sub = localStorage.getItem('Sub') === 'true';
 
   const [coinOnlyYears, setcoinOnlyYears] = useState(0);
   const [VisibleInvite, setVisibleInvite] = useState(false);
@@ -76,7 +69,6 @@ function App() {
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [telegramLink, setTelegramLink] = useState('');
-  const [showNotCompleted, setShowNotCompleted] = useState(false);
 
   const coinmain = coins - referralCoins;
 
@@ -93,16 +85,62 @@ function App() {
   const [app, setApp] = useState(false);
   const TG_CHANNEL_LINK = "https://t.me/octies_channel";
   const TG_CHANNEL_LINK2 = "https://t.me/test_sub_check2";
-  const TG_CHANNEL_LINK3 = "https://t.me/test_sub_check";
-  const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
 
-  if(subscriptionCoins > 0){
+  
+  if (!localStorage.getItem('buttonVisibleNFT')) {localStorage.setItem('buttonVisibleNFT', 'true');}
+  const buttonVisible = localStorage.getItem('buttonVisibleNFT') === 'true';
+  const [showNotCompleted, setShowNotCompleted] = useState(false);
+  if (!localStorage.getItem('isMintNFT')) {localStorage.setItem('isMintNFT', 'false');}
+  const isMint = localStorage.getItem('isMintNFT') === 'true';
+ 
+  useEffect(() => {
+    if (window.TON_CONNECT_UI) {
+        const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
+            manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json',
+            buttonRootId: 'TonMainConBtn'
+        });
+
+        tonConnectUI.onStatusChange((walletInfo) => {
+            if (walletInfo) {
+                console.log('Кошелек подключен!', walletInfo);
+            } else {
+                console.log('Кошелек отключен!');
+            }
+        });
+    }
+}, []);
+
+const [tonConnectUI] = useTonConnectUI();
+
+const sendTransaction = async () => {
+  window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+  localStorage.setItem('isMintNFT', 'true');
+  const transaction = {
+    validUntil: Math.floor(Date.now() / 1000) + 600, // Время действия транзакции (например, 10 минут)
+    messages: [
+      {
+        address: "EQB9W5Rpd4Cg4cAUV9YBZTrYiT5Kua8Ik1xfT5nMP-EOIG_w", // Проверь правильность адреса
+        amount: "50000000", // Пример в наносекундах (1 TON)
+      },
+    ],
+  };
+
+  try {
+    await tonConnectUI.sendTransaction(transaction);
+    alert("Transaction sent successfully!");
+  } catch (error) {
+    console.error("Error sending transaction:", error);
+    alert("Failed to send transaction.");
+  }
+};
+
+if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
   }
 
-  const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
-  const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false]);
+  const blockRefs = [useRef(null), useRef(null), useRef(null)];
+  const [blockVisibility, setBlockVisibility] = useState([false, false, false]);
 
   useEffect(() => {
     const observerOptions = {
@@ -169,39 +207,13 @@ function App() {
         const data = response.data;
         setCoins(data.coins);
         setSubscriptionCoins(data.coinsSub);
+
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
           localStorage.setItem('Knopka', 'false');
-
         } else {
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
-
-        }
-
-        if (data.hasCheckedSubscription2) {
-          localStorage.setItem('GalkaBlock1', 'true');
-          localStorage.setItem('KnopkaBlock1', 'false');        
-        } else {
-          localStorage.setItem('GalkaBlock1', 'false');
-          localStorage.setItem('KnopkaBlock1', 'true');      
-        }
-
-        if (data.hasCheckedSubscription3) {
-          localStorage.setItem('GalkaBlock2', 'true');
-          localStorage.setItem('KnopkaBlock2', 'false');          
-
-        } else {
-          localStorage.setItem('GalkaBlock2', 'false');
-          localStorage.setItem('KnopkaBlock2', 'true');     
-        }
-
-        if (data.hasCheckedSubscription4) {
-          localStorage.setItem('GalkaBlock3', 'true');
-          localStorage.setItem('KnopkaBlock3', 'false');          
-        } else {
-          localStorage.setItem('GalkaBlock3', 'false');
-          localStorage.setItem('KnopkaBlock3', 'true');     
         }
         
       } else {
@@ -242,6 +254,7 @@ function App() {
         setCoins(data.coins);
         setReferralCoins(data.referralCoins);
         setHasTelegramPremium(data.hasTelegramPremium);
+
   
         const accountCreationDate = new Date(data.accountCreationDate);
         const currentYear = new Date().getFullYear();
@@ -264,30 +277,6 @@ function App() {
         } else {
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
-
-        }
-        if (data.hasCheckedSubscription2) {
-          localStorage.setItem('GalkaBlock1', 'true');
-          localStorage.setItem('KnopkaBlock1', 'false');        
-        } else {
-          localStorage.setItem('GalkaBlock1', 'false');
-          localStorage.setItem('KnopkaBlock1', 'true');       
-        }
-
-        if (data.hasCheckedSubscription3) {
-          localStorage.setItem('GalkaBlock2', 'true');
-          localStorage.setItem('KnopkaBlock2', 'false');          
-        } else {
-          localStorage.setItem('GalkaBlock2', 'false');
-          localStorage.setItem('KnopkaBlock2', 'true');    
-        }
-
-        if (data.hasCheckedSubscription4) {
-          localStorage.setItem('GalkaBlock3', 'true');
-          localStorage.setItem('KnopkaBlock3', 'false');         
-        } else {
-          localStorage.setItem('GalkaBlock3', 'false');
-          localStorage.setItem('KnopkaBlock3', 'true');    
         }
   
         setAccountAgeCoins(accountAgeCoins);
@@ -308,13 +297,26 @@ function App() {
     }
   }, [hasTelegramPremium, referralCoins]);
   
-  const handleCheckReferrals = () => {
-    setShowNotCompleted(true);
-    setTimeout(() => {
-      setShowNotCompleted(false);
-    }, 5000);
+const handleCheckReferrals = () => {
+    axios.post(`${REACT_APP_BACKEND_URL}/get-referral-count`, { userId })
+      .then(response => {
+        const referralCount = response.data.referralCount;
+
+        if (referralCount >= 0) {
+          localStorage.setItem('buttonVisibleNFT', 'false'); // Меняем кнопку на "Mint NFT"
+          window.Telegram.WebApp.HapticFeedback.notificationOccurred('success');
+        } else {
+          setShowNotCompleted(true);
+          window.Telegram.WebApp.HapticFeedback.notificationOccurred('error');
+          setTimeout(() => {
+            setShowNotCompleted(false);
+          }, 5000);
+        }
+      })
+      .catch(error => {
+        console.error('Ошибка при проверке рефералов:', error);
+      });
   };
-  
 
   const checkSubscriptionAndUpdate = async (userId) => {
     try {
@@ -324,8 +326,6 @@ function App() {
         setCoins(data.coins);
         setSubscriptionCoins(data.coinsSub);
         
-       
-
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
           localStorage.setItem('Knopka', 'false');
@@ -333,31 +333,6 @@ function App() {
         } else {
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
-
-        }
-
-        if (data.hasCheckedSubscription2) {
-          localStorage.setItem('GalkaBlock1', 'true');
-          localStorage.setItem('KnopkaBlock1', 'false');       
-        } else {
-          localStorage.setItem('GalkaBlock1', 'false');
-          localStorage.setItem('KnopkaBlock1', 'true');      
-        }
-
-        if (data.hasCheckedSubscription3) {
-          localStorage.setItem('GalkaBlock2', 'true');
-          localStorage.setItem('KnopkaBlock2', 'false');           
-        } else {
-          localStorage.setItem('GalkaBlock2', 'false');
-          localStorage.setItem('KnopkaBlock2', 'true');   
-        }
-
-        if (data.hasCheckedSubscription4) {
-          localStorage.setItem('GalkaBlock3', 'true');
-          localStorage.setItem('KnopkaBlock3', 'false');         
-        } else {
-          localStorage.setItem('GalkaBlock3', 'false');
-          localStorage.setItem('KnopkaBlock3', 'true');    
         }
         
       } else {
@@ -433,27 +408,6 @@ function App() {
     }, 3000);
   };
 
-  const Tg_Channel_Open_chek3 = () => {
-    const userId = new URLSearchParams(window.location.search).get('userId');
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    window.open(TG_CHANNEL_LINK3, '_blank');
-    setTimeout(() => {
-      checkSubscriptionAndUpdate(userId);
-    }, 3000);
-  };
-
-
-  const Tg_Channel_Open_chek4 = () => {
-    const userId = new URLSearchParams(window.location.search).get('userId');
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    window.open(TG_CHANNEL_LINK4, '_blank');
-    setTimeout(() => {
-      checkSubscriptionAndUpdate(userId);
-    }, 3000);
-  };
-
-
-
   const Tg_Channel_Open_chek = () => {
     const userId = new URLSearchParams(window.location.search).get('userId');
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
@@ -507,9 +461,11 @@ function App() {
     }
     return color;
   }, []);
-  
+
   return (
+    <TonConnectUIProvider manifestUrl="https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json">
     <div className="App">
+
       {app && <div className='blk'></div>}
       <div className="info">
         <img src={Logo} alt='Logo' />
@@ -518,33 +474,49 @@ function App() {
           <p>Your Score</p>
         </div>
       </div>
-      <div className="main" onClick={(event) => {  localStorage.clear(); }}>
-        <img src={Octo} alt='Octo' />
-      </div>
-      <div className='MainCoin'>
+      {!isMint && <div className="main">
+        <img src={Octo} alt='Octo' onClick={(event) => {localStorage.clear(); }} />
+      </div>}
+      {!isMint &&<div className='MainCoin'>
         <p>{coins} $OCTIES</p>
-      </div>
+      </div>}
+      {isMint &&<div className='MintCoin'>
+        <img src={NFTm} alt='NFTm'  onClick={(event) => {localStorage.clear(); }} />
+        <p id='endtxt'> {coins} <span id='highlight'>1999 </span> $OCTIES </p>
+      </div>}
+
       <div className='Menu'>
       
-        <div className='nft-promo'>
+      {!isMint && <div className='nft-promo'>
           <div className='nft-text'>
-            <h2>GET YOUR <span className='highlight'>FREE</span> NFT!</h2>
+            <h2>GET YOUR <span id='highlight'>FREE</span> NFT!</h2>
             <p>Invite 15 friends, Connect Wallet <br/>and receive unique OCTIES NFT</p>
             <div className='nft-buttons'>
-             
-              <button className='referral-button' onClick={handleCheckReferrals}>Check referrals</button>
-              {showNotCompleted && (<span className="not-completed">
-                <img src={Checknft} alt="Not completed" />Not completed
-              </span>
-              )}
-             
-              <button className='wallet-button'>Connect Wallet</button>
+              {buttonVisible ? (
+                <div className="mint-section">
+                  <button className="referral-button" onClick={handleCheckReferrals}> Check referrals</button>
+                  {showNotCompleted && (
+                  <p id="not-completed">
+                    <img src={Checknft} alt="Not completed" />Not completed
+                  </p>)}
+                </div>
+              ) : (
+                <div className="mint-section">
+                  <p id="friends-count">15 friends <img src={ChecknftDone} alt="Checkmark" /></p>  
+                  <button className="mint-button" onClick={sendTransaction}>Mint</button>
+                </div>)}
+              <div className="ton-con">
+                <div className='feikton'>
+                  <TonConnectButton/>
+                </div>
+              </div>
             </div>
           </div>
           <div className='nft-image'>
-            <img src={Nft} alt='OCTIES NFT' />
+            <img src={Nft} alt='OCTIES NFT' /> 
           </div>
-        </div>
+        </div>}
+
 
         <div className='Skroll_Menu_Border'>
           <div className='MenuBorder' ref={blockRefs[0]}>
@@ -582,51 +554,21 @@ function App() {
           </div>
 
           <div className='MenuBorder' ref={blockRefs[2]}>
-            <div className='flex_menu_border'  id='Cryptospace'>
+            <div className='flex_menu_border'>
               <div className='rightFlex'>
-                <p id='up'>Тапаем <span class="emoji">🐹</span></p>
-                <p id='dp'>Потыкать и стать миллионером!</p>
+                <p id='upp'>OCTIES NICKNAME</p>
+                <p id='dpp'>Add the word “Octies” to <br/>your nickname.</p>
+                
                 <div className='MenuBtn'>
                   {KnopkaBlock1 && <img onClick={Tg_Channel_Open_chek2} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock1 && <p id="plus">+</p>}750 $OCTIES</p>
+                  <p> {KnopkaBlock1 && <p id="plus">+</p>}1000 $OCTIES</p>
                   {Galo4kaBlock1 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
-              <div className='leftFlex'>
-                <img src={Block1} alt='Block1'/>
+              <div className='leftFlex' id='nick'>
+                <img src={NickLogo} alt='NickLogo'/>
               </div>
              </div> 
-          </div>
-
-          <div className='MenuBorder' ref={blockRefs[3]}>
-            <div className='flex_menu_border'  id='Cryptospace'>
-              <div className='rightFlex'>
-                <p id='upp'>Hamster TapSwap Uzbekistan</p>
-                <p id='dpp'>Bu kanalda siz TapSwap va Hamster <p> Kombat Tezkor Yangiliklarni bilib olasiz</p></p>
-                <div className='MenuBtn'>
-                  {KnopkaBlock2 && <img onClick={Tg_Channel_Open_chek3} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock2 && <p id="plus">+</p>}750 $OCTIES</p>
-                  {Galo4kaBlock2 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
-                </div>
-              </div>
-              <div className='leftFlex'>
-                <img src={Block2} alt='Block2'/>
-              </div>
-            </div>  
-          </div>
-
-          <div className='MenuBorder' ref={blockRefs[4]} >
-            <div className='flex_menu_border' id='Cryptospace'>
-              <div className='rightFlex'>
-                <p id='up'>Block3</p>
-                <p id='dp'>Description Block3</p>
-                <div className='MenuBtn'>
-                  {KnopkaBlock3 && <img onClick={Tg_Channel_Open_chek4} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock3 && <p id="plus">+</p>}50 $OCTIES</p>
-                  {Galo4kaBlock3 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
-                </div>
-              </div>
-            </div>  
           </div>
 
         </div>
@@ -635,12 +577,20 @@ function App() {
             <img src={Ellipse} alt='Ellips' className={blockVisibility[0] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[1] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[2] ? '' : 'img-dark'} />
-            <img src={Ellipse} alt='Ellips' className={blockVisibility[3] ? '' : 'img-dark'} />
-            <img src={Ellipse} alt='Ellips' className={blockVisibility[4] ? '' : 'img-dark'} />
           </div>
           <p>Your Rewards</p>
         </div>
-        <div className='Tasks'>
+        <div className='Tasks' id={isMint ? 'TaskswithoutNft' : undefined}>
+
+        {isMint && <div className='TS'>
+            <div className='tsPhoto'>
+              <img src={TSNFT} alt='TSNFT' /> <p id='txt'>OCTIES NFT</p>
+            </div>
+            <div className='tsPhoto'>
+              <p id='highlight' >+1 NFT</p>
+            </div>
+          </div>}
+
           <div className='TS'>
             <div className='tsPhoto'>
               <img src={TS1} alt='TS1' /> <p id='txt'>Account age</p>
@@ -668,15 +618,14 @@ function App() {
             </div>
           </div>}
 
-          {Sub && <div className='TS'>
+          <div className='TS'>
             <div className='tsPhoto'>
-              <img src={TS3} alt='TS3' /> <p id='txt'>Channel Subscriptions</p>
+              <img src={TSnick} alt='TS3' /> <p id='txt'>Add "Octies" to nickname</p>
             </div>
             <div className='tsPhoto'>
-              <p>+{subscriptionCoins} $OCTIES</p>
+              <p>+ 1000 $OCTIES</p>
             </div>
-          </div>}
-
+          </div>
 
           {Galo4kaX && <div className='TS'>
           <div className='tsPhoto'>
@@ -725,6 +674,7 @@ function App() {
       {isFrendsOpen && (<Friends FriendsAnim={FriendsAnim} invite={invite} referralCode={referralCode} telegramLink={telegramLink} getRandomColor={getRandomColor} />)}
 
     </div>
+     </TonConnectUIProvider>
   );
 }
 

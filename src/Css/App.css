@@ -18,6 +18,7 @@ body {
 button{
   font-family: Muller;
 }
+
 .App {
   margin: 0;
   width: 100%;
@@ -38,7 +39,7 @@ button{
 
 .info {
   width: 100%;
-  height: 7%;
+  height: 6%;
   position: relative;
   display: flex;
   align-items: center;
@@ -72,23 +73,51 @@ button{
 
 .main {
   width: 100%;
-  height: 20%;
+  height: calc(20% - 2vh);
   display: flex;
   align-items: center;
   justify-content: center;  
 }
 .main img{height: 70%;}
 
+.MintCoin{
+  height: 24%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+#halfMinttx{
+  justify-content: center;
+}
+
+.MintCoin img{
+  height: 70%;
+}
+
+.MintCoin p{
+  font-size: 5vh;
+}
+
+#endtxt{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+}
+
 .MainCoin{
-  height: 3%;
+  height: 4%;
+  margin-bottom: 2vh;
   width: 100%;
   font-size: 4vh;
 }
 
 .Menu {
-  height: 60%;
+  height:60% ;
   width: 100%;
-  margin-top: 2vh;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -96,14 +125,14 @@ button{
 }
 
 .Reward {
-  height: 10%;
+  height: 8%;
   width: 90%;
   display: flex;
   align-items: end;
   justify-content: start;
   font-size: 2.1vh;
   font-weight: bold;
-  position: relative; 
+  position: relative;
 }
 
 .EllipsSkroll {
@@ -117,6 +146,16 @@ button{
   height: 1vh;
   margin-right: 0.3vh;
   margin-left: 0.3vh;
+}
+
+.Skroll_Menu_Border{
+  width: 90%;
+  height: 23%;
+  overflow-y: hidden;
+  white-space: nowrap;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 
 .MenuBorder{
@@ -153,38 +192,37 @@ button{
 }
 
 .leftFlex img{
-  height: 65%;
+  height: 60%;
   padding-right: 1.7vh;
   padding-top: 1.8vh;
 }
 
-#Cryptospace{
-  background: rgba(208, 108, 36, 0.5);
-}
-
-.Skroll_Menu_Border{
-  width: 90%;
-  height: 30%;
-  overflow-y: hidden;
-  white-space: nowrap;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+#nick img {
+  height: 100%;
+  padding: 0;
+  border-radius: 2vh;
 }
 
 .MenuBorder p{margin-left: 1.7vh;}
-#up{margin-top: 1.8vh; font-size: 2.1vh; position: relative; }
-#dp{margin-bottom: 0.8vh; font-size: 1.8vh;}
-#dpp {margin-bottom: 0.5vh; font-size: 1.5vh; margin-left: 0;}
-#upp{margin-top: 2vh; font-size: 2.1vh; }
-
-.emoji {
-  position: absolute;
-  bottom: 0;
+#up{margin-top: 1.8vh; font-size: 2vh; position: relative; }
+#dp {
+  margin-bottom: 0.8vh;
+  font-size: 1.6vh;
+  text-align: left;
+  height: 2.5vh; /* фиксированная высота блока */
+  display: flex;
+  align-items: center;
 }
 
-.emojii {
-  margin-left: 1vh;
+#upp{margin-top: 2vh; font-size: 2vh; position: relative; }
+#dpp {
+  margin-bottom: 0.6vh;
+  margin-top: 0.6vh;
+  font-size: 1.6vh;
+  text-align: left;
+  height: 2.5vh; /* фиксированная высота блока */
+  display: flex;
+  align-items: center;
 }
 
 .MenuBorder button {
@@ -209,11 +247,15 @@ button{
 
 
 .Tasks{
-  height: 35%;
+  height: 34%;
   width: 90%;
   display: flex;
   flex-direction: column;
   font-size: 1.8vh;
+}
+
+#TaskswithoutNft{
+  height: 68%;
 }
 
 .TS{
@@ -320,8 +362,6 @@ button{
   display: inline;
 }
 
-
-
 .img-dark {
   filter: brightness(40%);
 }
@@ -333,7 +373,7 @@ button{
   background-color: #1A1A1A;
   border-radius: 2vh;
   width: 90%;
-  height: 35%;
+  height: calc(35% - 1vh);
   margin-bottom: 1vh;
 }
 
@@ -358,8 +398,8 @@ button{
   white-space: nowrap;
 }
 
-.nft-text .highlight {
-  color: #ff7f00; 
+#highlight {
+  color: #ff7f00 !important; 
 }
 
 .nft-text p {
@@ -370,7 +410,6 @@ button{
   white-space: nowrap;
 }
 
-
 .nft-buttons {
   display: flex;
   flex-direction: column; 
@@ -378,55 +417,107 @@ button{
   align-items: start;
   width: 100%;
   height: 50%;
-  margin-left: 1.7vh;
-}
-
-.referral-button, .wallet-button {
-  width: 90%; 
-  height: 40%;
-  border: none;
-  font-size: 1.5vh;
-  border-radius: 1vh;
 }
 
 .referral-button {
   background-color:  #E46E19;
-  color: white;
-  width: 50%; 
-  align-self: flex-start;
+  color: white; 
+  height: 80%;
+  width: calc(50% - 1.7vh);
+  margin-left: 1.7vh;
+  font-size: 1.7vh;
+  font-family: MullerMedium;
+  border-radius: 1.2vh;
 }
 
-.wallet-button {
-  background-color:#067CFB;
-  color: white;
-  margin-bottom: 1vh;
+#not-completed {
+  color: red;
+  width: calc(50% - 1.7vh - 0.5vh);
+  display: flex;
+  align-items: center;
+  font-size: 1.4vh;
+  animation: fadeOut 5s forwards;
+  margin-left: 1.7vh;
 }
 
+#not-completed img {
+  height: 1.5vh;
+  margin-right: 0.5vh; 
+}
 
 .nft-image img {
   height: 100%;
   border-radius: 2vh;
-  
 }
 
 .nft-image{
   height: 100%;
 }
 
-.not-completed {
-  color: red;
-  align-items: center; 
-  vertical-align: middle; 
-  font-size: 0.95em;
-  animation: fadeOut 5s forwards;
+#friends-count {
+  font-size: 1.8vh;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  margin-left: 2.8vh;
 }
 
+#friends-count img {
+  margin-left: 0.5vh;
+  height: 2.5vh;
+}
 
-.not-completed img {
-  width: 15px; 
-  height: 15px;
-  align-items: center; 
-  vertical-align: middle;
+.mint-button {
+  background-color: #E46E19;
+  color: white;
+  width: 100%; 
+  height: 2.9vh;
+  border-radius: 4vh;
+  font-size: 1.8vh;
+  font-family: MullerMedium;
+  margin-right: 2.8vh;
+  margin-left: 2.8vh;
+}
+
+.mint-section {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.ton-con{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feikton{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  margin-left: 1.7vh;
+  margin-right: 1.7vh;
+  overflow: hidden;
+  border-radius: 1.2vh; 
+}
+
+button[data-tc-connect-button="true"]{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #067CFB;
+  width: 100000px;
+  height: 100000px;
+}
+
+button[data-tc-dropdown-button="true"] {
+  background-color: #000000; 
 }
 
 @media (orientation: landscape) {
@@ -449,12 +540,6 @@ button{
   .info {
     height: 6%;
   }
-
-
-  #up{ font-size: 4.5vh;}
-  #dp{ font-size: 3vh;}
-  #upp{ margin-top: 1.7vh; font-size: 5vh;}
-  #dpp{font-size: 2vh;}
 
   .Txt{
     font-size: 2.5vh;
@@ -494,9 +579,7 @@ button{
 
 @media screen and (max-width: 350px) {
   .nft-text p {
- 
     font-size: 1.4vh;
-
   }
 
   .nft-text h2 {
