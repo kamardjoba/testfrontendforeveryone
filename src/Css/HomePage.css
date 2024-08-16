@@ -46,3 +46,23 @@
     font-size: 3vh;
     margin: 0;
 }
+
+@media (orientation: landscape) {
+
+    .welcomeText {
+        font-size: 5vh;
+    }
+
+    .homepageDescr {
+        font-size: 3vh;
+    }
+
+    .diamondImgHomepage {
+        height: 12vh ;
+    }
+
+    .amount {
+        font-size: 5vh;
+    }
+}
+  

@@ -15,6 +15,19 @@
     position: relative;
 }
 
+.blueContainer::after {
+    content: '';
+    position: absolute;
+    bottom: -1.2vh; 
+    right: -1.2vh;  
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent;
+    border-right: 3vh solid transparent;
+    border-top: 2.5vh solid rgba(164, 210, 255, 1);
+    transform: rotate(50deg); 
+}
+
 .blueContainerItem {
     padding: 1vh;
     background-color: rgba(239, 238, 244, 1);
@@ -27,7 +40,7 @@
     font-size: 2.5vh;
     font-weight: 700;
     padding: 0;
-    margin: 0;
+    margin: 0;   
 }
 
 .blueContainerItemSubtitle {
@@ -48,6 +61,20 @@
     background-color: rgba(255, 255, 255, 1);
     margin-top: 2vh;
     max-height: 75%;
+    position: relative;
+}
+
+.whiteContainerLeaderboard::after {
+    content: '';
+    position: absolute;
+    bottom: -1.2vh; 
+    left: -1.2vh; 
+    width: 0;
+    height: 0;
+    border-left: 3vh solid transparent; 
+    border-right: 0 solid transparent;    
+    border-top: 2.5vh solid #ffffff; 
+    transform: rotate(-50deg); 
 }
 
 .whiteContainerContent {
@@ -104,5 +131,18 @@
     font-size: 2vh;
     display: flex;
     align-items: center;
+}
+
+@media (orientation: landscape) {
+
+    .leaderboardTitle {
+        font-size: 2.5vh;
+    }
+    
+    .leaderboardSubtitle {
+        font-weight: 400;
+        font-size: 2vh;
+    }
+
 }
   

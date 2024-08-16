@@ -2,7 +2,7 @@ import React from 'react';
 import '../Css/Quests.css';
 import MintStart from'../IMG/mint.svg';
 
-const MintStartNft = () => {
+const MintStartNft = ({GoStartNft}) => {
 
   return (
     <div className='questItem'>
@@ -16,7 +16,7 @@ const MintStartNft = () => {
             </div>
         </div>
         <div className='questItemRight'>
-            <button className='questBtn'>Mint</button>
+            <button className='questBtn' onClick={GoStartNft}>Mint</button>
         </div>
     </div>
   );

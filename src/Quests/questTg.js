@@ -2,7 +2,7 @@ import React from 'react';
 import '../Css/Quests.css';
 import telegram from'../IMG/telegram.svg';
 
-const tgQuest = () => {
+const tgQuest = ({GoTg}) => {
 
   return (
     <div className='questItem'>
@@ -16,7 +16,7 @@ const tgQuest = () => {
             </div>
         </div>
         <div className='questItemRight'>
-            <button className='questBtn'>GO!</button>
+            <button className='questBtn' onClick={GoTg}>GO!</button>
         </div>
     </div>
   );

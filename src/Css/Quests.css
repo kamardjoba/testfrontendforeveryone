@@ -13,13 +13,46 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: relative;
 }
+
+.basedtask::after {
+    content: '';
+    position: absolute;
+    bottom: -1.2vh; 
+    left: -1.2vh; 
+    width: 0;
+    height: 0;
+    border-left: 3vh solid transparent; 
+    border-right: 0 solid transparent;    
+    border-top: 2.5vh solid #ffffff; 
+    transform: rotate(-50deg); 
+}
+
 
 #complatedtask{
     background: rgba(164, 210, 255, 1);
+    position: relative;
+    border-radius: 1.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
 }
 
-
+#complatedtask::after {
+    content: '';
+    position: absolute;
+    bottom: -1.2vh; 
+    right: -1.2vh;  
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent; 
+    border-right: 3vh solid transparent;
+    border-top: 2.5vh solid rgba(164, 210, 255, 1); 
+    transform: rotate(50deg); 
+}
 
 
 

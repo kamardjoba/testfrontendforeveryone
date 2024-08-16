@@ -2,7 +2,7 @@ import React from 'react';
 import '../Css/Quests.css';
 import arrows from'../IMG/arrows.svg';
 
-const WeeklyNft = () => {
+const WeeklyNft = ({GoWeekNft}) => {
 
   return (
     <div className='questItem'>
@@ -16,7 +16,7 @@ const WeeklyNft = () => {
             </div>
         </div>
         <div className='questItemRight'>
-            <button className='questBtn'>Mint</button>
+            <button className='questBtn' onClick={GoWeekNft}>Mint</button>
         </div>
     </div>
   );

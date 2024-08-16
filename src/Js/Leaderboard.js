@@ -18,6 +18,7 @@ function Leaderboard(props) {
                     </div>
                 </div>
                 <div className='whiteContainerLeaderboard'>
+                    
                     <ul className='whiteContainerContent leaderboardScroll'>
                            
                         <li className='leaderboardItem'>

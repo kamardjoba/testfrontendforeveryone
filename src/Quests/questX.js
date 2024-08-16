@@ -2,7 +2,7 @@ import React from 'react';
 import '../Css/Quests.css';
 import X from'../IMG/x_chan.svg';
 
-const XQuest = () => {
+const XQuest = ({GoX}) => {
 
   return (
     <div className='questItem'>
@@ -16,7 +16,7 @@ const XQuest = () => {
             </div>
         </div>
         <div className='questItemRight'>
-            <button className='questBtn'>GO!</button>
+            <button className='questBtn' onClick={GoX}>GO!</button>
         </div>
     </div>
   );
