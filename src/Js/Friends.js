@@ -18,7 +18,6 @@ const Friends = ({ FriendsAnim, invite, referralCode, telegramLink, getRandomCol
                 console.error('Ошибка при получении данных о рефералах:', error);
             }
         };
-
         fetchReferredUsers();
     }, [referralCode, getRandomColor]);
 
