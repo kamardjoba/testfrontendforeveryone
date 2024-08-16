@@ -63,7 +63,6 @@ function App() {
         </Routes>
       </div>
 
-      
       <footer className='footer'>
         <ul className='footerItems'>
           <li 
