@@ -521,7 +521,7 @@ button{
 }
 
 
-.button-wc {
+button[data-tc-connect-button="true"] {
   display: flex;
   justify-content: center;
   align-items: center;     
@@ -539,7 +539,7 @@ button[data-tc-dropdown-button="true"] {
   padding: 1px 20px; /* Изменение отступов */
   border-radius: 12px; /* Изменение радиуса углов */
   font-size: 16px; /* Изменение размера шрифта */
-  width: 160%; /* Устанавливаем ширину больше 100% */
+  width: 140%; /* Устанавливаем ширину больше 100% */
   max-width: none; /* Убираем ограничение по максимальной ширине */
   margin: 0 auto; /* Центрируем кнопку */
   display: block; /* Делаем элемент блочным */

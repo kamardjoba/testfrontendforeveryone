@@ -6,8 +6,6 @@ import axios from 'axios';
 import { TonConnectUIProvider, TonConnectButton} from '@tonconnect/ui-react';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 
-
-
 import Friends from './Friends';
 import Leaderboard from './Leaderboard';
 import First from './Firstpage';
@@ -127,10 +125,11 @@ const [tonConnectUI] = useTonConnectUI();
 
 const sendTransaction = async () => {
   const transaction = {
+    validUntil: Math.floor(Date.now() / 1000) + 600, // Время действия транзакции (например, 10 минут)
     messages: [
       {
-        address: "UQC-ZK_dPpZ15VaL-kwyXT1jTCYDTQricz8RxvXT0VmdbRYG",
-        amount: "10000",
+        address: "UQC-ZK_dPpZ15VaL-kwyXT1jTCYDTQricz8RxvXT0VmdbRYG", // Проверь правильность адреса
+        amount: "100000000", // Пример в наносекундах (1 TON)
       },
     ],
   };
@@ -525,6 +524,7 @@ if(subscriptionCoins > 0){
       checkSubscriptionAndUpdate(userId);
     }, 3000);
   };
+  
 
   useEffect(() => {
     if (window.Telegram.WebApp) {
