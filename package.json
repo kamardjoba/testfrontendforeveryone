@@ -1,20 +1,16 @@
 {
-  "name": "test_frontend_for_everyone",
+  "name": "anytap",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@ton/core": "^0.56.3",
-    "@tonconnect/sdk": "^3.0.3",
-    "@tonconnect/ui": "^2.0.6",
-    "@tonconnect/ui-react": "^2.0.6",
-    "axios": "^1.7.2",
+    "axios": "^1.7.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.0",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -40,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "ajv": "^7.2.4"
   }
 }
