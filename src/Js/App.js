@@ -90,6 +90,30 @@ function App() {
   const TG_CHANNEL_LINK = "https://t.me/octies_channel";
   const TG_CHANNEL_LINK2 = "https://t.me/test_sub_check2";
   const X_LINK = "https://x.com/Octies_GameFI";
+  const [isYearsRendered, setIsYearsRendered] = useState(false);
+
+function handleOpenStoryWithVibration() {
+    setYearsOpen(true);
+    setIsYearsRendered(false); // Сбрасываем состояние перед рендерингом
+    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+}
+
+useEffect(() => {
+    if (YearsOpen) {
+        const timer = setTimeout(() => {
+            setIsYearsRendered(true); // Устанавливаем состояние после рендеринга
+        }, 500); // Небольшая задержка для рендеринга
+        return () => clearTimeout(timer);
+    }
+}, [YearsOpen]);
+
+useEffect(() => {
+    if (isYearsRendered) {
+        captureYearsAsImage(); // Вызываем захват после того, как компонент был отрендерен
+    }
+}, [isYearsRendered]);
+
+
 
   
   if (!localStorage.getItem('buttonVisibleNFT')) {localStorage.setItem('buttonVisibleNFT', 'true');}
