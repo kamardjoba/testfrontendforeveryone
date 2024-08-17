@@ -515,7 +515,7 @@ const handleCheckReferrals = () => {
               <div className="ton-con">
                 <div className='feikton'>
                   <TonConnectButton/>
-                  <button onclick="shareToTelegram()">Поделиться в Telegram</button>
+                  <button onclick={shareToTelegram()}>Поделиться в Telegram</button>
 
                 </div>
               </div>
