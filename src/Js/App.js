@@ -92,26 +92,7 @@ function App() {
   const X_LINK = "https://x.com/Octies_GameFI";
   const [isYearsRendered, setIsYearsRendered] = useState(false);
 
-function handleOpenStoryWithVibration() {
-    setYearsOpen(true);
-    setIsYearsRendered(false); // Сбрасываем состояние перед рендерингом
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-}
 
-useEffect(() => {
-    if (YearsOpen) {
-        const timer = setTimeout(() => {
-            setIsYearsRendered(true); // Устанавливаем состояние после рендеринга
-        }, 500); // Небольшая задержка для рендеринга
-        return () => clearTimeout(timer);
-    }
-}, [YearsOpen]);
-
-useEffect(() => {
-    if (isYearsRendered) {
-        captureYearsAsImage(); // Вызываем захват после того, как компонент был отрендерен
-    }
-}, [isYearsRendered]);
 
 
 
@@ -139,23 +120,7 @@ useEffect(() => {
     }
 }, []);
 
-
-
-function captureYearsAsImage() {
-  const element = document.getElementById('checkwindow'); // Идентификатор основного контейнера в Years.js
-  
-  if (!element) {
-    console.error("Element with ID 'checkwindow' not found.");
-    return;
-  }
-
-  html2canvas(element).then(canvas => {
-    const imgData = canvas.toDataURL('image/png');
-    // Сохранение изображения или отправка его в Telegram
-    shareImageToTelegram(imgData); // Отправляем изображение на публикацию
-  }).catch(error => console.error("Error capturing image: ", error));
-}
-function shareImageToTelegram(imgData) {
+const shareImageToTelegram = useCallback((imgData) => {
   if (navigator.share) {
     navigator.share({
       title: 'Check out this story!',
@@ -171,7 +136,25 @@ function shareImageToTelegram(imgData) {
   } else {
     console.log('Share not supported on this browser.');
   }
-}
+}, []); // Пустой массив зависимостей, так как функция не зависит от внешних переменных
+
+
+const captureYearsAsImage = useCallback(() => {
+  const element = document.getElementById('checkwindow'); // Идентификатор основного контейнера в Years.js
+
+  if (!element) {
+    console.error("Element with ID 'checkwindow' not found.");
+    return;
+  }
+
+  html2canvas(element).then(canvas => {
+    const imgData = canvas.toDataURL('image/png');
+    // Сохранение изображения или отправка его в Telegram
+    shareImageToTelegram(imgData); // Отправляем изображение на публикацию
+  }).catch(error => console.error("Error capturing image: ", error));
+}, [shareImageToTelegram]); // Добавлена зависимость shareImageToTelegram
+
+
 
 function dataURItoBlob(dataURI) {
   const byteString = atob(dataURI.split(',')[1]);
@@ -183,6 +166,37 @@ function dataURItoBlob(dataURI) {
   }
   return new Blob([ab], { type: mimeString });
 }
+
+
+function handleOpenStoryWithVibration() {
+  setYearsOpen(true);
+  setIsYearsRendered(false); // Сбрасываем состояние перед рендерингом
+  window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+}
+useEffect(() => {
+if (YearsOpen) {
+    const observer = new MutationObserver(() => {
+        const element = document.getElementById('checkwindow');
+        if (element) {
+            setIsYearsRendered(true);
+            observer.disconnect();
+        }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
+}
+}, [YearsOpen]);
+
+useEffect(() => {
+  if (isYearsRendered) {
+    captureYearsAsImage(); // Вызываем захват после того, как компонент был отрендерен
+  }
+}, [isYearsRendered, captureYearsAsImage]); // Добавлена зависимость captureYearsAsImage
+
+
+
 
 
 const [tonConnectUI] = useTonConnectUI();
@@ -268,10 +282,7 @@ if(subscriptionCoins > 0){
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
   }
 
-  function handleOpenStoryWithVibration() {
-    setYearsOpen(true);
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-  }
+
 
   
   const checkSubscription = useCallback(async () => {
