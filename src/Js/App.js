@@ -85,7 +85,7 @@ function App() {
   const [app, setApp] = useState(false);
   const TG_CHANNEL_LINK = "https://t.me/octies_channel";
   const TG_CHANNEL_LINK2 = "https://t.me/test_sub_check2";
-  const X_LINK = "https://x.com/Octies_GameFI";
+  // const X_LINK = "https://x.com/Octies_GameFI";
 
   
   if (!localStorage.getItem('buttonVisibleNFT')) {localStorage.setItem('buttonVisibleNFT', 'true');}
@@ -384,26 +384,26 @@ const handleCheckReferrals = () => {
 
 
   
-  const Tg_Channel_Open_X = async () => {
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    window.open(X_LINK, '_blank');
-    setTimeout(async () => {
-        if (localStorage.getItem('KnopkaX') === 'true') {
-            localStorage.setItem('KnopkaX', 'false');
-            localStorage.setItem('GalkaX', 'true');
-            try {
-                const response = await axios.post(`${REACT_APP_BACKEND_URL}/update-coins`, { userId, amount: 500 });
-                if (response.data.success) {
-                    setCoins(response.data.coins);
-                } else {
-                    console.error('Ошибка при обновлении монет:', response.data.message);
-                }
-            } catch (error) {
-                console.error('Ошибка при обновлении монет:', error);
-            }
-        }
-    }, 5000);
-};
+//   const Tg_Channel_Open_X = async () => {
+//     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+//     window.open(X_LINK, '_blank');
+//     setTimeout(async () => {
+//         if (localStorage.getItem('KnopkaX') === 'true') {
+//             localStorage.setItem('KnopkaX', 'false');
+//             localStorage.setItem('GalkaX', 'true');
+//             try {
+//                 const response = await axios.post(`${REACT_APP_BACKEND_URL}/update-coins`, { userId, amount: 500 });
+//                 if (response.data.success) {
+//                     setCoins(response.data.coins);
+//                 } else {
+//                     console.error('Ошибка при обновлении монет:', response.data.message);
+//                 }
+//             } catch (error) {
+//                 console.error('Ошибка при обновлении монет:', error);
+//             }
+//         }
+//     }, 5000);
+// };
 
 
   const Tg_Channel_Open_chek2 = () => {
