@@ -85,7 +85,7 @@ function App() {
   const [app, setApp] = useState(false);
   const TG_CHANNEL_LINK = "https://t.me/octies_channel";
   const TG_CHANNEL_LINK2 = "https://t.me/test_sub_check2";
-  // const X_LINK = "https://x.com/Octies_GameFI";
+  const X_LINK = "https://x.com/Octies_GameFI";
 
   
   if (!localStorage.getItem('buttonVisibleNFT')) {localStorage.setItem('buttonVisibleNFT', 'true');}
@@ -199,13 +199,7 @@ if(subscriptionCoins > 0){
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
   }
 
-  function shareToTelegram() {
-    const text = encodeURIComponent("Твой текст для истории");
-    const url = `tg://msg_url?url=&text=${text}`;
-    window.location.href = url;
-}
-
-
+  
   const checkSubscription = useCallback(async () => {
     if (!userId) return;
     try {
@@ -384,26 +378,26 @@ const handleCheckReferrals = () => {
 
 
   
-//   const Tg_Channel_Open_X = async () => {
-//     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-//     window.open(X_LINK, '_blank');
-//     setTimeout(async () => {
-//         if (localStorage.getItem('KnopkaX') === 'true') {
-//             localStorage.setItem('KnopkaX', 'false');
-//             localStorage.setItem('GalkaX', 'true');
-//             try {
-//                 const response = await axios.post(`${REACT_APP_BACKEND_URL}/update-coins`, { userId, amount: 500 });
-//                 if (response.data.success) {
-//                     setCoins(response.data.coins);
-//                 } else {
-//                     console.error('Ошибка при обновлении монет:', response.data.message);
-//                 }
-//             } catch (error) {
-//                 console.error('Ошибка при обновлении монет:', error);
-//             }
-//         }
-//     }, 5000);
-// };
+  const Tg_Channel_Open_X = async () => {
+    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+    window.open(X_LINK, '_blank');
+    setTimeout(async () => {
+        if (localStorage.getItem('KnopkaX') === 'true') {
+            localStorage.setItem('KnopkaX', 'false');
+            localStorage.setItem('GalkaX', 'true');
+            try {
+                const response = await axios.post(`${REACT_APP_BACKEND_URL}/update-coins`, { userId, amount: 500 });
+                if (response.data.success) {
+                    setCoins(response.data.coins);
+                } else {
+                    console.error('Ошибка при обновлении монет:', response.data.message);
+                }
+            } catch (error) {
+                console.error('Ошибка при обновлении монет:', error);
+            }
+        }
+    }, 5000);
+};
 
 
   const Tg_Channel_Open_chek2 = () => {
@@ -515,8 +509,6 @@ const handleCheckReferrals = () => {
               <div className="ton-con">
                 <div className='feikton'>
                   <TonConnectButton/>
-                 
-
                 </div>
               </div>
             </div>
@@ -551,7 +543,7 @@ const handleCheckReferrals = () => {
                 <p id='up'>OCTIES X</p>
                 <p id='dp'>Home for X OCs</p>
                 <div className='MenuBtn'>
-                  {KnopkaX && <img  onclick={shareToTelegram()} src={Join} alt='Join' />}
+                  {KnopkaX && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
                   <p> {KnopkaX && <p id="plus">+</p>}500 $OCTIES</p>
                   {Galo4kaX && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
