@@ -199,6 +199,13 @@ if(subscriptionCoins > 0){
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
   }
 
+  function shareToTelegram() {
+    const text = encodeURIComponent("Твой текст для истории");
+    const url = `tg://msg_url?url=&text=${text}`;
+    window.location.href = url;
+}
+
+
   const checkSubscription = useCallback(async () => {
     if (!userId) return;
     try {
@@ -508,6 +515,8 @@ const handleCheckReferrals = () => {
               <div className="ton-con">
                 <div className='feikton'>
                   <TonConnectButton/>
+                  <button onclick="shareToTelegram()">Поделиться в Telegram</button>
+
                 </div>
               </div>
             </div>
