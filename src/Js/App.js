@@ -515,7 +515,7 @@ const handleCheckReferrals = () => {
               <div className="ton-con">
                 <div className='feikton'>
                   <TonConnectButton/>
-                  <button onclick={shareToTelegram()}>Поделиться в Telegram</button>
+                 
 
                 </div>
               </div>
@@ -551,7 +551,7 @@ const handleCheckReferrals = () => {
                 <p id='up'>OCTIES X</p>
                 <p id='dp'>Home for X OCs</p>
                 <div className='MenuBtn'>
-                  {KnopkaX && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
+                  {KnopkaX && <img  onclick={shareToTelegram()} src={Join} alt='Join' />}
                   <p> {KnopkaX && <p id="plus">+</p>}500 $OCTIES</p>
                   {Galo4kaX && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
