@@ -119,13 +119,18 @@ function App() {
 
 function captureYearsAsImage() {
   const element = document.getElementById('checkwindow'); // Идентификатор основного контейнера в Years.js
+  
+  if (!element) {
+    console.error("Element with ID 'checkwindow' not found.");
+    return;
+  }
+
   html2canvas(element).then(canvas => {
     const imgData = canvas.toDataURL('image/png');
     // Сохранение изображения или отправка его в Telegram
     shareImageToTelegram(imgData); // Отправляем изображение на публикацию
-  });
+  }).catch(error => console.error("Error capturing image: ", error));
 }
-
 function shareImageToTelegram(imgData) {
   if (navigator.share) {
     navigator.share({
