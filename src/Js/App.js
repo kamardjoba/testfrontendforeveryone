@@ -40,6 +40,10 @@ import Nft from '../IMG/Nft_ref/Nft_ref.png';
 import Checknft from '../IMG/Nft_ref_check/chech.png';
 import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png';
 import NFTm from '../IMG/All_Logo/NFTmint.png';
+import html2canvas from 'html2canvas';
+
+
+
 
 const REACT_APP_BACKEND_URL = 'https://testforeveryoneback-production.up.railway.app';
 const userId = new URLSearchParams(window.location.search).get('userId');
@@ -110,6 +114,47 @@ function App() {
         });
     }
 }, []);
+
+
+
+function captureYearsAsImage() {
+  const element = document.getElementById('checkwindow'); // Идентификатор основного контейнера в Years.js
+  html2canvas(element).then(canvas => {
+    const imgData = canvas.toDataURL('image/png');
+    // Сохранение изображения или отправка его в Telegram
+    shareImageToTelegram(imgData); // Отправляем изображение на публикацию
+  });
+}
+
+function shareImageToTelegram(imgData) {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Check out this story!',
+      text: 'Rising star! You have joined Telegram years ago.',
+      files: [
+        new File([dataURItoBlob(imgData)], 'years.png', {
+          type: 'image/png'
+        })
+      ]
+    })
+    .then(() => console.log('Successfully shared'))
+    .catch(error => console.log('Error sharing:', error));
+  } else {
+    console.log('Share not supported on this browser.');
+  }
+}
+
+function dataURItoBlob(dataURI) {
+  const byteString = atob(dataURI.split(',')[1]);
+  const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  return new Blob([ab], { type: mimeString });
+}
+
 
 const [tonConnectUI] = useTonConnectUI();
 
@@ -558,7 +603,10 @@ const handleCheckReferrals = () => {
             <div className='flex_menu_border'>
               <div className='rightFlex'>
                 <p id='upp'>OCTIES NICKNAME</p>
-                <p id='dpp'>Add the word “Octies” to <br/>your nickname.</p>
+                <button onClick={() => captureYearsAsImage()}>
+  Поделиться в Telegram
+</button>
+
                 
                 <div className='MenuBtn'>
                   {KnopkaBlock1 && <img onClick={Tg_Channel_Open_chek2} src={Join} alt='Join' />}
