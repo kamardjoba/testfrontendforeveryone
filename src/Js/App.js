@@ -119,7 +119,7 @@ const sendTransaction = async () => {
     validUntil: Math.floor(Date.now() / 1000) + 600, // Время действия транзакции (например, 10 минут)
     messages: [
       {
-        address: "EQC1JwM7SBEwOnmRhMGTCPPEJ0RTw9IwkwbeCcN4aUpYVRYd", // Проверь правильность адреса
+        address: "UQC-ZK_dPpZ15VaL-kwyXT1jTCYDTQricz8RxvXT0VmdbRYG", // Проверь правильность адреса
         amount: "50000000", // Пример в наносекундах (1 TON)
       },
     ],
