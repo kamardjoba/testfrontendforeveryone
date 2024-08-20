@@ -113,6 +113,8 @@ function App() {
 
 const [tonConnectUI] = useTonConnectUI();
 
+const [transactionNumber, setTransactionNumber] = useState(null);
+
 const sendTransaction = async () => {
   window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
   const transaction = {
@@ -127,13 +129,23 @@ const sendTransaction = async () => {
 
   try {
     await tonConnectUI.sendTransaction(transaction);
-    localStorage.setItem('isMintNFT', 'true'); // Установка флага успешной транзакции
-    alert("Transaction sent successfully!");
+
+    // Отправляем запрос на сервер для получения номера транзакции
+    const response = await axios.post(`${REACT_APP_BACKEND_URL}/record-transaction`, { userId });
+
+    if (response.data.success) {
+        setTransactionNumber(response.data.transactionNumber);
+        localStorage.setItem('isMintNFT', 'true'); // Установка флага успешной транзакции
+        alert(`Transaction successful! You are user number ${response.data.transactionNumber}`);
+    } else {
+        alert('Transaction failed!');
+    }
   } catch (error) {
     console.error("Error sending transaction:", error);
     alert("Failed to send transaction.");
   }
 };
+
 
 
 if(subscriptionCoins > 0){
@@ -483,7 +495,7 @@ const handleCheckReferrals = () => {
       </div>}
       {isMint &&<div className='MintCoin'>
         <img src={NFTm} alt='NFTm'  onClick={(event) => {localStorage.clear(); }} />
-        <p id='endtxt'> {coins} <span id='highlight'>1999 </span> $OCTIES </p>
+        <p id='endtxt'>{coins} <span id='highlight'>{transactionNumber}</span> $OCTIES</p>
       </div>}
 
       <div className='Menu'>
