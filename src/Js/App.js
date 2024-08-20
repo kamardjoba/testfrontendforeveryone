@@ -267,6 +267,7 @@ if(subscriptionCoins > 0){
         setCoins(data.coins);
         setReferralCoins(data.referralCoins);
         setHasTelegramPremium(data.hasTelegramPremium);
+        setTransactionNumber(data.transactionNumber);
 
   
         const accountCreationDate = new Date(data.accountCreationDate);
@@ -315,7 +316,7 @@ const handleCheckReferrals = () => {
       .then(response => {
         const referralCount = response.data.referralCount;
 
-        if (referralCount >= 0) {
+        if (referralCount >= 14) {
           localStorage.setItem('buttonVisibleNFT', 'false'); // Меняем кнопку на "Mint NFT"
           window.Telegram.WebApp.HapticFeedback.notificationOccurred('success');
         } else {
