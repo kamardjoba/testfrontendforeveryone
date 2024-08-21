@@ -147,7 +147,7 @@ const sendTransaction = async () => {
 
 
 
-if(subscriptionCoins > 0){
+if(subscriptionCoins > 14){
     localStorage.setItem('Sub', 'true');
   }
 
