@@ -228,7 +228,14 @@ if(subscriptionCoins > 0){
           localStorage.setItem('Knopka', 'true');
         }
 
-   
+        if (data.hasNicknameBonus){
+          localStorage.setItem('GalkaNick', 'true');
+          localStorage.setItem('KnopkaNick', 'false');
+        }
+        else{
+          localStorage.setItem('GalkaNick', 'false');
+          localStorage.setItem('KnopkaNick', 'true');
+        }
         
       } else {
         console.error('Ошибка при проверке подписки:', response.data.message);
