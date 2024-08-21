@@ -259,65 +259,57 @@ if(subscriptionCoins > 0){
 }, []);
 
 
-const fetchUserData = useCallback(async (userId) => {
-  try {
+  const fetchUserData = useCallback(async (userId) => {
+    try {
       const response = await axios.post(`${REACT_APP_BACKEND_URL}/get-coins`, { userId });
       const data = response.data;
       if (response.status === 200) {
-          setCoins(data.coins);
-          setReferralCoins(data.referralCoins);
-          setHasTelegramPremium(data.hasTelegramPremium);
-          setTransactionNumber(data.transactionNumber);
+        setCoins(data.coins);
+        setReferralCoins(data.referralCoins);
+        setHasTelegramPremium(data.hasTelegramPremium);
+        setTransactionNumber(data.transactionNumber);
 
-          // Устанавливаем флаг hasReceivedTwitterReward, если он был установлен ранее
-          if (data.hasReceivedTwitterReward) {
-              localStorage.setItem('hasReceivedTwitterReward', 'true');
-          }
-
-          // Обновляем локальное состояние, чтобы сохранить награду
-          const twitterReward = localStorage.getItem('hasReceivedTwitterReward') === 'true' ? 500 : 0;
-          setCoins(prevCoins => prevCoins + twitterReward);
-
-          const accountCreationDate = new Date(data.accountCreationDate);
-          const currentYear = new Date().getFullYear();
-          const accountYear = accountCreationDate.getFullYear();
-          const yearsOld = currentYear - accountYear;
-          setYearr(yearsOld);
-          const accountAgeCoins = yearsOld * 500;
-          setcoinOnlyYears(accountAgeCoins);
-          if (hasTelegramPremium === true) {
-              setVisibleTelegramPremium(true);
-          }
-          if (referralCoins > 0) {
-              setVisibleInvite(true);
-          }
-      
-          if (data.hasCheckedSubscription) {
-              localStorage.setItem('Galka', 'true');
-              localStorage.setItem('Knopka', 'false');
-          } else {
-              localStorage.setItem('Galka', 'false');
-              localStorage.setItem('Knopka', 'true');
-          }
+  
+        const accountCreationDate = new Date(data.accountCreationDate);
+        const currentYear = new Date().getFullYear();
+        const accountYear = accountCreationDate.getFullYear();
+        const yearsOld = currentYear - accountYear;
+        setYearr(yearsOld);
+        const accountAgeCoins = yearsOld * 500;
+        setcoinOnlyYears(accountAgeCoins);
+        if (hasTelegramPremium === true) {
+          setVisibleTelegramPremium(true);
+        }
+        if (referralCoins > 0) {
+          setVisibleInvite(true);
+        }
     
-          setAccountAgeCoins(accountAgeCoins);
-    
-          const referralResponse = await axios.post(`${REACT_APP_BACKEND_URL}/generate-referral`, { userId });
-          const referralData = referralResponse.data;
-          if (referralResponse.status === 200) {
-              setReferralCode(referralData.referralCode);
-              setTelegramLink(referralData.telegramLink);
-          } else {
-              console.error('Ошибка при получении реферальных данных:', referralData.message);
-          }
+        if (data.hasCheckedSubscription) {
+          localStorage.setItem('Galka', 'true');
+          localStorage.setItem('Knopka', 'false');
+
+        } else {
+          localStorage.setItem('Galka', 'false');
+          localStorage.setItem('Knopka', 'true');
+        }
+  
+        setAccountAgeCoins(accountAgeCoins);
+  
+        const referralResponse = await axios.post(`${REACT_APP_BACKEND_URL}/generate-referral`, { userId });
+        const referralData = referralResponse.data;
+        if (referralResponse.status === 200) {
+          setReferralCode(referralData.referralCode);
+          setTelegramLink(referralData.telegramLink);
+        } else {
+          console.error('Ошибка при получении реферальных данных:', referralData.message);
+        }
       } else {
-          console.error('Ошибка при получении данных пользователя:', data.error);
+        console.error('Ошибка при получении данных пользователя:', data.error);
       }
-  } catch (error) {
+    } catch (error) {
       console.error('Ошибка при получении данных пользователя:', error);
-  }
-}, [hasTelegramPremium, referralCoins]);
-
+    }
+  }, [hasTelegramPremium, referralCoins]);
   
 const handleCheckReferrals = () => {
     axios.post(`${REACT_APP_BACKEND_URL}/get-referral-count`, { userId })
