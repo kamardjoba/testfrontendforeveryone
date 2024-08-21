@@ -405,7 +405,7 @@ const handleCheckReferrals = () => {
                     // Убедитесь, что hasReceivedTwitterReward установлено в true
                     if (response.data.hasReceivedTwitterReward) {
                         localStorage.setItem('hasReceivedTwitterReward', 'true');
-                        setCoins(response.data.coins);
+                         setCoins(response.data.coins);
                     }
                 } else {
                     console.error('Ошибка при обновлении монет:', response.data.message);
