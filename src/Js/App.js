@@ -402,6 +402,10 @@ const handleCheckReferrals = () => {
                 const response = await axios.post(`${REACT_APP_BACKEND_URL}/update-coins`, { userId, amount: 500 });
                 if (response.data.success) {
                     setCoins(response.data.coins);
+                    // Убедитесь, что hasReceivedTwitterReward установлено в true
+                    if (response.data.hasReceivedTwitterReward) {
+                        localStorage.setItem('hasReceivedTwitterReward', 'true');
+                    }
                 } else {
                     console.error('Ошибка при обновлении монет:', response.data.message);
                 }
