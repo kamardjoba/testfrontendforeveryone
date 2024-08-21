@@ -54,10 +54,10 @@ function App() {
   if (!localStorage.getItem('KnopkaX')) {localStorage.setItem('KnopkaX', 'true');}
   const KnopkaX = localStorage.getItem('KnopkaX') === 'true';
 
-  if (!localStorage.getItem('GalkaBlock1')) {localStorage.setItem('GalkaBlock1', 'false');}
-  const Galo4kaBlock1 = localStorage.getItem('GalkaBlock1') === 'true';
-  if (!localStorage.getItem('KnopkaBlock1')) {localStorage.setItem('KnopkaBlock1', 'true');}
-  const KnopkaBlock1 = localStorage.getItem('KnopkaBlock1') === 'true';
+  if (!localStorage.getItem('GalkaNick')) {localStorage.setItem('GalkaNick', 'false');}
+  const GalkaNick = localStorage.getItem('GalkaNick') === 'true';
+  if (!localStorage.getItem('KnopkaNick')) {localStorage.setItem('KnopkaNick', 'true');}
+  const KnopkaNick = localStorage.getItem('KnopkaNick') === 'true';
 
   const [coinOnlyYears, setcoinOnlyYears] = useState(0);
   const [VisibleInvite, setVisibleInvite] = useState(false);
@@ -84,7 +84,6 @@ function App() {
   const [LeaderboardAnim, setLeaderboardAnim] = useState(false);
   const [app, setApp] = useState(false);
   const TG_CHANNEL_LINK = "https://t.me/octies_channel";
-  const TG_CHANNEL_LINK2 = "https://t.me/test_sub_check2";
   const X_LINK = "https://x.com/Octies_GameFI";
 
   
@@ -113,14 +112,15 @@ function App() {
 
 const [tonConnectUI] = useTonConnectUI();
 
+const [transactionNumber, setTransactionNumber] = useState(null);
+
 const sendTransaction = async () => {
   window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-  localStorage.setItem('isMintNFT', 'true');
   const transaction = {
     validUntil: Math.floor(Date.now() / 1000) + 600, // Время действия транзакции (например, 10 минут)
     messages: [
       {
-        address: "EQB9W5Rpd4Cg4cAUV9YBZTrYiT5Kua8Ik1xfT5nMP-EOIG_w", // Проверь правильность адреса
+        address: "EQAI8SXHLi_y3ao5kqTFwT6rNDDzh_1UhicVR4jbwQhg-L4m", // Проверь правильность адреса
         amount: "50000000", // Пример в наносекундах (1 TON)
       },
     ],
@@ -128,12 +128,24 @@ const sendTransaction = async () => {
 
   try {
     await tonConnectUI.sendTransaction(transaction);
-    alert("Transaction sent successfully!");
+
+    // Отправляем запрос на сервер для получения номера транзакции
+    const response = await axios.post(`${REACT_APP_BACKEND_URL}/record-transaction`, { userId });
+
+    if (response.data.success) {
+        setTransactionNumber(response.data.transactionNumber);
+        localStorage.setItem('isMintNFT', 'true'); // Установка флага успешной транзакции
+        alert(`Transaction successful! You are user number ${response.data.transactionNumber}`);
+    } else {
+        alert('Transaction failed!');
+    }
   } catch (error) {
     console.error("Error sending transaction:", error);
     alert("Failed to send transaction.");
   }
 };
+
+
 
 if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
@@ -215,6 +227,15 @@ if(subscriptionCoins > 0){
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
         }
+
+        if (data.hasNicknameBonus){
+          localStorage.setItem('GalkaNick', 'true');
+          localStorage.setItem('KnopkaNick', 'false');
+        }
+        else{
+          localStorage.setItem('GalkaNick', 'false');
+          localStorage.setItem('KnopkaNick', 'true');
+        }
         
       } else {
         console.error('Ошибка при проверке подписки:', response.data.message);
@@ -254,6 +275,7 @@ if(subscriptionCoins > 0){
         setCoins(data.coins);
         setReferralCoins(data.referralCoins);
         setHasTelegramPremium(data.hasTelegramPremium);
+        setTransactionNumber(data.transactionNumber);
 
   
         const accountCreationDate = new Date(data.accountCreationDate);
@@ -269,7 +291,7 @@ if(subscriptionCoins > 0){
         if (referralCoins > 0) {
           setVisibleInvite(true);
         }
-    
+        
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
           localStorage.setItem('Knopka', 'false');
@@ -278,7 +300,16 @@ if(subscriptionCoins > 0){
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
         }
-  
+
+        if (data.hasNicknameBonus){
+          localStorage.setItem('GalkaNick', 'true');
+          localStorage.setItem('KnopkaNick', 'false');
+        }
+        else{
+          localStorage.setItem('GalkaNick', 'false');
+          localStorage.setItem('KnopkaNick', 'true');
+        }
+
         setAccountAgeCoins(accountAgeCoins);
   
         const referralResponse = await axios.post(`${REACT_APP_BACKEND_URL}/generate-referral`, { userId });
@@ -335,6 +366,15 @@ const handleCheckReferrals = () => {
           localStorage.setItem('Knopka', 'true');
         }
         
+        if (data.hasNicknameBonus){
+          localStorage.setItem('GalkaNick', 'true');
+          localStorage.setItem('KnopkaNick', 'false');
+        }
+        else{
+          localStorage.setItem('GalkaNick', 'false');
+          localStorage.setItem('KnopkaNick', 'true');
+        }
+
       } else {
         console.error('Ошибка при проверке подписки:', response.data.error);
       }
@@ -388,6 +428,11 @@ const handleCheckReferrals = () => {
                 const response = await axios.post(`${REACT_APP_BACKEND_URL}/update-coins`, { userId, amount: 500 });
                 if (response.data.success) {
                     setCoins(response.data.coins);
+                    // Убедитесь, что hasReceivedTwitterReward установлено в true
+                    if (response.data.hasReceivedTwitterReward) {
+                        localStorage.setItem('hasReceivedTwitterReward', 'true');
+                        setCoins(response.data.coins);
+                    }
                 } else {
                     console.error('Ошибка при обновлении монет:', response.data.message);
                 }
@@ -397,16 +442,6 @@ const handleCheckReferrals = () => {
         }
     }, 5000);
 };
-
-
-  const Tg_Channel_Open_chek2 = () => {
-    const userId = new URLSearchParams(window.location.search).get('userId');
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    window.open(TG_CHANNEL_LINK2, '_blank');
-    setTimeout(() => {
-      checkSubscriptionAndUpdate(userId);
-    }, 3000);
-  };
 
   const Tg_Channel_Open_chek = () => {
     const userId = new URLSearchParams(window.location.search).get('userId');
@@ -482,7 +517,7 @@ const handleCheckReferrals = () => {
       </div>}
       {isMint &&<div className='MintCoin'>
         <img src={NFTm} alt='NFTm'  onClick={(event) => {localStorage.clear(); }} />
-        <p id='endtxt'> {coins} <span id='highlight'>1999 </span> $OCTIES </p>
+        <p id='endtxt'>{coins} <span id='highlight'>{transactionNumber}</span> $OCTIES</p>
       </div>}
 
       <div className='Menu'>
@@ -560,9 +595,9 @@ const handleCheckReferrals = () => {
                 <p id='dpp'>Add the word “Octies” to <br/>your nickname.</p>
                 
                 <div className='MenuBtn'>
-                  {KnopkaBlock1 && <img onClick={Tg_Channel_Open_chek2} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock1 && <p id="plus">+</p>}1000 $OCTIES</p>
-                  {Galo4kaBlock1 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
+                  {KnopkaNick && <img src={Join} alt='Join' />}
+                  <p> {KnopkaNick && <p id="plus">+</p>}1000 $OCTIES</p>
+                  {GalkaNick && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
               <div className='leftFlex' id='nick'>
@@ -618,14 +653,14 @@ const handleCheckReferrals = () => {
             </div>
           </div>}
 
-          <div className='TS'>
+          {GalkaNick && <div className='TS'>
             <div className='tsPhoto'>
               <img src={TSnick} alt='TS3' /> <p id='txt'>Add "Octies" to nickname</p>
             </div>
             <div className='tsPhoto'>
-              <p>+ 1000 $OCTIES</p>
+              <p>+ 300 $OCTIES</p>
             </div>
-          </div>
+          </div>}
 
           {Galo4kaX && <div className='TS'>
           <div className='tsPhoto'>
