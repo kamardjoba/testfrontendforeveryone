@@ -261,6 +261,8 @@ const sendTransaction = async () => {
 
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
+  } else {
+    localStorage.setItem('Sub', 'false');
   }
 
   useEffect(() => {
