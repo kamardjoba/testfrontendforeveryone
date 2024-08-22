@@ -129,6 +129,9 @@ function App() {
     }
 }, []);
 
+
+
+
 const sendTransaction = async () => {
   window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
   const transaction = {
@@ -252,6 +255,10 @@ const sendTransaction = async () => {
       console.error('Ошибка при проверке подписки:', error);
     }
   }, []);
+
+  if(subscriptionCoins > 0){
+    localStorage.setItem('Sub', 'true');
+  }
 
   useEffect(() => {
     if (userId) {
