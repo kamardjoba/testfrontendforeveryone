@@ -319,6 +319,33 @@ const sendTransaction = async () => {
           localStorage.setItem('Knopka', 'true');
         }
 
+        if (data.hasCheckedSubscriptio2) {
+          localStorage.setItem('GalkaAnyTap', 'true');
+          localStorage.setItem('KnopkaAnyTap', 'false');
+
+        } else {
+          localStorage.setItem('GalkaAnyTap', 'false');
+          localStorage.setItem('KnopkaAnyTap', 'true');
+        }
+
+        if (data.hasCheckedSubscriptio3) {
+          localStorage.setItem('GalkaBlock1', 'true');
+          localStorage.setItem('KnopkaBlock1', 'false');
+
+        } else {
+          localStorage.setItem('GalkaBlock1', 'false');
+          localStorage.setItem('KnopkaBlock1', 'true');
+        }
+
+        if (data.hasCheckedSubscriptio4) {
+          localStorage.setItem('GalkaBlock2', 'true');
+          localStorage.setItem('KnopkaBlock2', 'false');
+
+        } else {
+          localStorage.setItem('GalkaBlock2', 'false');
+          localStorage.setItem('KnopkaBlock2', 'true');
+        }
+
         if (data.hasNicknameBonus){
           localStorage.setItem('KnopkaNick', 'true');
         }
@@ -379,6 +406,33 @@ const handleCheckReferrals = () => {
         } else {
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
+        }
+
+        if (data.hasCheckedSubscriptio2) {
+          localStorage.setItem('GalkaAnyTap', 'true');
+          localStorage.setItem('KnopkaAnyTap', 'false');
+
+        } else {
+          localStorage.setItem('GalkaAnyTap', 'false');
+          localStorage.setItem('KnopkaAnyTap', 'true');
+        }
+
+        if (data.hasCheckedSubscriptio3) {
+          localStorage.setItem('GalkaBlock1', 'true');
+          localStorage.setItem('KnopkaBlock1', 'false');
+
+        } else {
+          localStorage.setItem('GalkaBlock1', 'false');
+          localStorage.setItem('KnopkaBlock1', 'true');
+        }
+
+        if (data.hasCheckedSubscriptio4) {
+          localStorage.setItem('GalkaBlock2', 'true');
+          localStorage.setItem('KnopkaBlock2', 'false');
+
+        } else {
+          localStorage.setItem('GalkaBlock2', 'false');
+          localStorage.setItem('KnopkaBlock2', 'true');
         }
      
       } else {
