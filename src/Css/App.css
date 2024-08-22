@@ -237,6 +237,7 @@ button{
   display: flex;
   flex-direction: row;
   height: 30%;
+  width: 100%;
   align-items: center;
   margin-bottom: 1.2vh;
   color: #9F9F9F;
@@ -384,8 +385,7 @@ button{
   justify-content: space-evenly;
   height: 100%;
   flex-grow: 1;
-  overflow: hidden;
-  
+  overflow: hidden; 
 }
 
 .nft-text h2 {
@@ -514,6 +514,30 @@ button[data-tc-connect-button="true"]{
   background: #067CFB;
   width: 100000px;
   height: 100000px;
+}
+
+.nickDiv{
+  height: 90%;
+  background: #393939;
+  width: 90%;
+  margin-left: 1.7vh;
+  border-radius: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nickDiv p{
+  margin: 0;
+  font-size: 1.2vh;
+  display: flex;
+  align-items: center;
+}
+
+.nickDiv img{
+  margin: 0;
+  margin-right: 1vh;
+  height: 1.5vh;
 }
 
 button[data-tc-dropdown-button="true"] {

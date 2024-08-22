@@ -21,6 +21,7 @@ import TSX from '../IMG/TaskIcon/TSX.png';
 import TSNFT from '../IMG/TaskIcon/TS_NFT.png';
 import TSnick from '../IMG/TaskIcon/TS_nick.png';
 import galo4ka from '../IMG/All_Logo/galol4ka.png';
+import nickGalka from '../IMG/All_Logo/galka.png';
 import Ellipse from '../IMG/All_Logo/Ellipse.png';
 
 import tgLogo from '../IMG/All_Logo/TgComunity.png';
@@ -595,9 +596,9 @@ const handleCheckReferrals = () => {
                 <p id='dpp'>Add the word “Octies” to <br/>your nickname.</p>
                 
                 <div className='MenuBtn'>
-                  {KnopkaNick && <img src={Join} alt='Join' />}
-                  <p> {KnopkaNick && <p id="plus">+</p>}300 $OCTIES</p>
-                  {GalkaNick && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
+                  {KnopkaNick &&  <div className='nickDiv'>
+                    <p><img src={nickGalka} alt=''/>Complated 1,000 $OCTIES</p>  
+                  </div>}
                 </div>
               </div>
               <div className='leftFlex' id='nick'>
