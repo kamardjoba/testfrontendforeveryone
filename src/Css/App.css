@@ -518,16 +518,13 @@ button[data-tc-connect-button="true"]{
 }
 
 .nickDiv {
-  height: 90%;
+  height: 75%;
   background: #393939;
   margin-left: 1.7vh;
-  padding: 0 1vh 0 1vh;
   border-radius: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; 
-  text-align: right; 
 }
 
 .nickDiv p {
@@ -535,8 +532,8 @@ button[data-tc-connect-button="true"]{
   font-size: 1.2vh;
   display: flex;
   align-items: center;
-  justify-content: flex-end; 
-  width: 90%;
+  justify-content: center; 
+  margin-right: 1vh;
 }
 
 .nickDiv img {
