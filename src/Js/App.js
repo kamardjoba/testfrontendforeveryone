@@ -76,6 +76,9 @@ function App() {
   if (!localStorage.getItem('KnopkaNick')) {localStorage.setItem('KnopkaNick', 'false');}
   const KnopkaNick = localStorage.getItem('KnopkaNick') === 'true';
 
+  if (!localStorage.getItem('Sub')) { localStorage.setItem('Sub', 'false');}
+  const Sub = localStorage.getItem('Sub') === 'true';
+
   const [coinOnlyYears, setcoinOnlyYears] = useState(0);
   const [VisibleInvite, setVisibleInvite] = useState(false);
   const [VisibleTelegramPremium, setVisibleTelegramPremium] = useState(false);
@@ -715,14 +718,14 @@ const handleCheckReferrals = () => {
             </div>
           </div>}
 
-          <div className='TS'>
+          {Sub && <div className='TS'>
             <div className='tsPhoto'>
               <img src={SubTg} alt='SubTg' /> <p id='highlight'>Partner channels subs</p>
             </div>
             <div className='tsPhoto'>
               <p>+{subscriptionCoins} $OCTIES</p>
             </div>
-          </div>
+          </div>}
 
           <div className='TS'>
             <div className='tsPhoto'>
