@@ -629,6 +629,10 @@ button[data-tc-dropdown-button="true"] {
     font-size: 3vh;
   }
   .MenuBtn img {height:6vh;margin-left: 1.7vh;}
+  
+  .emoji{
+    right: -6vh;
+  }
 }
 
 @media screen and (max-width: 350px) {
