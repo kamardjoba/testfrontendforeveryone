@@ -234,6 +234,14 @@ bottom: 0.1vh;
   align-items: center;
 }
 
+#dpp {
+  margin-top: 0.4vh;
+  text-align: left;
+  font-size: 1.6vh;
+  display: flex;
+  align-items: center;
+}
+
 .MenuBorder button {
   display: flex;
   justify-content: center;
