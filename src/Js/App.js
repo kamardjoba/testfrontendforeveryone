@@ -56,7 +56,7 @@ function App() {
   if (!localStorage.getItem('KnopkaX')) {localStorage.setItem('KnopkaX', 'true');}
   const KnopkaX = localStorage.getItem('KnopkaX') === 'true';
 
-  if (!localStorage.getItem('KnopkaNick')) {localStorage.setItem('KnopkaNick', 'true');}
+  if (!localStorage.getItem('KnopkaNick')) {localStorage.setItem('KnopkaNick', 'false');}
   const KnopkaNick = localStorage.getItem('KnopkaNick') === 'true';
 
   const [coinOnlyYears, setcoinOnlyYears] = useState(0);
