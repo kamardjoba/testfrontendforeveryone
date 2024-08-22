@@ -475,7 +475,6 @@ const handleCheckReferrals = () => {
     }, 3000);
   };
 
-
   const Tg_Channel_Open_chek4 = () => {
     const userId = new URLSearchParams(window.location.search).get('userId');
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
@@ -630,7 +629,7 @@ const handleCheckReferrals = () => {
                 <p id='dp'>Home for ANYs</p>
                 <div className='MenuBtn'>
                   {KnopkaAnyTap && <img onClick={Tg_Channel_Open_chek2} src={Join} alt='Join' />}
-                  <p> {KnopkaAnyTap && <p id="plus">+</p>}200 $OCTIES</p>
+                  <p> {KnopkaAnyTap && <p id="plus">+</p>}750 $OCTIES</p>
                   {GalkaAnyTap && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
@@ -647,7 +646,7 @@ const handleCheckReferrals = () => {
                 <p id='dp'>Потыкать и стать миллионером!</p>
                 <div className='MenuBtn'>
                   {KnopkaBlock2 && <img onClick={Tg_Channel_Open_chek3} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock2 && <p id="plus">+</p>}200 $OCTIES</p>
+                  <p> {KnopkaBlock2 && <p id="plus">+</p>}750 $OCTIES</p>
                   {GalkaBlock2 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
@@ -664,7 +663,7 @@ const handleCheckReferrals = () => {
                 <p id='dp'>Home for X OCs</p>
                 <div className='MenuBtn'>
                   {KnopkaBlock1 && <img onClick={Tg_Channel_Open_chek4} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock1 && <p id="plus">+</p>}200 $OCTIES</p>
+                  <p> {KnopkaBlock1 && <p id="plus">+</p>}750 $OCTIES</p>
                   {GalkaBlock1 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
