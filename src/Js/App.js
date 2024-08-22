@@ -18,6 +18,7 @@ import TS2 from '../IMG/TaskIcon/TS2.png';
 import TS3 from '../IMG/TaskIcon/TS3.png';
 import TS4 from '../IMG/TaskIcon/TS4.png';
 import TSX from '../IMG/TaskIcon/TSX.png';
+import SubTg from '../IMG/TaskIcon/Other_Tg.png';
 import TSNFT from '../IMG/TaskIcon/TS_NFT.png';
 import TSnick from '../IMG/TaskIcon/TS_nick.png';
 import galo4ka from '../IMG/All_Logo/galol4ka.png';
@@ -649,7 +650,7 @@ const handleCheckReferrals = () => {
 
         {isMint && <div className='TS'>
             <div className='tsPhoto'>
-              <img src={TSNFT} alt='TSNFT' /> <p id='txt'>OCTIES NFT</p>
+              <img src={TSNFT} alt='TSNFT' /> <p>OCTIES NFT</p>
             </div>
             <div className='tsPhoto'>
               <p id='highlight' >+1 NFT</p>
@@ -658,7 +659,7 @@ const handleCheckReferrals = () => {
 
           <div className='TS'>
             <div className='tsPhoto'>
-              <img src={TS1} alt='TS1' /> <p id='txt'>Account age</p>
+              <img src={TS1} alt='TS1' /> <p>Account age</p>
             </div>
             <div className='tsPhoto'>
               <p>+{accountAgeCoins} $OCTIES</p>
@@ -667,7 +668,7 @@ const handleCheckReferrals = () => {
 
           {VisibleTelegramPremium && <div className='TS'>
             <div className='tsPhoto'>
-              <img src={TS2} alt='TS2' /> <p id='txt'>Telegram Premium</p>
+              <img src={TS2} alt='TS2' /> <p>Telegram Premium</p>
             </div>
             <div className='tsPhoto'>
               <p>+{hasTelegramPremium ? 500 : 0} $OCTIES</p>
@@ -676,16 +677,25 @@ const handleCheckReferrals = () => {
 
           {Galo4ka && <div className='TS'>
             <div className='tsPhoto'>
-              <img src={TS3} alt='TS3' /> <p id='txt'>Channel Subscription</p>
+              <img src={TS3} alt='TS3' /> <p>Channel Subscription</p>
             </div>
             <div className='tsPhoto'>
               <p>+1000 $OCTIES</p>
             </div>
           </div>}
 
+          <div className='TS'>
+            <div className='tsPhoto'>
+              <img src={SubTg} alt='SubTg' /> <p id='highlight'>Partner channels subs</p>
+            </div>
+            <div className='tsPhoto'>
+              <p>+1000 $OCTIES</p>
+            </div>
+          </div>
+
           {KnopkaNick && <div className='TS'>
             <div className='tsPhoto'>
-              <img src={TSnick} alt='TS3' /> <p id='txt'>Add "Octies" to nickname</p>
+              <img src={TSnick} alt='TS3' /> <p>Add "Octies" to nickname</p>
             </div>
             <div className='tsPhoto'>
               <p>+ 300 $OCTIES</p>
@@ -694,7 +704,7 @@ const handleCheckReferrals = () => {
 
           {Galo4kaX && <div className='TS'>
           <div className='tsPhoto'>
-            <img src={TSX} alt='TSX' /> <p id='txt'>Octies X</p>
+            <img src={TSX} alt='TSX' /> <p>Octies X</p>
           </div>
           <div className='tsPhoto'>
             <p>+ 500 $OCTIES</p>
@@ -703,7 +713,7 @@ const handleCheckReferrals = () => {
 
           {VisibleInvite && <div className='TS'>
             <div className='tsPhoto'>
-              <img src={TS4} alt='TS4' /> <p id='txt'>Invites</p>
+              <img src={TS4} alt='TS4' /> <p>Invites</p>
             </div>
             <div className='tsPhoto'>
               <p>+{referralCoins} $OCTIES</p>
