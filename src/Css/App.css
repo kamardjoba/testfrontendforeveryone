@@ -155,6 +155,7 @@ button{
   white-space: nowrap;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
+  
   scroll-behavior: smooth;
 }
 
@@ -162,6 +163,7 @@ button{
   height: 100%;
   width: 100%;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   display: inline-block;
   margin-right: 1.7vh;
 }

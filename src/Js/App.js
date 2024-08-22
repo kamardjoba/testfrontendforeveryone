@@ -581,11 +581,11 @@ const handleCheckReferrals = () => {
           <div className='MenuBorder' ref={blockRefs[3]}>
             <div className='flex_menu_border'>
               <div className='rightFlex'>
-                <p id='up'>OCTIES X</p>
+                <p id='up'>Block 1</p>
                 <p id='dp'>Home for X OCs</p>
                 <div className='MenuBtn'>
                   {KnopkaX && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
-                  <p> {KnopkaX && <p id="plus">+</p>}500 $OCTIES</p>
+                  <p> {KnopkaX && <p id="plus">+</p>}200 $OCTIES</p>
                   {Galo4kaX && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
@@ -598,11 +598,11 @@ const handleCheckReferrals = () => {
           <div className='MenuBorder' ref={blockRefs[4]}>
             <div className='flex_menu_border'>
               <div className='rightFlex'>
-                <p id='up'>OCTIES X</p>
+                <p id='up'>Block 2</p>
                 <p id='dp'>Home for X OCs</p>
                 <div className='MenuBtn'>
                   {KnopkaX && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
-                  <p> {KnopkaX && <p id="plus">+</p>}5000 $OCTIES</p>
+                  <p> {KnopkaX && <p id="plus">+</p>}200 $OCTIES</p>
                   {Galo4kaX && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
