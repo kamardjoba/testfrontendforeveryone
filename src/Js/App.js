@@ -583,10 +583,10 @@ const handleCheckReferrals = () => {
                 
                 <div className='MenuBtn'>
                   {KnopkaNick &&  <div className='nickDiv'>
-                    <p><img src={nickGalka} alt=''/><span id='Greentxt'>Complated </span>300 $OCTIES</p>  
+                    <p><img src={nickGalka} alt=''/><span id='Greentxt'>Completed </span>300 $OCTIES</p>  
                   </div>}
                   {!KnopkaNick &&  <div className='nickDiv' id='Nicknm'>
-                    <p><img src={nickKr} alt=''/><span id='Redtxt'>Not complated </span></p>  
+                    <p><img src={nickKr} alt=''/><span id='Redtxt'>Not completed </span></p>  
                     <p >+300 $OCTIES</p>
                   </div>}
                 </div>
