@@ -179,7 +179,6 @@ button{
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: flex-start;
 }
 
@@ -205,23 +204,17 @@ button{
 }
 
 .MenuBorder p{margin-left: 1.7vh;}
-#up{margin-top: 1.8vh; font-size: 2vh; position: relative; }
-#dp {
-  margin-bottom: 0.8vh;
-  font-size: 1.6vh;
-  text-align: left;
-  height: 2.5vh; /* фиксированная высота блока */
-  display: flex;
-  align-items: center;
-}
 
-#upp{margin-top: 2vh; font-size: 2vh; position: relative; }
-#dpp {
-  margin-bottom: 0.6vh;
-  margin-top: 0.6vh;
+#up{ font-size: 2vh;
+  margin-top: 2vh;
+   position: relative;
+   display: flex;
+   align-items: center;
+   }
+#dp {
   font-size: 1.6vh;
+  margin-top: 1vh;
   text-align: left;
-  height: 2.5vh; /* фиксированная высота блока */
   display: flex;
   align-items: center;
 }
@@ -237,15 +230,14 @@ button{
 .MenuBtn{
   display: flex;
   flex-direction: row;
-  height: 30%;
   width: 100%;
+  height: 50%;
   align-items: center;
-  margin-bottom: 1.2vh;
   color: #9F9F9F;
   font-size: 1.8vh;
 }
-.MenuBtn img {height:100%;margin-left: 1.7vh;}
-.MenuBtn p {margin-top: 0.8vh;}
+.MenuBtn img {height:4vh;margin-left: 1.7vh;}
+
 
 
 .Tasks{
@@ -518,7 +510,7 @@ button[data-tc-connect-button="true"]{
 }
 
 .nickDiv {
-  height: 75%;
+  height: 50%;
   background: #393939;
   margin-left: 1.7vh;
   border-radius: 100vh;

@@ -615,8 +615,8 @@ const handleCheckReferrals = () => {
           <div className='MenuBorder' ref={blockRefs[5]}>
             <div className='flex_menu_border'>
               <div className='rightFlex'>
-                <p id='upp'>OCTIES NICKNAME</p>
-                <p id='dpp'>Add the word “Octies” to <br/>your nickname.</p>
+                <p id='up'>OCTIES NICKNAME</p>
+                <p id='dp'>Add the word “Octies” to <br/>your nickname.</p>
                 
                 <div className='MenuBtn'>
                   {KnopkaNick &&  <div className='nickDiv'>
