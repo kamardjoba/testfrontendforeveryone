@@ -148,7 +148,7 @@ const sendTransaction = async () => {
 
 
 
-if(subscriptionCoins > 0){
+if(subscriptionCoins > 14){
     localStorage.setItem('Sub', 'true');
   }
 
@@ -366,16 +366,7 @@ const handleCheckReferrals = () => {
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
         }
-        
-        if (data.hasNicknameBonus){
-          localStorage.setItem('GalkaNick', 'true');
-          localStorage.setItem('KnopkaNick', 'false');
-        }
-        else{
-          localStorage.setItem('GalkaNick', 'false');
-          localStorage.setItem('KnopkaNick', 'true');
-        }
-
+     
       } else {
         console.error('Ошибка при проверке подписки:', response.data.error);
       }
@@ -432,7 +423,7 @@ const handleCheckReferrals = () => {
                     // Убедитесь, что hasReceivedTwitterReward установлено в true
                     if (response.data.hasReceivedTwitterReward) {
                         localStorage.setItem('hasReceivedTwitterReward', 'true');
-                        setCoins(response.data.coins);
+                         setCoins(response.data.coins);
                     }
                 } else {
                     console.error('Ошибка при обновлении монет:', response.data.message);
