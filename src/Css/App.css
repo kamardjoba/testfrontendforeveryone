@@ -152,6 +152,7 @@ button{
   width: 90%;
   height: 23%;
   overflow-y: hidden;
+  
   white-space: nowrap;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
@@ -163,7 +164,7 @@ button{
   width: 100%;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  display: inline-block;
+  display: inline-flex;
   margin-right: 1.7vh;
 }
 
@@ -187,21 +188,21 @@ button{
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: start;
+  justify-content: space-between;
 }
 
 .leftFlex{
   width: 50%;
   height: 100%;
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: end;
 }
 
 .leftFlex img{
   height: 75%;
   padding-right: 1.7vh;
-  padding-top: 1.8vh;
 }
 
 #nick img {
@@ -214,32 +215,49 @@ button{
 .MenuBorder p{margin-left: 1.7vh;}
 
 .emoji{
-position: absolute;
-right: -3vh;
-bottom: 0.1vh;
+  position: absolute;
+  right: -3vh;
+  top: 0.3vh;
 }
 
-#up{ font-size: 2.1vh;
-  margin-top: 2vh;
-   position: relative;
-   display: flex;
-   align-items: center;
-   }
+#up{ 
+  font-size: 2.1vh;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  position: relative;
+}
+
+#up p{
+  padding-top: 1.7vh;
+}
 
 #dp {
   font-size: 1.7vh;
-  margin-top: 1vh;
+  height: 20%;
   text-align: left;
   display: flex;
   align-items: center;
 }
 
 #dpp {
-  margin-top: 0.4vh;
+  font-size: 1.7vh;
+  height: 20%;
   text-align: left;
-  font-size: 1.6vh;
   display: flex;
   align-items: center;
+  padding-top: 1vh;
+}
+
+.MenuBtn{
+  display: flex;
+  height: 45%;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  color: #9F9F9F;
+  font-size: 1.8vh;
 }
 
 .MenuBorder button {
@@ -250,18 +268,8 @@ bottom: 0.1vh;
   height: 3.3vh;
   width: 5vh;
 }
-.MenuBtn{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 50%;
-  align-items: center;
-  color: #9F9F9F;
-  font-size: 1.8vh;
-}
+
 .MenuBtn img {height:4vh;margin-left: 1.7vh;}
-
-
 
 .Tasks{
   height: 34%;
@@ -528,6 +536,10 @@ button[data-tc-connect-button="true"]{
   background: #067CFB;
   width: 100000px;
   height: 100000px;
+}
+
+#nickContainer{
+  height: 20%;
 }
 
 .nickDiv {

@@ -658,8 +658,12 @@ const handleCheckReferrals = () => {
           <div className='MenuBorder' ref={blockRefs[0]}>
             <div className='flex_menu_border'>
               <div className='rightFlex'>
-                <p id='up'>OCTIES COMMUNITY</p>
-                <p id='dp'>Home for Telegram OCs</p>
+                <div  id='up'>
+                  <p>OCTIES COMMUNITY</p>
+                </div>
+                <div  id='dp'>
+                  <p>Home for Telegram OCs</p>
+                </div> 
                 <div className='MenuBtn'>
                   {Knopka && <img onClick={Tg_Channel_Open_chek} src={Join} alt='Join' />}
                   <p> {Knopka && <p id="plus">+</p>}1000 $OCTIES</p>
@@ -675,8 +679,12 @@ const handleCheckReferrals = () => {
           <div className='MenuBorder' ref={blockRefs[1]}>
             <div className='flex_menu_border'>
               <div className='rightFlex'>
-                <p id='up'>OCTIES X</p>
-                <p id='dp'>Home for X OCs</p>
+                <div  id='up'>
+                  <p>OCTIES X</p>
+                </div>
+                <div  id='dp'>
+                  <p>Home for X OCs</p>
+                </div> 
                 <div className='MenuBtn'>
                   {KnopkaX && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
                   <p> {KnopkaX && <p id="plus">+</p>}500 $OCTIES</p>
@@ -692,8 +700,12 @@ const handleCheckReferrals = () => {
           <div className='MenuBorder' ref={blockRefs[2]}>
             <div className='flex_menu_border' id='orangeBack'>
               <div className='rightFlex'>
-              <p id='up'>Тапаем <span class="emoji">🐹</span></p>
-                <p id='dp'>Потыкать и стать миллионером!</p>
+                <div  id='up'>
+                  <p>Тапаем <span class="emoji">🐹</span></p>
+                </div>
+                <div  id='dp'>
+                  <p>Потыкать и стать миллионером!</p>
+                </div> 
                 <div className='MenuBtn'>
                   {KnopkaBlock2 && <img onClick={Tg_Channel_Open_chek3} src={Join} alt='Join' />}
                   <p> {KnopkaBlock2 && <p id="plus">+</p>}750 $OCTIES</p>
@@ -709,8 +721,12 @@ const handleCheckReferrals = () => {
           <div className='MenuBorder' ref={blockRefs[3]}>
             <div className='flex_menu_border'  id='orangeBack'>
               <div className='rightFlex'>
-                <p id='up'>AnyTap Community</p>
-                <p id='dpp'>Complete tasks, earn rewards, and join <br/>the on-chain community.</p>
+                <div id='up'>
+                  <p >AnyTap Community</p>
+                </div>
+                <div id='dpp'>
+                  <p>Complete tasks, earn rewards, and join <br/>the on-chain community.</p>
+                </div>
                 <div className='MenuBtn'>
                   {KnopkaAnyTap && <img onClick={Tg_Channel_Open_chek2} src={Join} alt='Join' />}
                   <p> {KnopkaAnyTap && <p id="plus">+</p>}750 $OCTIES</p>
@@ -725,9 +741,13 @@ const handleCheckReferrals = () => {
 
           <div className='MenuBorder' ref={blockRefs[4]}>
             <div className='flex_menu_border' id='greenBack'>
-              <div className='rightFlex'>
-                <p id='up'>Available Partner Space</p>
-                <p id='dp'>Your proposition</p>
+              <div className='rightFlexx'>
+                <div  id='up'>
+                  <p>Available Partner Space</p>
+                </div>
+                <div  id='dp'>
+                  <p>Your proposition</p>
+                </div> 
                 <div className='MenuBtn'>
                   <img onClick={Tg_Channel_Support} src={ContactUs} alt='ContactUs' />
                   <p>+??? $OCTIES</p>
@@ -742,9 +762,12 @@ const handleCheckReferrals = () => {
           <div className='MenuBorder' ref={blockRefs[5]}>
             <div className='flex_menu_border'>
               <div className='rightFlex'>
-                <p id='up'>OCTIES NICKNAME</p>
-                <p id='dp'>Add the word “Octies” to <br/>your nickname.</p>
-                
+              <div id='up'>
+                <p>OCTIES NICKNAME</p>
+              </div>
+              <div id='dpp'>
+                <p>Add the word “Octies” to <br/>your nickname.</p>
+              </div>
                 <div className='MenuBtn'>
                   {KnopkaNick &&  <div className='nickDiv'>
                     <p><img src={nickGalka} alt=''/><span id='Greentxt'>Completed </span>300 $OCTIES</p>  
