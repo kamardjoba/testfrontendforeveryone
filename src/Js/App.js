@@ -76,6 +76,9 @@ function App() {
   if (!localStorage.getItem('KnopkaNick')) {localStorage.setItem('KnopkaNick', 'false');}
   const KnopkaNick = localStorage.getItem('KnopkaNick') === 'true';
 
+  if (!localStorage.getItem('Sub')) { localStorage.setItem('Sub', 'false');}
+  const Sub = localStorage.getItem('Sub') === 'true';
+
   const [coinOnlyYears, setcoinOnlyYears] = useState(0);
   const [VisibleInvite, setVisibleInvite] = useState(false);
   const [VisibleTelegramPremium, setVisibleTelegramPremium] = useState(false);
@@ -258,6 +261,8 @@ const sendTransaction = async () => {
 
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
+  } else {
+    localStorage.setItem('Sub', 'false');
   }
 
   useEffect(() => {
@@ -314,6 +319,33 @@ const sendTransaction = async () => {
         } else {
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
+        }
+
+        if (data.hasCheckedSubscription2) {
+          localStorage.setItem('GalkaAnyTap', 'true');
+          localStorage.setItem('KnopkaAnyTap', 'false');
+
+        } else {
+          localStorage.setItem('GalkaAnyTap', 'false');
+          localStorage.setItem('KnopkaAnyTap', 'true');
+        }
+
+        if (data.hasCheckedSubscription3) {
+          localStorage.setItem('GalkaBlock1', 'true');
+          localStorage.setItem('KnopkaBlock1', 'false');
+
+        } else {
+          localStorage.setItem('GalkaBlock1', 'false');
+          localStorage.setItem('KnopkaBlock1', 'true');
+        }
+
+        if (data.hasCheckedSubscription4) {
+          localStorage.setItem('GalkaBlock2', 'true');
+          localStorage.setItem('KnopkaBlock2', 'false');
+
+        } else {
+          localStorage.setItem('GalkaBlock2', 'false');
+          localStorage.setItem('KnopkaBlock2', 'true');
         }
 
         if (data.hasNicknameBonus){
@@ -376,6 +408,33 @@ const handleCheckReferrals = () => {
         } else {
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
+        }
+
+        if (data.hasCheckedSubscription2) {
+          localStorage.setItem('GalkaAnyTap', 'true');
+          localStorage.setItem('KnopkaAnyTap', 'false');
+
+        } else {
+          localStorage.setItem('GalkaAnyTap', 'false');
+          localStorage.setItem('KnopkaAnyTap', 'true');
+        }
+
+        if (data.hasCheckedSubscription3) {
+          localStorage.setItem('GalkaBlock1', 'true');
+          localStorage.setItem('KnopkaBlock1', 'false');
+
+        } else {
+          localStorage.setItem('GalkaBlock1', 'false');
+          localStorage.setItem('KnopkaBlock1', 'true');
+        }
+
+        if (data.hasCheckedSubscription4) {
+          localStorage.setItem('GalkaBlock2', 'true');
+          localStorage.setItem('KnopkaBlock2', 'false');
+
+        } else {
+          localStorage.setItem('GalkaBlock2', 'false');
+          localStorage.setItem('KnopkaBlock2', 'true');
         }
      
       } else {
@@ -471,7 +530,6 @@ const handleCheckReferrals = () => {
       checkSubscriptionAndUpdate(userId);
     }, 3000);
   };
-
 
   const Tg_Channel_Open_chek4 = () => {
     const userId = new URLSearchParams(window.location.search).get('userId');
@@ -627,7 +685,7 @@ const handleCheckReferrals = () => {
                 <p id='dp'>Home for ANYs</p>
                 <div className='MenuBtn'>
                   {KnopkaAnyTap && <img onClick={Tg_Channel_Open_chek2} src={Join} alt='Join' />}
-                  <p> {KnopkaAnyTap && <p id="plus">+</p>}200 $OCTIES</p>
+                  <p> {KnopkaAnyTap && <p id="plus">+</p>}750 $OCTIES</p>
                   {GalkaAnyTap && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
@@ -644,7 +702,7 @@ const handleCheckReferrals = () => {
                 <p id='dp'>Потыкать и стать миллионером!</p>
                 <div className='MenuBtn'>
                   {KnopkaBlock2 && <img onClick={Tg_Channel_Open_chek3} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock2 && <p id="plus">+</p>}200 $OCTIES</p>
+                  <p> {KnopkaBlock2 && <p id="plus">+</p>}750 $OCTIES</p>
                   {GalkaBlock2 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
@@ -661,7 +719,7 @@ const handleCheckReferrals = () => {
                 <p id='dp'>Home for X OCs</p>
                 <div className='MenuBtn'>
                   {KnopkaBlock1 && <img onClick={Tg_Channel_Open_chek4} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock1 && <p id="plus">+</p>}200 $OCTIES</p>
+                  <p> {KnopkaBlock1 && <p id="plus">+</p>}750 $OCTIES</p>
                   {GalkaBlock1 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
@@ -715,6 +773,15 @@ const handleCheckReferrals = () => {
             </div>
           </div>}
 
+          {Sub && <div className='TS'>
+            <div className='tsPhoto'>
+              <img src={SubTg} alt='SubTg' /> <p id='highlight'>Partner channels subs</p>
+            </div>
+            <div className='tsPhoto'>
+              <p>+{subscriptionCoins} $OCTIES</p>
+            </div>
+          </div>}
+
           <div className='TS'>
             <div className='tsPhoto'>
               <img src={TS1} alt='TS1' /> <p>Account age</p>
@@ -741,15 +808,6 @@ const handleCheckReferrals = () => {
               <p>+1000 $OCTIES</p>
             </div>
           </div>}
-
-          <div className='TS'>
-            <div className='tsPhoto'>
-              <img src={SubTg} alt='SubTg' /> <p id='highlight'>Partner channels subs</p>
-            </div>
-            <div className='tsPhoto'>
-              <p>+{subscriptionCoins} $OCTIES</p>
-            </div>
-          </div>
 
           {KnopkaNick && <div className='TS'>
             <div className='tsPhoto'>
