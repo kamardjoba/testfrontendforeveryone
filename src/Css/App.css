@@ -247,7 +247,7 @@ button{
   text-align: left;
   display: flex;
   align-items: center;
-  padding-top: 1vh;
+  padding-top: 0.7vh;
 }
 
 .MenuBtn{
