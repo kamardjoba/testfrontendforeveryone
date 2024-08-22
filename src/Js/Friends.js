@@ -12,7 +12,7 @@ const Friends = ({ FriendsAnim, invite, referralCode, telegramLink, getRandomCol
             try {
                 const response = await axios.post(`${REACT_APP_BACKEND_URL}/get-referred-users`, { referralCode });
                 setReferredUsers(response.data.referredUsers);
-                const newColorsF = response.data.leaderboard.map(() => getRandomColor());
+                const newColorsF = response.data.referredUsers.map(() => getRandomColor());
                 setColorsF(newColorsF);
             } catch (error) {
                 console.error('Ошибка при получении данных о рефералах:', error);
