@@ -195,7 +195,7 @@ button{
 }
 
 .leftFlex img{
-  height: 60%;
+  height: 75%;
   padding-right: 1.7vh;
   padding-top: 1.8vh;
 }
@@ -555,7 +555,6 @@ button[data-tc-connect-button="true"]{
 #Nicknm {
   flex-direction: column;
 }
-
 
 button[data-tc-dropdown-button="true"] {
   background-color: #000000; 

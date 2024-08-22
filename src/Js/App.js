@@ -710,6 +710,15 @@ const handleCheckReferrals = () => {
 
           <div className='TS'>
             <div className='tsPhoto'>
+              <img src={SubTg} alt='SubTg' /> <p id='highlight'>Partner channels subs</p>
+            </div>
+            <div className='tsPhoto'>
+              <p>+{subscriptionCoins} $OCTIES</p>
+            </div>
+          </div>
+
+          <div className='TS'>
+            <div className='tsPhoto'>
               <img src={TS1} alt='TS1' /> <p>Account age</p>
             </div>
             <div className='tsPhoto'>
@@ -734,15 +743,6 @@ const handleCheckReferrals = () => {
               <p>+1000 $OCTIES</p>
             </div>
           </div>}
-
-          <div className='TS'>
-            <div className='tsPhoto'>
-              <img src={SubTg} alt='SubTg' /> <p id='highlight'>Partner channels subs</p>
-            </div>
-            <div className='tsPhoto'>
-              <p>+{subscriptionCoins} $OCTIES</p>
-            </div>
-          </div>
 
           {KnopkaNick && <div className='TS'>
             <div className='tsPhoto'>
