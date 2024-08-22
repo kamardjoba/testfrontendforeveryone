@@ -750,7 +750,7 @@ const handleCheckReferrals = () => {
 
           <div className='MenuBorder' ref={blockRefs[4]}>
             <div className='flex_menu_border' id='greenBack'>
-              <div className='rightFlexx'>
+              <div className='rightFlex'>
                 <div  id='up'>
                   <p>Available Partner Space</p>
                 </div>
