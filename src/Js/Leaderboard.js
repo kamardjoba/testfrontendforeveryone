@@ -168,4 +168,3 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
 };
 
 export default Leaderboard;
-

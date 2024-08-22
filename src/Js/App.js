@@ -66,7 +66,6 @@ function App() {
   const [referralCoins, setReferralCoins] = useState(0);
   const [hasTelegramPremium, setHasTelegramPremium] = useState(false);
   const [accountAgeCoins, setAccountAgeCoins] = useState(0);
-  const [subscriptionCoins, setSubscriptionCoins] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [telegramLink, setTelegramLink] = useState('');
 
@@ -145,12 +144,6 @@ const sendTransaction = async () => {
   }
 };
 
-
-
-if(subscriptionCoins > 14){
-    localStorage.setItem('Sub', 'true');
-  }
-
   const blockRefs = [useRef(null), useRef(null), useRef(null)];
   const [blockVisibility, setBlockVisibility] = useState([false, false, false]);
 
@@ -218,7 +211,6 @@ if(subscriptionCoins > 14){
       if (response.status === 200) {
         const data = response.data;
         setCoins(data.coins);
-        setSubscriptionCoins(data.coinsSub);
 
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
@@ -258,7 +250,7 @@ if(subscriptionCoins > 14){
     if (userId) {
         const intervalId = setInterval(() => {
             checkSubscriptionAndUpdate(userId);
-        }, 3000); // Периодический пуллинг каждые 3 секунды
+        }, 3000); 
 
         return () => clearInterval(intervalId);
     }
@@ -329,7 +321,7 @@ const handleCheckReferrals = () => {
       .then(response => {
         const referralCount = response.data.referralCount;
 
-        if (referralCount >= 0) {
+        if (referralCount >= 14) {
           localStorage.setItem('buttonVisibleNFT', 'false'); // Меняем кнопку на "Mint NFT"
           window.Telegram.WebApp.HapticFeedback.notificationOccurred('success');
         } else {
@@ -351,7 +343,6 @@ const handleCheckReferrals = () => {
       if (response.status === 200) {
         const data = response.data;
         setCoins(data.coins);
-        setSubscriptionCoins(data.coinsSub);
         
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
