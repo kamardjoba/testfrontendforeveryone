@@ -217,7 +217,7 @@ button{
 .emoji{
   position: absolute;
   right: -3vh;
-  top: 0.3vh;
+  bottom: 0.1vh;
 }
 
 #up{ 
