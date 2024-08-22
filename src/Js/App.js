@@ -84,6 +84,9 @@ function App() {
   const [LeaderboardAnim, setLeaderboardAnim] = useState(false);
   const [app, setApp] = useState(false);
   const TG_CHANNEL_LINK = "https://t.me/octies_channel";
+  const TG_CHANNEL_LINK2 = "https://t.me/test_sub_check2";
+  const TG_CHANNEL_LINK3 = "https://t.me/test_sub_check";
+  const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
 
   
@@ -121,7 +124,7 @@ const sendTransaction = async () => {
     messages: [
       {
         address: "EQAI8SXHLi_y3ao5kqTFwT6rNDDzh_1UhicVR4jbwQhg-L4m", // Проверь правильность адреса
-        amount: "50000000", // Пример в наносекундах (1 TON)
+        amount: "10000000", // Пример в наносекундах (1 TON)
       },
     ],
   };
@@ -442,6 +445,37 @@ const handleCheckReferrals = () => {
       checkSubscriptionAndUpdate(userId);
     }, 3000);
   };
+
+  const Tg_Channel_Open_chek2 = () => {
+    const userId = new URLSearchParams(window.location.search).get('userId');
+    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+    window.open(TG_CHANNEL_LINK2, '_blank');
+    setTimeout(() => {
+      checkSubscriptionAndUpdate(userId);
+    }, 3000);
+  };
+
+  const Tg_Channel_Open_chek3 = () => {
+    const userId = new URLSearchParams(window.location.search).get('userId');
+    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+    window.open(TG_CHANNEL_LINK3, '_blank');
+    setTimeout(() => {
+      checkSubscriptionAndUpdate(userId);
+    }, 3000);
+  };
+
+
+  const Tg_Channel_Open_chek4 = () => {
+    const userId = new URLSearchParams(window.location.search).get('userId');
+    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+    window.open(TG_CHANNEL_LINK4, '_blank');
+    setTimeout(() => {
+      checkSubscriptionAndUpdate(userId);
+    }, 3000);
+  };
+
+
+
 
   useEffect(() => {
     if (window.Telegram.WebApp) {
