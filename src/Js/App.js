@@ -180,42 +180,6 @@ const sendTransaction = async () => {
   }, );
 
   //_______________________________________________________________________________________
-  //__________Управления_Прокруткой________________________________________________________
-  useEffect(() => {
-    const scrollContainer = document.querySelector('.Skroll_Menu_Border');
-
-    let isScrolling;
-
-    const handleScroll = (event) => {
-      event.preventDefault();
-
-      if (isScrolling) return;
-
-      const containerWidth = scrollContainer.clientWidth;
-      const currentScrollPosition = scrollContainer.scrollLeft;
-      const nextScrollPosition = event.deltaY > 0
-        ? currentScrollPosition + containerWidth
-        : currentScrollPosition - containerWidth;
-
-      isScrolling = true;
-
-      scrollContainer.scrollTo({
-        left: nextScrollPosition,
-        behavior: 'smooth'
-      });
-
-      setTimeout(() => {
-        isScrolling = false;
-      }, 500); // Устанавливаем задержку, чтобы избежать слишком частых срабатываний
-    };
-
-    scrollContainer.addEventListener('wheel', handleScroll);
-
-    return () => {
-      scrollContainer.removeEventListener('wheel', handleScroll);
-    };
-  }, []);
-  //_____________
 
   function handleHomeWithVibration() {
     handleHome();
@@ -659,8 +623,7 @@ const handleCheckReferrals = () => {
                     <p><img src={nickGalka} alt=''/><span id='Greentxt'>Completed </span>300 $OCTIES</p>  
                   </div>}
                   {!KnopkaNick &&  <div className='nickDiv' id='Nicknm'>
-                    <p><img src={nickKr} alt=''/><span id='Redtxt'>Not completed </span></p>  
-                    <p >+300 $OCTIES</p>
+                    <p><img src={nickKr} alt=''/><span id='Redtxt'>Not completed</span>+300 $OCTIES</p>  
                   </div>}
                 </div>
               </div>

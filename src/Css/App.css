@@ -551,6 +551,7 @@ button[data-tc-connect-button="true"]{
 
 #Redtxt {
   color: #E33629;
+  margin-right: 0.5vh;
 }
 
 #Nicknm {
