@@ -106,7 +106,7 @@ function App() {
 
   const TG_CHANNEL_LINK = "https://t.me/octies_channel";
   const TG_CHANNEL_LINK2 = "https://t.me/test_sub_check2";
-  const TG_CHANNEL_LINK3 = "https://t.me/test_sub_check";
+  const TG_CHANNEL_LINK3 = "https://t.me/+8YkeoXBKP9JkOGMy";
   const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
 
