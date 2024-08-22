@@ -65,10 +65,10 @@ function App() {
   if (!localStorage.getItem('KnopkaAnyTap')) {localStorage.setItem('KnopkaAnyTap', 'true');}
   const KnopkaAnyTap = localStorage.getItem('KnopkaAnyTap') === 'true';
 
-  if (!localStorage.getItem('GalkaBlock1')) {localStorage.setItem('GalkaBlock1', 'false');}
-  const GalkaBlock1 = localStorage.getItem('GalkaBlock1') === 'true';
-  if (!localStorage.getItem('KnopkaBlock1')) {localStorage.setItem('KnopkaBlock1', 'true');}
-  const KnopkaBlock1 = localStorage.getItem('KnopkaBlock1') === 'true';
+  // if (!localStorage.getItem('GalkaBlock1')) {localStorage.setItem('GalkaBlock1', 'false');}
+  // const GalkaBlock1 = localStorage.getItem('GalkaBlock1') === 'true';
+  // if (!localStorage.getItem('KnopkaBlock1')) {localStorage.setItem('KnopkaBlock1', 'true');}
+  // const KnopkaBlock1 = localStorage.getItem('KnopkaBlock1') === 'true';
 
   if (!localStorage.getItem('GalkaBlock2')) {localStorage.setItem('GalkaBlock2', 'false');}
   const GalkaBlock2 = localStorage.getItem('GalkaBlock2') === 'true';
