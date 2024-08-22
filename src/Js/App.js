@@ -68,9 +68,7 @@ function App() {
   const [accountAgeCoins, setAccountAgeCoins] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [telegramLink, setTelegramLink] = useState('');
-
   const coinmain = coins - referralCoins;
-
   const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
   const [isFrendsOpen, setIsFrendsOpen] = useState(false);
   const [FPage, setFPage] = useState(() => localStorage.getItem('FPage') !== 'false');
@@ -78,14 +76,14 @@ function App() {
   const [YearsOpen, setYearsOpen] = useState(false);
   const [OctOpen, setOctOpen] = useState(false);
   const [Yearr, setYearr] = useState(0);
-
   const [FriendsAnim, setFriendsAnim] = useState(false);
   const [LeaderboardAnim, setLeaderboardAnim] = useState(false);
   const [app, setApp] = useState(false);
+  const [tonConnectUI] = useTonConnectUI();
+  const [transactionNumber, setTransactionNumber] = useState(null);
   const TG_CHANNEL_LINK = "https://t.me/octies_channel";
   const X_LINK = "https://x.com/Octies_GameFI";
 
-  
   if (!localStorage.getItem('buttonVisibleNFT')) {localStorage.setItem('buttonVisibleNFT', 'true');}
   const buttonVisible = localStorage.getItem('buttonVisibleNFT') === 'true';
   const [showNotCompleted, setShowNotCompleted] = useState(false);
@@ -109,18 +107,14 @@ function App() {
     }
 }, []);
 
-const [tonConnectUI] = useTonConnectUI();
-
-const [transactionNumber, setTransactionNumber] = useState(null);
-
 const sendTransaction = async () => {
   window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
   const transaction = {
-    validUntil: Math.floor(Date.now() / 1000) + 600, // Время действия транзакции (например, 10 минут)
+    validUntil: Math.floor(Date.now() / 1000) + 600,
     messages: [
       {
-        address: "EQAI8SXHLi_y3ao5kqTFwT6rNDDzh_1UhicVR4jbwQhg-L4m", // Проверь правильность адреса
-        amount: "50000000", // Пример в наносекундах (1 TON)
+        address: "EQAI8SXHLi_y3ao5kqTFwT6rNDDzh_1UhicVR4jbwQhg-L4m", 
+        amount: "50000000", 
       },
     ],
   };
@@ -128,12 +122,11 @@ const sendTransaction = async () => {
   try {
     await tonConnectUI.sendTransaction(transaction);
 
-    // Отправляем запрос на сервер для получения номера транзакции
     const response = await axios.post(`${REACT_APP_BACKEND_URL}/record-transaction`, { userId });
 
     if (response.data.success) {
         setTransactionNumber(response.data.transactionNumber);
-        localStorage.setItem('isMintNFT', 'true'); // Установка флага успешной транзакции
+        localStorage.setItem('isMintNFT', 'true'); 
         alert(`Transaction successful! You are user number ${response.data.transactionNumber}`);
     } else {
         alert('Transaction failed!');
@@ -144,8 +137,10 @@ const sendTransaction = async () => {
   }
 };
 
-  const blockRefs = [useRef(null), useRef(null), useRef(null)];
-  const [blockVisibility, setBlockVisibility] = useState([false, false, false]);
+//________________________________________________________________Tasck_Swap
+
+  const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
+  const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false, false]);
 
   useEffect(() => {
     const observerOptions = {
@@ -183,6 +178,44 @@ const sendTransaction = async () => {
       });
     };
   }, );
+
+  //_______________________________________________________________________________________
+  //__________Управления_Прокруткой________________________________________________________
+  useEffect(() => {
+    const scrollContainer = document.querySelector('.Skroll_Menu_Border');
+
+    let isScrolling;
+
+    const handleScroll = (event) => {
+      event.preventDefault();
+
+      if (isScrolling) return;
+
+      const containerWidth = scrollContainer.clientWidth;
+      const currentScrollPosition = scrollContainer.scrollLeft;
+      const nextScrollPosition = event.deltaY > 0
+        ? currentScrollPosition + containerWidth
+        : currentScrollPosition - containerWidth;
+
+      isScrolling = true;
+
+      scrollContainer.scrollTo({
+        left: nextScrollPosition,
+        behavior: 'smooth'
+      });
+
+      setTimeout(() => {
+        isScrolling = false;
+      }, 500); // Устанавливаем задержку, чтобы избежать слишком частых срабатываний
+    };
+
+    scrollContainer.addEventListener('wheel', handleScroll);
+
+    return () => {
+      scrollContainer.removeEventListener('wheel', handleScroll);
+    };
+  }, []);
+  //_____________
 
   function handleHomeWithVibration() {
     handleHome();
@@ -406,7 +439,6 @@ const handleCheckReferrals = () => {
                 const response = await axios.post(`${REACT_APP_BACKEND_URL}/update-coins`, { userId, amount: 500 });
                 if (response.data.success) {
                     setCoins(response.data.coins);
-                    // Убедитесь, что hasReceivedTwitterReward установлено в true
                     if (response.data.hasReceivedTwitterReward) {
                         localStorage.setItem('hasReceivedTwitterReward', 'true');
                          setCoins(response.data.coins);
@@ -530,7 +562,6 @@ const handleCheckReferrals = () => {
           </div>
         </div>}
 
-
         <div className='Skroll_Menu_Border'>
           <div className='MenuBorder' ref={blockRefs[0]}>
             <div className='flex_menu_border'>
@@ -569,6 +600,57 @@ const handleCheckReferrals = () => {
           <div className='MenuBorder' ref={blockRefs[2]}>
             <div className='flex_menu_border'>
               <div className='rightFlex'>
+                <p id='up'>AnyTap</p>
+                <p id='dp'>Home for ANYs</p>
+                <div className='MenuBtn'>
+                  {KnopkaX && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
+                  <p> {KnopkaX && <p id="plus">+</p>}200 $OCTIES</p>
+                  {Galo4kaX && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
+                </div>
+              </div>
+              <div className='leftFlex'>
+                <img src={XLogo} alt='XLogo'/>
+              </div>
+            </div>
+          </div>
+
+          <div className='MenuBorder' ref={blockRefs[3]}>
+            <div className='flex_menu_border'>
+              <div className='rightFlex'>
+                <p id='up'>OCTIES X</p>
+                <p id='dp'>Home for X OCs</p>
+                <div className='MenuBtn'>
+                  {KnopkaX && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
+                  <p> {KnopkaX && <p id="plus">+</p>}500 $OCTIES</p>
+                  {Galo4kaX && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
+                </div>
+              </div>
+              <div className='leftFlex'>
+                <img src={XLogo} alt='XLogo'/>
+              </div>
+            </div>
+          </div>
+
+          <div className='MenuBorder' ref={blockRefs[4]}>
+            <div className='flex_menu_border'>
+              <div className='rightFlex'>
+                <p id='up'>OCTIES X</p>
+                <p id='dp'>Home for X OCs</p>
+                <div className='MenuBtn'>
+                  {KnopkaX && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
+                  <p> {KnopkaX && <p id="plus">+</p>}5000 $OCTIES</p>
+                  {Galo4kaX && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
+                </div>
+              </div>
+              <div className='leftFlex'>
+                <img src={XLogo} alt='XLogo'/>
+              </div>
+            </div>
+          </div>
+
+          <div className='MenuBorder' ref={blockRefs[5]}>
+            <div className='flex_menu_border'>
+              <div className='rightFlex'>
                 <p id='upp'>OCTIES NICKNAME</p>
                 <p id='dpp'>Add the word “Octies” to <br/>your nickname.</p>
                 
@@ -585,8 +667,8 @@ const handleCheckReferrals = () => {
               <div className='leftFlex' id='nick'>
                 <img src={NickLogo} alt='NickLogo'/>
               </div>
-             </div> 
-          </div>
+             </div>
+          </div>      
 
         </div>
         <div className='Reward'>
@@ -594,6 +676,9 @@ const handleCheckReferrals = () => {
             <img src={Ellipse} alt='Ellips' className={blockVisibility[0] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[1] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[2] ? '' : 'img-dark'} />
+            <img src={Ellipse} alt='Ellips' className={blockVisibility[3] ? '' : 'img-dark'} />
+            <img src={Ellipse} alt='Ellips' className={blockVisibility[4] ? '' : 'img-dark'} />
+            <img src={Ellipse} alt='Ellips' className={blockVisibility[5] ? '' : 'img-dark'} />
           </div>
           <p>Your Rewards</p>
         </div>

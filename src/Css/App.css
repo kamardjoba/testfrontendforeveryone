@@ -526,8 +526,8 @@ button[data-tc-connect-button="true"]{
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; /* Ensure the items are stacked vertically */
-  text-align: right; /* Right align the text within the container */
+  flex-direction: column; 
+  text-align: right; 
 }
 
 .nickDiv p {
@@ -535,7 +535,7 @@ button[data-tc-connect-button="true"]{
   font-size: 1.2vh;
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Align content to the end of the flex container */
+  justify-content: flex-end; 
   width: 90%;
 }
 
