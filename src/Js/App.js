@@ -25,6 +25,7 @@ import galo4ka from '../IMG/All_Logo/galol4ka.png';
 import nickGalka from '../IMG/All_Logo/galka.png';
 import nickKr from '../IMG/All_Logo/nickNema.png';
 import Ellipse from '../IMG/All_Logo/Ellipse.png';
+import Block1 from '../IMG/All_Logo/Block1.png';
 
 import tgLogo from '../IMG/All_Logo/TgComunity.png';
 import XLogo from '../IMG/All_Logo/XCominity.png';
@@ -576,7 +577,7 @@ const handleCheckReferrals = () => {
           </div>
 
           <div className='MenuBorder' ref={blockRefs[2]}>
-            <div className='flex_menu_border'>
+            <div className='flex_menu_border'  id='orangeBack'>
               <div className='rightFlex'>
                 <p id='up'>AnyTap</p>
                 <p id='dp'>Home for ANYs</p>
@@ -587,13 +588,30 @@ const handleCheckReferrals = () => {
                 </div>
               </div>
               <div className='leftFlex'>
-                <img src={XLogo} alt='XLogo'/>
+                <img src={tgLogo} alt='XLogo'/>
               </div>
             </div>
           </div>
 
           <div className='MenuBorder' ref={blockRefs[3]}>
-            <div className='flex_menu_border'>
+            <div className='flex_menu_border' id='orangeBack'>
+              <div className='rightFlex'>
+              <p id='up'>Тапаем <span class="emoji">🐹</span></p>
+                <p id='dp'>Потыкать и стать миллионером!</p>
+                <div className='MenuBtn'>
+                  {KnopkaBlock2 && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
+                  <p> {KnopkaBlock2 && <p id="plus">+</p>}200 $OCTIES</p>
+                  {GalkaBlock2 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
+                </div>
+              </div>
+              <div className='leftFlex'>
+                <img src={Block1} alt='Tapaem_Logo'/>
+              </div>
+            </div>
+          </div>
+
+          <div className='MenuBorder' ref={blockRefs[4]}>
+            <div className='flex_menu_border' id='orangeBack'>
               <div className='rightFlex'>
                 <p id='up'>Block 1</p>
                 <p id='dp'>Home for X OCs</p>
@@ -604,24 +622,7 @@ const handleCheckReferrals = () => {
                 </div>
               </div>
               <div className='leftFlex'>
-                <img src={XLogo} alt='XLogo'/>
-              </div>
-            </div>
-          </div>
-
-          <div className='MenuBorder' ref={blockRefs[4]}>
-            <div className='flex_menu_border'>
-              <div className='rightFlex'>
-                <p id='up'>Block 2</p>
-                <p id='dp'>Home for X OCs</p>
-                <div className='MenuBtn'>
-                  {KnopkaBlock2 && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock2 && <p id="plus">+</p>}200 $OCTIES</p>
-                  {GalkaBlock2 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
-                </div>
-              </div>
-              <div className='leftFlex'>
-                <img src={XLogo} alt='XLogo'/>
+                <img src={tgLogo} alt='XLogo'/>
               </div>
             </div>
           </div>
