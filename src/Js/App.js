@@ -107,8 +107,9 @@ function App() {
   const TG_CHANNEL_LINK = "https://t.me/octies_channel";
   const TG_CHANNEL_LINK2 = "https://t.me/test_sub_check2";
   const TG_CHANNEL_LINK3 = "https://t.me/+8YkeoXBKP9JkOGMy";
-  const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
+  // const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
+  const Support = "https://t.me/octies_manage";
 
   if (!localStorage.getItem('buttonVisibleNFT')) {localStorage.setItem('buttonVisibleNFT', 'true');}
   const buttonVisible = localStorage.getItem('buttonVisibleNFT') === 'true';
@@ -532,15 +533,23 @@ const handleCheckReferrals = () => {
     }, 3000);
   };
 
-  const Tg_Channel_Open_chek4 = () => {
+  // const Tg_Channel_Open_chek4 = () => {
+  //   const userId = new URLSearchParams(window.location.search).get('userId');
+  //   window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+  //   window.open(TG_CHANNEL_LINK4, '_blank');
+  //   setTimeout(() => {
+  //     checkSubscriptionAndUpdate(userId);
+  //   }, 3000);
+  // };
+
+  const Tg_Channel_Support = () => {
     const userId = new URLSearchParams(window.location.search).get('userId');
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    window.open(TG_CHANNEL_LINK4, '_blank');
+    window.open(Support, '_blank');
     setTimeout(() => {
       checkSubscriptionAndUpdate(userId);
     }, 3000);
   };
-
 
 
 
@@ -719,7 +728,7 @@ const handleCheckReferrals = () => {
                 <p id='up'>Available Partner Space</p>
                 <p id='dp'>Your proposition</p>
                 <div className='MenuBtn'>
-                  <img onClick={Tg_Channel_Open_chek4} src={ContactUs} alt='ContactUs' />
+                  <img onClick={Tg_Channel_Support} src={ContactUs} alt='ContactUs' />
                   <p>+??? $OCTIES</p>
                 </div>
               </div>
