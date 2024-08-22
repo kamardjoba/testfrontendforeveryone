@@ -140,6 +140,14 @@ function App() {
 
 const sendTransaction = async () => {
   window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+
+  // Проверка подключения кошелька
+  const walletInfo = tonConnectUI.walletInfo; // Получаем информацию о подключении кошелька
+  if (!walletInfo) { // Если кошелек не подключен
+    alert("First ‘Connect Wallet’ to you can call ‘Mint’ function");
+    return; // Останавливаем выполнение функции
+  }
+
   const transaction = {
     validUntil: Math.floor(Date.now() / 1000) + 600,
     messages: [
@@ -167,6 +175,7 @@ const sendTransaction = async () => {
     alert("Failed to send transaction.");
   }
 };
+
 
 //________________________________________________________________Task_Swap
   const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
@@ -381,7 +390,7 @@ const handleCheckReferrals = () => {
       .then(response => {
         const referralCount = response.data.referralCount;
 
-        if (referralCount >= 0) {
+        if (referralCount >= 14) {
           localStorage.setItem('buttonVisibleNFT', 'false'); // Меняем кнопку на "Mint NFT"
           window.Telegram.WebApp.HapticFeedback.notificationOccurred('success');
         } else {
