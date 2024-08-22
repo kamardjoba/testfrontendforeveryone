@@ -26,6 +26,8 @@ import nickGalka from '../IMG/All_Logo/galka.png';
 import nickKr from '../IMG/All_Logo/nickNema.png';
 import Ellipse from '../IMG/All_Logo/Ellipse.png';
 import Block1 from '../IMG/All_Logo/Block1.png';
+import FreePosition from '../IMG/All_Logo/freePosiction.png';
+import ContactUs from '../IMG/All_Logo/ContactUs.png';
 
 import tgLogo from '../IMG/All_Logo/TgComunity.png';
 import XLogo from '../IMG/All_Logo/XCominity.png';
@@ -713,18 +715,17 @@ const handleCheckReferrals = () => {
           </div>
 
           <div className='MenuBorder' ref={blockRefs[4]}>
-            <div className='flex_menu_border' id='orangeBack'>
+            <div className='flex_menu_border' id='greenBack'>
               <div className='rightFlex'>
-                <p id='up'>Block 1</p>
-                <p id='dp'>Home for X OCs</p>
+                <p id='up'>Available Partner Space</p>
+                <p id='dp'>Your proposition</p>
                 <div className='MenuBtn'>
-                  {KnopkaBlock1 && <img onClick={Tg_Channel_Open_chek4} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock1 && <p id="plus">+</p>}750 $OCTIES</p>
-                  {GalkaBlock1 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
+                  <img onClick={Tg_Channel_Open_chek4} src={ContactUs} alt='ContactUs' />
+                  <p>+??? $OCTIES</p>
                 </div>
               </div>
               <div className='leftFlex'>
-                <img src={tgLogo} alt='XLogo'/>
+                <img src={FreePosition} alt='XLogo'/>
               </div>
             </div>
           </div>
