@@ -28,6 +28,7 @@ import Ellipse from '../IMG/All_Logo/Ellipse.png';
 import Block1 from '../IMG/All_Logo/Block1.png';
 import FreePosition from '../IMG/All_Logo/freePosiction.png';
 import ContactUs from '../IMG/All_Logo/ContactUs.png';
+import AnyTapChanel from '../IMG/All_Logo/AnyTapChanel.png';
 
 import tgLogo from '../IMG/All_Logo/TgComunity.png';
 import XLogo from '../IMG/All_Logo/XCominity.png';
@@ -682,8 +683,8 @@ const handleCheckReferrals = () => {
           <div className='MenuBorder' ref={blockRefs[2]}>
             <div className='flex_menu_border'  id='orangeBack'>
               <div className='rightFlex'>
-                <p id='up'>AnyTap</p>
-                <p id='dp'>Home for ANYs</p>
+                <p id='up'>AnyTap Community</p>
+                <p id='dpp'>Complete tasks, earn rewards, and join <br/>the on-chain community.</p>
                 <div className='MenuBtn'>
                   {KnopkaAnyTap && <img onClick={Tg_Channel_Open_chek2} src={Join} alt='Join' />}
                   <p> {KnopkaAnyTap && <p id="plus">+</p>}750 $OCTIES</p>
@@ -691,7 +692,7 @@ const handleCheckReferrals = () => {
                 </div>
               </div>
               <div className='leftFlex'>
-                <img src={tgLogo} alt='XLogo'/>
+                <img src={AnyTapChanel} alt='XLogo'/>
               </div>
             </div>
           </div>
