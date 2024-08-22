@@ -57,6 +57,21 @@ function App() {
   if (!localStorage.getItem('KnopkaX')) {localStorage.setItem('KnopkaX', 'true');}
   const KnopkaX = localStorage.getItem('KnopkaX') === 'true';
 
+  if (!localStorage.getItem('GalkaAnyTap')) {localStorage.setItem('GalkaAnyTap', 'false');}
+  const GalkaAnyTap = localStorage.getItem('GalkaAnyTap') === 'true';
+  if (!localStorage.getItem('KnopkaAnyTap')) {localStorage.setItem('KnopkaAnyTap', 'true');}
+  const KnopkaAnyTap = localStorage.getItem('KnopkaAnyTap') === 'true';
+
+  if (!localStorage.getItem('GalkaBlock1')) {localStorage.setItem('GalkaBlock1', 'false');}
+  const GalkaBlock1 = localStorage.getItem('GalkaBlock1') === 'true';
+  if (!localStorage.getItem('KnopkaBlock1')) {localStorage.setItem('KnopkaBlock1', 'true');}
+  const KnopkaBlock1 = localStorage.getItem('KnopkaBlock1') === 'true';
+
+  if (!localStorage.getItem('GalkaBlock2')) {localStorage.setItem('GalkaBlock2', 'false');}
+  const GalkaBlock2 = localStorage.getItem('GalkaBlock2') === 'true';
+  if (!localStorage.getItem('KnopkaBlock2')) {localStorage.setItem('KnopkaBlock2', 'true');}
+  const KnopkaBlock2 = localStorage.getItem('KnopkaBlock2') === 'true';
+
   if (!localStorage.getItem('KnopkaNick')) {localStorage.setItem('KnopkaNick', 'false');}
   const KnopkaNick = localStorage.getItem('KnopkaNick') === 'true';
 
@@ -138,8 +153,7 @@ const sendTransaction = async () => {
   }
 };
 
-//________________________________________________________________Tasck_Swap
-
+//________________________________________________________________Task_Swap
   const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
   const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false, false]);
 
@@ -179,7 +193,6 @@ const sendTransaction = async () => {
       });
     };
   }, );
-
   //_______________________________________________________________________________________
 
   function handleHomeWithVibration() {
@@ -568,9 +581,9 @@ const handleCheckReferrals = () => {
                 <p id='up'>AnyTap</p>
                 <p id='dp'>Home for ANYs</p>
                 <div className='MenuBtn'>
-                  {KnopkaX && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
-                  <p> {KnopkaX && <p id="plus">+</p>}200 $OCTIES</p>
-                  {Galo4kaX && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
+                  {KnopkaAnyTap && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
+                  <p> {KnopkaAnyTap && <p id="plus">+</p>}200 $OCTIES</p>
+                  {GalkaAnyTap && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
               <div className='leftFlex'>
@@ -585,9 +598,9 @@ const handleCheckReferrals = () => {
                 <p id='up'>Block 1</p>
                 <p id='dp'>Home for X OCs</p>
                 <div className='MenuBtn'>
-                  {KnopkaX && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
-                  <p> {KnopkaX && <p id="plus">+</p>}200 $OCTIES</p>
-                  {Galo4kaX && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
+                  {KnopkaBlock1 && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
+                  <p> {KnopkaBlock1 && <p id="plus">+</p>}200 $OCTIES</p>
+                  {GalkaBlock1 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
               <div className='leftFlex'>
@@ -602,9 +615,9 @@ const handleCheckReferrals = () => {
                 <p id='up'>Block 2</p>
                 <p id='dp'>Home for X OCs</p>
                 <div className='MenuBtn'>
-                  {KnopkaX && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
-                  <p> {KnopkaX && <p id="plus">+</p>}200 $OCTIES</p>
-                  {Galo4kaX && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
+                  {KnopkaBlock2 && <img onClick={Tg_Channel_Open_X} src={Join} alt='Join' />}
+                  <p> {KnopkaBlock2 && <p id="plus">+</p>}200 $OCTIES</p>
+                  {GalkaBlock2 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
               <div className='leftFlex'>
