@@ -22,6 +22,7 @@ import TSNFT from '../IMG/TaskIcon/TS_NFT.png';
 import TSnick from '../IMG/TaskIcon/TS_nick.png';
 import galo4ka from '../IMG/All_Logo/galol4ka.png';
 import nickGalka from '../IMG/All_Logo/galka.png';
+import nickKr from '../IMG/All_Logo/nickNema.png';
 import Ellipse from '../IMG/All_Logo/Ellipse.png';
 
 import tgLogo from '../IMG/All_Logo/TgComunity.png';
@@ -55,8 +56,6 @@ function App() {
   if (!localStorage.getItem('KnopkaX')) {localStorage.setItem('KnopkaX', 'true');}
   const KnopkaX = localStorage.getItem('KnopkaX') === 'true';
 
-  if (!localStorage.getItem('GalkaNick')) {localStorage.setItem('GalkaNick', 'false');}
-  const GalkaNick = localStorage.getItem('GalkaNick') === 'true';
   if (!localStorage.getItem('KnopkaNick')) {localStorage.setItem('KnopkaNick', 'true');}
   const KnopkaNick = localStorage.getItem('KnopkaNick') === 'true';
 
@@ -230,12 +229,10 @@ if(subscriptionCoins > 14){
         }
 
         if (data.hasNicknameBonus){
-          localStorage.setItem('GalkaNick', 'true');
-          localStorage.setItem('KnopkaNick', 'false');
+          localStorage.setItem('KnopkaNick', 'true');
         }
         else{
-          localStorage.setItem('GalkaNick', 'false');
-          localStorage.setItem('KnopkaNick', 'true');
+          localStorage.setItem('KnopkaNick', 'false');
         }
         
       } else {
@@ -303,12 +300,10 @@ if(subscriptionCoins > 14){
         }
 
         if (data.hasNicknameBonus){
-          localStorage.setItem('GalkaNick', 'true');
-          localStorage.setItem('KnopkaNick', 'false');
+          localStorage.setItem('KnopkaNick', 'true');
         }
         else{
-          localStorage.setItem('GalkaNick', 'false');
-          localStorage.setItem('KnopkaNick', 'true');
+          localStorage.setItem('KnopkaNick', 'false');
         }
 
         setAccountAgeCoins(accountAgeCoins);
@@ -588,7 +583,11 @@ const handleCheckReferrals = () => {
                 
                 <div className='MenuBtn'>
                   {KnopkaNick &&  <div className='nickDiv'>
-                    <p><img src={nickGalka} alt=''/>Complated 1,000 $OCTIES</p>  
+                    <p><img src={nickGalka} alt=''/><span id='Greentxt'>Complated </span>300 $OCTIES</p>  
+                  </div>}
+                  {!KnopkaNick &&  <div className='nickDiv' id='Nicknm'>
+                    <p><img src={nickKr} alt=''/><span id='Redtxt'>Not complated </span></p>  
+                    <p >+300 $OCTIES</p>
                   </div>}
                 </div>
               </div>
@@ -645,7 +644,7 @@ const handleCheckReferrals = () => {
             </div>
           </div>}
 
-          {GalkaNick && <div className='TS'>
+          {KnopkaNick && <div className='TS'>
             <div className='tsPhoto'>
               <img src={TSnick} alt='TS3' /> <p id='txt'>Add "Octies" to nickname</p>
             </div>

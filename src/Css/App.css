@@ -200,6 +200,7 @@ button{
 #nick img {
   height: 100%;
   padding: 0;
+  z-index: 2;
   border-radius: 2vh;
 }
 
@@ -516,29 +517,46 @@ button[data-tc-connect-button="true"]{
   height: 100000px;
 }
 
-.nickDiv{
+.nickDiv {
   height: 90%;
   background: #393939;
-  width: 90%;
   margin-left: 1.7vh;
+  padding: 0 1vh 0 1vh;
   border-radius: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column; /* Ensure the items are stacked vertically */
+  text-align: right; /* Right align the text within the container */
 }
 
-.nickDiv p{
+.nickDiv p {
   margin: 0;
   font-size: 1.2vh;
   display: flex;
   align-items: center;
+  justify-content: flex-end; /* Align content to the end of the flex container */
+  width: 90%;
 }
 
-.nickDiv img{
-  margin: 0;
-  margin-right: 1vh;
+.nickDiv img {
+  margin: 0.2vh 0.5vh 0.2vh 1vh;
   height: 1.5vh;
 }
+
+#Greentxt {
+  margin-right: 0.5vh;
+  color: #19D94F;
+}
+
+#Redtxt {
+  color: #E33629;
+}
+
+#Nicknm {
+  flex-direction: column;
+}
+
 
 button[data-tc-dropdown-button="true"] {
   background-color: #000000; 
