@@ -425,7 +425,7 @@ const handleCheckReferrals = () => {
           localStorage.setItem('Knopka', 'true');
         }
 
-        if (data.hasCheckedSubscription2) {
+        if (data.isSubscribedToChannel3) {
           localStorage.setItem('GalkaAnyTap', 'true');
           localStorage.setItem('KnopkaAnyTap', 'false');
 
@@ -434,7 +434,7 @@ const handleCheckReferrals = () => {
           localStorage.setItem('KnopkaAnyTap', 'true');
         }
 
-        if (data.hasCheckedSubscription3) {
+        if (data.hasCheckedSubscription2) {
           localStorage.setItem('GalkaBlock1', 'true');
           localStorage.setItem('KnopkaBlock1', 'false');
 
