@@ -298,31 +298,33 @@ const sendTransaction = async () => {
     }
 }, []);
 
-
-  const fetchUserData = useCallback(async (userId) => {
-    try {
+const fetchUserData = useCallback(async (userId) => {
+  try {
       const response = await axios.post(`${REACT_APP_BACKEND_URL}/get-coins`, { userId });
       const data = response.data;
       if (response.status === 200) {
-        setCoins(data.coins);
-        setReferralCoins(data.referralCoins);
-        setHasTelegramPremium(data.hasTelegramPremium);
-        setTransactionNumber(data.transactionNumber);
+          setCoins(data.coins);
+          setReferralCoins(data.referralCoins);
+          setHasTelegramPremium(data.hasTelegramPremium);
+          setTransactionNumber(data.transactionNumber);
 
-  
-        const accountCreationDate = new Date(data.accountCreationDate);
-        const currentYear = new Date().getFullYear();
-        const accountYear = accountCreationDate.getFullYear();
-        const yearsOld = currentYear - accountYear;
-        setYearr(yearsOld);
-        const accountAgeCoins = yearsOld * 500;
-        setcoinOnlyYears(accountAgeCoins);
-        if (hasTelegramPremium === true) {
-          setVisibleTelegramPremium(true);
-        }
-        if (referralCoins > 0) {
-          setVisibleInvite(true);
-        }
+          const accountCreationDate = new Date(data.accountCreationDate);
+          const currentYear = new Date().getFullYear();
+          const accountYear = accountCreationDate.getFullYear();
+          const yearsOld = currentYear - accountYear;
+
+          let accountAgeCoins = yearsOld * 500;
+          if (yearsOld < 1) {
+              accountAgeCoins = 300; // Минимум 300 монет для аккаунтов младше года
+          }
+          setcoinOnlyYears(accountAgeCoins);
+          
+          if (hasTelegramPremium === true) {
+              setVisibleTelegramPremium(true);
+          }
+          if (referralCoins > 0) {
+              setVisibleInvite(true);
+          }
         
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
