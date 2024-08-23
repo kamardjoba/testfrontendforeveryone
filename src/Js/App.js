@@ -627,7 +627,10 @@ const handleCheckReferrals = () => {
         <img src={Octo} alt='Octo'  />
       </div>}
       {!isMint &&<div className='MainCoin'>
-        <p>{coins} $OCTIES</p>
+        <div className='MainCoin'>
+  {coins === 0 ? <p>Loading...</p> : <p>{coins} $OCTIES</p>}
+</div>
+
       </div>}
       {isMint &&<div className='MintCoin'>
         <img src={NFTm} alt='NFTm' />
