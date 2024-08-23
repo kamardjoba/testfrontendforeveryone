@@ -305,11 +305,6 @@ const sendTransaction = async () => {
         setHasTelegramPremium(data.hasTelegramPremium);
         setTransactionNumber(data.transactionNumber);
         setSubscriptionCoins(data.coinsSub);
-        if(subscriptionCoins > 0){
-          localStorage.setItem('Sub', 'true');
-        } else {
-          localStorage.setItem('Sub', 'false');
-        }
 
         const accountCreationDate = new Date(data.accountCreationDate);
         const currentYear = new Date().getFullYear();
@@ -417,12 +412,7 @@ const handleCheckReferrals = () => {
         const data = response.data;
         setCoins(data.coins);
         setSubscriptionCoins(data.coinsSub);
-
-        if(subscriptionCoins > 0){
-          localStorage.setItem('Sub', 'true');
-        } else {
-          localStorage.setItem('Sub', 'false');
-        }
+        
         
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
