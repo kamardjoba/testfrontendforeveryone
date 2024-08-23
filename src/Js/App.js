@@ -315,9 +315,9 @@ const sendTransaction = async () => {
         const accountYear = accountCreationDate.getFullYear();
         const yearsOld = currentYear - accountYear;
         setYearr(yearsOld);
-        const accountAgeCoins = yearsOld * 500;
+        let accountAgeCoins = yearsOld * 500;
         if (yearsOld < 1) {
-          accountAgeCoins += 300; // Минимум 300 монет для аккаунтов младше года
+          accountAgeCoins = 300; // Минимум 300 монет для аккаунтов младше года
       }
         setcoinOnlyYears(accountAgeCoins);
         if (hasTelegramPremium === true) {
