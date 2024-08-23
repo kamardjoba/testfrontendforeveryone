@@ -345,7 +345,7 @@ const sendTransaction = async () => {
           localStorage.setItem('KnopkaAnyTap', 'true');
         }
 
-        if (data.hasCheckedSubscription2) {
+        if (data.hasCheckedSubscription4) {
           localStorage.setItem('GalkaBlock1', 'true');
           localStorage.setItem('KnopkaBlock1', 'false');
 
@@ -354,7 +354,7 @@ const sendTransaction = async () => {
           localStorage.setItem('KnopkaBlock1', 'true');
         }
 
-        if (data.hasCheckedSubscription4) {
+        if (data.hasCheckedSubscription2) {
           localStorage.setItem('GalkaBlock2', 'true');
           localStorage.setItem('KnopkaBlock2', 'false');
 
@@ -434,7 +434,7 @@ const handleCheckReferrals = () => {
           localStorage.setItem('KnopkaAnyTap', 'true');
         }
 
-        if (data.hasCheckedSubscription2) {
+        if (data.hasCheckedSubscription4) {
           localStorage.setItem('GalkaBlock1', 'true');
           localStorage.setItem('KnopkaBlock1', 'false');
 
@@ -443,7 +443,7 @@ const handleCheckReferrals = () => {
           localStorage.setItem('KnopkaBlock1', 'true');
         }
 
-        if (data.hasCheckedSubscription4) {
+        if (data.hasCheckedSubscription2) {
           localStorage.setItem('GalkaBlock2', 'true');
           localStorage.setItem('KnopkaBlock2', 'false');
 
