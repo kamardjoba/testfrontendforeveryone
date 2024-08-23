@@ -628,13 +628,13 @@ const handleCheckReferrals = () => {
       </div>}
       {!isMint &&<div className='MainCoin'>
         <div className='MainCoin'>
-  {coins === 0 ? <p>Loading...</p> : <p>{coins} $OCTIES</p>}
-</div>
+        {coins === 0 ? <p>Loading...</p> : <p>{coins} $OCTIES</p>}
+      </div>
 
       </div>}
       {isMint &&<div className='MintCoin'>
         <img src={NFTm} alt='NFTm' />
-        <p id='endtxt'>{coins} <span id='highlight'>{transactionNumber}</span> $OCTIES</p>
+        <p id='endtxt'> {coins === 0 ? <p>Loading...</p> : <p>{coins}</p>} <span id='highlight'>{transactionNumber}</span> $OCTIES</p>
       </div>}
 
       <div className='Menu'>
