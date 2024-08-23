@@ -271,7 +271,11 @@ const sendTransaction = async () => {
     }
   }, []);
 
-
+  if(subscriptionCoins > 0){
+    localStorage.setItem('Sub', 'true');
+  } else {
+    localStorage.setItem('Sub', 'false');
+  }
 
   useEffect(() => {
     if (userId) {
@@ -412,7 +416,6 @@ const handleCheckReferrals = () => {
         const data = response.data;
         setCoins(data.coins);
         setSubscriptionCoins(data.coinsSub);
-        
         
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
