@@ -425,7 +425,7 @@ const handleCheckReferrals = () => {
           localStorage.setItem('Knopka', 'true');
         }
 
-        if (data.isSubscribedToChannel3) {
+        if (data.hasCheckedSubscription3) {
           localStorage.setItem('GalkaAnyTap', 'true');
           localStorage.setItem('KnopkaAnyTap', 'false');
 
