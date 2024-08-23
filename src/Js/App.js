@@ -308,8 +308,8 @@ const sendTransaction = async () => {
         setReferralCoins(data.referralCoins);
         setHasTelegramPremium(data.hasTelegramPremium);
         setTransactionNumber(data.transactionNumber);
+        setSubscriptionCoins(data.coinsSub);
 
-  
         const accountCreationDate = new Date(data.accountCreationDate);
         const currentYear = new Date().getFullYear();
         const accountYear = accountCreationDate.getFullYear();
