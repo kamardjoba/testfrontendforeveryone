@@ -641,7 +641,7 @@ const handleCheckReferrals = () => {
         </div>
       </div>
       {!isMint && <div className="main">
-        <img src={Octo} alt='Octo' onClick={(event) => {localStorage.clear() }} />
+        <img src={Octo} alt='Octo' />
       </div>}
       {!isMint &&<div className='MainCoin'>
         <div className='MainCoin'>
@@ -650,7 +650,7 @@ const handleCheckReferrals = () => {
 
       </div>}
       {isMint &&<div className='MintCoin'>
-        <img src={NFTm} alt='NFTm' onClick={(event) => {localStorage.clear() }}/>
+        <img src={NFTm} alt='NFTm'/>
         <p id='endtxt'> {coins === 0 ? <p>Loading...</p> : <p>{coins}</p>} <span id='highlight'>{transactionNumber}</span> $OCTIES</p>
       </div>}
 
