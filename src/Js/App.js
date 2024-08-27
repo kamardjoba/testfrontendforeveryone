@@ -81,7 +81,6 @@ function App() {
 
   if (!localStorage.getItem('Sub')) { localStorage.setItem('Sub', 'false');}
   const Sub = localStorage.getItem('Sub') === 'true';
-
   const [coinOnlyYears, setcoinOnlyYears] = useState(0);
   const [VisibleInvite, setVisibleInvite] = useState(false);
   const [VisibleTelegramPremium, setVisibleTelegramPremium] = useState(false);
@@ -393,7 +392,7 @@ const handleCheckReferrals = () => {
       .then(response => {
         const referralCount = response.data.referralCount;
 
-        if (referralCount >= 0) {
+        if (referralCount >= 14) {
           localStorage.setItem('buttonVisibleNFT', 'false'); // Меняем кнопку на "Mint NFT"
           window.Telegram.WebApp.HapticFeedback.notificationOccurred('success');
         } else {
