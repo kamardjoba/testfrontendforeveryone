@@ -138,7 +138,7 @@
   animation: octiesImageAnimation 0.8s ease-in-out forwards;
 }
 
-.loading-screen.fade-out {
+.loading-screen .fade-out {
   animation: fadeOut 0.8s ease-in-out forwards;
 }
 
