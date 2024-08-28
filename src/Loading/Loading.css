@@ -1,0 +1,192 @@
+.loading-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    margin: 0;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+  }
+  
+.loader {
+  transform: rotateZ(45deg);
+  perspective: 1000px;
+  border-radius: 50%;
+  width: 12vh;
+  height: 12vh;
+  color: #ff7f00;
+  margin-bottom: 25vh;
+}
+  .loader:before,
+  .loader:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    transform: rotateX(70deg);
+    animation: 1s spin linear infinite;
+  }
+  .loader:after {
+    color: rgba(208, 108, 36, 0.5);
+    transform: rotateY(70deg);
+    animation-delay: .4s;
+  }
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}
+
+@keyframes rotateccw {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes spin {
+  0%,
+  100% {
+    box-shadow: .2em 0px 0 0px currentcolor;
+  }
+  12% {
+    box-shadow: .2em .2em 0 0 currentcolor;
+  }
+  25% {
+    box-shadow: 0 .2em 0 0px currentcolor;
+  }
+  37% {
+    box-shadow: -.2em .2em 0 0 currentcolor;
+  }
+  50% {
+    box-shadow: -.2em 0 0 0 currentcolor;
+  }
+  62% {
+    box-shadow: -.2em -.2em 0 0 currentcolor;
+  }
+  75% {
+    box-shadow: 0px -.2em 0 0 currentcolor;
+  }
+  87% {
+    box-shadow: .2em -.2em 0 0 currentcolor;
+  }
+}
+
+.loading-screenOc {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.OctiesLH{
+  width: 100%;
+  height: 32%;
+}
+
+.OctiesLP{
+  width: 100%;
+  height: calc(20% - 2vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+.OctiesLP img{height: 150%; padding-right: 2vh;}
+
+@keyframes octiesAnimation {
+  from {height: 32%;}
+  to {height: 6%;}
+}
+
+@keyframes octiesImageAnimation {
+  from {
+    height: 150%;
+    padding-right: 2vh;
+  }
+  to {
+    height: 70%;
+    padding-right: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+.loading-finished .OctiesLH {
+  animation: octiesAnimation 0.8s ease-in-out forwards;
+}
+
+.loading-finished .OctiesLP img {
+  animation: octiesImageAnimation 0.8s ease-in-out forwards;
+}
+
+.loading-screen.fade-out {
+  animation: fadeOut 0.8s ease-in-out forwards;
+}
+
+
+
+
+
+.endtxtNFT{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  color: black;
+  visibility: hidden;
+  width: 0 ;
+}
+
+.MintCoinL img{
+  height: 130%;
+}
+
+.MintCoinL{
+  height: 24%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+@keyframes octiesAnimationNft {
+  from {height: 130%;}
+  to {height: 70%;}
+}
+
+@keyframes octiesAnimationNftTxt {
+  from {width: 0;}
+  to {width: 23vmax;}
+}
+
+.loading-finishedNft .OctiesLH{
+  animation: octiesAnimation 0.8s ease-in-out forwards;
+}
+
+.loading-finishedNft .MintCoinL img{
+  animation: octiesAnimationNft 0.8s ease-in-out forwards;
+}
+
+.loading-finishedNft .endtxtNFT {
+  animation: octiesAnimationNftTxt 0.8s ease-in-out forwards;
+}

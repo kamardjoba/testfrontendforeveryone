@@ -13,6 +13,10 @@ import Check from './Checking';
 import Years from './Years';
 import Oct from './Oct';
 
+import LoadingScreen from '../Loading/Loading.js';
+import LoadingScreenOcto from '../Loading/LoadingOcto.js';
+import LoadingScreenOctoNft from '../Loading/LoadingOctoNft.js'
+
 import TS1 from '../IMG/TaskIcon/TS1.png';
 import TS2 from '../IMG/TaskIcon/TS2.png';
 import TS3 from '../IMG/TaskIcon/TS3.png';
@@ -47,6 +51,7 @@ import Nft from '../IMG/Nft_ref/Nft_ref.png';
 import Checknft from '../IMG/Nft_ref_check/chech.png';
 import ChecknftDone from '../IMG/Nft_ref_check_done/Done_ref.png';
 import NFTm from '../IMG/All_Logo/NFTmint.png';
+
 
 const REACT_APP_BACKEND_URL = 'https://octiesback-production.up.railway.app';
 const userId = new URLSearchParams(window.location.search).get('userId');
@@ -104,7 +109,22 @@ function App() {
   const [transactionNumber, setTransactionNumber] = useState(null);
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
 
-  const TG_CHANNEL_LINK = "https://t.me/octies_channel";
+  const [isLoadingOcto, setLoadingOcto] = useState(true);
+  const [isLoadingOctoVs, setLoadingOctoVs] = useState(true);
+
+  useEffect(() => {
+    if (!isLoadingOcto) {
+      const timeoutId = setTimeout(() => {
+        setLoadingOctoVs(false);
+      }, 800); // 0.8 seconds delay
+
+      // Cleanup function to clear timeout if isLoadingOcto changes before timeout completes
+      return () => clearTimeout(timeoutId);
+    }
+  }, [isLoadingOcto]);
+  
+
+  const TG_CHANNEL_LINK = "https://t.me/octies_community";
   const TG_CHANNEL_LINK2 = "https://t.me/any_tap";
   const TG_CHANNEL_LINK3 = "https://t.me/+8YkeoXBKP9JkOGMy";
   // const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
@@ -329,7 +349,6 @@ const sendTransaction = async () => {
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
           localStorage.setItem('Knopka', 'false');
-
         } else {
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
@@ -338,7 +357,6 @@ const sendTransaction = async () => {
         if (data.hasCheckedSubscription3) {
           localStorage.setItem('GalkaAnyTap', 'true');
           localStorage.setItem('KnopkaAnyTap', 'false');
-
         } else {
           localStorage.setItem('GalkaAnyTap', 'false');
           localStorage.setItem('KnopkaAnyTap', 'true');
@@ -347,7 +365,6 @@ const sendTransaction = async () => {
         if (data.hasCheckedSubscription4) {
           localStorage.setItem('GalkaBlock1', 'true');
           localStorage.setItem('KnopkaBlock1', 'false');
-
         } else {
           localStorage.setItem('GalkaBlock1', 'false');
           localStorage.setItem('KnopkaBlock1', 'true');
@@ -356,7 +373,6 @@ const sendTransaction = async () => {
         if (data.hasCheckedSubscription2) {
           localStorage.setItem('GalkaBlock2', 'true');
           localStorage.setItem('KnopkaBlock2', 'false');
-
         } else {
           localStorage.setItem('GalkaBlock2', 'false');
           localStorage.setItem('KnopkaBlock2', 'true');
@@ -368,7 +384,8 @@ const sendTransaction = async () => {
         else{
           localStorage.setItem('KnopkaNick', 'false');
         }
-
+        
+        setLoadingOcto(false);
         setAccountAgeCoins(accountAgeCoins);
   
         const referralResponse = await axios.post(`${REACT_APP_BACKEND_URL}/generate-referral`, { userId });
@@ -419,7 +436,6 @@ const handleCheckReferrals = () => {
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
           localStorage.setItem('Knopka', 'false');
-
         } else {
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
@@ -428,7 +444,6 @@ const handleCheckReferrals = () => {
         if (data.hasCheckedSubscription3) {
           localStorage.setItem('GalkaAnyTap', 'true');
           localStorage.setItem('KnopkaAnyTap', 'false');
-
         } else {
           localStorage.setItem('GalkaAnyTap', 'false');
           localStorage.setItem('KnopkaAnyTap', 'true');
@@ -437,7 +452,6 @@ const handleCheckReferrals = () => {
         if (data.hasCheckedSubscription4) {
           localStorage.setItem('GalkaBlock1', 'true');
           localStorage.setItem('KnopkaBlock1', 'false');
-
         } else {
           localStorage.setItem('GalkaBlock1', 'false');
           localStorage.setItem('KnopkaBlock1', 'true');
@@ -446,7 +460,6 @@ const handleCheckReferrals = () => {
         if (data.hasCheckedSubscription2) {
           localStorage.setItem('GalkaBlock2', 'true');
           localStorage.setItem('KnopkaBlock2', 'false');
-
         } else {
           localStorage.setItem('GalkaBlock2', 'false');
           localStorage.setItem('KnopkaBlock2', 'true');
@@ -615,6 +628,10 @@ const handleCheckReferrals = () => {
     <div className="App">
 
       {app && <div className='blk'></div>}
+      {isLoadingOctoVs && <LoadingScreen isLoadingOcto={isLoadingOcto} />}
+      {isMint && isLoadingOctoVs && <LoadingScreenOctoNft isLoadingOcto={isLoadingOcto} />}
+      {!isMint && isLoadingOctoVs && <LoadingScreenOcto isLoadingOcto={isLoadingOcto} />}
+
       <div className="info">
         <img src={Logo} alt='Logo' />
         <div className='Txt' onClick={handleOpenStoryWithVibration}>
@@ -623,7 +640,7 @@ const handleCheckReferrals = () => {
         </div>
       </div>
       {!isMint && <div className="main">
-        <img src={Octo} alt='Octo'  />
+        <img src={Octo} alt='Octo' />
       </div>}
       {!isMint &&<div className='MainCoin'>
         <div className='MainCoin'>
@@ -631,7 +648,7 @@ const handleCheckReferrals = () => {
       </div>
       </div>}
       {isMint &&<div className='MintCoin'>
-        <img src={NFTm} alt='NFTm' />
+        <img src={NFTm} alt='NFTm'/>
         <p id='endtxt'> {coins === 0 ? <p>Loading...</p> : <p>{coins}</p>} <span id='highlight'>{transactionNumber}</span> $OCTIES</p>
       </div>}
 
