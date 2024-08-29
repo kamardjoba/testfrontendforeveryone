@@ -691,7 +691,7 @@ const handleCheckReferrals = () => {
             <div className='flex_menu_border' id='lightGreenBack'>
               <div className='rightFlex'>
                 <div  id='up'>
-                  <p id='centerMain'>OCTIES COMMUNITY <img src={NewLabel}></img></p>
+                  <p id='centerMain'>OCTIES COMMUNITY <img src={NewLabel} alt=''></img></p>
                 </div>
                 <div  id='dp'>
                   <p>Home for Telegram OCs</p>
