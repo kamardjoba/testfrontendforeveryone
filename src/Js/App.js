@@ -33,6 +33,7 @@ import Block1 from '../IMG/All_Logo/Block1.png';
 import FreePosition from '../IMG/All_Logo/freePosiction.png';
 import ContactUs from '../IMG/All_Logo/ContactUs.png';
 import AnyTapChanel from '../IMG/All_Logo/AnyTapChanel.png';
+import NewLabel from '../IMG/All_Logo/New_lable.png';
 
 import tgLogo from '../IMG/All_Logo/TgComunity.png';
 import XLogo from '../IMG/All_Logo/XCominity.png';
@@ -86,7 +87,6 @@ function App() {
 
   if (!localStorage.getItem('Sub')) { localStorage.setItem('Sub', 'false');}
   const Sub = localStorage.getItem('Sub') === 'true';
-
   const [coinOnlyYears, setcoinOnlyYears] = useState(0);
   const [VisibleInvite, setVisibleInvite] = useState(false);
   const [VisibleTelegramPremium, setVisibleTelegramPremium] = useState(false);
@@ -110,7 +110,7 @@ function App() {
   const [transactionNumber, setTransactionNumber] = useState(null);
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
 
-  const [isLoadingOcto, setLoadingOcto] = useState(true);
+  const [isLoadingOcto, setLoadingOcto] = useState(false);
   const [isLoadingOctoVs, setLoadingOctoVs] = useState(true);
   
 
@@ -126,7 +126,7 @@ function App() {
   }, [isLoadingOcto]);
   
 
-  const TG_CHANNEL_LINK = "https://t.me/octies_channel";
+  const TG_CHANNEL_LINK = "https://t.me/octies_community";
   const TG_CHANNEL_LINK2 = "https://t.me/any_tap";
   const TG_CHANNEL_LINK3 = "https://t.me/+8YkeoXBKP9JkOGMy";
   // const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
@@ -648,7 +648,6 @@ const handleCheckReferrals = () => {
         <div className='MainCoin'>
         {coins === 0 ? <p>Loading...</p> : <p>{coins} $OCTIES</p>}
       </div>
-
       </div>}
       {isMint &&<div className='MintCoin'>
         <img src={NFTm} alt='NFTm'/>
@@ -689,17 +688,17 @@ const handleCheckReferrals = () => {
 
         <div className='Skroll_Menu_Border'>
           <div className='MenuBorder' ref={blockRefs[0]}>
-            <div className='flex_menu_border'>
+            <div className='flex_menu_border' id='lightGreenBack'>
               <div className='rightFlex'>
                 <div  id='up'>
-                  <p>OCTIES COMMUNITY</p>
+                  <p id='centerMain'>OCTIES COMMUNITY <img src={NewLabel}></img></p>
                 </div>
                 <div  id='dp'>
                   <p>Home for Telegram OCs</p>
                 </div> 
                 <div className='MenuBtn'>
                   {Knopka && <img onClick={Tg_Channel_Open_chek} src={Join} alt='Join' />}
-                  <p> {Knopka && <p id="plus">+</p>}1000 $OCTIES</p>
+                  <p id='lightGray'> {Knopka && <p id="plus">+</p>}1000 $OCTIES</p>
                   {Galo4ka && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
