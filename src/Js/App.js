@@ -110,7 +110,7 @@ function App() {
   const [transactionNumber, setTransactionNumber] = useState(null);
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
 
-  const [isLoadingOcto, setLoadingOcto] = useState(false);
+  const [isLoadingOcto, setLoadingOcto] = useState(true);
   const [isLoadingOctoVs, setLoadingOctoVs] = useState(true);
   
 
