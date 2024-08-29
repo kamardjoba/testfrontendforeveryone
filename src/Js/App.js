@@ -112,7 +112,6 @@ function App() {
 
   const [isLoadingOcto, setLoadingOcto] = useState(true);
   const [isLoadingOctoVs, setLoadingOctoVs] = useState(true);
-  
 
   useEffect(() => {
     if (!isLoadingOcto) {
