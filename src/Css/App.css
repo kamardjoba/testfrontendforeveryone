@@ -152,7 +152,7 @@ button{
 .Skroll_Menu_Border{
   width: 100%;
   height: 28%;
-  overflow-y: visible;
+  overflow-y: hidden;
   white-space: nowrap;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
