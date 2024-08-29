@@ -111,7 +111,7 @@ function App() {
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
 
   const [isLoadingOcto, setLoadingOcto] = useState(true);
-  const [isLoadingOctoVs, setLoadingOctoVs] = useState(true);
+  const [isLoadingOctoVs, setLoadingOctoVs] = useState(false);
 
   useEffect(() => {
     if (!isLoadingOcto) {
