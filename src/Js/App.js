@@ -578,8 +578,6 @@ const handleCheckReferrals = () => {
     }, 3000);
   };
 
-
-
   useEffect(() => {
     if (window.Telegram.WebApp) {
       const tg = window.Telegram.WebApp;
