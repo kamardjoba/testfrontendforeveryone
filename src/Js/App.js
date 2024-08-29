@@ -33,6 +33,7 @@ import Block1 from '../IMG/All_Logo/Block1.png';
 import FreePosition from '../IMG/All_Logo/freePosiction.png';
 import ContactUs from '../IMG/All_Logo/ContactUs.png';
 import AnyTapChanel from '../IMG/All_Logo/AnyTapChanel.png';
+import NewLabel from '../IMG/All_Logo/New_lable.png';
 
 import tgLogo from '../IMG/All_Logo/TgComunity.png';
 import XLogo from '../IMG/All_Logo/XCominity.png';
@@ -577,8 +578,6 @@ const handleCheckReferrals = () => {
     }, 3000);
   };
 
-
-
   useEffect(() => {
     if (window.Telegram.WebApp) {
       const tg = window.Telegram.WebApp;
@@ -631,6 +630,8 @@ const handleCheckReferrals = () => {
       {isLoadingOctoVs && <LoadingScreen isLoadingOcto={isLoadingOcto} />}
       {isMint && isLoadingOctoVs && <LoadingScreenOctoNft isLoadingOcto={isLoadingOcto} />}
       {!isMint && isLoadingOctoVs && <LoadingScreenOcto isLoadingOcto={isLoadingOcto} />}
+
+      
 
       <div className="info">
         <img src={Logo} alt='Logo' />
@@ -686,17 +687,17 @@ const handleCheckReferrals = () => {
 
         <div className='Skroll_Menu_Border'>
           <div className='MenuBorder' ref={blockRefs[0]}>
-            <div className='flex_menu_border'>
+            <div className='flex_menu_border' id='lightGreenBack'>
               <div className='rightFlex'>
                 <div  id='up'>
-                  <p>OCTIES COMMUNITY</p>
+                  <p id='centerMain'>OCTIES COMMUNITY <img src={NewLabel} alt=''></img></p>
                 </div>
                 <div  id='dp'>
                   <p>Home for Telegram OCs</p>
                 </div> 
                 <div className='MenuBtn'>
                   {Knopka && <img onClick={Tg_Channel_Open_chek} src={Join} alt='Join' />}
-                  <p> {Knopka && <p id="plus">+</p>}1000 $OCTIES</p>
+                  <p id='lightGray'> {Knopka && <p id="plus">+</p>}1000 $OCTIES</p>
                   {Galo4ka && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
