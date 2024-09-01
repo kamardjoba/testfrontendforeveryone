@@ -112,7 +112,7 @@ function App() {
 
   const [isLoadingOcto, setLoadingOcto] = useState(true);
   const [isLoadingOctoVs, setLoadingOctoVs] = useState(true)
-  const walletAddress = useTonAddress();
+  
 
  
 
@@ -202,7 +202,7 @@ const sendTransaction = async () => {
 
 useEffect(() => {
   const checkWalletConnection = async () => {
-    
+    const walletAddress = useTonAddress();
 
       console.log('Текущий объект walletInfo:', walletAddress); // Новый лог
 
