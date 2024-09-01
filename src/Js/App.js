@@ -203,19 +203,26 @@ const sendTransaction = async () => {
 useEffect(() => {
   const checkWalletConnection = async () => {
       const walletInfo = tonConnectUI.walletInfo;
-      
+
       if (walletInfo) {
           console.log('Кошелек уже был подключен!', walletInfo);
           
           const walletAddress = walletInfo.address;
-          
+          console.log('Полученный адрес кошелька:', walletAddress); // Добавь это логирование
+
+          // Отправляем адрес кошелька на сервер для сохранения
           try {
-              const response = await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet-address`, { userId, walletAddress });
-              
-              if (response.data.success) {
-                  console.log('Адрес кошелька успешно сохранен.');
+              if (walletAddress) {
+                  console.log('Адрес кошелька для сохранения:', walletAddress); // Логируем перед отправкой
+                  const response = await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet-address`, { userId, walletAddress });
+
+                  if (response.data.success) {
+                      console.log('Адрес кошелька успешно сохранен.');
+                  } else {
+                      console.error('Ошибка сервера:', response.data.message);
+                  }
               } else {
-                  console.error('Ошибка сервера:', response.data.message);
+                  console.error('Адрес кошелька не был получен и равен undefined');
               }
           } catch (error) {
               console.error('Ошибка при сохранении адреса кошелька:', error);
@@ -226,7 +233,7 @@ useEffect(() => {
   };
 
   checkWalletConnection();
-}, [tonConnectUI.walletInfo]);
+}, []);
 //________________________________________________________________Task_Swap
   const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
   const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false, false]);
