@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import '../Css/App.css';
 import axios from 'axios';
-import { TonConnectUIProvider, TonConnectButton, useTonAddress} from '@tonconnect/ui-react';
+import { TonConnectUIProvider, TonConnectButton} from '@tonconnect/ui-react';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 
 import Friends from './Friends';
@@ -112,7 +112,7 @@ function App() {
 
   const [isLoadingOcto, setLoadingOcto] = useState(true);
   const [isLoadingOctoVs, setLoadingOctoVs] = useState(true)
-  
+  //const walletAddress = useTonAddress();
 
  
 
@@ -166,7 +166,7 @@ const sendTransaction = async () => {
   window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
 
   // Проверка подключения кошелька
-  // Получаем информацию о подключении кошелька
+  const walletInfo = tonConnectUI.walletInfo; // Получаем информацию о подключении кошелька
   if (!walletInfo) { // Если кошелек не подключен
     alert("First ‘Connect Wallet’ to you can call ‘Mint’ function");
     return; // Останавливаем выполнение функции
@@ -202,14 +202,14 @@ const sendTransaction = async () => {
 
 useEffect(() => {
   const checkWalletConnection = async () => {
-    const walletAddress = useTonAddress();
+      const walletInfo = tonConnectUI.walletInfo;
 
-      console.log('Текущий объект walletInfo:', walletAddress); // Новый лог
+      console.log('Текущий объект walletInfo:', walletInfo); // Новый лог
 
-      if (walletAddress) {
-          console.log('Кошелек уже был подключен!', walletAddress);
+      if (walletInfo) {
+          console.log('Кошелек уже был подключен!', walletInfo);
           
-          const walletAddress = walletAddress.address;
+          const walletAddress = walletInfo.address;
           console.log('Полученный адрес кошелька:', walletAddress); // Добавь это логирование
 
           // Отправляем адрес кошелька на сервер для сохранения
