@@ -123,32 +123,32 @@ function App() {
 
         // Проверяем, подключен ли кошелек при загрузке приложения
         const checkExistingWallet = async () => {
-            const walletInfo = tonConnectUI.walletInfo; // Получаем информацию о подключении кошелька
+            const walletInfo = tonConnectUI.walletInfo;
             if (walletInfo) {
                 console.log('Кошелек был подключен ранее:', walletInfo.wallet);
-                // Сохраняем кошелек на сервере
                 try {
-                    await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet`, {
+                    const response = await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet`, {
                         userId,
                         walletAddress: walletInfo.wallet
                     });
+                    console.log('Ответ сервера при сохранении кошелька:', response.data);
                 } catch (error) {
                     console.error('Ошибка при сохранении кошелька:', error);
                 }
             }
         };
 
-        checkExistingWallet(); // Вызов функции при загрузке
+        checkExistingWallet(); 
 
         tonConnectUI.onStatusChange(async (walletInfo) => {
             if (walletInfo) {
                 console.log('Кошелек подключен!', walletInfo.wallet);
-                // Сохраняем кошелек на сервере при подключении
                 try {
-                    await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet`, {
+                    const response = await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet`, {
                         userId,
                         walletAddress: walletInfo.wallet
                     });
+                    console.log('Ответ сервера при сохранении кошелька:', response.data);
                 } catch (error) {
                     console.error('Ошибка при сохранении кошелька:', error);
                 }
@@ -158,6 +158,7 @@ function App() {
         });
     }
 }, []);
+
 
 
   useEffect(() => {
