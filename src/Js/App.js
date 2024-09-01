@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import '../Css/App.css';
 import axios from 'axios';
-import { TonConnectUIProvider, TonConnectButton} from '@tonconnect/ui-react';
+import { TonConnectUIProvider, TonConnectButton, useTonAddress} from '@tonconnect/ui-react';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 
 import Friends from './Friends';
@@ -111,7 +111,29 @@ function App() {
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
 
   const [isLoadingOcto, setLoadingOcto] = useState(true);
-  const [isLoadingOctoVs, setLoadingOctoVs] = useState(true);
+  const [isLoadingOctoVs, setLoadingOctoVs] = useState(true)
+  const walletAddress = useTonAddress();
+
+  useEffect(() => {
+    const saveWalletAddress = async () => {
+      if (walletAddress) { // Проверяем наличие адреса
+        console.log('Кошелек подключен! Адрес:', walletAddress, userId);
+        try {
+          await axios.post('https://anypatbackend-production.up.railway.app/save-wallet-address', {
+            userId,
+            walletAddress
+          });
+          console.log('Адрес кошелька успешно сохранен.');
+        } catch (error) {
+          console.error('Ошибка при сохранении адреса кошелька:', error);
+        }
+      } else {
+        console.error('Адрес кошелька не найден или не определен');
+      }
+    };
+
+    saveWalletAddress();
+  }, [walletAddress, userId]);
 
   useEffect(() => {
     if (!isLoadingOcto) {
