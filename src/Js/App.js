@@ -115,25 +115,49 @@ function App() {
   const walletAddress = useTonAddress();
 
   useEffect(() => {
-    const saveWalletAddress = async () => {
-      if (walletAddress) { 
-        console.log('Кошелек подключен! Адрес:', walletAddress, userId);
-        try {
-          await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet-address`, {
-            telegramId: userId, // Используйте `telegramId`, как указано в бэкенде
-            walletAddress
-          });
-          console.log('Адрес кошелька успешно сохранен.');
-        } catch (error) {
-          console.error('Ошибка при сохранении адреса кошелька:', error);
-        }
-      } else {
-        console.error('Адрес кошелька не найден или не определен');
-      }
-    };
+    if (window.TON_CONNECT_UI) {
+        const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
+            manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json',
+            buttonRootId: 'TonMainConBtn'
+        });
 
-    saveWalletAddress();
-  }, [walletAddress, userId]);
+        // Проверяем, подключен ли кошелек при загрузке приложения
+        const checkExistingWallet = async () => {
+            const walletInfo = tonConnectUI.walletInfo; // Получаем информацию о подключении кошелька
+            if (walletInfo) {
+                console.log('Кошелек был подключен ранее:', walletInfo.wallet);
+                // Сохраняем кошелек на сервере
+                try {
+                    await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet`, {
+                        userId,
+                        walletAddress: walletInfo.wallet
+                    });
+                } catch (error) {
+                    console.error('Ошибка при сохранении кошелька:', error);
+                }
+            }
+        };
+
+        checkExistingWallet(); // Вызов функции при загрузке
+
+        tonConnectUI.onStatusChange(async (walletInfo) => {
+            if (walletInfo) {
+                console.log('Кошелек подключен!', walletInfo.wallet);
+                // Сохраняем кошелек на сервере при подключении
+                try {
+                    await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet`, {
+                        userId,
+                        walletAddress: walletInfo.wallet
+                    });
+                } catch (error) {
+                    console.error('Ошибка при сохранении кошелька:', error);
+                }
+            } else {
+                console.log('Кошелек отключен!');
+            }
+        });
+    }
+}, []);
 
 
   useEffect(() => {
