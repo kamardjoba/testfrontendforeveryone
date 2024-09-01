@@ -112,7 +112,7 @@ function App() {
 
   const [isLoadingOcto, setLoadingOcto] = useState(true);
   const [isLoadingOctoVs, setLoadingOctoVs] = useState(true)
-  const walletAddress = useTonAddress();
+  //const walletAddress = useTonAddress();
 
   useEffect(() => {
     if (window.TON_CONNECT_UI) {
