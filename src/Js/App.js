@@ -114,51 +114,7 @@ function App() {
   const [isLoadingOctoVs, setLoadingOctoVs] = useState(true)
   //const walletAddress = useTonAddress();
 
-  useEffect(() => {
-    if (window.TON_CONNECT_UI) {
-        const tonConnectUI = new window.TON_CONNECT_UI.TonConnectUI({
-            manifestUrl: 'https://resilient-madeleine-9ff7c2.netlify.app/tonconnect-manifest.json',
-            buttonRootId: 'TonMainConBtn'
-        });
-
-        // Проверяем, подключен ли кошелек при загрузке приложения
-        const checkExistingWallet = async () => {
-            const walletInfo = tonConnectUI.walletInfo;
-            if (walletInfo) {
-                console.log('Кошелек был подключен ранее:', walletInfo.wallet);
-                try {
-                    const response = await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet`, {
-                        userId,
-                        walletAddress: walletInfo.wallet
-                    });
-                    console.log('Ответ сервера при сохранении кошелька:', response.data);
-                } catch (error) {
-                    console.error('Ошибка при сохранении кошелька:', error);
-                }
-            }
-        };
-
-        checkExistingWallet(); 
-
-        tonConnectUI.onStatusChange(async (walletInfo) => {
-            if (walletInfo) {
-                console.log('Кошелек подключен!', walletInfo.wallet);
-                try {
-                    const response = await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet`, {
-                        userId,
-                        walletAddress: walletInfo.wallet
-                    });
-                    console.log('Ответ сервера при сохранении кошелька:', response.data);
-                } catch (error) {
-                    console.error('Ошибка при сохранении кошелька:', error);
-                }
-            } else {
-                console.log('Кошелек отключен!');
-            }
-        });
-    }
-}, []);
-
+ 
 
 
   useEffect(() => {
@@ -244,7 +200,29 @@ const sendTransaction = async () => {
   }
 };
 
+useEffect(() => {
+  const checkWalletConnection = async () => {
+      const walletInfo = tonConnectUI.walletInfo;
+      
+      if (walletInfo) {
+          console.log('Кошелек уже был подключен!', walletInfo);
+          
+          const walletAddress = walletInfo.address;
+          
+          // Отправляем адрес кошелька на сервер для сохранения
+          try {
+              await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet-address`, { userId, walletAddress });
+              console.log('Адрес кошелька успешно сохранен.');
+          } catch (error) {
+              console.error('Ошибка при сохранении адреса кошелька:', error);
+          }
+      } else {
+          console.log('Кошелек не подключен.');
+      }
+  };
 
+  checkWalletConnection();
+}, []);
 //________________________________________________________________Task_Swap
   const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
   const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false, false]);
