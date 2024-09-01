@@ -116,11 +116,11 @@ function App() {
 
   useEffect(() => {
     const saveWalletAddress = async () => {
-      if (walletAddress) { // Проверяем наличие адреса
+      if (walletAddress) { 
         console.log('Кошелек подключен! Адрес:', walletAddress, userId);
         try {
-          await axios.post('https://anypatbackend-production.up.railway.app/save-wallet-address', {
-            userId,
+          await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet-address`, {
+            telegramId: userId, // Используйте `telegramId`, как указано в бэкенде
             walletAddress
           });
           console.log('Адрес кошелька успешно сохранен.');
@@ -134,6 +134,7 @@ function App() {
 
     saveWalletAddress();
   }, [walletAddress, userId]);
+
 
   useEffect(() => {
     if (!isLoadingOcto) {
