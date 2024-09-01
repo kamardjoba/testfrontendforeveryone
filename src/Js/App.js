@@ -209,10 +209,14 @@ useEffect(() => {
           
           const walletAddress = walletInfo.address;
           
-          // Отправляем адрес кошелька на сервер для сохранения
           try {
-              await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet-address`, { userId, walletAddress });
-              console.log('Адрес кошелька успешно сохранен.');
+              const response = await axios.post(`${REACT_APP_BACKEND_URL}/save-wallet-address`, { userId, walletAddress });
+              
+              if (response.data.success) {
+                  console.log('Адрес кошелька успешно сохранен.');
+              } else {
+                  console.error('Ошибка сервера:', response.data.message);
+              }
           } catch (error) {
               console.error('Ошибка при сохранении адреса кошелька:', error);
           }
@@ -222,7 +226,7 @@ useEffect(() => {
   };
 
   checkWalletConnection();
-}, [tonConnectUI.walletInfo]);  // <-- Добавить сюда
+}, [tonConnectUI.walletInfo]);
 //________________________________________________________________Task_Swap
   const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
   const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false, false]);
