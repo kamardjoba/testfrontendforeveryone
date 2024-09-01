@@ -204,6 +204,8 @@ useEffect(() => {
   const checkWalletConnection = async () => {
       const walletInfo = tonConnectUI.walletInfo;
 
+      console.log('Текущий объект walletInfo:', walletInfo); // Новый лог
+
       if (walletInfo) {
           console.log('Кошелек уже был подключен!', walletInfo);
           
