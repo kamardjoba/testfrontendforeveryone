@@ -209,8 +209,8 @@ useEffect(() => {
       if (walletInfo) {
           console.log('Кошелек уже был подключен!', walletInfo);
           
-          const walletAddress = walletInfo.address;
-          console.log('Полученный адрес кошелька:', walletAddress); // Добавь это логирование
+          const walletAddress = walletInfo?.account?.address; // Попробуй это вместо walletInfo.address
+          console.log('Полученный адрес кошелька:', walletAddress);
 
           // Отправляем адрес кошелька на сервер для сохранения
           try {
