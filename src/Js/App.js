@@ -222,7 +222,7 @@ useEffect(() => {
   };
 
   checkWalletConnection();
-}, []);
+}, [tonConnectUI.walletInfo]);  // <-- Добавить сюда
 //________________________________________________________________Task_Swap
   const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
   const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false, false]);
