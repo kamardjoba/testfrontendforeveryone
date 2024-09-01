@@ -190,6 +190,10 @@ const sendTransaction = async () => {
     if (response.data.success) {
         setTransactionNumber(response.data.transactionNumber);
         localStorage.setItem('isMintNFT', 'true'); 
+
+        // Сохраняем флаг hasMintedNFT в базе данных
+        await axios.post(`${REACT_APP_BACKEND_URL}/update-mint-status`, { userId, hasMintedNFT: true });
+
         alert(`Transaction successful! You are user number ${response.data.transactionNumber}`);
     } else {
         alert('Transaction failed!');
