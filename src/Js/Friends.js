@@ -23,7 +23,7 @@ const Friends = ({ FriendsAnim, invite, referralCode, telegramLink, getRandomCol
     }, [referralCode, getRandomColor]);
 
     const handleShareLink = () => {
-        const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(telegramLink)}&text=${encodeURIComponent('Присоединяйся к нашему приложению и получай бонусы!')}`;
+        const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(telegramLink)}`;
         window.open(telegramUrl, '_blank');
         window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
     };
