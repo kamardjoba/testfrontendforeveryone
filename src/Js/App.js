@@ -205,6 +205,26 @@ const sendTransaction = async () => {
 };
 
 useEffect(() => {
+  const userId = new URLSearchParams(window.location.search).get('userId');
+  const isMint = localStorage.getItem('isMintNFT') === 'true';
+
+  // Если isMint равен true, обновляем статус mint в базе данных
+  if (isMint && userId) {
+    axios.post(`${REACT_APP_BACKEND_URL}/update-mint-status`, { userId, hasMintedNFT: true })
+      .then(response => {
+        if (response.data.success) {
+          console.log("Статус NFT успешно обновлён в базе данных.");
+        } else {
+          console.error("Не удалось обновить статус NFT.");
+        }
+      })
+      .catch(error => {
+        console.error("Ошибка при обновлении статуса NFT:", error);
+      });
+  }
+}, []);
+
+useEffect(() => {
   console.log('Адрес кошелька из useTonAddress:', walletAddress);
   if (walletAddress) {
     // Отправляем адрес кошелька на сервер для сохранения
