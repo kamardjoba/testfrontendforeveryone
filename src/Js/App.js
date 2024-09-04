@@ -29,7 +29,7 @@ import galo4ka from '../IMG/All_Logo/galol4ka.png';
 import nickGalka from '../IMG/All_Logo/galka.png';
 import nickKr from '../IMG/All_Logo/nickNema.png';
 import Ellipse from '../IMG/All_Logo/Ellipse.png';
-import Block1 from '../IMG/All_Logo/Block1.png';
+//import Block1 from '../IMG/All_Logo/Block1.png';
 import FreePosition from '../IMG/All_Logo/freePosiction.png';
 import ContactUs from '../IMG/All_Logo/ContactUs.png';
 import AnyTapChanel from '../IMG/All_Logo/AnyTapChanel.png';
@@ -78,9 +78,9 @@ function App() {
   // const KnopkaBlock1 = localStorage.getItem('KnopkaBlock1') === 'true';
 
   if (!localStorage.getItem('GalkaBlock2')) {localStorage.setItem('GalkaBlock2', 'false');}
-  const GalkaBlock2 = localStorage.getItem('GalkaBlock2') === 'true';
+  //const GalkaBlock2 = localStorage.getItem('GalkaBlock2') === 'true';
   if (!localStorage.getItem('KnopkaBlock2')) {localStorage.setItem('KnopkaBlock2', 'true');}
-  const KnopkaBlock2 = localStorage.getItem('KnopkaBlock2') === 'true';
+  //const KnopkaBlock2 = localStorage.getItem('KnopkaBlock2') === 'true';
 
   if (!localStorage.getItem('KnopkaNick')) {localStorage.setItem('KnopkaNick', 'false');}
   const KnopkaNick = localStorage.getItem('KnopkaNick') === 'true';
@@ -131,7 +131,7 @@ function App() {
 
   const TG_CHANNEL_LINK = "https://t.me/octies_community";
   const TG_CHANNEL_LINK2 = "https://t.me/any_tap";
-  const TG_CHANNEL_LINK3 = "https://t.me/+8YkeoXBKP9JkOGMy";
+  //const TG_CHANNEL_LINK3 = "https://t.me/+8YkeoXBKP9JkOGMy";
   // const TG_CHANNEL_LINK4 = "https://t.me/Checkcheckcheck3";
   const X_LINK = "https://x.com/Octies_GameFI";
   const Support = "https://t.me/octies_manage";
@@ -577,14 +577,14 @@ const handleCheckReferrals = () => {
     }, 3000);
   };
 
-  const Tg_Channel_Open_chek3 = () => {
-    const userId = new URLSearchParams(window.location.search).get('userId');
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    window.open(TG_CHANNEL_LINK3, '_blank');
-    setTimeout(() => {
-      checkSubscriptionAndUpdate(userId);
-    }, 3000);
-  };
+  // const Tg_Channel_Open_chek3 = () => {
+  //   const userId = new URLSearchParams(window.location.search).get('userId');
+  //   window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+  //   window.open(TG_CHANNEL_LINK3, '_blank');
+  //   setTimeout(() => {
+  //     checkSubscriptionAndUpdate(userId);
+  //   }, 3000);
+  // };
 
   // const Tg_Channel_Open_chek4 = () => {
   //   const userId = new URLSearchParams(window.location.search).get('userId');
@@ -754,26 +754,7 @@ const handleCheckReferrals = () => {
             </div>
           </div>
 
-          <div className='MenuBorder' ref={blockRefs[2]}>
-            <div className='flex_menu_border' id='orangeBack'>
-              <div className='rightFlex'>
-                <div  id='up'>
-                  <p>Тапаем <span class="emoji">🐹</span></p>
-                </div>
-                <div  id='dp'>
-                  <p>Потыкать и стать миллионером!</p>
-                </div> 
-                <div className='MenuBtn'>
-                  {KnopkaBlock2 && <img onClick={Tg_Channel_Open_chek3} src={Join} alt='Join' />}
-                  <p> {KnopkaBlock2 && <p id="plus">+</p>}750 $OCTIES</p>
-                  {GalkaBlock2 && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
-                </div>
-              </div>
-              <div className='leftFlex'>
-                <img src={Block1} alt='Tapaem_Logo'/>
-              </div>
-            </div>
-          </div>
+
 
           <div className='MenuBorder' ref={blockRefs[3]}>
             <div className='flex_menu_border'  id='orangeBack'>
