@@ -3,6 +3,7 @@ import '../Css/Leaderboard.css';
 import axios from 'axios';
 
 import logo from '../IMG/All_Logo/LBoard.png';
+import Octo from '../IMG/All_Logo/Octo.png';
 
 const REACT_APP_BACKEND_URL = 'https://octiesback-production.up.railway.app';
 
@@ -13,6 +14,18 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
   const [userNickname, setUserNickname] = useState('');
   const [colorsL, setColorsL] = useState([]);
   const [userColorL, setUserColorL] = useState('');
+  
+  const [isLoadingYourInfo, setLoadingYourInfo] = useState(false);
+  const isLoadingYourInfosup  = (false);
+
+  useEffect(() => {
+    if (!isLoadingYourInfosup) {
+        const timerBlue = setTimeout(() =>  setLoadingYourInfo(false), 350); 
+        return () => clearTimeout(timerBlue);
+    } else {
+      setLoadingYourInfo(true);
+    }
+}, [isLoadingYourInfosup]);
 
   useEffect(() => {
     const fetchUserCount = async () => {
@@ -100,6 +113,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
         </div>
 
         <div className='Lb_inside'>
+        {!isLoadingYourInfosup && <div className='LbNotLod  fadeIn' >
           <div className='LbPhoto'>
             <div
               style={{
@@ -126,7 +140,17 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
           <div className='LbPhoto'>
             <p id='number'>{userRank ? `#${userRank}` : '??'}</p>
           </div>
-        </div>
+          </div>}
+
+          {isLoadingYourInfo && <div className={`Lb_insideLod ${isLoadingYourInfosup ? '' : 'hiddenLider'}`}>
+            <img src={Octo} alt='Ellips' />
+            <img src={Octo} alt='Ellips' />
+            <img src={Octo} alt='Ellips' />
+          </div>}
+
+          </div>
+
+          
 
         <div className='Lb_Liders'>
           <p>{userCount} holders</p>
