@@ -244,8 +244,8 @@ useEffect(() => {
   }
 }, [walletAddress]);
 //________________________________________________________________Task_Swap
-  const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
-  const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false, false]);
+  const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
+  const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false]);
 
   useEffect(() => {
     const observerOptions = {
@@ -555,8 +555,6 @@ const handleCheckReferrals = () => {
     }
   }, [fetchUserData, checkSubscription]);
 
-
-  
   const Tg_Channel_Open_X = async () => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
     window.open(X_LINK, '_blank');
@@ -680,8 +678,6 @@ const handleCheckReferrals = () => {
       {isMint && isLoadingOctoVs && <LoadingScreenOctoNft isLoadingOcto={isLoadingOcto} />}
       {!isMint && isLoadingOctoVs && <LoadingScreenOcto isLoadingOcto={isLoadingOcto} />}
 
-      
-
       <div className="info">
         <img src={Logo} alt='Logo' />
         <div className='Txt' onClick={handleOpenStoryWithVibration}>
@@ -777,9 +773,7 @@ const handleCheckReferrals = () => {
             </div>
           </div>
 
-
-
-          <div className='MenuBorder' ref={blockRefs[3]}>
+          <div className='MenuBorder' ref={blockRefs[2]}>
             <div className='flex_menu_border'  id='orangeBack'>
               <div className='rightFlex'>
                 <div id='up'>
@@ -800,7 +794,7 @@ const handleCheckReferrals = () => {
             </div>
           </div>
 
-          <div className='MenuBorder' ref={blockRefs[4]}>
+          <div className='MenuBorder' ref={blockRefs[3]}>
             <div className='flex_menu_border' id='greenBack'>
               <div className='rightFlex'>
                 <div  id='up'>
@@ -820,7 +814,7 @@ const handleCheckReferrals = () => {
             </div>
           </div>
 
-          <div className='MenuBorder' ref={blockRefs[5]}>
+          <div className='MenuBorder' ref={blockRefs[4]}>
             <div className='flex_menu_border'>
               <div className='rightFlex'>
               <div id='up'>
@@ -852,13 +846,12 @@ const handleCheckReferrals = () => {
             <img src={Ellipse} alt='Ellips' className={blockVisibility[2] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[3] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[4] ? '' : 'img-dark'} />
-            <img src={Ellipse} alt='Ellips' className={blockVisibility[5] ? '' : 'img-dark'} />
           </div>
           <p>Your Rewards</p>
         </div>
         <div className='Tasks' id={isMint ? 'TaskswithoutNft' : undefined}>
 
-        {isMint && <div className='TS'>
+          {isMint && <div className='TS'>
             <div className='tsPhoto'>
               <img src={TSNFT} alt='TSNFT' /> <p>OCTIES NFT</p>
             </div>
