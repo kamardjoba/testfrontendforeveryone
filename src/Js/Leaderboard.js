@@ -37,7 +37,6 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
           setLeaderboard(response.data.leaderboard);
           const newColorsL = response.data.leaderboard.map(() => getRandomColor());
           setColorsL(newColorsL);
-          setUserColorL(getRandomColor()); 
         }
       } catch (error) {
         console.error('Ошибка при загрузке лидерборда:', error);
@@ -52,6 +51,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
           console.log('User rank fetched successfully:', response.data.rank);
           setUserRank(response.data.rank);
           setUserNickname(response.data.nickname);
+          setUserColorL(getRandomColor()); 
         } else {
           console.error('Error in response data:', response.data.message);
         }
@@ -132,6 +132,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
           <p>{userCount} holders</p>
         </div>
         <div className='Lb_list'>
+        
           {leaderboard.map((user, index) => (
             <div key={user._id} className='Lb_Lider'>
               <div className='LbPhoto'>
