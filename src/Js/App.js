@@ -375,6 +375,7 @@ useEffect(() => {
         setHasTelegramPremium(data.hasTelegramPremium);
         setTransactionNumber(data.transactionNumber);
         setSubscriptionCoins(data.coinsSub);
+      
 
         const accountCreationDate = new Date(data.accountCreationDate);
         const currentYear = new Date().getFullYear();
@@ -392,7 +393,9 @@ useEffect(() => {
         if (referralCoins > 0) {
           setVisibleInvite(true);
         }
-        
+        if(data.hasMintedNFT){
+          localStorage.setItem('isMintNFT', 'true'); 
+        }
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
           localStorage.setItem('Knopka', 'false');
