@@ -15,8 +15,8 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
   const [colorsL, setColorsL] = useState([]);
   const [userColorL, setUserColorL] = useState('');
   
-  const [isLoadingYourInfo, setLoadingYourInfo] = useState(false);
-  const isLoadingYourInfosup  = (false);
+  const [isLoadingYourInfo, setLoadingYourInfo] = useState(true);
+  const [isLoadingYourInfosup, setLoadingYourInfosup]  = useState(true);
 
   useEffect(() => {
     if (!isLoadingYourInfosup) {
@@ -50,6 +50,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
           setLeaderboard(response.data.leaderboard);
           const newColorsL = response.data.leaderboard.map(() => getRandomColor());
           setColorsL(newColorsL);
+          setLoadingYourInfosup(false);
         }
       } catch (error) {
         console.error('Ошибка при загрузке лидерборда:', error);
@@ -113,7 +114,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
         </div>
 
         <div className='Lb_inside'>
-        {!isLoadingYourInfosup && <div className='LbNotLod'> 
+        {!isLoadingYourInfosup && <div className='LbNotLod fadeIn'> 
           <div className='LbPhoto'>
             <div
               style={{
@@ -152,12 +153,16 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
 
           
 
-        <div className='Lb_Liders'>
+        {isLoadingYourInfo && <div className={`loading-screen_lider ${isLoadingYourInfosup ? '' : 'hiddenLider'}`}>
+          <span className="loader"></span>
+        </div>}
+
+        {!isLoadingYourInfosup && <div className='Lb_Liders fadeIn'>
           <p>{userCount} holders</p>
-        </div>
-        <div className='Lb_list'>
-        
-          {leaderboard.map((user, index) => (
+        </div>}
+
+        {!isLoadingYourInfosup && <div className='Lb_list fadeIn'>
+           { leaderboard.map((user, index) => (
             <div key={user._id} className='Lb_Lider'>
               <div className='LbPhoto'>
                 <div
@@ -186,7 +191,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
               </div>
             </div>
           ))}
-        </div>
+        </div>}
       </div>
     </div>
   );

@@ -13,15 +13,7 @@
     animation: fade-in 0.3s forwards;
     overflow: scroll;
 }
-@media (orientation: landscape) {
-    .Lb_Window {
-      height: 80%;
-    }
 
-    .Lb_Text p{
-        font-size: 2vh;
-    }
-  }
 
 .Lb_Window.fade-out {
     animation: fade-out 0.3s forwards;
@@ -49,7 +41,7 @@
 .Lb_inside{
     background: rgba(208, 108, 36, 55% );
     width: 100%;
-    height: 9vh;
+    height: 12%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,7 +106,7 @@
 
 .Lb_Liders{
     width: 100%;
-    height: 8%;
+    height: calc(8% - 0.5vh);
     display: flex;
     align-items: end;
     justify-content: start;
@@ -124,7 +116,7 @@
 
 .Lb_list{
     width: 100%;
-    height: 56%;
+    height: 45%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -197,3 +189,13 @@
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+@media (orientation: landscape) {
+    .Lb_Window {
+      height: 80%;
+    }
+
+    .Lb_Text p{
+        font-size: 2vh;
+    }
+  }
