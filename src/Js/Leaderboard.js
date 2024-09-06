@@ -113,7 +113,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
         </div>
 
         <div className='Lb_inside'>
-        {!isLoadingYourInfosup && <div className='LbNotLod' > {/* Add 'fadeIn' для лоадинга */}
+        {!isLoadingYourInfosup && <div className='LbNotLod' > {/* добавить 'fadeIn' для лоадинга */}
           <div className='LbPhoto'>
             <div
               style={{
