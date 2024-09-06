@@ -447,7 +447,7 @@ useEffect(() => {
     } catch (error) {
       console.error('Ошибка при получении данных пользователя:', error);
     }
-  }, [hasTelegramPremium, referralCoins]);
+  }, [referralCoins]);
 
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
