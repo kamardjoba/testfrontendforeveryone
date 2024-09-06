@@ -373,7 +373,7 @@ useEffect(() => {
         setReferralCoins(data.referralCoins);
         setHasTelegramPremium(data.hasTelegramPremium);
         setTransactionNumber(data.transactionNumber);
-        setSubscriptionCoins(data.coinsSub);
+        //setSubscriptionCoins(data.coinsSub);
       
 
         const accountCreationDate = new Date(data.accountCreationDate);
