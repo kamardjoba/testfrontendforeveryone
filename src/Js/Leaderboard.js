@@ -17,15 +17,16 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
   
   const [isLoadingYourInfo, setLoadingYourInfo] = useState(true);
   const [isLoadingYourInfosup, setLoadingYourInfosup]  = useState(true);
+  const [isLoadingLiderInfosup, setLoadingLiderInfosup]  = useState(true);
 
   useEffect(() => {
-    if (!isLoadingYourInfosup) {
+    if (!isLoadingYourInfosup && !isLoadingLiderInfosup) {
         const timerBlue = setTimeout(() =>  setLoadingYourInfo(false), 350); 
         return () => clearTimeout(timerBlue);
     } else {
       setLoadingYourInfo(true);
     }
-}, [isLoadingYourInfosup]);
+}, [isLoadingYourInfosup, isLoadingLiderInfosup]);
 
   useEffect(() => {
     const fetchUserCount = async () => {
@@ -66,6 +67,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
           setUserRank(response.data.rank);
           setUserNickname(response.data.nickname);
           setUserColorL(getRandomColor()); 
+          setLoadingLiderInfosup(false);
         } else {
           console.error('Error in response data:', response.data.message);
         }
@@ -114,7 +116,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
         </div>
 
         <div className='Lb_inside'>
-        {!isLoadingYourInfosup && <div className='LbNotLod fadeIn'> 
+        {!isLoadingYourInfosup && !isLoadingLiderInfosup && <div className='LbNotLod fadeIn'> 
           <div className='LbPhoto'>
             <div
               style={{
@@ -143,7 +145,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
           </div>
           </div>}
 
-          {isLoadingYourInfo && <div className={`Lb_insideLod ${isLoadingYourInfosup ? '' : 'hiddenLider'}`}>
+          {isLoadingYourInfo && <div className={`Lb_insideLod ${!isLoadingYourInfosup && !isLoadingLiderInfosup ? '' : 'hiddenLider'}`}>
             <img src={Octo} alt='Ellips' />
             <img src={Octo} alt='Ellips' />
             <img src={Octo} alt='Ellips' />
@@ -153,15 +155,15 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
 
           
 
-        {isLoadingYourInfo && <div className={`loading-screen_lider ${isLoadingYourInfosup ? '' : 'hiddenLider'}`}>
+        {isLoadingYourInfo && <div className={`loading-screen_lider ${!isLoadingYourInfosup && !isLoadingLiderInfosup  ? '' : 'hiddenLider'}`}>
           <span className="loader"></span>
         </div>}
 
-        {!isLoadingYourInfosup && <div className='Lb_Liders fadeIn'>
+        {!isLoadingYourInfosup && !isLoadingLiderInfosup && <div className='Lb_Liders fadeIn'>
           <p>{userCount} holders</p>
         </div>}
 
-        {!isLoadingYourInfosup && <div className='Lb_list fadeIn'>
+        {!isLoadingYourInfosup && !isLoadingLiderInfosup && <div className='Lb_list fadeIn'>
            { leaderboard.map((user, index) => (
             <div key={user._id} className='Lb_Lider'>
               <div className='LbPhoto'>
