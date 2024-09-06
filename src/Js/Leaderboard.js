@@ -33,8 +33,8 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
 
 useEffect(() => {
   if (!isLoadingLiderInfosup) {
-      const timerBlue = setTimeout(() =>  setLoadingLiderInfo(false), 350); 
-      return () => clearTimeout(timerBlue);
+      const timerBluer = setTimeout(() =>  setLoadingLiderInfo(false), 350); 
+      return () => clearTimeout(timerBluer);
   } else {
     setLoadingLiderInfo(true);
   }
