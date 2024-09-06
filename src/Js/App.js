@@ -93,7 +93,7 @@ function App() {
   const [coins, setCoins] = useState(0);
   const [referralCoins, setReferralCoins] = useState(0);
   const [hasTelegramPremium, setHasTelegramPremium] = useState(false);
-  const [hasReceivedTwitterReward, sethasReceivedTwitterReward] = useState(false);
+  const [sethasReceivedTwitterReward] = useState(false);
   const [accountAgeCoins, setAccountAgeCoins] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [telegramLink, setTelegramLink] = useState('');
@@ -431,11 +431,7 @@ useEffect(() => {
           localStorage.setItem('KnopkaNick', 'false');
         }
         if (data.hasReceivedTwitterReward) {
-          localStorage.setItem('Galo4kaX', 'true');
-          localStorage.setItem('KnopkaX', 'false');
-        } else {
-          localStorage.setItem('Galo4kaX', 'false');
-          localStorage.setItem('KnopkaX', 'true');
+          localStorage.setItem('hasReceivedTwitterReward', 'true');
         }
         setLoadingOcto(false);
         setAccountAgeCoins(accountAgeCoins);
