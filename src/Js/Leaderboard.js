@@ -18,9 +18,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
   const [isLoadingYourInfo, setLoadingYourInfo] = useState(true);
   const [isLoadingYourInfosup, setLoadingYourInfosup]  = useState(true);
   
-  
-  const [isLoadingLiderInfosup, setLoadingLiderInfosup]  = useState(true);
-  const [isLoadingLiderInfo, setLoadingLiderInfo]  = useState(true);
+
 
   useEffect(() => {
     if (!isLoadingYourInfosup) {
@@ -31,14 +29,6 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
     }
 }, [isLoadingYourInfosup]);
 
-useEffect(() => {
-  if (!isLoadingLiderInfosup) {
-      const timerBluer = setTimeout(() =>  setLoadingLiderInfo(false), 350); 
-      return () => clearTimeout(timerBluer);
-  } else {
-    setLoadingLiderInfo(true);
-  }
-}, [isLoadingLiderInfosup]);
 
   useEffect(() => {
     const fetchUserCount = async () => {
@@ -79,7 +69,7 @@ useEffect(() => {
           setUserRank(response.data.rank);
           setUserNickname(response.data.nickname);
           setUserColorL(getRandomColor()); 
-          setLoadingLiderInfosup(false);
+         
         } else {
           console.error('Error in response data:', response.data.message);
         }
@@ -167,15 +157,15 @@ useEffect(() => {
 
           
 
-        {isLoadingLiderInfo && <div className={`loading-screen_lider ${!isLoadingLiderInfosup  ? '' : 'hiddenLider'}`}>
+        {isLoadingYourInfo && <div className={`loading-screen_lider ${!isLoadingYourInfosup  ? '' : 'hiddenLider'}`}>
           <span className="loader"></span>
         </div>}
 
-        {!isLoadingLiderInfosup &&  <div className='Lb_Liders fadeIn'>
+        {!isLoadingYourInfosup &&  <div className='Lb_Liders fadeIn'>
           <p>{userCount} holders</p>
         </div>}
 
-        {!isLoadingLiderInfosup &&  <div className='Lb_list fadeIn'>
+        {!isLoadingYourInfosup &&  <div className='Lb_list fadeIn'>
            { leaderboard.map((user, index) => (
             <div key={user._id} className='Lb_Lider'>
               <div className='LbPhoto'>
