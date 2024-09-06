@@ -863,10 +863,10 @@ const handleCheckReferrals = () => {
 
           {Sub && <div className='TS'>
             <div className='tsPhoto'>
-              <img src={SubTg} alt='SubTg' /> <p id='highlight'>Partner channels subs</p>
+              <img src={SubTg} alt='SubTg' /> <p>Partner channels subs</p>
             </div>
             <div className='tsPhoto'>
-              <p>+{subscriptionCoins} $OCTIES</p>
+              <p id='highlight' >+{subscriptionCoins} $OCTIES</p>
             </div>
           </div>}
 
