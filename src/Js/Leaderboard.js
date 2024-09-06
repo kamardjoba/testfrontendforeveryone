@@ -16,7 +16,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
   const [userColorL, setUserColorL] = useState('');
   
   const [isLoadingYourInfo, setLoadingYourInfo] = useState(true);
-  const [isLoadingYourInfosup, setLoadingYourInfosup]  = useState(true);
+  const [isLoadingYourInfosup, setLoadingYourInfosup] = useState(true);
   
 
 
