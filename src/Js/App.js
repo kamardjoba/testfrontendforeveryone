@@ -93,7 +93,6 @@ function App() {
   const [coins, setCoins] = useState(0);
   const [referralCoins, setReferralCoins] = useState(0);
   const [hasTelegramPremium, setHasTelegramPremium] = useState(false);
-  const [sethasReceivedTwitterReward] = useState(false);
   const [accountAgeCoins, setAccountAgeCoins] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [telegramLink, setTelegramLink] = useState('');
@@ -371,7 +370,7 @@ useEffect(() => {
         setHasTelegramPremium(data.hasTelegramPremium);
         setTransactionNumber(data.transactionNumber);
         setSubscriptionCoins(data.coinsSub);
-        sethasReceivedTwitterReward(data.hasReceivedTwitterReward)
+      
 
         const accountCreationDate = new Date(data.accountCreationDate);
         const currentYear = new Date().getFullYear();
@@ -430,9 +429,7 @@ useEffect(() => {
         else{
           localStorage.setItem('KnopkaNick', 'false');
         }
-        if (data.hasReceivedTwitterReward) {
-          localStorage.setItem('hasReceivedTwitterReward', 'true');
-        }
+        
         setLoadingOcto(false);
         setAccountAgeCoins(accountAgeCoins);
   
@@ -450,7 +447,7 @@ useEffect(() => {
     } catch (error) {
       console.error('Ошибка при получении данных пользователя:', error);
     }
-  }, [hasTelegramPremium, referralCoins, sethasReceivedTwitterReward]);
+  }, [hasTelegramPremium, referralCoins]);
 
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
@@ -866,7 +863,7 @@ const handleCheckReferrals = () => {
 
           {Sub && <div className='TS'>
             <div className='tsPhoto'>
-              <img src={SubTg} alt='SubTg' /> <p>Partner channels subs</p>
+              <img src={SubTg} alt='SubTg' /> <p id='highlight'>Partner channels subs</p>
             </div>
             <div className='tsPhoto'>
               <p id='highlight' >+{subscriptionCoins} $OCTIES</p>
