@@ -402,6 +402,7 @@ useEffect(() => {
           localStorage.setItem('Galka', 'false');
           localStorage.setItem('Knopka', 'true');
         }
+
         if (data.hasCheckedSubscription3) {
           localStorage.setItem('GalkaAnyTap', 'true');
           localStorage.setItem('KnopkaAnyTap', 'false');
@@ -409,6 +410,7 @@ useEffect(() => {
           localStorage.setItem('GalkaAnyTap', 'false');
           localStorage.setItem('KnopkaAnyTap', 'true');
         }
+
         if (data.hasCheckedSubscription4) {
           localStorage.setItem('GalkaBlock1', 'true');
           localStorage.setItem('KnopkaBlock1', 'false');
@@ -416,6 +418,7 @@ useEffect(() => {
           localStorage.setItem('GalkaBlock1', 'false');
           localStorage.setItem('KnopkaBlock1', 'true');
         }
+
         if (data.hasCheckedSubscription2) {
           localStorage.setItem('GalkaBlock2', 'true');
           localStorage.setItem('KnopkaBlock2', 'false');
@@ -423,6 +426,7 @@ useEffect(() => {
           localStorage.setItem('GalkaBlock2', 'false');
           localStorage.setItem('KnopkaBlock2', 'true');
         }
+
         if (data.hasNicknameBonus){
           localStorage.setItem('KnopkaNick', 'true');
         }

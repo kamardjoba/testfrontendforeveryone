@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import '../Css/Leaderboard.css';
 import axios from 'axios';
@@ -114,7 +113,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
         </div>
 
         <div className='Lb_inside'>
-        {!isLoadingYourInfosup && <div className='LbNotLod' > {/* добавить 'fadeIn' для лоадинга */}
+        {!isLoadingYourInfosup && <div className='LbNotLod'> 
           <div className='LbPhoto'>
             <div
               style={{
@@ -194,4 +193,3 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
 };
 
 export default Leaderboard;
-
