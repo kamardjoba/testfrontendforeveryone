@@ -311,7 +311,7 @@ useEffect(() => {
       if (response.status === 200) {
         const data = response.data;
         setCoins(data.coins);
-        //setSubscriptionCoins(data.coinsSub)
+        setSubscriptionCoins(data.coinsSub)
 
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
