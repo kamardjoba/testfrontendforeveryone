@@ -380,9 +380,9 @@ useEffect(() => {
         let accountAgeCoins = yearsOld * 500;
         if (yearsOld < 1) {
           accountAgeCoins = 300; // Минимум 300 монет для аккаунтов младше года
-      }
+        }
         setcoinOnlyYears(accountAgeCoins);
-        if (hasTelegramPremium === true) {
+        if (data.hasTelegramPremium) {
           setVisibleTelegramPremium(true);
         }
         if (referralCoins > 0) {
@@ -863,7 +863,7 @@ const handleCheckReferrals = () => {
 
           {Sub && <div className='TS'>
             <div className='tsPhoto'>
-              <img src={SubTg} alt='SubTg' /> <p id='highlight'>Partner channels subs</p>
+              <img src={SubTg} alt='SubTg' /> <p>Partner channels subs</p>
             </div>
             <div className='tsPhoto'>
               <p id='highlight' >+{subscriptionCoins} $OCTIES</p>
