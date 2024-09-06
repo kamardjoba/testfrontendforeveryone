@@ -311,7 +311,7 @@ useEffect(() => {
       if (response.status === 200) {
         const data = response.data;
         setCoins(data.coins);
-        setSubscriptionCoins(data.coinsSub)
+        //setSubscriptionCoins(data.coinsSub)
 
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
@@ -373,7 +373,7 @@ useEffect(() => {
         setReferralCoins(data.referralCoins);
         setHasTelegramPremium(data.hasTelegramPremium);
         setTransactionNumber(data.transactionNumber);
-        //setSubscriptionCoins(data.coinsSub);
+        setSubscriptionCoins(data.coinsSub);
       
 
         const accountCreationDate = new Date(data.accountCreationDate);
