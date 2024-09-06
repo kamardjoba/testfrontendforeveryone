@@ -336,11 +336,7 @@ useEffect(() => {
     }
   }, []);
 
-  if(subscriptionCoins > 0){
-    localStorage.setItem('Sub', 'true');
-  } else {
-    localStorage.setItem('Sub', 'false');
-  }
+
 
   useEffect(() => {
     if (userId) {
@@ -452,6 +448,12 @@ useEffect(() => {
       console.error('Ошибка при получении данных пользователя:', error);
     }
   }, [hasTelegramPremium, referralCoins]);
+
+  if(subscriptionCoins > 0){
+    localStorage.setItem('Sub', 'true');
+  } else {
+    localStorage.setItem('Sub', 'false');
+  }
   
 const handleCheckReferrals = () => {
     axios.post(`${REACT_APP_BACKEND_URL}/get-referral-count`, { userId })
@@ -480,7 +482,7 @@ const handleCheckReferrals = () => {
       if (response.status === 200) {
         const data = response.data;
         setCoins(data.coins);
-        setSubscriptionCoins(data.coinsSub);
+        //setSubscriptionCoins(data.coinsSub);
         
         if (data.hasCheckedSubscription) {
           localStorage.setItem('Galka', 'true');
