@@ -450,7 +450,7 @@ useEffect(() => {
     } catch (error) {
       console.error('Ошибка при получении данных пользователя:', error);
     }
-  }, [hasTelegramPremium, referralCoins]);
+  }, [hasTelegramPremium, referralCoins, sethasReceivedTwitterReward]);
 
   if(subscriptionCoins > 0){
     localStorage.setItem('Sub', 'true');
