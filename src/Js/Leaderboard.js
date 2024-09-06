@@ -18,6 +18,9 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
   const [isLoadingYourInfo, setLoadingYourInfo] = useState(true);
   const [isLoadingYourInfosup, setLoadingYourInfosup]  = useState(true);
 
+  const [isLoadingLiderInfo, setLoadingLiderInfo] = useState(true);
+  const [isLoadingLiderInfosup, setLoadingLiderInfosup]  = useState(true);
+
   useEffect(() => {
     if (!isLoadingYourInfosup) {
         const timerBlue = setTimeout(() =>  setLoadingYourInfo(false), 350); 
@@ -26,6 +29,15 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
       setLoadingYourInfo(true);
     }
 }, [isLoadingYourInfosup]);
+
+  useEffect(() => {
+    if (!isLoadingLiderInfosup) {
+        const timerBlue = setTimeout(() =>   setLoadingLiderInfo(false), 350); 
+        return () => clearTimeout(timerBlue);
+    } else {
+      setLoadingYourInfo(true);
+    }
+}, [isLoadingLiderInfosup]);
 
   useEffect(() => {
     const fetchUserCount = async () => {
@@ -50,7 +62,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
           setLeaderboard(response.data.leaderboard);
           const newColorsL = response.data.leaderboard.map(() => getRandomColor());
           setColorsL(newColorsL);
-          setLoadingYourInfosup(false);
+          setLoadingLiderInfosup(false);
         }
       } catch (error) {
         console.error('Ошибка при загрузке лидерборда:', error);
@@ -66,6 +78,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
           setUserRank(response.data.rank);
           setUserNickname(response.data.nickname);
           setUserColorL(getRandomColor()); 
+          setLoadingYourInfosup(false);
         } else {
           console.error('Error in response data:', response.data.message);
         }
@@ -153,15 +166,15 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
 
           
 
-        {isLoadingYourInfo && <div className={`loading-screen_lider ${isLoadingYourInfosup ? '' : 'hiddenLider'}`}>
+        {isLoadingLiderInfo && <div className={`loading-screen_lider ${isLoadingLiderInfosup ? '' : 'hiddenLider'}`}>
           <span className="loader"></span>
         </div>}
 
-        {!isLoadingYourInfosup && <div className='Lb_Liders fadeIn'>
+        {!isLoadingLiderInfosup && <div className='Lb_Liders fadeIn'>
           <p>{userCount} holders</p>
         </div>}
 
-        {!isLoadingYourInfosup && <div className='Lb_list fadeIn'>
+        {!isLoadingLiderInfosup && <div className='Lb_list fadeIn'>
            { leaderboard.map((user, index) => (
             <div key={user._id} className='Lb_Lider'>
               <div className='LbPhoto'>
