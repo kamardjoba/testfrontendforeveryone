@@ -35,7 +35,7 @@ const Oct = ({ onClose, setYearsOpen, coinOnlyYears }) => {
       </div>
       <div className='YearMain'>
         <img src={Octo} alt='Octo' />
-        <p id="Ytxt">{coinOnlyYears} $OCTIES</p>
+        <p id="Ytxt">{coinOnlyYears.toLocaleString('en-US')} $OCTIES</p>
         <img src={Salut} id='Salut' alt='Salut' />
       </div>
       <div className='YearInfo'>

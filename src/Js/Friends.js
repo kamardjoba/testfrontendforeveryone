@@ -43,7 +43,7 @@ const Friends = ({ FriendsAnim, invite, referralCode, telegramLink, getRandomCol
                 </div>
             </div>
             <div className='Fr_Friends'>
-                <p>{referredUsers.length} friends</p>
+                <p>{referredUsers.length.toLocaleString('en-US')} friends</p>
             </div>
             <div className='Fr_list'>
                 {referredUsers.map((user, index) => (
@@ -68,7 +68,7 @@ const Friends = ({ FriendsAnim, invite, referralCode, telegramLink, getRandomCol
 
                         <div className='LbPhoto' id='FR_Coins_frend'>
                            
-                        <p>+{user.earnedCoins} $OCTIES</p>
+                        <p>+{user.earnedCoins.toLocaleString('en-US')} $OCTIES</p>
                         </div>
                     </div>
                 ))}
