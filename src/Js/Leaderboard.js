@@ -148,7 +148,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
 
             <div className='NameLb'>
               <p>{userNickname ? `${userNickname}` : 'Loading...'}</p>
-              <p id='LbColor'>{coins} $OCTIES</p>
+              <p id='LbColor'>{coins.toLocaleString('en-US')} $OCTIES</p>
             </div>
           </div>
           <div className='LbPhoto'>
@@ -171,7 +171,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
         </div>}
 
         {!isLoadingLiderInfosup && <div className='Lb_Liders fadeIn'>
-          <p>{userCount} holders</p>
+          <p>{userCount.toLocaleString('en-US')} holders</p>
         </div>}
 
         {!isLoadingLiderInfosup && <div className='Lb_list fadeIn'>
@@ -196,7 +196,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
                 </div>
                 <div className='NameLb'>
                   <p> {user.nickname} </p>
-                  <p id='LbColor'>{user.coins} $OCTIES</p>
+                  <p id='LbColor'>{user.coins.toLocaleString('en-US')} $OCTIES</p>
                 </div>
               </div>
               <div className='LbPhoto' id='medal'>

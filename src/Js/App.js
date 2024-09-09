@@ -113,7 +113,7 @@ function App() {
   const walletAddress = useTonAddress();
 
   const [isLoadingOcto, setLoadingOcto] = useState(true);
-  const [isLoadingOctoVs, setLoadingOctoVs] = useState(true);
+  const [isLoadingOctoVs, setLoadingOctoVs] = useState(false);
 
 
   useEffect(() => {
@@ -691,12 +691,12 @@ const handleCheckReferrals = () => {
       </div>}
       {!isMint &&<div className='MainCoin'>
         <div className='MainCoin'>
-        {coins === 0 ? <p>Loading...</p> : <p>{coins} $OCTIES</p>}
+        {coins === 0 ? <p>Loading...</p> : <p>{coins.toLocaleString('en-US')} $OCTIES</p>}
       </div>
       </div>}
       {isMint &&<div className='MintCoin'>
         <img src={NFTm} alt='NFTm'/>
-        <p id='endtxt'> {coins === 0 ? <p>Loading...</p> : <p>{coins}</p>} <span id='highlight'>{transactionNumber}</span> $OCTIES</p>
+        <p id='endtxt'> {coins === 0 ? <p>Loading...</p> : <p>{coins.toLocaleString('en-US')}</p>} <span id='highlight'>{transactionNumber}</span> $OCTIES</p>
       </div>}
 
       <div className='Menu'>
@@ -743,7 +743,7 @@ const handleCheckReferrals = () => {
                 </div> 
                 <div className='MenuBtn'>
                   {Knopka && <img onClick={Tg_Channel_Open_chek} src={Join} alt='Join' />}
-                  <p id='lightGray'> {Knopka && <p id="plus">+</p>}1000 $OCTIES</p>
+                  <p id='lightGray'> {Knopka && <p id="plus">+</p>}1,000 $OCTIES</p>
                   {Galo4ka && <img id="galo4ka" src={galo4ka} alt='galo4ka' />}
                 </div>
               </div>
@@ -866,7 +866,7 @@ const handleCheckReferrals = () => {
               <img src={SubTg} alt='SubTg' /> <p>Partner channels subs</p>
             </div>
             <div className='tsPhoto'>
-              <p id='highlight' >+{subscriptionCoins} $OCTIES</p>
+              <p id='highlight' >+{subscriptionCoins.toLocaleString('en-US')} $OCTIES</p>
             </div>
           </div>}
 
@@ -875,7 +875,7 @@ const handleCheckReferrals = () => {
               <img src={TS1} alt='TS1' /> <p>Account age</p>
             </div>
             <div className='tsPhoto'>
-              <p>+{accountAgeCoins} $OCTIES</p>
+              <p>+{accountAgeCoins.toLocaleString('en-US')} $OCTIES</p>
             </div>
           </div>
 
@@ -893,7 +893,7 @@ const handleCheckReferrals = () => {
               <img src={TS3} alt='TS3' /> <p>Channel Subscription</p>
             </div>
             <div className='tsPhoto'>
-              <p>+1000 $OCTIES</p>
+              <p>+1,000 $OCTIES</p>
             </div>
           </div>}
 
@@ -902,7 +902,7 @@ const handleCheckReferrals = () => {
               <img src={TSnick} alt='TS3' /> <p>Add "Octies" to nickname</p>
             </div>
             <div className='tsPhoto'>
-              <p>+ 300 $OCTIES</p>
+              <p>+300 $OCTIES</p>
             </div>
           </div>}
 
@@ -911,7 +911,7 @@ const handleCheckReferrals = () => {
             <img src={TSX} alt='TSX' /> <p>Octies X</p>
           </div>
           <div className='tsPhoto'>
-            <p>+ 500 $OCTIES</p>
+            <p>+500 $OCTIES</p>
           </div>
         </div>}       
 
@@ -920,7 +920,7 @@ const handleCheckReferrals = () => {
               <img src={TS4} alt='TS4' /> <p>Invites</p>
             </div>
             <div className='tsPhoto'>
-              <p>+{referralCoins} $OCTIES</p>
+              <p>+{referralCoins.toLocaleString('en-US')} $OCTIES</p>
             </div>
           </div>}
         </div>
