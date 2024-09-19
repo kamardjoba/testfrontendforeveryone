@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../Css/Friends.css';
 import axios from 'axios';
 
-const Friends = ({ FriendsAnim, invite, referralCode, telegramLink, getRandomColor }) => {
+const Friends = ({ invite, referralCode, telegramLink, getRandomColor }) => {;
+      
     const [referredUsers, setReferredUsers] = useState([]);
     const [colorsF, setColorsF] = useState([]);
     const REACT_APP_BACKEND_URL = 'https://octiesback-production.up.railway.app';
@@ -29,7 +30,8 @@ const Friends = ({ FriendsAnim, invite, referralCode, telegramLink, getRandomCol
     };
 
     return (
-        <div className={`Fr_Window ${FriendsAnim ? 'fade-out' : ''}`}>
+        <div className='Fr_Window'>
+             
             <div className='Fr_Info'>
                 <p>Invite friends <br/> and get more $OCTIES</p>
             </div>
@@ -71,9 +73,12 @@ const Friends = ({ FriendsAnim, invite, referralCode, telegramLink, getRandomCol
                         <p>+{user.earnedCoins.toLocaleString('en-US')} $OCTIES</p>
                         </div>
                     </div>
+                    
                 ))}
 
             </div>
+
+            
         </div>
     );
 };

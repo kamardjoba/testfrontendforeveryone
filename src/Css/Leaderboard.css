@@ -14,12 +14,6 @@
     overflow: scroll;
 }
 
-
-.Lb_Window.fade-out {
-    animation: fade-out 0.3s forwards;
-}
-
-
 .lb_Info{
     height: 15%;
     width: 100%;

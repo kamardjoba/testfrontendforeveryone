@@ -7,7 +7,8 @@ import Octo from '../IMG/All_Logo/Octo.png';
 
 const REACT_APP_BACKEND_URL = 'https://octiesback-production.up.railway.app';
 
-const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
+const Leaderboard = ({ userId, coins, getRandomColor}) => {
+  
   const [leaderboard, setLeaderboard] = useState([]);
   const [userRank, setUserRank] = useState(null);
   const [userCount, setUserCount] = useState(0);
@@ -109,7 +110,7 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
   };
 
   return (
-    <div className={`Lb_Window ${LeaderboardAnim ? 'fade-out' : ''}`}>
+    <div className={'Lb_Window'}>
       <div className='lb_Info'>
         <p>Telegram Wall of Fame</p>
       </div>
@@ -163,8 +164,6 @@ const Leaderboard = ({ LeaderboardAnim, userId, coins, getRandomColor}) => {
           </div>}
 
           </div>
-
-          
 
         {isLoadingLiderInfo && <div className={`loading-screen_lider ${isLoadingLiderInfosup ? '' : 'hiddenLider'}`}>
           <span className="loader"></span>
