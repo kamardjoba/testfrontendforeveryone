@@ -45,7 +45,7 @@ const NFTs = ({showNotCompleted, Nft, handleCheckReferrals, buttonVisible, Check
         validUntil: Math.floor(Date.now() / 1000) + 600,
         messages: [
           {
-            address: "UQC-ZK_dPpZ15VaL-kwyXT1jTCYDTQricz8RxvXT0VmdbRYG",
+            address: "EQAI8SXHLi_y3ao5kqTFwT6rNDDzh_1UhicVR4jbwQhg-L4m",
             amount: "10000000",
           },
         ],
