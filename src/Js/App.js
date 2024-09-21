@@ -140,8 +140,6 @@ function App() {
   const [transactionNumber, setTransactionNumber] = useState(null);
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
   const walletAddress = useTonAddress();
-  
- 
 
   useEffect(() => {
     if (!isLoadingOcto) {
