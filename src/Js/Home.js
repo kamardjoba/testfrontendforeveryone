@@ -197,7 +197,7 @@ useEffect(() => {
         </div>
       </div>
       {!isMint && <div className="main">
-        <img src={Octo} alt='Octo' onClick={(event) => {localStorage.clear()}}/>
+        <img src={Octo} alt='Octo'/>
       </div>}
       {!isMint &&<div className='MainCoin'>
         
