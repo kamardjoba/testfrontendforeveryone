@@ -24,6 +24,8 @@ import PLANET from '../IMG/ComingSoon/PLANET.png';
 import OctiesCosmo from '../IMG/ComingSoon/OctiesCosmo.png';
 import starship from '../IMG/ComingSoon/starship.png';
 //import image NFT
+import missed from '../IMG/NFTs/Missed.png';
+import complated from '../IMG/NFTs/Complated.png';
 import shapka2 from '../IMG/NFTs/Shapka2.png';
 import dedpool from '../IMG/NFTs/dedpool.png';
 import rosomaha from '../IMG/NFTs/rosomaha.png';
@@ -40,7 +42,11 @@ import IconFriends from '../IMG/LowerIcon/Friends.png';
 import NFTlogo from '../IMG/LowerIcon/NFTLogo.png';
 import p2e from '../IMG/LowerIcon/p2e.png';
 
+
 const REACT_APP_BACKEND_URL = 'https://octiesback-production.up.railway.app';
+
+
+
 let userId;
 
 function App() {
@@ -77,6 +83,8 @@ function App() {
   preloadImage(ton55);
   preloadImage(durov);
   preloadImage(invite);
+  preloadImage(complated);
+  preloadImage(missed);
 
   }, []);
 
@@ -109,6 +117,13 @@ function App() {
   if (!localStorage.getItem('isMintNFT')) {localStorage.setItem('isMintNFT', 'false');}
   const isMint = localStorage.getItem('isMintNFT') === 'true';
 
+  if (!localStorage.getItem('Galo4kaBee')) {localStorage.setItem('Galo4kaBee', 'false');}
+  const [Galo4kaBee, setGalo4kaBee] = useState(localStorage.getItem('Galo4kaBee') === 'true')
+
+  if (!localStorage.getItem('KnopkaBee')) {localStorage.setItem('KnopkaBee', 'true');}
+  const [KnopkaBee, setKnopkaBee] = useState(localStorage.getItem('KnopkaBee') === 'true')
+
+
   const [alert, setalert] = useState(false);
 
   //const tonConnectUI = useTonConnectUI();
@@ -135,8 +150,6 @@ function App() {
   const [transactionNumber, setTransactionNumber] = useState(null);
   const [subscriptionCoins, setSubscriptionCoins] = useState(0);
   const walletAddress = useTonAddress();
-  
- 
 
   useEffect(() => {
     if (!isLoadingOcto) {
@@ -479,8 +492,8 @@ const handleCheckReferrals = () => {
         <Route path="/" element={ <Home Galo4ka={Galo4ka} Knopka={Knopka} Galo4kaX={Galo4kaX} KnopkaX={KnopkaX}  GalkaAnyTap={GalkaAnyTap} KnopkaAnyTap={KnopkaAnyTap}
                                   KnopkaNick={KnopkaNick} Ton5Succes={Ton5Succes} hasTelegramPremium={hasTelegramPremium} accountAgeCoins={accountAgeCoins} 
                                   transactionNumber={transactionNumber} coins={coins} setYearsOpen={setYearsOpen} isMint={isMint} 
-                                  subscriptionCoins={subscriptionCoins} referralCoins={referralCoins} REACT_APP_BACKEND_URL={REACT_APP_BACKEND_URL} checkSubscriptionAndUpdate={checkSubscriptionAndUpdate }/>} 
-                                  userId={userId}  setCoins={ setCoins}/>
+                                  subscriptionCoins={subscriptionCoins} referralCoins={referralCoins} REACT_APP_BACKEND_URL={REACT_APP_BACKEND_URL} checkSubscriptionAndUpdate={checkSubscriptionAndUpdate }
+                                  userId={userId}  setCoins={ setCoins} Galo4kaBee={Galo4kaBee} setGalo4kaBee={setGalo4kaBee} KnopkaBee={KnopkaBee} setKnopkaBee={setKnopkaBee}/>}/>
 
         <Route path="/leaderboard" element={<Leaderboard userId={userId} coins={coins} getRandomColor={getRandomColor}/>} />
 
@@ -490,8 +503,12 @@ const handleCheckReferrals = () => {
 
         <Route path="/nfts" element={<NFTs showNotCompleted={showNotCompleted} Nft={Nft} handleCheckReferrals={handleCheckReferrals} buttonVisible={buttonVisible}
                               Checknft={Checknft} shapka2={shapka2} dedpool={dedpool} ChecknftDone={ChecknftDone} setTransactionNumber={setTransactionNumber} userId={userId}
-                              rosomaha={rosomaha} ton5={ton5} ton55={ton55} durov={durov} isMint={isMint} alert={alert} setalert={setalert} updatedSpots={updatedSpots}/>}/>
-      </Routes>
+                              rosomaha={rosomaha} ton5={ton5} ton55={ton55} durov={durov} isMint={isMint} alert={alert} setalert={setalert} updatedSpots={updatedSpots}
+                              missed={missed} complated={complated}/>}>
+
+        </Route>
+                              
+      </Routes>         
 
       {FPage && (<First onClose={handleFirstPageClose} setCheckOpen={setCheckOpen} />)}
       {CheckOpen && (<Check setCheckOpen={setCheckOpen} setYearsOpen={setYearsOpen} />)}

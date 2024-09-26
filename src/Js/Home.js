@@ -31,10 +31,12 @@ import Play from '../IMG/All_Logo/Play.png';
 import Octo from '../IMG/All_Logo/Octo.png';
 import NFTm from '../IMG/All_Logo/NFTmint.png';
 import pass from '../IMG/All_Logo/pass.png';
+import beeVerse from '../IMG/All_Logo/BeeVerse.png';
 
 function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, KnopkaNick, 
     Ton5Succes, hasTelegramPremium, accountAgeCoins, transactionNumber,
-     coins, setYearsOpen, isMint, subscriptionCoins, referralCoins, REACT_APP_BACKEND_URL,  userId, checkSubscriptionAndUpdate , setCoins
+     coins, setYearsOpen, isMint, subscriptionCoins, referralCoins, REACT_APP_BACKEND_URL,  userId, checkSubscriptionAndUpdate , setCoins,
+     Galo4kaBee, setGalo4kaBee, KnopkaBee, setKnopkaBee
 
  }) {
 
@@ -42,6 +44,8 @@ function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, K
   const TG_CHANNEL_LINK2 = "https://t.me/any_tap";
   const X_LINK = "https://x.com/Octies_GameFI";
   const Support = "https://t.me/octies_manage";
+  const bot_part = "https://t.me/bee_verse_bot?start=7236554978";
+
   const userId1 = new URLSearchParams(window.location.search).get('userId');
 
   function handleOpenStoryWithVibration() {
@@ -79,7 +83,7 @@ function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, K
 
   const Tg_Channel_Open_X = async () => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    console.log('Отправляемый userId:', userId1);  // Логируем userId на клиенте
+    console.log('Отправляемый userId:', userId1);  
     window.open(X_LINK, '_blank');
     setTimeout(async () => {
       if (localStorage.getItem('KnopkaX') === 'true') {
@@ -103,22 +107,47 @@ function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, K
     }, 5000);
   };
 
+  
+  const Tg_Bot_Bee = async () => {
+    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+    console.log('Отправляемый userId:', userId);  
+    window.open(bot_part, '_blank');
+    setTimeout(async () => {
+      if (localStorage.getItem('KnopkaBee') === 'true') {
+        localStorage.setItem('KnopkaBee', 'false');
+        localStorage.setItem('Galo4kaBee', 'true');
+        setGalo4kaBee(true);
+        setKnopkaBee(false);
+        try {
+          const response = await axios.post(`${REACT_APP_BACKEND_URL}/update-coins-bot`, { userId: userId, amount: 750 });
+          if (response.data.success) {
+            setCoins(response.data.coins);
+            if (response.data.hasBotSub) {
+              localStorage.setItem('hasBotSub', 'true');
+              setCoins(response.data.coins);
+              console.log('Отправляемый userId:успех');  
+            }
+          } else {
+            console.error('Ошибка при обновлении монет:', response.data.message);
+          }
+        } catch (error) {
+          console.error('Ошибка при обновлении монет:', error);
+        }
+      }
+    }, 5000);
+   
+  };
+  // window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+  // setTimeout(async () => {
+    
+  //     setGalo4kaBee(true);
+  //     setKnopkaBee(false);
+    
+  // }, 5000);
 
-// try {
-//   const response = await axios.post(`${REACT_APP_BACKEND_URL}/update-coins`, { userId, amount: 500 });
-//   if (response.data.success) {
-//       setCoins(response.data.coins);
-//       if (response.data.hasReceivedTwitterReward) {
-//           localStorage.setItem('hasReceivedTwitterReward', 'true');
-//            setCoins(response.data.coins);
-//       }
-//   } else {
-//       console.error('Ошибка при обновлении монет:', response.data.message);
-//   }
-// }
-//________________________________________________________________Task_Swap
-const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
-const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false]);
+//_______________________________________________________________Task_Swap
+const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
+const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false, false]);
 
 useEffect(() => {
   const observerOptions = {
@@ -168,7 +197,7 @@ useEffect(() => {
         </div>
       </div>
       {!isMint && <div className="main">
-        <img src={Octo} alt='Octo'/>
+        <img src={Octo} alt='Octo' onClick={(event) => {localStorage.clear()}}/>
       </div>}
       {!isMint &&<div className='MainCoin'>
         
@@ -245,8 +274,29 @@ useEffect(() => {
               </div>
             </div>
           </div>
-
+          
           <div className='MenuBorder' ref={blockRefs[3]}>
+            <div className='flex_menu_border'  id='orangeBack'>
+              <div className='rightFlex'>
+                <div id='up'>
+                  <p >BeeVerse</p>
+                </div>
+                <div id='dpp'>
+                  <p>Are you ready for <br/>adventures in BeeVerse?</p>
+                </div>
+                <div className='MenuBtn'>
+                  {KnopkaBee && <img onClick={Tg_Bot_Bee} src={Join} alt='Join' />}
+                  <p> {KnopkaBee && <p id="plus">+</p>}750 $OCTIES</p>
+                  {Galo4kaBee && <img id="galo4ka" src={galo4ka} alt='' />}
+                </div>
+              </div>
+              <div className='leftFlex'>
+                <img src={beeVerse} alt=''/>
+              </div>
+            </div>
+          </div>
+
+          <div className='MenuBorder' ref={blockRefs[4]}>
             <div className='flex_menu_border' id='greenBack'>
               <div className='rightFlex'>
                 <div  id='up'>
@@ -266,7 +316,7 @@ useEffect(() => {
             </div>
           </div>
 
-          <div className='MenuBorder' ref={blockRefs[4]}>
+          <div className='MenuBorder' ref={blockRefs[5]}>
             <div className='flex_menu_border'>
               <div className='rightFlex'>
               <div id='up'>
@@ -298,6 +348,7 @@ useEffect(() => {
             <img src={Ellipse} alt='Ellips' className={blockVisibility[2] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[3] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[4] ? '' : 'img-dark'} />
+            <img src={Ellipse} alt='Ellips' className={blockVisibility[5] ? '' : 'img-dark'} />
           </div>
           <p>Your Rewards</p>
         </div>

@@ -1,18 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {TonConnectButton, useTonConnectUI} from '@tonconnect/ui-react';
 import axios from 'axios';
 import '../Css/NFTs.css';
 
 import AlertNft from '../Alert/Alert.js';
+import AvalibleNFT from '../NftPages/Avalible.js';
+
+import ComplatedNFT from '../NftPages/Complated.js';
+import MissedNFT from '../NftPages/Missed.js';
+
 
 const NFTs = ({showNotCompleted, Nft, handleCheckReferrals, buttonVisible, Checknft,  ChecknftDone ,
-  shapka2, dedpool, rosomaha, ton5, ton55, durov, isMint, alert, setalert, updatedSpots, setTransactionNumber, userId
+  shapka2, dedpool, rosomaha, ton5, ton55, durov, isMint, alert, setalert, updatedSpots, setTransactionNumber, userId, missed, complated
 }) => {
 
   const REACT_APP_BACKEND_URL = 'https://octiesback-production.up.railway.app';
   const [tonConnectUI] = useTonConnectUI();
 
-
+  const [VisibleAvalibleNFT, setVisibleAvalibleNFT] = useState(true);
+  const [VisibleMissedNFT, setVisibleMissedNFT] = useState(false);
+  const [VisibleComplatedNFT, setVisibleComplatedNFT] = useState(false);
 
   if (!localStorage.getItem('forsent')) {localStorage.setItem('forsent', 'false');}
   const timerforsent= localStorage.getItem('forsent') === 'true';
@@ -123,6 +130,22 @@ const NFTs = ({showNotCompleted, Nft, handleCheckReferrals, buttonVisible, Check
     }
 };
 
+const handleAvalibleNFT = () => {
+  setVisibleAvalibleNFT(true);
+  setVisibleMissedNFT(false);
+  setVisibleComplatedNFT(false);
+};
+const handleMissedNFT = () => {
+  setVisibleAvalibleNFT(false);
+  setVisibleMissedNFT(true);
+  setVisibleComplatedNFT(false);
+};
+const handleComplatedNFT = () => {
+  setVisibleAvalibleNFT(false);
+  setVisibleMissedNFT(false);
+  setVisibleComplatedNFT(true);
+};
+
   return (
     <div className='NFTs_Window'  >
       {alert && <AlertNft rosomaha={rosomaha} setalert={setalert}/>}
@@ -135,73 +158,45 @@ const NFTs = ({showNotCompleted, Nft, handleCheckReferrals, buttonVisible, Check
         <img className="marvel" id="ros" src={rosomaha} alt=''/>
         <img src={shapka2} id="shapka2" alt=''/>
       </div>
-     
-      <div className='mainNft'> 
-        <div className='feikton'>
-          <TonConnectButton/>
-        </div>
-
-        <div className='nft-promo'>
-          <div className='nft-text'>
-            <h2>GET YOUR <span id='highlight'>FREE</span> NFT!</h2>
-            <p>Invite 15 friends, Connect Wallet <br/>and receive unique OCTIES NFT</p>
-            <div className='nft-buttons'>
-              <div className="mint-section">
-
-                {!buttonVisible && !showNotCompleted && 
-                  <button className="referral-button" onClick={handleCheckReferrals}> 
-                    Check referrals
-                  </button>}
-
-                {!buttonVisible && showNotCompleted && (
-                  <button id="not-completed" >
-                    <img src={Checknft} alt="Not completed" />Not completed
-                  </button>)}
-
-                {buttonVisible && (
-                  <button id="friends-count">
-                    <p>15 friends </p>
-                    <img src={ChecknftDone} alt="Checkmark" />
-                  </button> )}
-
-              </div>
-              <div className="mint-section">
-              <button
-                className={`mint-button ${isMint ? 'greenlight' : (!buttonVisible ? 'canMint' : '')}`}
-                onClick={sendTransactionFunc}
-              >
-                {isMint ? 'MINTED' : 'MINT'}
-              </button>
-
-              </div>
-            </div>
-          </div>
-          <div className='nft-image'>
-            <img src={Nft} alt='OCTIES NFT' /> 
-          </div>
-        </div>
-
-        <div className='nft-promo2'>
-          <div className='LeftNft2'>
-            <div alt='' id='redElipse'/>
-            <h1><span id='highlight'>CREATE AN NFT</span> OF YOUR<br/>CHARACTER OCTIES!</h1>    
-            <p>Currently <span id="highgreen">{updatedSpots}</span>/250 spots available</p>
-            <p>Once you submit the transaction,<br /><span id='highlight'>you will receive:</span></p>
-            <ul class="custom-list">
-              <li>1 NFT of a unique OCTIES <br/> character, which you <br/> can design yourself</li>
-            </ul>
-            <ul class="custom-list">
-              <li>Secret pass granting access<br/> to unique features & utilities</li>
-            </ul>
-            {!timerforsent && <button className='sendButtonm' onClick={sendTransaction1}>Send transaction <img src={ton55} alt=''/></button>}
-            {timerforsent && <button className='FillButtonm' onClick={Tg_Form_Window}>Fill out the form</button>}
-          </div>
-          <div className='rightNft2'>
-            <img src={durov} alt=''/>
-          </div>
-         
-        </div>
+      <div className='feikton'>
+          <TonConnectButton />
       </div>
+  
+      
+      {VisibleAvalibleNFT && (<AvalibleNFT 
+          buttonVisible={buttonVisible} 
+          showNotCompleted={showNotCompleted} 
+          isMint={isMint} 
+          sendTransactionFunc={sendTransactionFunc} 
+          Checknft={Checknft}
+          sendTransaction1={sendTransaction1} 
+          ChecknftDone={ChecknftDone} 
+          handleCheckReferrals={handleCheckReferrals}
+          timerforsent={timerforsent} 
+          updatedSpots={updatedSpots} 
+          Tg_Form_Window={Tg_Form_Window} 
+          Nft={Nft} 
+          durov={durov} 
+          ton55={ton55} 
+          />)}
+
+
+        {VisibleComplatedNFT && (<ComplatedNFT ChecknftDone={ChecknftDone} Nft={Nft} isMint={isMint} complated={complated}/>)}
+
+        {VisibleMissedNFT && (<MissedNFT Checknft={Checknft} Nft={Nft} isMint={isMint} missed={missed}/>)}
+
+       
+      <div className="switch3">
+        <input type="radio" id="switch3-radio1" name="radio" />
+          <label htmlFor="switch3-radio1" onClick={handleAvalibleNFT}> AVALIBLE</label>
+
+
+          <input type="radio" id="switch3-radio2" name="radio" />
+          <label htmlFor="switch3-radio2" onClick={handleComplatedNFT}> COMPLETED</label>
+
+          <input type="radio" id="switch3-radio3" name="radio" />
+          <label htmlFor="switch3-radio3" onClick={handleMissedNFT}> MISSED</label>
+</div>
     </div>
 
 );

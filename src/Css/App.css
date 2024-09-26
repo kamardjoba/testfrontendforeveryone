@@ -508,10 +508,6 @@ button{
   animation: fadeOut 2s forwards;
 }
 
-#not-completed img {
-  height: 1.5vh;
-  margin-right: 0.5vh; 
-}
 
 .nft-image img {
   right: 0;
@@ -546,6 +542,34 @@ button{
 #friends-count img {
   margin-left: 0.5vh;
   height: 2.5vh;
+}
+
+#not-completed-missed
+{
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  height: 80%;
+  width: 100%;
+  margin-left: 1.7vh;
+  margin-right: 1.7vh;
+  font-size: 1.7vh;
+  font-family: MullerMedium;
+  border-radius: 1.2vh;
+  background: #484848;
+}
+
+#not-completed-missed p
+{
+  margin-top: 0.2vh;
+}
+
+#not-completed , #not-completed-missed img {
+  margin-left: 0.5vh;
+  height: 2.5vh;
+  margin-right: 0.5vh; 
 }
 
 .referral-button {
