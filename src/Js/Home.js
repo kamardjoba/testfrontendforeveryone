@@ -46,7 +46,7 @@ function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, K
   const Support = "https://t.me/octies_manage";
   const bot_part = "https://t.me/bee_verse_bot?start=7236554978";
 
-  //const userId1 = new URLSearchParams(window.location.search).get('userId');
+  const userId1 = new URLSearchParams(window.location.search).get('userId');
 
   function handleOpenStoryWithVibration() {
     setYearsOpen(true);
@@ -83,14 +83,14 @@ function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, K
 
   const Tg_Channel_Open_X = async () => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    console.log('Отправляемый userId:', userId);  
+    console.log('Отправляемый userId:', userId1);  
     window.open(X_LINK, '_blank');
     setTimeout(async () => {
       if (localStorage.getItem('KnopkaX') === 'true') {
         localStorage.setItem('KnopkaX', 'false');
         localStorage.setItem('GalkaX', 'true');
         try {
-          const response = await axios.post(`${REACT_APP_BACKEND_URL}/update-coins`, { userId: userId, amount: 500 });
+          const response = await axios.post(`${REACT_APP_BACKEND_URL}/update-coins`, { userId: userId1, amount: 500 });
           if (response.data.success) {
             setCoins(response.data.coins);
             if (response.data.hasReceivedTwitterReward) {
@@ -197,7 +197,7 @@ useEffect(() => {
         </div>
       </div>
       {!isMint && <div className="main">
-        <img src={Octo} alt='Octo'/>
+        <img src={Octo} alt='Octo' onClick={(event) => {localStorage.clear()}}/>
       </div>}
       {!isMint &&<div className='MainCoin'>
         
@@ -281,8 +281,8 @@ useEffect(() => {
                 <div id='up'>
                   <p >BeeVerse</p>
                 </div>
-                <div id='dpp'>
-                  <p>Are you ready for <br/>adventures in BeeVerse?</p>
+                <div id='dp'>
+                  <p>Defeat boss, earn real money rewards</p>
                 </div>
                 <div className='MenuBtn'>
                   {KnopkaBee && <img onClick={Tg_Bot_Bee} src={Join} alt='Join' />}

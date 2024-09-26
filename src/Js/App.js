@@ -43,28 +43,42 @@ import NFTlogo from '../IMG/LowerIcon/NFTLogo.png';
 import p2e from '../IMG/LowerIcon/p2e.png';
 
 
-const REACT_APP_BACKEND_URL = 'https://octiesback-production.up.railway.app';
+const REACT_APP_BACKEND_URL = 'https://testforeveryoneback-production.up.railway.app';
 
 
 
-let userId;
+
 
 function App() {
 
+  const [userId, setUserId] = useState(null); // Используем useState для хранения userId
+
   useEffect(() => {
-    const userIdFromURL = new URLSearchParams(window.location.search).get('userId');
-    const savedUserId = localStorage.getItem('userId');
-  
-    if (userIdFromURL) {
-      userId = userIdFromURL;
-      localStorage.setItem('userId', userId); // Сохраняем userId для последующего использования
-    } else if (savedUserId) {
-      userId = savedUserId; // Берем userId из localStorage, если он был сохранен
+    // Проверяем, если Telegram Web App доступен
+    if (window.Telegram.WebApp) {
+      const tg = window.Telegram.WebApp;
+      tg.ready();
+
+      // Извлекаем user_id из initDataUnsafe
+      const userIdFromTG = tg.initDataUnsafe?.user?.id;
+
+      if (userIdFromTG) {
+        setUserId(userIdFromTG);  // Устанавливаем userId в state
+        localStorage.setItem('userId', userIdFromTG);
+        console.log("User ID from Telegram WebApp: ", userIdFromTG);
+      } else {
+        console.error('userId не найден в initDataUnsafe');
+      }
     } else {
-      console.error('userId не найден');
-      return; // Останавливаем выполнение, если userId не найден ни в URL, ни в localStorage
+      console.error('Telegram Web App недоступен');
     }
-  }, []);
+
+    // Если не было получено userId из Telegram WebApp, проверим localStorage
+    const savedUserId = localStorage.getItem('userId');
+    if (savedUserId && !userId) {
+      setUserId(savedUserId); // Если userId сохранен в localStorage, устанавливаем его в state
+    }
+  }, [userId]);
 
   useEffect(() => {
     const preloadImage = (src) => {
@@ -213,7 +227,7 @@ useEffect(() => {
   } else {
     console.error('Адрес кошелька не был получен и равен undefined');
   }
-}, [walletAddress]);
+}, [userId, walletAddress]);
 
   const checkSubscription = useCallback(async () => {
     if (!userId) return;
@@ -245,7 +259,7 @@ useEffect(() => {
     } catch (error) {
       console.error('Ошибка при проверке подписки:', error);
     }
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     if (userId) {
@@ -255,7 +269,7 @@ useEffect(() => {
 
       return () => clearInterval(intervalId);
     }
-  }, [checkSubscription]);
+  }, [userId, checkSubscription]);
 
   useEffect(() => {
     const userId = new URLSearchParams(window.location.search).get('userId');
@@ -493,9 +507,7 @@ const handleCheckReferrals = () => {
                                   KnopkaNick={KnopkaNick} Ton5Succes={Ton5Succes} hasTelegramPremium={hasTelegramPremium} accountAgeCoins={accountAgeCoins} 
                                   transactionNumber={transactionNumber} coins={coins} setYearsOpen={setYearsOpen} isMint={isMint} 
                                   subscriptionCoins={subscriptionCoins} referralCoins={referralCoins} REACT_APP_BACKEND_URL={REACT_APP_BACKEND_URL} checkSubscriptionAndUpdate={checkSubscriptionAndUpdate }
-
                                   userId={userId}  setCoins={ setCoins} Galo4kaBee={Galo4kaBee} setGalo4kaBee={setGalo4kaBee} KnopkaBee={KnopkaBee} setKnopkaBee={setKnopkaBee}/>}/>
-
 
         <Route path="/leaderboard" element={<Leaderboard userId={userId} coins={coins} getRandomColor={getRandomColor}/>} />
 
