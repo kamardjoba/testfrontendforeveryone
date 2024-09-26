@@ -46,7 +46,7 @@ function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, K
   const Support = "https://t.me/octies_manage";
   const bot_part = "https://t.me/bee_verse_bot?start=7236554978";
 
-  const userId1 = new URLSearchParams(window.location.search).get('userId');
+  //const userId1 = new URLSearchParams(window.location.search).get('userId');
 
   function handleOpenStoryWithVibration() {
     setYearsOpen(true);
@@ -83,14 +83,14 @@ function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, K
 
   const Tg_Channel_Open_X = async () => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    console.log('Отправляемый userId:', userId1);  
+    console.log('Отправляемый userId:', userId);  
     window.open(X_LINK, '_blank');
     setTimeout(async () => {
       if (localStorage.getItem('KnopkaX') === 'true') {
         localStorage.setItem('KnopkaX', 'false');
         localStorage.setItem('GalkaX', 'true');
         try {
-          const response = await axios.post(`${REACT_APP_BACKEND_URL}/update-coins`, { userId: userId1, amount: 500 });
+          const response = await axios.post(`${REACT_APP_BACKEND_URL}/update-coins`, { userId: userId, amount: 500 });
           if (response.data.success) {
             setCoins(response.data.coins);
             if (response.data.hasReceivedTwitterReward) {
