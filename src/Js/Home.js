@@ -146,8 +146,8 @@ function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, K
   // }, 5000);
 
 //_______________________________________________________________Task_Swap
-const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
-const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false, false]);
+const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
+const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false]);
 
 useEffect(() => {
   const observerOptions = {
@@ -197,7 +197,8 @@ useEffect(() => {
         </div>
       </div>
       {!isMint && <div className="main">
-        <img src={Octo} alt='Octo' onClick={(event) => {localStorage.clear()}}/>
+        <img src={Octo} alt='Octo'
+        />
       </div>}
       {!isMint &&<div className='MainCoin'>
         
@@ -296,7 +297,7 @@ useEffect(() => {
             </div>
           </div>
 
-          <div className='MenuBorder' ref={blockRefs[4]}>
+          {/* <div className='MenuBorder' ref={blockRefs[4]}>
             <div className='flex_menu_border' id='greenBack'>
               <div className='rightFlex'>
                 <div  id='up'>
@@ -314,9 +315,9 @@ useEffect(() => {
                 <img src={FreePosition} alt=''/>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div className='MenuBorder' ref={blockRefs[5]}>
+          <div className='MenuBorder' ref={blockRefs[4]}>
             <div className='flex_menu_border'>
               <div className='rightFlex'>
               <div id='up'>
@@ -348,7 +349,7 @@ useEffect(() => {
             <img src={Ellipse} alt='Ellips' className={blockVisibility[2] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[3] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[4] ? '' : 'img-dark'} />
-            <img src={Ellipse} alt='Ellips' className={blockVisibility[5] ? '' : 'img-dark'} />
+            {/* <img src={Ellipse} alt='Ellips' className={blockVisibility[5] ? '' : 'img-dark'} /> */}
           </div>
           <p>Your Rewards</p>
         </div>
