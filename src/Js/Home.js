@@ -16,13 +16,13 @@ import Reward_pass from '../IMG/TaskIcon/passStar.png';
 import AnyTapChanel from '../IMG/All_Logo/AnyTapChanel.png';
 import tgLogo from '../IMG/All_Logo/TgComunity.png';
 import XLogo from '../IMG/All_Logo/XCominity.png';
-import FreePosition from '../IMG/All_Logo/freePosiction.png';
+//import FreePosition from '../IMG/All_Logo/freePosiction.png';
 import NickLogo from '../IMG/All_Logo/nick.png';
 //import image SupportSwapTask
 import galo4ka from '../IMG/All_Logo/galol4ka.png';
 import nickGalka from '../IMG/All_Logo/galka.png';
 import nickKr from '../IMG/All_Logo/nickNema.png';
-import ContactUs from '../IMG/All_Logo/ContactUs.png';
+//import ContactUs from '../IMG/All_Logo/ContactUs.png';
 import Join from '../IMG/All_Logo/Join.png';
 //import image Main
 import Ellipse from '../IMG/All_Logo/Ellipse.png';
@@ -43,7 +43,7 @@ function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, K
   const TG_CHANNEL_LINK = "https://t.me/octies_community";
   const TG_CHANNEL_LINK2 = "https://t.me/any_tap";
   const X_LINK = "https://x.com/Octies_GameFI";
-  const Support = "https://t.me/octies_manage";
+  //const Support = "https://t.me/octies_manage";
   const bot_part = "https://t.me/bee_verse_bot?start=7236554978";
 
   const userId1 = new URLSearchParams(window.location.search).get('userId');
@@ -72,14 +72,14 @@ function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, K
     }, 3000);
   };
 
-  const Tg_Channel_Support = () => {
-    const userId = new URLSearchParams(window.location.search).get('userId');
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    window.open(Support, '_blank');
-    setTimeout(() => {
-      checkSubscriptionAndUpdate(userId);
-    }, 3000);
-  };
+  // const Tg_Channel_Support = () => {
+  //   const userId = new URLSearchParams(window.location.search).get('userId');
+  //   window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+  //   window.open(Support, '_blank');
+  //   setTimeout(() => {
+  //     checkSubscriptionAndUpdate(userId);
+  //   }, 3000);
+  // };
 
   const Tg_Channel_Open_X = async () => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
