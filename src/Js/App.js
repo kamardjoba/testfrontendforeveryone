@@ -47,21 +47,19 @@ import p2e from '../IMG/LowerIcon/p2e.png';
 const REACT_APP_BACKEND_URL = 'https://octiesback-production.up.railway.app';
 
 
-if (
-  userAgent.match(/Mobile/i) ||
-  userAgent.match(/Android/i) ||
-  userAgent.match(/iPhone/i) ||
-  userAgent.match(/iPad/i)
-) {
-  return navigateTo("/loading");
-} else {
-  return navigateTo("/qr");
-}
-
-
 function App() {
 
-
+  if (
+    userAgent.match(/Mobile/i) ||
+    userAgent.match(/Android/i) ||
+    userAgent.match(/iPhone/i) ||
+    userAgent.match(/iPad/i)
+  ) {
+     navigateTo("/loading");
+  } else {
+     navigateTo("/qr");
+  }
+  
 
   const [userId, setUserId] = useState(null); // Используем useState для хранения userId
 
