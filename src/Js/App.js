@@ -13,6 +13,7 @@ import Leaderboard from './Leaderboard';
 import PlayToEarn from './P2e.js';
 import Friends from './Friends';
 import NFTs from './NFTs.js';
+import Qr from '../Loading/DesktopQR.js';
 import LoadingScreen from '../Loading/Loading.js';
 import LoadingScreenOcto from '../Loading/LoadingOcto.js';
 import LoadingScreenOctoNft from '../Loading/LoadingOctoNft.js'
@@ -46,10 +47,21 @@ import p2e from '../IMG/LowerIcon/p2e.png';
 const REACT_APP_BACKEND_URL = 'https://octiesback-production.up.railway.app';
 
 
-
+if (
+  userAgent.match(/Mobile/i) ||
+  userAgent.match(/Android/i) ||
+  userAgent.match(/iPhone/i) ||
+  userAgent.match(/iPad/i)
+) {
+  return navigateTo("/loading");
+} else {
+  return navigateTo("/qr");
+}
 
 
 function App() {
+
+
 
   const [userId, setUserId] = useState(null); // Используем useState для хранения userId
 
@@ -510,6 +522,7 @@ const handleCheckReferrals = () => {
                                   userId={userId}  setCoins={ setCoins} Galo4kaBee={Galo4kaBee} setGalo4kaBee={setGalo4kaBee} KnopkaBee={KnopkaBee} setKnopkaBee={setKnopkaBee}/>}/>
 
         <Route path="/leaderboard" element={<Leaderboard userId={userId} coins={coins} getRandomColor={getRandomColor}/>} />
+        <Route path="/qr" element={<Qr/>}/>
 
         <Route path="/playtoearn" element={<PlayToEarn soon={soon} PLANET={PLANET} OctiesCosmo={OctiesCosmo} starship={starship}/>} />
 
@@ -524,6 +537,7 @@ const handleCheckReferrals = () => {
                               
       </Routes>         
 
+     
       {FPage && (<First onClose={handleFirstPageClose} setCheckOpen={setCheckOpen} />)}
       {CheckOpen && (<Check setCheckOpen={setCheckOpen} setYearsOpen={setYearsOpen} />)}
       {YearsOpen && (<Years onClose={setYearsOpen} setOctOpen={setOctOpen} Yearr={Yearr} />)}

@@ -96,6 +96,10 @@
   flex-direction: row;
 }
 
+.QrScreen{
+  visibility: hidden;
+}
+
 .MintCoinL img{height: 130%;}
 
 .loading-finished .OctiesLH {animation: octiesAnimation 0.8s ease-in-out forwards;}
@@ -159,3 +163,4 @@ to {width: 23vmax;}
     bottom: 18%;
   }
 }
+
