@@ -133,7 +133,6 @@ function App() {
   if (!localStorage.getItem('KnopkaBee')) {localStorage.setItem('KnopkaBee', 'true');}
   const [KnopkaBee, setKnopkaBee] = useState(localStorage.getItem('KnopkaBee') === 'true')
 
-
   const [alert, setalert] = useState(false);
 
   //const tonConnectUI = useTonConnectUI();
