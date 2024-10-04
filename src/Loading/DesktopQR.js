@@ -5,7 +5,7 @@ function Qr() {
 
     return (
         <div className='QrScreen'>
-            <span className="loader"></span>
+            
         </div>
     );
 }
