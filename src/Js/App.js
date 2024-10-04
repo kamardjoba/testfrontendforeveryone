@@ -42,7 +42,6 @@ import IconFriends from '../IMG/LowerIcon/Friends.png';
 import NFTlogo from '../IMG/LowerIcon/NFTLogo.png';
 import p2e from '../IMG/LowerIcon/p2e.png';
 
-
 const REACT_APP_BACKEND_URL = 'https://octiesback-production.up.railway.app';
 
 
