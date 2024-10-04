@@ -16,13 +16,13 @@ import Reward_pass from '../IMG/TaskIcon/passStar.png';
 import AnyTapChanel from '../IMG/All_Logo/AnyTapChanel.png';
 import tgLogo from '../IMG/All_Logo/TgComunity.png';
 import XLogo from '../IMG/All_Logo/XCominity.png';
-import FreePosition from '../IMG/All_Logo/freePosiction.png';
+//import FreePosition from '../IMG/All_Logo/freePosiction.png';
 import NickLogo from '../IMG/All_Logo/nick.png';
 //import image SupportSwapTask
 import galo4ka from '../IMG/All_Logo/galol4ka.png';
 import nickGalka from '../IMG/All_Logo/galka.png';
 import nickKr from '../IMG/All_Logo/nickNema.png';
-import ContactUs from '../IMG/All_Logo/ContactUs.png';
+//import ContactUs from '../IMG/All_Logo/ContactUs.png';
 import Join from '../IMG/All_Logo/Join.png';
 //import image Main
 import Ellipse from '../IMG/All_Logo/Ellipse.png';
@@ -43,7 +43,7 @@ function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, K
   const TG_CHANNEL_LINK = "https://t.me/octies_community";
   const TG_CHANNEL_LINK2 = "https://t.me/any_tap";
   const X_LINK = "https://x.com/Octies_GameFI";
-  const Support = "https://t.me/octies_manage";
+  //const Support = "https://t.me/octies_manage";
   const bot_part = "https://t.me/bee_verse_bot?start=7236554978";
 
   const userId1 = new URLSearchParams(window.location.search).get('userId');
@@ -72,14 +72,14 @@ function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, K
     }, 3000);
   };
 
-  const Tg_Channel_Support = () => {
-    const userId = new URLSearchParams(window.location.search).get('userId');
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-    window.open(Support, '_blank');
-    setTimeout(() => {
-      checkSubscriptionAndUpdate(userId);
-    }, 3000);
-  };
+  // const Tg_Channel_Support = () => {
+  //   const userId = new URLSearchParams(window.location.search).get('userId');
+  //   window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+  //   window.open(Support, '_blank');
+  //   setTimeout(() => {
+  //     checkSubscriptionAndUpdate(userId);
+  //   }, 3000);
+  // };
 
   const Tg_Channel_Open_X = async () => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
@@ -146,8 +146,8 @@ function Home({Galo4ka, Knopka, Galo4kaX, KnopkaX,  GalkaAnyTap, KnopkaAnyTap, K
   // }, 5000);
 
 //_______________________________________________________________Task_Swap
-const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
-const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false, false]);
+const blockRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
+const [blockVisibility, setBlockVisibility] = useState([false, false, false, false, false]);
 
 useEffect(() => {
   const observerOptions = {
@@ -197,7 +197,8 @@ useEffect(() => {
         </div>
       </div>
       {!isMint && <div className="main">
-        <img src={Octo} alt='Octo' onClick={(event) => {localStorage.clear()}}/>
+        <img src={Octo} alt='Octo'
+        />
       </div>}
       {!isMint &&<div className='MainCoin'>
         
@@ -296,7 +297,7 @@ useEffect(() => {
             </div>
           </div>
 
-          <div className='MenuBorder' ref={blockRefs[4]}>
+          {/* <div className='MenuBorder' ref={blockRefs[4]}>
             <div className='flex_menu_border' id='greenBack'>
               <div className='rightFlex'>
                 <div  id='up'>
@@ -314,9 +315,9 @@ useEffect(() => {
                 <img src={FreePosition} alt=''/>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <div className='MenuBorder' ref={blockRefs[5]}>
+          <div className='MenuBorder' ref={blockRefs[4]}>
             <div className='flex_menu_border'>
               <div className='rightFlex'>
               <div id='up'>
@@ -348,7 +349,7 @@ useEffect(() => {
             <img src={Ellipse} alt='Ellips' className={blockVisibility[2] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[3] ? '' : 'img-dark'} />
             <img src={Ellipse} alt='Ellips' className={blockVisibility[4] ? '' : 'img-dark'} />
-            <img src={Ellipse} alt='Ellips' className={blockVisibility[5] ? '' : 'img-dark'} />
+            {/* <img src={Ellipse} alt='Ellips' className={blockVisibility[5] ? '' : 'img-dark'} /> */}
           </div>
           <p>Your Rewards</p>
         </div>
