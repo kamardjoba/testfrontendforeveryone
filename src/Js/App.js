@@ -64,7 +64,7 @@ function App() {
     } else {
       navigateOcties("/qr");
     }
-  }, []);
+  }, );
 
  
   
