@@ -42,7 +42,11 @@ import IconFriends from '../IMG/LowerIcon/Friends.png';
 import NFTlogo from '../IMG/LowerIcon/NFTLogo.png';
 import p2e from '../IMG/LowerIcon/p2e.png';
 
+
 const REACT_APP_BACKEND_URL = 'https://octiesback-production.up.railway.app';
+
+
+
 
 
 function App() {
@@ -133,12 +137,13 @@ function App() {
   if (!localStorage.getItem('KnopkaBee')) {localStorage.setItem('KnopkaBee', 'true');}
   const [KnopkaBee, setKnopkaBee] = useState(localStorage.getItem('KnopkaBee') === 'true')
 
+
   const [alert, setalert] = useState(false);
 
   //const tonConnectUI = useTonConnectUI();
   const locationOcties = useLocation();
   const navigateOcties = useNavigate();
-  
+
   const [isLoadingOcto, setLoadingOcto] = useState(true);
   const [isLoadingOctoVs, setLoadingOctoVs] = useState(true);
 
@@ -519,7 +524,6 @@ const handleCheckReferrals = () => {
                               
       </Routes>         
 
-     
       {FPage && (<First onClose={handleFirstPageClose} setCheckOpen={setCheckOpen} />)}
       {CheckOpen && (<Check setCheckOpen={setCheckOpen} setYearsOpen={setYearsOpen} />)}
       {YearsOpen && (<Years onClose={setYearsOpen} setOctOpen={setOctOpen} Yearr={Yearr} />)}
