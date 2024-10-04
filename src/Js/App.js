@@ -49,22 +49,6 @@ const REACT_APP_BACKEND_URL = 'https://octiesback-production.up.railway.app';
 
 function App() {
 
- 
-
-  useEffect(() => {
-    const userAgent = navigator.userAgent; // Define userAgent
-
-    if (
-      userAgent.match(/Mobile/i) ||
-      userAgent.match(/Android/i) ||
-      userAgent.match(/iPhone/i) ||
-      userAgent.match(/iPad/i)
-    ) {
-      navigateOcties("/loading");
-    } else {
-      navigateOcties("/qr");
-    }
-  }, );
 
  
   
