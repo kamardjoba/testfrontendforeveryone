@@ -138,7 +138,7 @@ function App() {
   //const tonConnectUI = useTonConnectUI();
   const locationOcties = useLocation();
   const navigateOcties = useNavigate();
-
+  
   const [isLoadingOcto, setLoadingOcto] = useState(true);
   const [isLoadingOctoVs, setLoadingOctoVs] = useState(true);
 
