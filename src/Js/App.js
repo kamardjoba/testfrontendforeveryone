@@ -292,6 +292,7 @@ useEffect(() => {
       const response = await axios.post(`${REACT_APP_BACKEND_URL}/get-coins`, { userId });
       console.log("User Id", userId);
       const data = response.data;
+      
       if (response.status === 200) {
         setCoins(data.coins);
         setTon5Succes(data.specialTransactionCounter);
