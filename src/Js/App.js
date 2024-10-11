@@ -283,80 +283,119 @@ useEffect(() => {
 }, []);
 
 
-  const fetchUserData = useCallback(async (userId) => {
-    if (!userId) {
-      console.error('userId не передан');
-      return;
-    }
-    try {
-      const response = await axios.post(`${REACT_APP_BACKEND_URL}/get-coins`, { userId });
-      const data = response.data;
-      if (response.status === 200) {
-        setCoins(data.coins);
-        setTon5Succes(data.specialTransactionCounter);
-        setReferralCoins(data.referralCoins);
-        setHasTelegramPremium(data.hasTelegramPremium);
-        setTransactionNumber(data.transactionNumber);
-        setSubscriptionCoins(data.coinsSub);
+const fetchUserData = useCallback(async (userId) => {
+  if (!userId) {
+    console.error('userId не передан');
+    return;
+  }
+  try {
+          console.log("User Id", userId);
+    const response = await axios.post(`${REACT_APP_BACKEND_URL}/get-coins`, { userId });
+    console.log("User Id", userId);
+    const data = response.data;
+    if (response.status === 200) {
+      setCoins(data.coins);
+      setTon5Succes(data.specialTransactionCounter);
+      setReferralCoins(data.referralCoins);
+      setHasTelegramPremium(data.hasTelegramPremium);
+      setTransactionNumber(data.transactionNumber);
+      setSubscriptionCoins(data.coinsSub);
 
 
-        const accountCreationDate = new Date(data.accountCreationDate);
-        const currentYear = new Date().getFullYear();
-        const accountYear = accountCreationDate.getFullYear();
-        const yearsOld = currentYear - accountYear;
-        setYearr(yearsOld);
-        let accountAgeCoins = yearsOld * 500;
-        if (yearsOld < 1) {
-          setAccountAgeCoins(300); 
-        }
-        setcoinOnlyYears(accountAgeCoins);
-
-        if(data.hasMintedNFT){
-          localStorage.setItem('isMintNFT', 'true'); 
-        }else{
-          localStorage.setItem('isMintNFT', 'false'); 
-        }
-        if (data.hasCheckedSubscription) {
-          localStorage.setItem('Galka', 'true');
-          localStorage.setItem('Knopka', 'false');
-        } else {
-          localStorage.setItem('Galka', 'false');
-          localStorage.setItem('Knopka', 'true');
-        }
-
-        if (data.hasCheckedSubscription3) {
-          localStorage.setItem('GalkaAnyTap', 'true');
-          localStorage.setItem('KnopkaAnyTap', 'false');
-        } else {
-          localStorage.setItem('GalkaAnyTap', 'false');
-          localStorage.setItem('KnopkaAnyTap', 'true');
-        }
-
-        if (data.hasNicknameBonus){
-          localStorage.setItem('KnopkaNick', 'true');
-        }
-        else{
-          localStorage.setItem('KnopkaNick', 'false');
-        }
-        
-        setLoadingOcto(false);
-        setAccountAgeCoins(accountAgeCoins);
-  
-        const referralResponse = await axios.post(`${REACT_APP_BACKEND_URL}/generate-referral`, { userId });
-        const referralData = referralResponse.data;
-        if (referralResponse.status === 200) {
-          setReferralCode(referralData.referralCode);
-          setTelegramLink(referralData.telegramLink);
-        } else {
-          console.error('Ошибка при получении реферальных данных:', referralData.message);
-        }
-      } else {
-        console.error('Ошибка при получении данных пользователя:', data.error);
+      const accountCreationDate = new Date(data.accountCreationDate);
+      const currentYear = new Date().getFullYear();
+      const accountYear = accountCreationDate.getFullYear();
+      const yearsOld = currentYear - accountYear;
+      setYearr(yearsOld);
+      let accountAgeCoins = yearsOld * 500;
+      if (yearsOld < 1) {
+        setAccountAgeCoins(300); 
       }
-    } catch (error) {
-      console.error('Ошибка при получении данных пользователя:', error);
+      setcoinOnlyYears(accountAgeCoins);
+
+      if(data.hasMintedNFT){
+        localStorage.setItem('isMintNFT', 'true'); 
+      }else{
+        localStorage.setItem('isMintNFT', 'false'); 
+      }
+      if (data.hasCheckedSubscription) {
+        localStorage.setItem('Galka', 'true');
+        localStorage.setItem('Knopka', 'false');
+      } else {
+        localStorage.setItem('Galka', 'false');
+        localStorage.setItem('Knopka', 'true');
+      }
+
+      if (data.hasCheckedSubscription3) {
+        localStorage.setItem('GalkaAnyTap', 'true');
+        localStorage.setItem('KnopkaAnyTap', 'false');
+      } else {
+        localStorage.setItem('GalkaAnyTap', 'false');
+        localStorage.setItem('KnopkaAnyTap', 'true');
+      }
+
+      if (data.hasNicknameBonus){
+        localStorage.setItem('KnopkaNick', 'true');
+      }
+      else{
+        localStorage.setItem('KnopkaNick', 'false');
+      }
+      if (data.hasReceivedTwitterReward) {
+        localStorage.setItem('GalkaX', 'true');
+        localStorage.setItem('KnopkaX', 'false');
+      } else {
+        localStorage.setItem('GalkaX', 'false');
+        localStorage.setItem('KnopkaX', 'true');
+      }
+      if (data.hasBotSub) {
+        localStorage.setItem('Galo4kaBee', 'true');
+        localStorage.setItem('KnopkaBee', 'false');
+        setGalo4kaBee(true);
+        setKnopkaBee(false);
+      } else {
+        localStorage.setItem('Galo4kaBee', 'false');
+        localStorage.setItem('KnopkaBee', 'true');
+        setGalo4kaBee(false);
+        setKnopkaBee(true);
+      }
+      setLoadingOcto(false);
+      setAccountAgeCoins(accountAgeCoins);
+     //setReferralThresholdReached(data.referralThresholdReached);
+
+      const referralResponse = await axios.post(`${REACT_APP_BACKEND_URL}/generate-referral`, { userId });
+      const referralData = referralResponse.data;
+      if (referralResponse.status === 200) {
+        setReferralCode(referralData.referralCode);
+        setTelegramLink(referralData.telegramLink);
+      } else {
+        console.error('Ошибка при получении реферальных данных:', referralData.message);
+      }
+    } else {
+      console.error('Ошибка при получении данных пользователя:', data.error);
     }
-  }, []);
+  } catch (error) {
+    console.error('Ошибка при получении данных пользователя:', error);
+  }
+}, []);
+
+useEffect(() => {
+  const userIdFromURL = new URLSearchParams(window.location.search).get('userId');
+  const savedUserId = localStorage.getItem('userId');
+
+  let userId;
+
+  if (userIdFromURL) {
+    userId = userIdFromURL;
+    localStorage.setItem('userId', userId); // Сохраняем userId для последующего использования
+  } else if (savedUserId) {
+    userId = savedUserId; // Берем userId из localStorage, если он был сохранен
+  } else {
+    console.error('userId не найден');
+    return; // Останавливаем выполнение, если userId не найден ни в URL, ни в localStorage
+  }
+
+  fetchUserData(userId); // Вызываем функцию с userId
+}, [fetchUserData]);
   
 
   
@@ -435,18 +474,18 @@ const handleCheckReferrals = () => {
     }
   }, [checkSubscription]);
 
-  useEffect(() => {
-    const userId = new URLSearchParams(window.location.search).get('userId');
-    if (userId) {
-      fetchUserData(userId).then(() => {
-        checkSubscription(userId).then(() => {
-          fetchUserData(userId);
-        });
-      });
-    } else {
-      console.error('userId не найден в URL');
-    }
-  }, [fetchUserData, checkSubscription]);
+  // useEffect(() => {
+  //   const userId = new URLSearchParams(window.location.search).get('userId');
+  //   if (userId) {
+  //     fetchUserData(userId).then(() => {
+  //       checkSubscription(userId).then(() => {
+  //         fetchUserData(userId);
+  //       });
+  //     });
+  //   } else {
+  //     console.error('userId не найден в URL');
+  //   }
+  // }, [fetchUserData, checkSubscription]);
 
   useEffect(() => {
     if (window.Telegram.WebApp) {
@@ -474,24 +513,24 @@ const handleCheckReferrals = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
-  useEffect(() => {
-    const userIdFromURL = new URLSearchParams(window.location.search).get('userId');
-    const savedUserId = localStorage.getItem('userId');
+  // useEffect(() => {
+  //   const userIdFromURL = new URLSearchParams(window.location.search).get('userId');
+  //   const savedUserId = localStorage.getItem('userId');
   
-    let userId;
+  //   let userId;
   
-    if (userIdFromURL) {
-      userId = userIdFromURL;
-      localStorage.setItem('userId', userId); // Сохраняем userId для последующего использования
-    } else if (savedUserId) {
-      userId = savedUserId; // Берем userId из localStorage, если он был сохранен
-    } else {
-      console.error('userId не найден');
-      return; // Останавливаем выполнение, если userId не найден ни в URL, ни в localStorage
-    }
+  //   if (userIdFromURL) {
+  //     userId = userIdFromURL;
+  //     localStorage.setItem('userId', userId); // Сохраняем userId для последующего использования
+  //   } else if (savedUserId) {
+  //     userId = savedUserId; // Берем userId из localStorage, если он был сохранен
+  //   } else {
+  //     console.error('userId не найден');
+  //     return; // Останавливаем выполнение, если userId не найден ни в URL, ни в localStorage
+  //   }
  
-    fetchUserData(userId); // Вызываем функцию с userId
-  }, [fetchUserData]);
+  //   fetchUserData(userId); // Вызываем функцию с userId
+  // }, [fetchUserData]);
 
 
   return (
